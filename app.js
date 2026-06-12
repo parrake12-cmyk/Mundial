@@ -11,6 +11,57 @@ const STAGES = {
   final: "Final",
 };
 
+const FLAGS = {
+  Algeria: "🇩🇿",
+  Argentina: "🇦🇷",
+  Australia: "🇦🇺",
+  Austria: "🇦🇹",
+  Belgium: "🇧🇪",
+  "Bosnia and Herzegovina": "🇧🇦",
+  Brazil: "🇧🇷",
+  "Cabo Verde": "🇨🇻",
+  Canada: "🇨🇦",
+  Colombia: "🇨🇴",
+  "Congo DR": "🇨🇩",
+  "Cote d'Ivoire": "🇨🇮",
+  Croatia: "🇭🇷",
+  Curacao: "🇨🇼",
+  Czechia: "🇨🇿",
+  Ecuador: "🇪🇨",
+  Egypt: "🇪🇬",
+  England: "🏴",
+  France: "🇫🇷",
+  Germany: "🇩🇪",
+  Ghana: "🇬🇭",
+  Haiti: "🇭🇹",
+  "IR Iran": "🇮🇷",
+  Iraq: "🇮🇶",
+  Japan: "🇯🇵",
+  Jordan: "🇯🇴",
+  "Korea Republic": "🇰🇷",
+  Mexico: "🇲🇽",
+  Morocco: "🇲🇦",
+  Netherlands: "🇳🇱",
+  "New Zealand": "🇳🇿",
+  Norway: "🇳🇴",
+  Panama: "🇵🇦",
+  Paraguay: "🇵🇾",
+  Portugal: "🇵🇹",
+  Qatar: "🇶🇦",
+  "Saudi Arabia": "🇸🇦",
+  Scotland: "🏴",
+  Senegal: "🇸🇳",
+  "South Africa": "🇿🇦",
+  Spain: "🇪🇸",
+  Sweden: "🇸🇪",
+  Switzerland: "🇨🇭",
+  Tunisia: "🇹🇳",
+  Turkiye: "🇹🇷",
+  "United States": "🇺🇸",
+  Uruguay: "🇺🇾",
+  Uzbekistan: "🇺🇿",
+};
+
 const state = {
   fixtures: [],
   names: { a: "Kevin", b: "Ivonne" },
@@ -282,16 +333,25 @@ function renderMatchCard(fixture) {
   if (done) card.classList.add("done");
 
   template.querySelector(".match-meta").innerHTML = `
-    <div>Partido ${fixture.matchNumber}</div>
+    <div class="match-number">Partido ${fixture.matchNumber}</div>
     <div>${formatStage(fixture)}</div>
     <div>${formatDate(fixture.kickoffUtc)}</div>
     <div>${titleCase(fixture.hostCity.replaceAll("-", " "))}</div>
   `;
 
   template.querySelector(".teams").innerHTML = `
-    <div class="team-line"><span>${fixture.homeTeam}</span><span class="score-badge">${done ? result.home : "-"}</span></div>
-    <div class="team-line"><span>${fixture.awayTeam}</span><span class="score-badge">${done ? result.away : "-"}</span></div>
-    <div class="mini">${fixture.stadium}</div>
+    <div class="team-line">
+      <span class="flag">${flagFor(fixture.homeTeam)}</span>
+      <span class="team-name">${fixture.homeTeam}</span>
+      <span class="score-badge">${done ? result.home : "-"}</span>
+    </div>
+    <div class="versus">vs</div>
+    <div class="team-line away">
+      <span class="flag">${flagFor(fixture.awayTeam)}</span>
+      <span class="team-name">${fixture.awayTeam}</span>
+      <span class="score-badge">${done ? result.away : "-"}</span>
+    </div>
+    <div class="stadium-line">${fixture.stadium}</div>
   `;
 
   const pickGrid = template.querySelector(".pick-grid");
@@ -332,9 +392,9 @@ function renderPickBox(fixture, player) {
   const outcome = document.createElement("select");
   outcome.innerHTML = `
     <option value="">Sin pick</option>
-    <option value="home">${fixture.homeTeam}</option>
+    <option value="home">${flagFor(fixture.homeTeam)} ${fixture.homeTeam}</option>
     <option value="draw">Empate</option>
-    <option value="away">${fixture.awayTeam}</option>
+    <option value="away">${flagFor(fixture.awayTeam)} ${fixture.awayTeam}</option>
   `;
   outcome.value = pick.outcome || "";
   outcome.disabled = !canEdit;
@@ -483,7 +543,7 @@ function renderGroups() {
         <tbody>
           ${rows.map((row) => `
             <tr>
-              <td>${row.team}</td><td>${row.pts}</td><td>${row.played}</td>
+              <td><span class="table-team">${flagFor(row.team)} ${row.team}</span></td><td>${row.pts}</td><td>${row.played}</td>
               <td>${row.gf}</td><td>${row.ga}</td><td>${row.gf - row.ga}</td>
             </tr>
           `).join("")}
@@ -543,8 +603,8 @@ function renderBracket() {
       item.className = "bracket-match";
       item.innerHTML = `
         <div class="mini">#${fixture.matchNumber} · ${formatDate(fixture.kickoffUtc)}</div>
-        <div class="${done && result.home > result.away ? "winner" : ""}">${fixture.homeTeam} ${done ? result.home : ""}</div>
-        <div class="${done && result.away > result.home ? "winner" : ""}">${fixture.awayTeam} ${done ? result.away : ""}</div>
+        <div class="${done && result.home > result.away ? "winner" : ""}">${flagFor(fixture.homeTeam)} ${fixture.homeTeam} ${done ? result.home : ""}</div>
+        <div class="${done && result.away > result.home ? "winner" : ""}">${flagFor(fixture.awayTeam)} ${fixture.awayTeam} ${done ? result.away : ""}</div>
         <div class="mini">${titleCase(fixture.hostCity.replaceAll("-", " "))}</div>
       `;
       column.append(item);
@@ -576,7 +636,7 @@ function summaryItem(fixture) {
   item.className = "summary-item";
   item.innerHTML = `
     <div class="mini">#${fixture.matchNumber} · ${formatDate(fixture.kickoffUtc)}</div>
-    <strong>${fixture.homeTeam} ${result ? result.home : ""} - ${result ? result.away : ""} ${fixture.awayTeam}</strong>
+    <strong>${flagFor(fixture.homeTeam)} ${fixture.homeTeam} ${result ? result.home : ""} - ${result ? result.away : ""} ${flagFor(fixture.awayTeam)} ${fixture.awayTeam}</strong>
   `;
   return item;
 }
@@ -598,7 +658,7 @@ function renderPointsBreakdown() {
     item.className = "summary-item";
     item.innerHTML = `
       <div class="mini">#${fixture.matchNumber}</div>
-      <strong>${fixture.homeTeam} vs ${fixture.awayTeam}</strong>
+      <strong>${flagFor(fixture.homeTeam)} ${fixture.homeTeam} vs ${flagFor(fixture.awayTeam)} ${fixture.awayTeam}</strong>
       <div>${state.names.a}: ${a} · ${state.names.b}: ${b}</div>
     `;
     return item;
@@ -708,6 +768,13 @@ function formatDate(value) {
     hour: "numeric",
     minute: "2-digit",
   }).format(new Date(value));
+}
+
+function flagFor(team) {
+  if (!team) return "🏆";
+  if (FLAGS[team]) return FLAGS[team];
+  if (/winner|loser|group|match|third place|runners-up/i.test(team)) return "🏆";
+  return "⚽";
 }
 
 function normalize(value) {
