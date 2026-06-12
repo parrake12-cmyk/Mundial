@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kevin vs Ivonne · Mundial 2026</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Mundial 2026 · 104 partidos</p>
+        <h1>Kevin vs Ivonne</h1>
+      </div>
+      <div class="header-actions">
+        <span id="syncBadge" class="sync-badge">Guardado local</span>
+        <div class="identity-switch" aria-label="Seleccionar jugador">
+          <span>Estoy como</span>
+          <button class="active" id="kevinModeBtn" type="button" data-player="a">Kevin</button>
+          <button id="ivonneModeBtn" type="button" data-player="b">Ivonne</button>
+        </div>
+        <button id="refreshBtn" type="button">Actualizar resultados</button>
+        <button id="exportBtn" type="button">Exportar</button>
+        <label class="file-action">
+          Importar
+          <input id="importInput" type="file" accept="application/json">
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <section class="world-cup-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Reto mundialista de la casa</p>
+          <h2>Camino a la gloria</h2>
+          <p>El que termine arriba después de la final reclama su cupón de campeón.</p>
+        </div>
+        <div class="hero-stats">
+          <article>
+            <span>Líder actual</span>
+            <strong id="leaderName">Empate</strong>
+          </article>
+          <article>
+            <span>Partidos cerrados</span>
+            <strong id="completedCount">0/104</strong>
+          </article>
+          <article>
+            <span>Picks faltantes</span>
+            <strong id="missingPicks">0</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="score-strip" aria-label="Marcador acumulado">
+        <article class="player-panel player-a">
+          <input id="playerAName" aria-label="Nombre jugador 1">
+          <strong id="playerAScore">0</strong>
+          <span>puntos</span>
+        </article>
+        <article class="player-panel player-b">
+          <input id="playerBName" aria-label="Nombre jugador 2">
+          <strong id="playerBScore">0</strong>
+          <span>puntos</span>
+        </article>
+        <article class="rules-panel">
+          <span>Regla actual</span>
+          <strong>3 exacto · 1 ganador/empate</strong>
+          <small>Los puntos se recalculan al guardar resultados.</small>
+        </article>
+        <article class="coupon-panel">
+          <span>Premio final</span>
+          <strong>Ganador: reclama tu cupón</strong>
+          <small id="couponText">Cupón válido por una cita, antojo o privilegio negociado con sonrisa seria.</small>
+        </article>
+      </section>
+
+      <nav class="tabs" aria-label="Vistas">
+        <button class="active" type="button" data-view="matches">Partidos</button>
+        <button type="button" data-view="groups">Grupos</button>
+        <button type="button" data-view="bracket">Eliminatorias</button>
+        <button type="button" data-view="summary">Resumen</button>
+      </nav>
+
+      <section id="matchesView" class="view active">
+        <div class="toolbar">
+          <input id="searchInput" type="search" placeholder="Buscar equipo, ciudad o partido">
+          <select id="stageFilter" aria-label="Filtrar por fase">
+            <option value="all">Todas las fases</option>
+          </select>
+          <select id="statusFilter" aria-label="Filtrar por estado">
+            <option value="all">Todos</option>
+            <option value="pending">Pendientes</option>
+            <option value="done">Con resultado</option>
+            <option value="today">De hoy</option>
+          </select>
+        </div>
+        <div id="matchesList" class="matches-list"></div>
+      </section>
+
+      <section id="groupsView" class="view">
+        <div id="groupsGrid" class="groups-grid"></div>
+      </section>
+
+      <section id="bracketView" class="view">
+        <div id="bracketGrid" class="bracket-grid"></div>
+      </section>
+
+      <section id="summaryView" class="view">
+        <div class="summary-grid">
+          <article>
+            <h2>Próximos partidos</h2>
+            <div id="upcomingList"></div>
+          </article>
+          <article>
+            <h2>Últimos resultados</h2>
+            <div id="recentResults"></div>
+          </article>
+          <article>
+            <h2>Detalle de puntos</h2>
+            <div id="pointsBreakdown"></div>
+          </article>
+          <article>
+            <h2>Extras del reto</h2>
+            <div id="extrasList"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <template id="matchTemplate">
+      <article class="match-card">
+        <div class="match-meta"></div>
+        <div class="teams"></div>
+        <div class="pick-grid"></div>
+        <div class="result-row"></div>
+      </article>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
