@@ -71,6 +71,7 @@ const state = {
     },
   },
   results: {},
+  liveScores: {},
 };
 
 let sharedSyncEnabled = false;
@@ -118,6 +119,8 @@ async function init() {
   bindEvents();
   render();
   startSharedSync();
+  refreshLiveScores();
+  setInterval(refreshLiveScores, 45000);
 }
 
 function restoreState() {
@@ -329,27 +332,32 @@ function renderMatchCard(fixture) {
   const template = document.querySelector("#matchTemplate").content.cloneNode(true);
   const card = template.querySelector(".match-card");
   const result = state.results[fixture.matchNumber] || {};
-  const done = hasResult(fixture.matchNumber);
+  const live = state.liveScores[fixture.matchNumber];
+  const display = live || result;
+  const done = hasResult(fixture.matchNumber) || live?.finished;
+  const isLive = live && !live.finished && live.minute !== "notstarted";
   if (done) card.classList.add("done");
+  if (isLive) card.classList.add("is-live");
 
   template.querySelector(".match-meta").innerHTML = `
     <div class="match-number">Partido ${fixture.matchNumber}</div>
     <div>${formatStage(fixture)}</div>
     <div>${formatDate(fixture.kickoffUtc)}</div>
     <div>${titleCase(fixture.hostCity.replaceAll("-", " "))}</div>
+    <div class="${isLive ? "live-pill live-now" : "live-pill"}">${liveLabel(live)}</div>
   `;
 
   template.querySelector(".teams").innerHTML = `
     <div class="team-line">
       <span class="flag">${flagFor(fixture.homeTeam)}</span>
       <span class="team-name">${fixture.homeTeam}</span>
-      <span class="score-badge">${done ? result.home : "-"}</span>
+      <span class="score-badge">${displayScore(display, "home")}</span>
     </div>
     <div class="versus">vs</div>
     <div class="team-line away">
       <span class="flag">${flagFor(fixture.awayTeam)}</span>
       <span class="team-name">${fixture.awayTeam}</span>
-      <span class="score-badge">${done ? result.away : "-"}</span>
+      <span class="score-badge">${displayScore(display, "away")}</span>
     </div>
     <div class="stadium-line">${fixture.stadium}</div>
   `;
@@ -770,6 +778,23 @@ function formatDate(value) {
   }).format(new Date(value));
 }
 
+function displayScore(score, side) {
+  if (!score) return "-";
+  const liveKey = side === "home" ? "homeScore" : "awayScore";
+  const resultKey = side === "home" ? "home" : "away";
+  const value = score[liveKey] ?? score[resultKey];
+  return Number.isFinite(value) ? value : "-";
+}
+
+function liveLabel(live) {
+  if (!live) return "Sin marcador en vivo";
+  if (live.finished) return "Finalizado";
+  if (live.minute === "notstarted") return "No iniciado";
+  if (/half/i.test(live.minute)) return "Descanso";
+  if (/^[0-9]+/.test(String(live.minute))) return `${live.minute}'`;
+  return String(live.minute);
+}
+
 function flagFor(team) {
   if (!team) return "🏆";
   if (FLAGS[team]) return FLAGS[team];
@@ -852,6 +877,18 @@ async function refreshResults() {
   } catch (error) {
     console.error(error);
     toast("No se pudieron actualizar resultados.");
+  }
+}
+
+async function refreshLiveScores() {
+  try {
+    const data = await fetch("/api/live", { cache: "no-store" }).then((res) => res.json());
+    state.liveScores = Object.fromEntries((data.games || []).map((game) => [game.matchNumber, game]));
+    renderMatches();
+    renderBracket();
+    renderSummary();
+  } catch (error) {
+    console.error(error);
   }
 }
 

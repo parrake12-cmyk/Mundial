@@ -10,6 +10,7 @@ const STATE_FILE = path.join(DATA_DIR, "state.json");
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const SUPABASE_ENABLED = Boolean(SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY);
+const LIVE_SCORES_URL = process.env.LIVE_SCORES_URL || "https://worldcup26.ir/get/games";
 
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",
@@ -182,6 +183,29 @@ function sendJson(res, status, data) {
   res.end(JSON.stringify(data));
 }
 
+async function readLiveScores() {
+  const response = await fetch(LIVE_SCORES_URL, {
+    headers: { Accept: "application/json" },
+  });
+  if (!response.ok) throw new Error(`Live scores ${response.status}`);
+  const data = await response.json();
+  const games = Array.isArray(data.games) ? data.games : [];
+  return {
+    updatedAt: new Date().toISOString(),
+    games: games.map((game) => ({
+      matchNumber: Number(game.id),
+      homeTeam: game.home_team_name_en,
+      awayTeam: game.away_team_name_en,
+      homeScore: Number(game.home_score || 0),
+      awayScore: Number(game.away_score || 0),
+      finished: String(game.finished).toUpperCase() === "TRUE",
+      minute: game.time_elapsed || "notstarted",
+      homeScorers: game.home_scorers,
+      awayScorers: game.away_scorers,
+    })),
+  };
+}
+
 function serveFile(req, res) {
   const urlPath = new URL(req.url, `http://${req.headers.host}`).pathname;
   const requestedPath = urlPath === "/" ? "/index.html" : urlPath;
@@ -224,6 +248,11 @@ const server = http.createServer(async (req, res) => {
   try {
     if (req.url === "/api/state" && req.method === "GET") {
       sendJson(res, 200, await readState());
+      return;
+    }
+
+    if (req.url === "/api/live" && req.method === "GET") {
+      sendJson(res, 200, await readLiveScores());
       return;
     }
 
