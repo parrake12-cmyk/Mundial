@@ -408,16 +408,7 @@ function renderPickBox(fixture, player) {
   outcome.disabled = !canEdit;
   outcome.addEventListener("change", () => savePick(fixture.matchNumber, player, { outcome: outcome.value }));
 
-  const home = scoreInput(fixture.matchNumber, `${player}Home`, pick.home, (value) => {
-    savePick(fixture.matchNumber, player, { home: value });
-  });
-  const away = scoreInput(fixture.matchNumber, `${player}Away`, pick.away, (value) => {
-    savePick(fixture.matchNumber, player, { away: value });
-  });
-  home.disabled = !canEdit;
-  away.disabled = !canEdit;
-
-  controls.append(outcome, home, document.createTextNode("-"), away);
+  controls.append(outcome);
   box.append(label, controls, pickPointsLine(fixture.matchNumber, player));
   if (canEdit) {
     const saveButton = actionButton("Guardar y bloquear", "save-pill", () => lockPick(fixture.matchNumber, player, saveButton));
@@ -679,8 +670,8 @@ function renderExtras() {
     ["Líder", leaderLabel(totals)],
     ["Diferencia", `${Math.abs(totals.a - totals.b)} puntos`],
     ["Picks faltantes", `${countMissingPicks()} selecciones`],
-    ["Marcadores exactos", `${exactScoreCount("a")} de ${state.names.a} · ${exactScoreCount("b")} de ${state.names.b}`],
-    ["Partido final", "El campeón de la quiniela reclama su cupón"],
+    ["Aciertos", `${winnerPickCount("a")} de ${state.names.a} · ${winnerPickCount("b")} de ${state.names.b}`],
+    ["Partido final", "El campeón del reto reclama su cupón"],
   ];
 
   els.extrasList.replaceChildren(...items.map(([label, value]) => {
@@ -698,12 +689,9 @@ function countMissingPicks() {
   }, 0);
 }
 
-function exactScoreCount(player) {
+function winnerPickCount(player) {
   return state.fixtures.reduce((total, fixture) => {
-    const result = state.results[fixture.matchNumber];
-    const pick = state.picks[fixture.matchNumber]?.[player];
-    if (!result || !pick) return total;
-    return total + (pick.home === result.home && pick.away === result.away ? 1 : 0);
+    return total + scorePick(fixture.matchNumber, player);
   }, 0);
 }
 
@@ -728,7 +716,7 @@ function couponMessage(totals, completed) {
 function pickPointsLine(matchNumber, player) {
   const line = document.createElement("div");
   line.className = "mini";
-  line.textContent = hasResult(matchNumber) ? `${scorePick(matchNumber, player)} pts en este partido` : "Esperando resultado";
+  line.textContent = scoringResult(matchNumber) ? `${scorePick(matchNumber, player)} punto por ganador/empate` : "Esperando resultado";
   return line;
 }
 
@@ -741,16 +729,20 @@ function calculateTotals() {
 }
 
 function scorePick(matchNumber, player) {
-  const result = state.results[matchNumber];
+  const result = scoringResult(matchNumber);
   const pick = state.picks[matchNumber]?.[player];
   if (!result || !pick) return 0;
 
   const resultOutcome = outcomeFor(result.home, result.away);
-  let points = pick.outcome === resultOutcome ? 1 : 0;
-  if (Number.isFinite(pick.home) && Number.isFinite(pick.away) && pick.home === result.home && pick.away === result.away) {
-    points = 3;
+  return pick.outcome === resultOutcome ? 1 : 0;
+}
+
+function scoringResult(matchNumber) {
+  const live = state.liveScores[matchNumber];
+  if (live && (live.finished || live.minute !== "notstarted")) {
+    return { home: live.homeScore, away: live.awayScore };
   }
-  return points;
+  return state.results[matchNumber];
 }
 
 function outcomeFor(home, away) {
@@ -884,9 +876,7 @@ async function refreshLiveScores() {
   try {
     const data = await fetch("/api/live", { cache: "no-store" }).then((res) => res.json());
     state.liveScores = Object.fromEntries((data.games || []).map((game) => [game.matchNumber, game]));
-    renderMatches();
-    renderBracket();
-    renderSummary();
+    render();
   } catch (error) {
     console.error(error);
   }
