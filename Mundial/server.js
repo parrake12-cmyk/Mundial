@@ -224,9 +224,13 @@ function serveFile(req, res) {
       res.end("Not found");
       return;
     }
-    res.writeHead(200, {
+    const headers = {
       "Content-Type": mimeTypes[path.extname(filePath)] || "application/octet-stream",
-    });
+      "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+      Pragma: "no-cache",
+      Expires: "0",
+    };
+    res.writeHead(200, headers);
     res.end(content);
   });
 }
