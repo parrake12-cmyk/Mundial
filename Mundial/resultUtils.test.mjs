@@ -23,6 +23,17 @@ test('matchLiveScoreToFixture aligns live data by team names', () => {
   assert.equal(matchNumber, 1);
 });
 
+test('matchLiveScoreToFixture prefers team-name matching over a conflicting direct match number', () => {
+  const fixtures = [
+    { matchNumber: 23, homeTeam: 'Portugal', awayTeam: 'Congo DR' },
+    { matchNumber: 48, homeTeam: 'Colombia', awayTeam: 'Congo DR' },
+  ];
+
+  const matchNumber = matchLiveScoreToFixture({ matchNumber: 23, home_team_name_en: 'Colombia', away_team_name_en: 'Democratic Republic of the Congo' }, fixtures);
+
+  assert.equal(matchNumber, 48);
+});
+
 test('buildGroupStandings awards points from live scores', () => {
   const fixtures = [
     { matchNumber: 1, stage: 'group-stage', group: 'A', homeTeam: 'Mexico', awayTeam: 'South Africa' },

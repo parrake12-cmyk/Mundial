@@ -8,6 +8,8 @@ const TEAM_ALIASES = {
   'cote divoire': 'Cote d\'Ivoire',
   'dr congo': 'Congo DR',
   'congo dr': 'Congo DR',
+  'democratic republic of the congo': 'Congo DR',
+  'republic of the congo': 'Congo DR',
   'iran': 'IR Iran',
   'ivory coast': 'Cote d\'Ivoire',
   'south korea': 'Korea Republic',
@@ -90,17 +92,21 @@ export function getDisplayTeamName(value) {
 export function matchLiveScoreToFixture(game, fixtures = []) {
   const home = normalizeTeamName(game?.home_team_name_en || game?.homeTeam || '');
   const away = normalizeTeamName(game?.away_team_name_en || game?.awayTeam || '');
-  const directMatchNumber = Number(game?.matchNumber ?? game?.id ?? game?.match_number);
-  if (Number.isFinite(directMatchNumber)) {
-    const directFixture = fixtures.find((fixture) => fixture.matchNumber === directMatchNumber);
-    if (directFixture) return directMatchNumber;
-  }
 
-  return fixtures.find((fixture) => {
+  const teamMatch = fixtures.find((fixture) => {
     const fixtureHome = normalizeTeamName(fixture.homeTeam);
     const fixtureAway = normalizeTeamName(fixture.awayTeam);
     return (fixtureHome === home && fixtureAway === away) || (fixtureHome === away && fixtureAway === home);
-  })?.matchNumber ?? null;
+  });
+
+  if (teamMatch) return teamMatch.matchNumber;
+
+  const directMatchNumber = Number(game?.matchNumber ?? game?.id ?? game?.match_number);
+  if (Number.isFinite(directMatchNumber)) {
+    return fixtures.find((fixture) => fixture.matchNumber === directMatchNumber)?.matchNumber ?? null;
+  }
+
+  return null;
 }
 
 export function resolveMatchResult({ matchNumber, stateResults = {}, liveScores = {} }) {
