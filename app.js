@@ -1,6 +1,5 @@
 const STORAGE_KEY = "world-cup-couple-pool-v1";
 const PLAYER_KEY = "world-cup-active-player-v1";
-const OPENFOOTBALL_URL = "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json";
 const STAGES = {
   "group-stage": "Fase de grupos",
   "round-of-32": "Dieciseisavos",
@@ -62,6 +61,57 @@ const FLAGS = {
   Uzbekistan: "🇺🇿",
 };
 
+const TEAM_DISPLAY_NAMES = {
+  Algeria: "Argelia",
+  Argentina: "Argentina",
+  Australia: "Australia",
+  Austria: "Austria",
+  Belgium: "Bélgica",
+  "Bosnia and Herzegovina": "Bosnia y Herzegovina",
+  Brazil: "Brasil",
+  "Cabo Verde": "Cabo Verde",
+  Canada: "Canadá",
+  Colombia: "Colombia",
+  "Congo DR": "RD Congo",
+  "Cote d'Ivoire": "Costa de Marfil",
+  Croatia: "Croacia",
+  Curacao: "Curazao",
+  Czechia: "Chequia",
+  Ecuador: "Ecuador",
+  Egypt: "Egipto",
+  England: "Inglaterra",
+  France: "Francia",
+  Germany: "Alemania",
+  Ghana: "Ghana",
+  Haiti: "Haití",
+  "IR Iran": "Irán",
+  Iraq: "Irak",
+  Japan: "Japón",
+  Jordan: "Jordania",
+  "Korea Republic": "Corea del Sur",
+  Mexico: "México",
+  Morocco: "Marruecos",
+  Netherlands: "Países Bajos",
+  "New Zealand": "Nueva Zelanda",
+  Norway: "Noruega",
+  Panama: "Panamá",
+  Paraguay: "Paraguay",
+  Portugal: "Portugal",
+  Qatar: "Catar",
+  "Saudi Arabia": "Arabia Saudí",
+  Scotland: "Escocia",
+  Senegal: "Senegal",
+  "South Africa": "Sudáfrica",
+  Spain: "España",
+  Sweden: "Suecia",
+  Switzerland: "Suiza",
+  Tunisia: "Túnez",
+  Turkiye: "Turquía",
+  "United States": "Estados Unidos",
+  Uruguay: "Uruguay",
+  Uzbekistan: "Uzbekistán",
+};
+
 const state = {
   fixtures: [],
   names: { a: "Kevin", b: "Ivonne" },
@@ -106,15 +156,13 @@ const els = {
 };
 
 async function init() {
-  const [fixturesData, liveData] = await Promise.all([
+  const [fixturesData] = await Promise.all([
     fetch("data/fixtures.json").then((res) => res.json()),
-    fetch("data/openfootball-2026.json").then((res) => res.json()).catch(() => ({ matches: [] })),
   ]);
 
   state.fixtures = fixturesData.fixtures;
   const loadedSharedState = await loadSharedState();
   if (!loadedSharedState) restoreState();
-  mergeSeedResults(liveData.matches || []);
   hydrateStageFilter();
   bindEvents();
   render();
@@ -147,26 +195,15 @@ async function loadSharedState() {
 function applySavedState(saved) {
   state.names = saved.names || state.names;
   state.picks = saved.picks || state.picks;
-  state.results = saved.results || state.results;
+  state.results = sanitizeResults(saved.results || state.results);
 }
 
-function mergeSeedResults(matches) {
-  for (const fixture of state.fixtures) {
-    if (state.results[fixture.matchNumber]?.locked) continue;
-    const found = matches.find((match) => {
-      return normalize(match.team1) === normalize(fixture.homeTeam)
-        && normalize(match.team2) === normalize(fixture.awayTeam)
-        && match.score?.ft;
-    });
-    if (found) {
-      state.results[fixture.matchNumber] = {
-        home: found.score.ft[0],
-        away: found.score.ft[1],
-        locked: false,
-      };
-    }
-  }
-  persistLocal();
+function sanitizeResults(results = {}) {
+  return Object.fromEntries(Object.entries(results).filter(([, result]) => {
+    return result?.verified === true
+      && Number.isFinite(result.home)
+      && Number.isFinite(result.away);
+  }));
 }
 
 function bindEvents() {
@@ -313,6 +350,8 @@ function renderMatches() {
       fixture.matchNumber,
       fixture.homeTeam,
       fixture.awayTeam,
+      displayTeamName(fixture.homeTeam),
+      displayTeamName(fixture.awayTeam),
       fixture.stadium,
       fixture.hostCity,
       STAGES[fixture.stage],
@@ -333,8 +372,8 @@ function renderMatchCard(fixture) {
   const card = template.querySelector(".match-card");
   const result = state.results[fixture.matchNumber] || {};
   const live = state.liveScores[fixture.matchNumber];
-  const display = live || result;
-  const done = hasResult(fixture.matchNumber) || live?.finished;
+  const display = confirmedResult(fixture.matchNumber);
+  const done = hasResult(fixture.matchNumber);
   const isLive = live && !live.finished && live.minute !== "notstarted";
   if (done) card.classList.add("done");
   if (isLive) card.classList.add("is-live");
@@ -350,13 +389,13 @@ function renderMatchCard(fixture) {
   template.querySelector(".teams").innerHTML = `
     <div class="team-line">
       <span class="flag">${flagFor(fixture.homeTeam)}</span>
-      <span class="team-name">${fixture.homeTeam}</span>
+      <span class="team-name">${displayTeamName(fixture.homeTeam)}</span>
       <span class="score-badge">${displayScore(display, "home")}</span>
     </div>
     <div class="versus">vs</div>
     <div class="team-line away">
       <span class="flag">${flagFor(fixture.awayTeam)}</span>
-      <span class="team-name">${fixture.awayTeam}</span>
+      <span class="team-name">${displayTeamName(fixture.awayTeam)}</span>
       <span class="score-badge">${displayScore(display, "away")}</span>
     </div>
     <div class="stadium-line">${fixture.stadium}</div>
@@ -400,9 +439,9 @@ function renderPickBox(fixture, player) {
   const outcome = document.createElement("select");
   outcome.innerHTML = `
     <option value="">Sin pick</option>
-    <option value="home">${flagFor(fixture.homeTeam)} ${fixture.homeTeam}</option>
+    <option value="home">${flagFor(fixture.homeTeam)} ${displayTeamName(fixture.homeTeam)}</option>
     <option value="draw">Empate</option>
-    <option value="away">${flagFor(fixture.awayTeam)} ${fixture.awayTeam}</option>
+    <option value="away">${flagFor(fixture.awayTeam)} ${displayTeamName(fixture.awayTeam)}</option>
   `;
   outcome.value = pick.outcome || "";
   outcome.disabled = !canEdit;
@@ -512,7 +551,14 @@ function saveResult(matchNumber, card) {
     toast("Falta un marcador.");
     return;
   }
-  state.results[matchNumber] = { home: Number(home), away: Number(away), locked: true };
+  state.results[matchNumber] = {
+    home: Number(home),
+    away: Number(away),
+    locked: true,
+    verified: true,
+    source: "manual",
+    verifiedAt: new Date().toISOString(),
+  };
   persistLocal();
   apiAction({ action: "saveResult", matchNumber, result: state.results[matchNumber] })
     .then(() => {
@@ -542,7 +588,7 @@ function renderGroups() {
         <tbody>
           ${rows.map((row) => `
             <tr>
-              <td><span class="table-team">${flagFor(row.team)} ${row.team}</span></td><td>${row.pts}</td><td>${row.played}</td>
+              <td><span class="table-team">${flagFor(row.team)} ${displayTeamName(row.team)}</span></td><td>${row.pts}</td><td>${row.played}</td>
               <td>${row.gf}</td><td>${row.ga}</td><td>${row.gf - row.ga}</td>
             </tr>
           `).join("")}
@@ -560,7 +606,7 @@ function groupStandings() {
     groups[fixture.group] ||= {};
     ensureTeam(groups[fixture.group], fixture.homeTeam);
     ensureTeam(groups[fixture.group], fixture.awayTeam);
-    const result = state.results[fixture.matchNumber];
+    const result = confirmedResult(fixture.matchNumber);
     if (!result || result.home === undefined || result.away === undefined) continue;
     applyGroupResult(groups[fixture.group], fixture.homeTeam, fixture.awayTeam, result.home, result.away);
   }
@@ -596,14 +642,14 @@ function renderBracket() {
     column.className = "bracket-round";
     column.innerHTML = `<h2>${STAGES[round]}</h2>`;
     state.fixtures.filter((fixture) => fixture.stage === round).forEach((fixture) => {
-      const result = state.results[fixture.matchNumber];
+      const result = confirmedResult(fixture.matchNumber);
       const done = hasResult(fixture.matchNumber);
       const item = document.createElement("article");
       item.className = "bracket-match";
       item.innerHTML = `
         <div class="mini">#${fixture.matchNumber} · ${formatDate(fixture.kickoffUtc)}</div>
-        <div class="${done && result.home > result.away ? "winner" : ""}">${flagFor(fixture.homeTeam)} ${fixture.homeTeam} ${done ? result.home : ""}</div>
-        <div class="${done && result.away > result.home ? "winner" : ""}">${flagFor(fixture.awayTeam)} ${fixture.awayTeam} ${done ? result.away : ""}</div>
+        <div class="${done && result.home > result.away ? "winner" : ""}">${flagFor(fixture.homeTeam)} ${displayTeamName(fixture.homeTeam)} ${done ? result.home : ""}</div>
+        <div class="${done && result.away > result.home ? "winner" : ""}">${flagFor(fixture.awayTeam)} ${displayTeamName(fixture.awayTeam)} ${done ? result.away : ""}</div>
         <div class="mini">${titleCase(fixture.hostCity.replaceAll("-", " "))}</div>
       `;
       column.append(item);
@@ -630,12 +676,12 @@ function renderSummary() {
 }
 
 function summaryItem(fixture) {
-  const result = state.results[fixture.matchNumber];
+  const result = confirmedResult(fixture.matchNumber);
   const item = document.createElement("div");
   item.className = "summary-item";
   item.innerHTML = `
     <div class="mini">#${fixture.matchNumber} · ${formatDate(fixture.kickoffUtc)}</div>
-    <strong>${flagFor(fixture.homeTeam)} ${fixture.homeTeam} ${result ? result.home : ""} - ${result ? result.away : ""} ${flagFor(fixture.awayTeam)} ${fixture.awayTeam}</strong>
+    <strong>${flagFor(fixture.homeTeam)} ${displayTeamName(fixture.homeTeam)} ${result ? result.home : "Sin marcador"} - ${result ? result.away : "Sin marcador"} ${flagFor(fixture.awayTeam)} ${displayTeamName(fixture.awayTeam)}</strong>
   `;
   return item;
 }
@@ -657,7 +703,7 @@ function renderPointsBreakdown() {
     item.className = "summary-item";
     item.innerHTML = `
       <div class="mini">#${fixture.matchNumber}</div>
-      <strong>${flagFor(fixture.homeTeam)} ${fixture.homeTeam} vs ${flagFor(fixture.awayTeam)} ${fixture.awayTeam}</strong>
+      <strong>${flagFor(fixture.homeTeam)} ${displayTeamName(fixture.homeTeam)} vs ${flagFor(fixture.awayTeam)} ${displayTeamName(fixture.awayTeam)}</strong>
       <div>${state.names.a}: ${a} · ${state.names.b}: ${b}</div>
     `;
     return item;
@@ -738,11 +784,21 @@ function scorePick(matchNumber, player) {
 }
 
 function scoringResult(matchNumber) {
+  return confirmedResult(matchNumber);
+}
+
+function confirmedResult(matchNumber) {
   const live = state.liveScores[matchNumber];
-  if (live && (live.finished || live.minute !== "notstarted")) {
+  if (live?.confirmed && live.finished && Number.isFinite(live.homeScore) && Number.isFinite(live.awayScore)) {
     return { home: live.homeScore, away: live.awayScore };
   }
-  return state.results[matchNumber];
+
+  const result = state.results[matchNumber];
+  if (result?.verified === true && Number.isFinite(result.home) && Number.isFinite(result.away)) {
+    return result;
+  }
+
+  return null;
 }
 
 function outcomeFor(home, away) {
@@ -752,8 +808,7 @@ function outcomeFor(home, away) {
 }
 
 function hasResult(matchNumber) {
-  const result = state.results[matchNumber];
-  return result && Number.isFinite(result.home) && Number.isFinite(result.away);
+  return Boolean(confirmedResult(matchNumber));
 }
 
 function formatStage(fixture) {
@@ -771,16 +826,18 @@ function formatDate(value) {
 }
 
 function displayScore(score, side) {
-  if (!score) return "-";
+  if (!score) return "—";
   const liveKey = side === "home" ? "homeScore" : "awayScore";
   const resultKey = side === "home" ? "home" : "away";
   const value = score[liveKey] ?? score[resultKey];
-  return Number.isFinite(value) ? value : "-";
+  return Number.isFinite(value) ? value : "—";
 }
 
 function liveLabel(live) {
-  if (!live) return "Sin marcador en vivo";
-  if (live.finished) return "Finalizado";
+  if (!live) return "Por jugar";
+  if (live.error) return "No disponible";
+  if (live.finished && live.confirmed) return "Finalizado";
+  if (live.finished) return "Resultado no verificado";
   if (live.minute === "notstarted") return "No iniciado";
   if (/half/i.test(live.minute)) return "Descanso";
   if (/^[0-9]+/.test(String(live.minute))) return `${live.minute}'`;
@@ -788,10 +845,21 @@ function liveLabel(live) {
 }
 
 function flagFor(team) {
-  if (!team) return "🏆";
-  if (FLAGS[team]) return FLAGS[team];
+  const canonical = canonicalTeamName(team);
+  if (!canonical) return "🏆";
+  if (FLAGS[canonical]) return FLAGS[canonical];
   if (/winner|loser|group|match|third place|runners-up/i.test(team)) return "🏆";
   return "⚽";
+}
+
+function displayTeamName(team) {
+  const canonical = canonicalTeamName(team);
+  return TEAM_DISPLAY_NAMES[canonical] || team || "";
+}
+
+function canonicalTeamName(team) {
+  const slug = normalize(team);
+  return Object.keys(TEAM_DISPLAY_NAMES).find((name) => normalize(name) === slug) || team || "";
 }
 
 function normalize(value) {
@@ -809,6 +877,8 @@ function normalize(value) {
     "czech republic": "czechia",
     "cote d ivoire": "cote divoire",
     "dr congo": "congo dr",
+    "congo dr": "congo dr",
+    "democratic republic of the congo": "congo dr",
     "iran": "ir iran",
     "ivory coast": "cote divoire",
     "south korea": "korea republic",
@@ -850,7 +920,7 @@ async function importState(event) {
   const data = JSON.parse(await file.text());
   state.names = data.names || state.names;
   state.picks = data.picks || {};
-  state.results = data.results || {};
+  state.results = sanitizeResults(data.results || {});
   persistLocal();
   if (activePlayer === "a") {
     await apiAction({ action: "saveProfile", names: state.names }).catch(() => null);
@@ -861,15 +931,8 @@ async function importState(event) {
 }
 
 async function refreshResults() {
-  try {
-    const data = await fetch(`${OPENFOOTBALL_URL}?t=${Date.now()}`).then((res) => res.json());
-    mergeSeedResults(data.matches || []);
-    render();
-    toast("Resultados actualizados.");
-  } catch (error) {
-    console.error(error);
-    toast("No se pudieron actualizar resultados.");
-  }
+  await refreshLiveScores();
+  toast("Marcadores verificados actualizados.");
 }
 
 async function refreshLiveScores() {

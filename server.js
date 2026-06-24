@@ -10,7 +10,7 @@ const STATE_FILE = path.join(DATA_DIR, "state.json");
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const SUPABASE_ENABLED = Boolean(SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY);
-const LIVE_SCORES_URL = process.env.LIVE_SCORES_URL || "https://worldcup26.ir/get/games";
+const LIVE_SCORES_URL = process.env.LIVE_SCORES_URL || "";
 
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",
@@ -44,11 +44,11 @@ function ensureStateFile() {
 
 function localReadState() {
   ensureStateFile();
-  return JSON.parse(fs.readFileSync(STATE_FILE, "utf8"));
+  return sanitizeState(JSON.parse(fs.readFileSync(STATE_FILE, "utf8")));
 }
 
 function localWriteState(input) {
-  const next = { ...input, updatedAt: new Date().toISOString() };
+  const next = sanitizeState({ ...input, updatedAt: new Date().toISOString() });
   fs.writeFileSync(STATE_FILE, JSON.stringify(next, null, 2));
   return next;
 }
@@ -79,17 +79,17 @@ async function readState() {
 
   const rows = await supabaseRequest("app_state?id=eq.main&select=state,updated_at");
   if (rows[0]?.state) {
-    return {
+    return sanitizeState({
       ...rows[0].state,
       updatedAt: rows[0].state.updatedAt || rows[0].updated_at,
-    };
+    });
   }
 
   return writeState(localReadState());
 }
 
 async function writeState(input) {
-  const next = { ...input, updatedAt: new Date().toISOString() };
+  const next = sanitizeState({ ...input, updatedAt: new Date().toISOString() });
   if (!SUPABASE_ENABLED) return localWriteState(next);
 
   const rows = await supabaseRequest("app_state", {
@@ -104,6 +104,21 @@ async function writeState(input) {
     }),
   });
   return rows[0]?.state || next;
+}
+
+function sanitizeState(input = {}) {
+  return {
+    ...input,
+    results: sanitizeResults(input.results),
+  };
+}
+
+function sanitizeResults(results = {}) {
+  return Object.fromEntries(Object.entries(results).filter(([, result]) => {
+    return result?.verified === true
+      && Number.isFinite(result.home)
+      && Number.isFinite(result.away);
+  }));
 }
 
 function sanitizePick(pick, lock = false) {
@@ -154,6 +169,9 @@ async function saveResult(input) {
       home: Number(input.result?.home),
       away: Number(input.result?.away),
       locked: true,
+      verified: true,
+      source: "manual",
+      verifiedAt: new Date().toISOString(),
     };
   }
   return writeState(state);
@@ -184,6 +202,14 @@ function sendJson(res, status, data) {
 }
 
 async function readLiveScores() {
+  if (!LIVE_SCORES_URL) {
+    return {
+      updatedAt: new Date().toISOString(),
+      sourceAvailable: false,
+      games: [],
+    };
+  }
+
   const response = await fetch(LIVE_SCORES_URL, {
     headers: { Accept: "application/json" },
   });
@@ -192,17 +218,25 @@ async function readLiveScores() {
   const games = Array.isArray(data.games) ? data.games : [];
   return {
     updatedAt: new Date().toISOString(),
-    games: games.map((game) => ({
-      matchNumber: Number(game.id),
-      homeTeam: game.home_team_name_en,
-      awayTeam: game.away_team_name_en,
-      homeScore: Number(game.home_score || 0),
-      awayScore: Number(game.away_score || 0),
-      finished: String(game.finished).toUpperCase() === "TRUE",
-      minute: game.time_elapsed || "notstarted",
-      homeScorers: game.home_scorers,
-      awayScorers: game.away_scorers,
-    })),
+    sourceAvailable: true,
+    games: games.map((game) => {
+      const homeScore = Number(game.home_score);
+      const awayScore = Number(game.away_score);
+      const finished = String(game.finished).toUpperCase() === "TRUE";
+      const hasNumericScore = Number.isFinite(homeScore) && Number.isFinite(awayScore);
+      return {
+        matchNumber: Number(game.id),
+        homeTeam: game.home_team_name_en,
+        awayTeam: game.away_team_name_en,
+        homeScore: hasNumericScore ? homeScore : null,
+        awayScore: hasNumericScore ? awayScore : null,
+        finished,
+        confirmed: finished && hasNumericScore,
+        minute: game.time_elapsed || "notstarted",
+        homeScorers: game.home_scorers,
+        awayScorers: game.away_scorers,
+      };
+    }).filter((game) => Number.isFinite(game.matchNumber)),
   };
 }
 
