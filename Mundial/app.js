@@ -1,4 +1,4 @@
-import { buildGroupStandings, getMatchOutcome, hasResolvedResult, resolveMatchResult } from './resultUtils.mjs';
+import { buildGroupStandings, getDisplayTeamName, getMatchOutcome, hasResolvedResult, matchLiveScoreToFixture, normalizeTeamName, resolveMatchResult } from './resultUtils.mjs';
 
 const STORAGE_KEY = "world-cup-couple-pool-v1";
 const PLAYER_KEY = "world-cup-active-player-v1";
@@ -352,13 +352,13 @@ function renderMatchCard(fixture) {
   template.querySelector(".teams").innerHTML = `
     <div class="team-line">
       <span class="flag">${flagFor(fixture.homeTeam)}</span>
-      <span class="team-name">${fixture.homeTeam}</span>
+      <span class="team-name">${getDisplayTeamName(fixture.homeTeam)}</span>
       <span class="score-badge">${displayScore(display, "home")}</span>
     </div>
     <div class="versus">vs</div>
     <div class="team-line away">
       <span class="flag">${flagFor(fixture.awayTeam)}</span>
-      <span class="team-name">${fixture.awayTeam}</span>
+      <span class="team-name">${getDisplayTeamName(fixture.awayTeam)}</span>
       <span class="score-badge">${displayScore(display, "away")}</span>
     </div>
     <div class="stadium-line">${fixture.stadium}</div>
@@ -371,9 +371,9 @@ function renderMatchCard(fixture) {
   const resultRow = template.querySelector(".result-row");
   if (activePlayer === "a") {
     resultRow.append(
-      scoreInput(fixture.matchNumber, "home", result.home),
+      scoreInput(fixture.matchNumber, "home", result?.home ?? ""),
       document.createTextNode("-"),
-      scoreInput(fixture.matchNumber, "away", result.away),
+      scoreInput(fixture.matchNumber, "away", result?.away ?? ""),
       actionButton("Guardar", "save-pill", () => saveResult(fixture.matchNumber, card)),
       actionButton("Limpiar", "", () => clearResult(fixture.matchNumber))
     );
@@ -402,9 +402,9 @@ function renderPickBox(fixture, player) {
   const outcome = document.createElement("select");
   outcome.innerHTML = `
     <option value="">Sin pick</option>
-    <option value="home">${flagFor(fixture.homeTeam)} ${fixture.homeTeam}</option>
+    <option value="home">${flagFor(fixture.homeTeam)} ${getDisplayTeamName(fixture.homeTeam)}</option>
     <option value="draw">Empate</option>
-    <option value="away">${flagFor(fixture.awayTeam)} ${fixture.awayTeam}</option>
+    <option value="away">${flagFor(fixture.awayTeam)} ${getDisplayTeamName(fixture.awayTeam)}</option>
   `;
   outcome.value = pick.outcome || "";
   outcome.disabled = !canEdit;
@@ -544,7 +544,7 @@ function renderGroups() {
         <tbody>
           ${rows.map((row) => `
             <tr>
-              <td><span class="table-team">${flagFor(row.team)} ${row.team}</span></td><td>${row.pts}</td><td>${row.played}</td>
+              <td><span class="table-team">${flagFor(row.team)} ${getDisplayTeamName(row.team)}</span></td><td>${row.pts}</td><td>${row.played}</td>
               <td>${row.gf}</td><td>${row.ga}</td><td>${row.gf - row.ga}</td>
             </tr>
           `).join("")}
@@ -573,8 +573,8 @@ function renderBracket() {
       item.className = "bracket-match";
       item.innerHTML = `
         <div class="mini">#${fixture.matchNumber} · ${formatDate(fixture.kickoffUtc)}</div>
-        <div class="${done && result.home > result.away ? "winner" : ""}">${flagFor(fixture.homeTeam)} ${fixture.homeTeam} ${done ? result.home : ""}</div>
-        <div class="${done && result.away > result.home ? "winner" : ""}">${flagFor(fixture.awayTeam)} ${fixture.awayTeam} ${done ? result.away : ""}</div>
+        <div class="${done && result.home > result.away ? "winner" : ""}">${flagFor(fixture.homeTeam)} ${getDisplayTeamName(fixture.homeTeam)} ${done ? result.home : ""}</div>
+        <div class="${done && result.away > result.home ? "winner" : ""}">${flagFor(fixture.awayTeam)} ${getDisplayTeamName(fixture.awayTeam)} ${done ? result.away : ""}</div>
         <div class="mini">${titleCase(fixture.hostCity.replaceAll("-", " "))}</div>
       `;
       column.append(item);
@@ -606,7 +606,7 @@ function summaryItem(fixture) {
   item.className = "summary-item";
   item.innerHTML = `
     <div class="mini">#${fixture.matchNumber} · ${formatDate(fixture.kickoffUtc)}</div>
-    <strong>${flagFor(fixture.homeTeam)} ${fixture.homeTeam} ${result ? result.home : ""} - ${result ? result.away : ""} ${flagFor(fixture.awayTeam)} ${fixture.awayTeam}</strong>
+    <strong>${flagFor(fixture.homeTeam)} ${getDisplayTeamName(fixture.homeTeam)} ${result ? result.home : ""} - ${result ? result.away : ""} ${flagFor(fixture.awayTeam)} ${getDisplayTeamName(fixture.awayTeam)}</strong>
   `;
   return item;
 }
@@ -628,7 +628,7 @@ function renderPointsBreakdown() {
     item.className = "summary-item";
     item.innerHTML = `
       <div class="mini">#${fixture.matchNumber}</div>
-      <strong>${flagFor(fixture.homeTeam)} ${fixture.homeTeam} vs ${flagFor(fixture.awayTeam)} ${fixture.awayTeam}</strong>
+      <strong>${flagFor(fixture.homeTeam)} ${getDisplayTeamName(fixture.homeTeam)} vs ${flagFor(fixture.awayTeam)} ${getDisplayTeamName(fixture.awayTeam)}</strong>
       <div>${state.names.a}: ${a} · ${state.names.b}: ${b}</div>
     `;
     return item;
@@ -753,33 +753,13 @@ function liveLabel(live) {
 
 function flagFor(team) {
   if (!team) return "🏆";
-  if (FLAGS[team]) return FLAGS[team];
   if (/winner|loser|group|match|third place|runners-up/i.test(team)) return "🏆";
-  return "⚽";
+  const canonical = normalizeTeamName(team);
+  return FLAGS[canonical] || FLAGS[team] || "⚽";
 }
 
 function normalize(value) {
-  const clean = String(value || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-  const aliases = {
-    "bosnia & herzegovina": "bosnia and herzegovina",
-    "bosnia herzegovina": "bosnia and herzegovina",
-    "cabo verde": "cape verde",
-    "cape verde": "cape verde",
-    "czech republic": "czechia",
-    "cote d ivoire": "cote divoire",
-    "dr congo": "congo dr",
-    "iran": "ir iran",
-    "ivory coast": "cote divoire",
-    "south korea": "korea republic",
-    "turkey": "turkiye",
-    "usa": "united states",
-  };
-  return aliases[clean] || clean;
+  return normalizeTeamName(value);
 }
 
 function titleCase(value) {
@@ -839,7 +819,14 @@ async function refreshResults() {
 async function refreshLiveScores() {
   try {
     const data = await fetch("/api/live", { cache: "no-store" }).then((res) => res.json());
-    state.liveScores = Object.fromEntries((data.games || []).map((game) => [game.matchNumber, game]));
+    state.liveScores = Object.fromEntries(
+      (data.games || [])
+        .map((game) => {
+          const matchNumber = matchLiveScoreToFixture(game, state.fixtures);
+          return matchNumber ? [matchNumber, { ...game, matchNumber }] : null;
+        })
+        .filter(Boolean)
+    );
     render();
   } catch (error) {
     console.error(error);

@@ -1,3 +1,108 @@
+const TEAM_ALIASES = {
+  'bosnia & herzegovina': 'Bosnia and Herzegovina',
+  'bosnia herzegovina': 'Bosnia and Herzegovina',
+  'cabo verde': 'Cabo Verde',
+  'cape verde': 'Cabo Verde',
+  'czech republic': 'Czechia',
+  'cote d ivoire': 'Cote d\'Ivoire',
+  'cote divoire': 'Cote d\'Ivoire',
+  'dr congo': 'Congo DR',
+  'congo dr': 'Congo DR',
+  'iran': 'IR Iran',
+  'ivory coast': 'Cote d\'Ivoire',
+  'south korea': 'Korea Republic',
+  'turkey': 'Turkiye',
+  'usa': 'United States',
+};
+
+const TEAM_DISPLAY_NAMES = {
+  'Algeria': 'Argelia',
+  'Argentina': 'Argentina',
+  'Australia': 'Australia',
+  'Austria': 'Austria',
+  'Belgium': 'Bélgica',
+  'Bosnia and Herzegovina': 'Bosnia y Herzegovina',
+  'Brazil': 'Brasil',
+  'Cabo Verde': 'Cabo Verde',
+  'Canada': 'Canadá',
+  'Colombia': 'Colombia',
+  'Congo DR': 'RD Congo',
+  'Cote d\'Ivoire': 'Costa de Marfil',
+  'Croatia': 'Croacia',
+  'Curacao': 'Curazao',
+  'Czechia': 'Chequia',
+  'Ecuador': 'Ecuador',
+  'Egypt': 'Egipto',
+  'England': 'Inglaterra',
+  'France': 'Francia',
+  'Germany': 'Alemania',
+  'Ghana': 'Ghana',
+  'Haiti': 'Haití',
+  'IR Iran': 'Irán',
+  'Iraq': 'Irak',
+  'Japan': 'Japón',
+  'Jordan': 'Jordania',
+  'Korea Republic': 'Corea del Sur',
+  'Mexico': 'México',
+  'Morocco': 'Marruecos',
+  'Netherlands': 'Países Bajos',
+  'New Zealand': 'Nueva Zelanda',
+  'Norway': 'Noruega',
+  'Panama': 'Panamá',
+  'Paraguay': 'Paraguay',
+  'Portugal': 'Portugal',
+  'Qatar': 'Catar',
+  'Saudi Arabia': 'Arabia Saudí',
+  'Scotland': 'Escocia',
+  'Senegal': 'Senegal',
+  'South Africa': 'Sudáfrica',
+  'Spain': 'España',
+  'Sweden': 'Suecia',
+  'Switzerland': 'Suiza',
+  'Tunisia': 'Túnez',
+  'Turkiye': 'Turquía',
+  'United States': 'Estados Unidos',
+  'Uruguay': 'Uruguay',
+  'Uzbekistan': 'Uzbekistán',
+};
+
+function toSlug(value) {
+  return String(value ?? '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+export function normalizeTeamName(value) {
+  const clean = toSlug(value);
+  const canonical = TEAM_ALIASES[clean] || clean;
+  return toSlug(canonical);
+}
+
+export function getDisplayTeamName(value) {
+  const slug = normalizeTeamName(value);
+  const match = Object.entries(TEAM_DISPLAY_NAMES).find(([teamName]) => normalizeTeamName(teamName) === slug);
+  return match?.[1] || value || '';
+}
+
+export function matchLiveScoreToFixture(game, fixtures = []) {
+  const home = normalizeTeamName(game?.home_team_name_en || game?.homeTeam || '');
+  const away = normalizeTeamName(game?.away_team_name_en || game?.awayTeam || '');
+  const directMatchNumber = Number(game?.matchNumber ?? game?.id ?? game?.match_number);
+  if (Number.isFinite(directMatchNumber)) {
+    const directFixture = fixtures.find((fixture) => fixture.matchNumber === directMatchNumber);
+    if (directFixture) return directMatchNumber;
+  }
+
+  return fixtures.find((fixture) => {
+    const fixtureHome = normalizeTeamName(fixture.homeTeam);
+    const fixtureAway = normalizeTeamName(fixture.awayTeam);
+    return (fixtureHome === home && fixtureAway === away) || (fixtureHome === away && fixtureAway === home);
+  })?.matchNumber ?? null;
+}
+
 export function resolveMatchResult({ matchNumber, stateResults = {}, liveScores = {} }) {
   const live = liveScores[matchNumber];
   if (live && (live.finished || live.minute !== 'notstarted')) {

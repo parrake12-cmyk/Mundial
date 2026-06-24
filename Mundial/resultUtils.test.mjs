@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveMatchResult, buildGroupStandings } from './resultUtils.mjs';
+import { resolveMatchResult, buildGroupStandings, matchLiveScoreToFixture } from './resultUtils.mjs';
 
 test('resolveMatchResult uses live scores when available', () => {
   const result = resolveMatchResult({
@@ -10,6 +10,17 @@ test('resolveMatchResult uses live scores when available', () => {
   });
 
   assert.deepEqual(result, { home: 2, away: 1 });
+});
+
+test('matchLiveScoreToFixture aligns live data by team names', () => {
+  const fixtures = [
+    { matchNumber: 1, homeTeam: 'Mexico', awayTeam: 'South Africa' },
+    { matchNumber: 2, homeTeam: 'Brazil', awayTeam: 'Argentina' },
+  ];
+
+  const matchNumber = matchLiveScoreToFixture({ home_team_name_en: 'Mexico', away_team_name_en: 'South Africa' }, fixtures);
+
+  assert.equal(matchNumber, 1);
 });
 
 test('buildGroupStandings awards points from live scores', () => {
