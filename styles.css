@@ -496,9 +496,19 @@ h2 {
 }
 
 .flag {
-  display: block;
-  font-size: 38px;
+  display: inline-grid;
+  min-height: 30px;
+  place-items: center;
   line-height: 1;
+}
+
+.flag-img {
+  display: block;
+  width: 40px;
+  height: 28px;
+  border-radius: 4px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(12, 20, 32, 0.16);
 }
 
 .team-name {

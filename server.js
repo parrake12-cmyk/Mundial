@@ -7,6 +7,7 @@ const PORT = Number(process.env.PORT || 4173);
 const ROOT = __dirname;
 const DATA_DIR = process.env.DATA_DIR || path.join(ROOT, "data");
 const STATE_FILE = path.join(DATA_DIR, "state.json");
+const VERIFIED_RESULTS_FILE = path.join(ROOT, "data", "verified-results.json");
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const SUPABASE_ENABLED = Boolean(SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY);
@@ -44,11 +45,11 @@ function ensureStateFile() {
 
 function localReadState() {
   ensureStateFile();
-  return sanitizeState(JSON.parse(fs.readFileSync(STATE_FILE, "utf8")));
+  return mergeVerifiedResults(sanitizeState(JSON.parse(fs.readFileSync(STATE_FILE, "utf8"))));
 }
 
 function localWriteState(input) {
-  const next = sanitizeState({ ...input, updatedAt: new Date().toISOString() });
+  const next = mergeVerifiedResults(sanitizeState({ ...input, updatedAt: new Date().toISOString() }));
   fs.writeFileSync(STATE_FILE, JSON.stringify(next, null, 2));
   return next;
 }
@@ -79,17 +80,17 @@ async function readState() {
 
   const rows = await supabaseRequest("app_state?id=eq.main&select=state,updated_at");
   if (rows[0]?.state) {
-    return sanitizeState({
+    return mergeVerifiedResults(sanitizeState({
       ...rows[0].state,
       updatedAt: rows[0].state.updatedAt || rows[0].updated_at,
-    });
+    }));
   }
 
   return writeState(localReadState());
 }
 
 async function writeState(input) {
-  const next = sanitizeState({ ...input, updatedAt: new Date().toISOString() });
+  const next = mergeVerifiedResults(sanitizeState({ ...input, updatedAt: new Date().toISOString() }));
   if (!SUPABASE_ENABLED) return localWriteState(next);
 
   const rows = await supabaseRequest("app_state", {
@@ -119,6 +120,33 @@ function sanitizeResults(results = {}) {
       && Number.isFinite(result.home)
       && Number.isFinite(result.away);
   }));
+}
+
+function loadVerifiedResults() {
+  if (!fs.existsSync(VERIFIED_RESULTS_FILE)) return {};
+  const data = JSON.parse(fs.readFileSync(VERIFIED_RESULTS_FILE, "utf8"));
+  return Object.fromEntries(Object.entries(data.results || {}).map(([matchNumber, result]) => [
+    matchNumber,
+    {
+      home: Number(result.home),
+      away: Number(result.away),
+      locked: true,
+      verified: true,
+      source: data.source || "verified-results",
+      sourceUrl: data.sourceUrl,
+      verifiedAt: data.verifiedAt,
+    },
+  ]).filter(([, result]) => Number.isFinite(result.home) && Number.isFinite(result.away)));
+}
+
+function mergeVerifiedResults(state) {
+  return {
+    ...state,
+    results: {
+      ...state.results,
+      ...loadVerifiedResults(),
+    },
+  };
 }
 
 function sanitizePick(pick, lock = false) {

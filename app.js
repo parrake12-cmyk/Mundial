@@ -10,55 +10,55 @@ const STAGES = {
   final: "Final",
 };
 
-const FLAGS = {
-  Algeria: "🇩🇿",
-  Argentina: "🇦🇷",
-  Australia: "🇦🇺",
-  Austria: "🇦🇹",
-  Belgium: "🇧🇪",
-  "Bosnia and Herzegovina": "🇧🇦",
-  Brazil: "🇧🇷",
-  "Cabo Verde": "🇨🇻",
-  Canada: "🇨🇦",
-  Colombia: "🇨🇴",
-  "Congo DR": "🇨🇩",
-  "Cote d'Ivoire": "🇨🇮",
-  Croatia: "🇭🇷",
-  Curacao: "🇨🇼",
-  Czechia: "🇨🇿",
-  Ecuador: "🇪🇨",
-  Egypt: "🇪🇬",
-  England: "🏴",
-  France: "🇫🇷",
-  Germany: "🇩🇪",
-  Ghana: "🇬🇭",
-  Haiti: "🇭🇹",
-  "IR Iran": "🇮🇷",
-  Iraq: "🇮🇶",
-  Japan: "🇯🇵",
-  Jordan: "🇯🇴",
-  "Korea Republic": "🇰🇷",
-  Mexico: "🇲🇽",
-  Morocco: "🇲🇦",
-  Netherlands: "🇳🇱",
-  "New Zealand": "🇳🇿",
-  Norway: "🇳🇴",
-  Panama: "🇵🇦",
-  Paraguay: "🇵🇾",
-  Portugal: "🇵🇹",
-  Qatar: "🇶🇦",
-  "Saudi Arabia": "🇸🇦",
-  Scotland: "🏴",
-  Senegal: "🇸🇳",
-  "South Africa": "🇿🇦",
-  Spain: "🇪🇸",
-  Sweden: "🇸🇪",
-  Switzerland: "🇨🇭",
-  Tunisia: "🇹🇳",
-  Turkiye: "🇹🇷",
-  "United States": "🇺🇸",
-  Uruguay: "🇺🇾",
-  Uzbekistan: "🇺🇿",
+const FLAG_CODES = {
+  Algeria: "dz",
+  Argentina: "ar",
+  Australia: "au",
+  Austria: "at",
+  Belgium: "be",
+  "Bosnia and Herzegovina": "ba",
+  Brazil: "br",
+  "Cabo Verde": "cv",
+  Canada: "ca",
+  Colombia: "co",
+  "Congo DR": "cd",
+  "Cote d'Ivoire": "ci",
+  Croatia: "hr",
+  Curacao: "cw",
+  Czechia: "cz",
+  Ecuador: "ec",
+  Egypt: "eg",
+  England: "gb-eng",
+  France: "fr",
+  Germany: "de",
+  Ghana: "gh",
+  Haiti: "ht",
+  "IR Iran": "ir",
+  Iraq: "iq",
+  Japan: "jp",
+  Jordan: "jo",
+  "Korea Republic": "kr",
+  Mexico: "mx",
+  Morocco: "ma",
+  Netherlands: "nl",
+  "New Zealand": "nz",
+  Norway: "no",
+  Panama: "pa",
+  Paraguay: "py",
+  Portugal: "pt",
+  Qatar: "qa",
+  "Saudi Arabia": "sa",
+  Scotland: "gb-sct",
+  Senegal: "sn",
+  "South Africa": "za",
+  Spain: "es",
+  Sweden: "se",
+  Switzerland: "ch",
+  Tunisia: "tn",
+  Turkiye: "tr",
+  "United States": "us",
+  Uruguay: "uy",
+  Uzbekistan: "uz",
 };
 
 const TEAM_DISPLAY_NAMES = {
@@ -156,13 +156,16 @@ const els = {
 };
 
 async function init() {
-  const [fixturesData] = await Promise.all([
+  const [fixturesData, verifiedData] = await Promise.all([
     fetch("data/fixtures.json").then((res) => res.json()),
+    fetch("data/verified-results.json").then((res) => res.json()).catch(() => ({ results: {} })),
   ]);
 
   state.fixtures = fixturesData.fixtures;
+  applyVerifiedResults(verifiedData);
   const loadedSharedState = await loadSharedState();
   if (!loadedSharedState) restoreState();
+  applyVerifiedResults(verifiedData);
   hydrateStageFilter();
   bindEvents();
   render();
@@ -196,6 +199,27 @@ function applySavedState(saved) {
   state.names = saved.names || state.names;
   state.picks = saved.picks || state.picks;
   state.results = sanitizeResults(saved.results || state.results);
+}
+
+function applyVerifiedResults(data = {}) {
+  const verifiedResults = Object.fromEntries(Object.entries(data.results || {}).map(([matchNumber, result]) => [
+    matchNumber,
+    {
+      home: Number(result.home),
+      away: Number(result.away),
+      locked: true,
+      verified: true,
+      source: data.source || "verified-results",
+      sourceUrl: data.sourceUrl,
+      verifiedAt: data.verifiedAt,
+    },
+  ]).filter(([, result]) => Number.isFinite(result.home) && Number.isFinite(result.away)));
+
+  state.results = {
+    ...state.results,
+    ...verifiedResults,
+  };
+  persistLocal();
 }
 
 function sanitizeResults(results = {}) {
@@ -439,9 +463,9 @@ function renderPickBox(fixture, player) {
   const outcome = document.createElement("select");
   outcome.innerHTML = `
     <option value="">Sin pick</option>
-    <option value="home">${flagFor(fixture.homeTeam)} ${displayTeamName(fixture.homeTeam)}</option>
+    <option value="home">${displayTeamName(fixture.homeTeam)}</option>
     <option value="draw">Empate</option>
-    <option value="away">${flagFor(fixture.awayTeam)} ${displayTeamName(fixture.awayTeam)}</option>
+    <option value="away">${displayTeamName(fixture.awayTeam)}</option>
   `;
   outcome.value = pick.outcome || "";
   outcome.disabled = !canEdit;
@@ -846,10 +870,11 @@ function liveLabel(live) {
 
 function flagFor(team) {
   const canonical = canonicalTeamName(team);
-  if (!canonical) return "🏆";
-  if (FLAGS[canonical]) return FLAGS[canonical];
-  if (/winner|loser|group|match|third place|runners-up/i.test(team)) return "🏆";
-  return "⚽";
+  if (/winner|loser|group|match|third place|runners-up/i.test(team || "")) return "🏆";
+  const code = FLAG_CODES[canonical];
+  if (!code) return "🏆";
+  const label = displayTeamName(canonical);
+  return `<img class="flag-img" src="https://flagcdn.com/w40/${code}.png" srcset="https://flagcdn.com/w80/${code}.png 2x" alt="${label}" title="${label}" loading="lazy">`;
 }
 
 function displayTeamName(team) {
