@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+  <title id="title">Recurso médico pendiente</title>
+  <desc id="desc">Marcador visual para enfermedades sin imagen dedicada.</desc>
+  <rect width="240" height="180" rx="14" fill="#f8fafc"/>
+  <rect x="22" y="22" width="196" height="136" rx="12" fill="#e8f0ff" stroke="#b8c7e8"/>
+  <circle cx="82" cy="90" r="34" fill="#ffffff" stroke="#2563eb" stroke-width="6"/>
+  <path d="M82 68v44M60 90h44" stroke="#2563eb" stroke-width="10" stroke-linecap="round"/>
+  <path d="M132 70h52M132 92h42M132 114h52" stroke="#475467" stroke-width="8" stroke-linecap="round"/>
+</svg>

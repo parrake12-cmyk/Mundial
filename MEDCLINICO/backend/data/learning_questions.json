@@ -1,0 +1,90 @@
+[
+  {
+    "case_code": "REN-001-C1",
+    "disease_code": "REN-001",
+    "question": "¿Cuál es el diagnóstico más probable para este paciente con edema en tobillos, diabetes e hipertensión?",
+    "option_a": "Neumonía",
+    "option_b": "Insuficiencia renal crónica",
+    "option_c": "Hepatitis aguda",
+    "option_d": "Infarto agudo de miocardio",
+    "correct_option": "B",
+    "explanation": "El edema, la diabetes y la hipertensión mal controlada junto con alteración de la creatinina indican enfermedad renal crónica, no una afección pulmonar o hepática."
+  },
+  {
+    "case_code": "RESP-001-C1",
+    "disease_code": "RESP-001",
+    "question": "¿Qué elemento del caso apoya más el diagnóstico de neumonía?",
+    "option_a": "Dolor torácico opresivo",
+    "option_b": "Troponina elevada",
+    "option_c": "Tos productiva con fiebre y disnea",
+    "option_d": "Ictericia y náuseas",
+    "correct_option": "C",
+    "explanation": "La tos productiva con fiebre y disnea es característica de infección pulmonar como la neumonía, mientras que la troponina y la ictericia apuntan a causas cardiacas o hepáticas."
+  },
+  {
+    "case_code": "HEP-001-C1",
+    "disease_code": "HEP-001",
+    "question": "¿Cuál es el hallazgo de laboratorio más coherente con hepatitis aguda?",
+    "option_a": "Troponinas elevadas",
+    "option_b": "Creatinina elevada",
+    "option_c": "AST y ALT elevadas con bilirrubina alta",
+    "option_d": "Saturación de oxígeno disminuida",
+    "correct_option": "C",
+    "explanation": "La elevación de transaminasas y bilirrubina es típica de daño hepático agudo, mientras que las troponinas y la creatinina indican otros órganos."
+  },
+  {
+    "case_code": "CARD-001-C1",
+    "disease_code": "CARD-001",
+    "question": "La combinación de dolor torácico opresivo, sudoración y troponinas elevadas sugiere principalmente:",
+    "option_a": "Hepatitis",
+    "option_b": "Neumonía",
+    "option_c": "Infarto agudo de miocardio",
+    "option_d": "Insuficiencia renal",
+    "correct_option": "C",
+    "explanation": "Los síntomas y marcadores cardiacos elevados orientan a infarto agudo de miocardio, no a enfermedades hepáticas, respiratorias o renales."
+  },
+  {
+    "case_code": "ENDO-001-C1",
+    "disease_code": "ENDO-001",
+    "question": "¿Cuál es el síntoma cardinal que sugiere diabetes mellitus en este paciente?",
+    "option_a": "Dolor torácico",
+    "option_b": "Poliuria y polidipsia",
+    "option_c": "Ictericia",
+    "option_d": "Disnea",
+    "correct_option": "B",
+    "explanation": "La poliuria (aumento de la frecuencia urinaria) y polidipsia (aumento de la sed) son síntomas clásicos de hiperglucemia en diabetes mellitus."
+  },
+  {
+    "case_code": "CARD-002-C1",
+    "disease_code": "CARD-002",
+    "question": "¿Qué factor de riesgo cardiovascular es más prominente en este caso de hipertensión?",
+    "option_a": "Tabaquismo",
+    "option_b": "Dieta rica en sal y estrés",
+    "option_c": "Diabetes mellitus",
+    "option_d": "Sedentarismo",
+    "correct_option": "B",
+    "explanation": "La dieta rica en sal y el estrés laboral son factores modificables que contribuyen a la hipertensión arterial esencial."
+  },
+  {
+    "case_code": "RESP-002-C1",
+    "disease_code": "RESP-002",
+    "question": "¿Cuál es el hallazgo clave en la espirometría que confirma asma bronquial?",
+    "option_a": "Capacidad vital forzada reducida",
+    "option_b": "Respuesta positiva a broncodilatador",
+    "option_c": "Difusión de monóxido de carbono alterada",
+    "option_d": "Volumen residual aumentado",
+    "correct_option": "B",
+    "explanation": "La mejoría significativa del FEV1 tras broncodilatador confirma la obstrucción reversible característica del asma."
+  },
+  {
+    "case_code": "HEMA-001-C1",
+    "disease_code": "HEMA-001",
+    "question": "¿Cuál es el mecanismo principal de la anemia ferropénica en este caso?",
+    "option_a": "Hemólisis intravascular",
+    "option_b": "Deficiencia de vitamina B12",
+    "option_c": "Pérdida sanguínea menstrual excesiva",
+    "option_d": "Fallo medular",
+    "correct_option": "C",
+    "explanation": "La menstruación abundante causa pérdida crónica de sangre y hierro, llevando a anemia ferropénica por depleción de reservas."
+  }
+]

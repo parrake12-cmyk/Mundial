@@ -1,0 +1,2133 @@
+[
+  {
+    "disease_code": "REN-001",
+    "name": "Enfermedad renal cronica",
+    "terms": [
+      "chronic kidney disease",
+      "enfermedad renal cronica"
+    ],
+    "matches": [
+      {
+        "medline_id": "5988",
+        "title": "Enfermedad renal crónica",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/chronickidneydisease.html",
+        "score": 103
+      },
+      {
+        "medline_id": "5987",
+        "title": "Chronic Kidney Disease",
+        "language": "English",
+        "url": "https://medlineplus.gov/chronickidneydisease.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "RESP-001",
+    "name": "Neumonia",
+    "terms": [
+      "pneumonia",
+      "neumonia"
+    ],
+    "matches": [
+      {
+        "medline_id": "363",
+        "title": "Pneumonia",
+        "language": "English",
+        "url": "https://medlineplus.gov/pneumonia.html",
+        "score": 140
+      },
+      {
+        "medline_id": "2094",
+        "title": "Neumonía",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/pneumonia.html",
+        "score": 103
+      },
+      {
+        "medline_id": "5714",
+        "title": "Pneumococcal Infections",
+        "language": "English",
+        "url": "https://medlineplus.gov/pneumococcalinfections.html",
+        "score": 80
+      },
+      {
+        "medline_id": "2003",
+        "title": "Enfermedad del legionario",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/legionnairesdisease.html",
+        "score": 43
+      },
+      {
+        "medline_id": "2093",
+        "title": "Infecciones por Pneumocystis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/pneumocystisinfections.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "HEP-001",
+    "name": "Hepatitis aguda",
+    "terms": [
+      "Hepatitis aguda"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "CARD-001",
+    "name": "Infarto agudo de miocardio",
+    "terms": [
+      "heart attack",
+      "myocardial infarction",
+      "infarto"
+    ],
+    "matches": [
+      {
+        "medline_id": "5",
+        "title": "Heart Attack",
+        "language": "English",
+        "url": "https://medlineplus.gov/heartattack.html",
+        "score": 140
+      },
+      {
+        "medline_id": "2176",
+        "title": "Accidente cerebrovascular",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/stroke.html",
+        "score": 43
+      },
+      {
+        "medline_id": "6249",
+        "title": "Accidente cerebrovascular isquémico",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/ischemicstroke.html",
+        "score": 43
+      },
+      {
+        "medline_id": "1940",
+        "title": "Ataque al corazón",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/heartattack.html",
+        "score": 43
+      },
+      {
+        "medline_id": "2091",
+        "title": "Enfermedades de la glándula pituitaria",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/pituitarydisorders.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "ENDO-001",
+    "name": "Diabetes mellitus tipo 2",
+    "terms": [
+      "type 2 diabetes",
+      "diabetes tipo 2"
+    ],
+    "matches": [
+      {
+        "medline_id": "5931",
+        "title": "Diabetes tipo 2",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/diabetestype2.html",
+        "score": 103
+      },
+      {
+        "medline_id": "5930",
+        "title": "Diabetes Type 2",
+        "language": "English",
+        "url": "https://medlineplus.gov/diabetestype2.html",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "disease_code": "CARD-002",
+    "name": "Hipertension arterial",
+    "terms": [
+      "high blood pressure",
+      "hypertension",
+      "hipertension"
+    ],
+    "matches": [
+      {
+        "medline_id": "34",
+        "title": "High Blood Pressure",
+        "language": "English",
+        "url": "https://medlineplus.gov/highbloodpressure.html",
+        "score": 140
+      },
+      {
+        "medline_id": "1508",
+        "title": "High Blood Pressure in Pregnancy",
+        "language": "English",
+        "url": "https://medlineplus.gov/highbloodpressureinpregnancy.html",
+        "score": 80
+      },
+      {
+        "medline_id": "3635",
+        "title": "Hipertensión pulmonar",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/pulmonaryhypertension.html",
+        "score": 43
+      },
+      {
+        "medline_id": "4940",
+        "title": "Medicinas para la presión arterial",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/bloodpressuremedicines.html",
+        "score": 43
+      },
+      {
+        "medline_id": "1955",
+        "title": "Presión arterial alta",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/highbloodpressure.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "RESP-002",
+    "name": "Asma bronquial",
+    "terms": [
+      "asthma",
+      "asma"
+    ],
+    "matches": [
+      {
+        "medline_id": "1760",
+        "title": "Asma",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/asthma.html",
+        "score": 103
+      },
+      {
+        "medline_id": "2",
+        "title": "Asthma",
+        "language": "English",
+        "url": "https://medlineplus.gov/asthma.html",
+        "score": 100
+      },
+      {
+        "medline_id": "2237",
+        "title": "Asma en niños",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/asthmainchildren.html",
+        "score": 43
+      },
+      {
+        "medline_id": "1794",
+        "title": "Cáncer",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/cancer.html",
+        "score": 43
+      },
+      {
+        "medline_id": "2040",
+        "title": "Mieloma múltiple",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/multiplemyeloma.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "HEMA-001",
+    "name": "Anemia ferropenica",
+    "terms": [
+      "iron deficiency anemia",
+      "anemia ferropenica"
+    ],
+    "matches": [
+      {
+        "medline_id": "139",
+        "title": "Anemia",
+        "language": "English",
+        "url": "https://medlineplus.gov/anemia.html",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "disease_code": "INF-001",
+    "name": "Gripe estacional",
+    "terms": [
+      "Gripe estacional"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "INF-002",
+    "name": "COVID-19",
+    "terms": [
+      "covid-19",
+      "covid"
+    ],
+    "matches": [
+      {
+        "medline_id": "7808",
+        "title": "Afecciones posteriores al COVID-19 (COVID-19 persistente)",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/postcovidconditionslongcovid.html",
+        "score": 83
+      },
+      {
+        "medline_id": "3182",
+        "title": "Enfermedad del coronavirus 2019 (COVID-19)",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/covid19coronavirusdisease2019.html",
+        "score": 83
+      },
+      {
+        "medline_id": "7628",
+        "title": "Pruebas para el COVID-19",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/covid19testing.html",
+        "score": 83
+      },
+      {
+        "medline_id": "7648",
+        "title": "Vacunas contra el COVID-19",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/covid19vaccines.html",
+        "score": 83
+      },
+      {
+        "medline_id": "3181",
+        "title": "COVID-19 (Coronavirus Disease 2019)",
+        "language": "English",
+        "url": "https://medlineplus.gov/covid19coronavirusdisease2019.html",
+        "score": 80
+      }
+    ]
+  },
+  {
+    "disease_code": "ONC-001",
+    "name": "Cancer de pulmon",
+    "terms": [
+      "Cancer de pulmon"
+    ],
+    "matches": [
+      {
+        "medline_id": "2012",
+        "title": "Cáncer de pulmón",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/lungcancer.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "DIG-001",
+    "name": "Apendicitis aguda",
+    "terms": [
+      "appendicitis",
+      "apendicitis"
+    ],
+    "matches": [
+      {
+        "medline_id": "1754",
+        "title": "Apendicitis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/appendicitis.html",
+        "score": 103
+      },
+      {
+        "medline_id": "1223",
+        "title": "Appendicitis",
+        "language": "English",
+        "url": "https://medlineplus.gov/appendicitis.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "DIG-002",
+    "name": "Colelitiasis",
+    "terms": [
+      "Colelitiasis"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "NEU-001",
+    "name": "Epilepsia",
+    "terms": [
+      "epilepsy",
+      "epilepsia"
+    ],
+    "matches": [
+      {
+        "medline_id": "1888",
+        "title": "Epilepsia",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/epilepsy.html",
+        "score": 103
+      },
+      {
+        "medline_id": "244",
+        "title": "Epilepsy",
+        "language": "English",
+        "url": "https://medlineplus.gov/epilepsy.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "DERM-001",
+    "name": "Dermatitis atopica",
+    "terms": [
+      "Dermatitis atopica"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "ORL-001",
+    "name": "Otitis media",
+    "terms": [
+      "Otitis media"
+    ],
+    "matches": [
+      {
+        "medline_id": "1876",
+        "title": "Infecciones de los oídos",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/earinfections.html",
+        "score": 43
+      },
+      {
+        "medline_id": "115",
+        "title": "Ear Infections",
+        "language": "English",
+        "url": "https://medlineplus.gov/earinfections.html",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "disease_code": "ENDO-002",
+    "name": "Hipotiroidismo",
+    "terms": [
+      "hypothyroidism",
+      "hipotiroidismo"
+    ],
+    "matches": [
+      {
+        "medline_id": "6176",
+        "title": "Hipotiroidismo",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/hypothyroidism.html",
+        "score": 103
+      },
+      {
+        "medline_id": "6175",
+        "title": "Hypothyroidism",
+        "language": "English",
+        "url": "https://medlineplus.gov/hypothyroidism.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "CARD-003",
+    "name": "Fibrilacion auricular",
+    "terms": [
+      "atrial fibrillation",
+      "fibrilacion auricular"
+    ],
+    "matches": [
+      {
+        "medline_id": "4965",
+        "title": "Fibrilación auricular",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/atrialfibrillation.html",
+        "score": 103
+      },
+      {
+        "medline_id": "4964",
+        "title": "Atrial Fibrillation",
+        "language": "English",
+        "url": "https://medlineplus.gov/atrialfibrillation.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "RESP-003",
+    "name": "Tromboembolismo pulmonar",
+    "terms": [
+      "Tromboembolismo pulmonar"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "DIG-003",
+    "name": "Enfermedad por reflujo gastroesofagico",
+    "terms": [
+      "gerd",
+      "gastroesophageal reflux",
+      "reflujo"
+    ],
+    "matches": [
+      {
+        "medline_id": "512",
+        "title": "GERD",
+        "language": "English",
+        "url": "https://medlineplus.gov/gerd.html",
+        "score": 140
+      },
+      {
+        "medline_id": "1916",
+        "title": "Reflujo gastroesofágico",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/gerd.html",
+        "score": 83
+      },
+      {
+        "medline_id": "6521",
+        "title": "Reflux in Children",
+        "language": "English",
+        "url": "https://medlineplus.gov/refluxinchildren.html",
+        "score": 80
+      },
+      {
+        "medline_id": "6467",
+        "title": "Reflux in Infants",
+        "language": "English",
+        "url": "https://medlineplus.gov/refluxininfants.html",
+        "score": 80
+      },
+      {
+        "medline_id": "6468",
+        "title": "Reflujo gastroesofágico en bebés",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/refluxininfants.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "MUS-001",
+    "name": "Artritis reumatoide",
+    "terms": [
+      "rheumatoid arthritis",
+      "artritis reumatoide"
+    ],
+    "matches": [
+      {
+        "medline_id": "2128",
+        "title": "Artritis reumatoide",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/rheumatoidarthritis.html",
+        "score": 103
+      },
+      {
+        "medline_id": "1232",
+        "title": "Rheumatoid Arthritis",
+        "language": "English",
+        "url": "https://medlineplus.gov/rheumatoidarthritis.html",
+        "score": 100
+      },
+      {
+        "medline_id": "1986",
+        "title": "Artritis juvenil",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/juvenilearthritis.html",
+        "score": 43
+      },
+      {
+        "medline_id": "1292",
+        "title": "Juvenile Arthritis",
+        "language": "English",
+        "url": "https://medlineplus.gov/juvenilearthritis.html",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "disease_code": "INF-003",
+    "name": "Infeccion del tracto urinario",
+    "terms": [
+      "urinary tract infection",
+      "infeccion urinaria"
+    ],
+    "matches": [
+      {
+        "medline_id": "2212",
+        "title": "Infecciones de las vías urinarias",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/urinarytractinfections.html",
+        "score": 43
+      },
+      {
+        "medline_id": "448",
+        "title": "Urinary Tract Infections",
+        "language": "English",
+        "url": "https://medlineplus.gov/urinarytractinfections.html",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "disease_code": "PSY-001",
+    "name": "Depresion mayor",
+    "terms": [
+      "depression",
+      "major depression",
+      "depresion"
+    ],
+    "matches": [
+      {
+        "medline_id": "1848",
+        "title": "Depresión",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/depression.html",
+        "score": 103
+      },
+      {
+        "medline_id": "113",
+        "title": "Depression",
+        "language": "English",
+        "url": "https://medlineplus.gov/depression.html",
+        "score": 100
+      },
+      {
+        "medline_id": "4147",
+        "title": "Antidepresivos",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/antidepressants.html",
+        "score": 43
+      },
+      {
+        "medline_id": "6932",
+        "title": "Depresión en adolescentes",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/teendepression.html",
+        "score": 43
+      },
+      {
+        "medline_id": "2100",
+        "title": "Depresión posparto",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/postpartumdepression.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "ONC-002",
+    "name": "Cancer de mama",
+    "terms": [
+      "Cancer de mama"
+    ],
+    "matches": [
+      {
+        "medline_id": "1786",
+        "title": "Cáncer de seno",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/breastcancer.html",
+        "score": 43
+      },
+      {
+        "medline_id": "3578",
+        "title": "Cáncer de seno en el hombre",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/malebreastcancer.html",
+        "score": 43
+      },
+      {
+        "medline_id": "2021",
+        "title": "Mamografía",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/mammography.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "NUT-001",
+    "name": "Obesidad",
+    "terms": [
+      "Obesidad"
+    ],
+    "matches": [
+      {
+        "medline_id": "2059",
+        "title": "Obesidad",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/obesity.html",
+        "score": 103
+      },
+      {
+        "medline_id": "3303",
+        "title": "Cirugías para la obesidad",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/weightlosssurgery.html",
+        "score": 43
+      },
+      {
+        "medline_id": "4078",
+        "title": "Obesidad en niños",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/obesityinchildren.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "CARD-004",
+    "name": "Insuficiencia cardiaca",
+    "terms": [
+      "heart failure",
+      "insuficiencia cardiaca"
+    ],
+    "matches": [
+      {
+        "medline_id": "199",
+        "title": "Heart Failure",
+        "language": "English",
+        "url": "https://medlineplus.gov/heartfailure.html",
+        "score": 100
+      },
+      {
+        "medline_id": "1943",
+        "title": "Fallo cardíaco",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/heartfailure.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "CARD-005",
+    "name": "Angina estable",
+    "terms": [
+      "Angina estable"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "CARD-006",
+    "name": "Miocarditis",
+    "terms": [
+      "Miocarditis"
+    ],
+    "matches": [
+      {
+        "medline_id": "1941",
+        "title": "Enfermedades del corazón",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/heartdiseases.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "CARD-007",
+    "name": "Endocarditis infecciosa",
+    "terms": [
+      "Endocarditis infecciosa"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "CARD-008",
+    "name": "Enfermedad arterial periferica",
+    "terms": [
+      "Enfermedad arterial periferica"
+    ],
+    "matches": [
+      {
+        "medline_id": "4084",
+        "title": "Enfermedad arterial periférica",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/peripheralarterialdisease.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "RESP-004",
+    "name": "EPOC",
+    "terms": [
+      "copd",
+      "epoc",
+      "chronic obstructive pulmonary disease"
+    ],
+    "matches": [
+      {
+        "medline_id": "27",
+        "title": "COPD",
+        "language": "English",
+        "url": "https://medlineplus.gov/copd.html",
+        "score": 140
+      },
+      {
+        "medline_id": "1836",
+        "title": "Enfermedad de obstrucción pulmonar crónica",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/copd.html",
+        "score": 83
+      }
+    ]
+  },
+  {
+    "disease_code": "RESP-005",
+    "name": "Bronquitis aguda",
+    "terms": [
+      "Bronquitis aguda"
+    ],
+    "matches": [
+      {
+        "medline_id": "5756",
+        "title": "Bronquitis aguda",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/acutebronchitis.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "RESP-006",
+    "name": "Tuberculosis pulmonar",
+    "terms": [
+      "Tuberculosis pulmonar"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "RESP-007",
+    "name": "Rinitis alergica",
+    "terms": [
+      "Rinitis alergica"
+    ],
+    "matches": [
+      {
+        "medline_id": "4747",
+        "title": "Rinitis alérgica",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/hayfever.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "RESP-008",
+    "name": "Sinusitis aguda",
+    "terms": [
+      "Sinusitis aguda"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "DIG-004",
+    "name": "Gastritis",
+    "terms": [
+      "Gastritis"
+    ],
+    "matches": [
+      {
+        "medline_id": "2173",
+        "title": "Enfermedades del estómago",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/stomachdisorders.html",
+        "score": 43
+      },
+      {
+        "medline_id": "420",
+        "title": "Stomach Disorders",
+        "language": "English",
+        "url": "https://medlineplus.gov/stomachdisorders.html",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "disease_code": "DIG-005",
+    "name": "Ulcera peptica",
+    "terms": [
+      "Ulcera peptica"
+    ],
+    "matches": [
+      {
+        "medline_id": "2083",
+        "title": "Úlcera péptica",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/pepticulcer.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "DIG-006",
+    "name": "Pancreatitis aguda",
+    "terms": [
+      "Pancreatitis aguda"
+    ],
+    "matches": [
+      {
+        "medline_id": "5877",
+        "title": "Pancreatitis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/pancreatitis.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "DIG-007",
+    "name": "Enfermedad inflamatoria intestinal",
+    "terms": [
+      "Enfermedad inflamatoria intestinal"
+    ],
+    "matches": [
+      {
+        "medline_id": "2210",
+        "title": "Colitis ulcerativa",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/ulcerativecolitis.html",
+        "score": 43
+      },
+      {
+        "medline_id": "1842",
+        "title": "Enfermedad de Crohn",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/crohnsdisease.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "DIG-008",
+    "name": "Sindrome de intestino irritable",
+    "terms": [
+      "Sindrome de intestino irritable"
+    ],
+    "matches": [
+      {
+        "medline_id": "1983",
+        "title": "Síndrome del intestino irritable",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/irritablebowelsyndrome.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "DIG-009",
+    "name": "Diverticulitis",
+    "terms": [
+      "Diverticulitis"
+    ],
+    "matches": [
+      {
+        "medline_id": "1863",
+        "title": "Diverticulosis y diverticulitis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/diverticulosisanddiverticulitis.html",
+        "score": 43
+      },
+      {
+        "medline_id": "214",
+        "title": "Diverticulosis and Diverticulitis",
+        "language": "English",
+        "url": "https://medlineplus.gov/diverticulosisanddiverticulitis.html",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "disease_code": "HEP-002",
+    "name": "Cirrosis hepatica",
+    "terms": [
+      "Cirrosis hepatica"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "HEP-003",
+    "name": "Esteatosis hepatica metabolica",
+    "terms": [
+      "Esteatosis hepatica metabolica"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "ENDO-003",
+    "name": "Hipertiroidismo",
+    "terms": [
+      "Hipertiroidismo"
+    ],
+    "matches": [
+      {
+        "medline_id": "6178",
+        "title": "Hipertiroidismo",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/hyperthyroidism.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "ENDO-004",
+    "name": "Enfermedad de Graves",
+    "terms": [
+      "Enfermedad de Graves"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "ENDO-005",
+    "name": "Enfermedad de Addison",
+    "terms": [
+      "Enfermedad de Addison"
+    ],
+    "matches": [
+      {
+        "medline_id": "1722",
+        "title": "Enfermedad de Addison",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/addisondisease.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "ENDO-006",
+    "name": "Sindrome de Cushing",
+    "terms": [
+      "Sindrome de Cushing"
+    ],
+    "matches": [
+      {
+        "medline_id": "4319",
+        "title": "Síndrome de Cushing",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/cushingssyndrome.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "ENDO-007",
+    "name": "Sindrome de ovario poliquistico",
+    "terms": [
+      "Sindrome de ovario poliquistico"
+    ],
+    "matches": [
+      {
+        "medline_id": "5913",
+        "title": "Síndrome de ovario poliquístico",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/polycysticovarysyndrome.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "REN-002",
+    "name": "Glomerulonefritis",
+    "terms": [
+      "glomerulonephritis",
+      "glomerulonefritis"
+    ],
+    "matches": [
+      {
+        "medline_id": "1989",
+        "title": "Enfermedades de los riñones",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/kidneydiseases.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "REN-003",
+    "name": "Sindrome nefrotico",
+    "terms": [
+      "nephrotic syndrome",
+      "sindrome nefrotico"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "REN-004",
+    "name": "Pielonefritis aguda",
+    "terms": [
+      "Pielonefritis aguda"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "REN-005",
+    "name": "Litiasis renal",
+    "terms": [
+      "Litiasis renal"
+    ],
+    "matches": [
+      {
+        "medline_id": "1991",
+        "title": "Piedras en los riñones",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/kidneystones.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "URO-001",
+    "name": "Hiperplasia prostatica benigna",
+    "terms": [
+      "Hiperplasia prostatica benigna"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "URO-002",
+    "name": "Prostatitis",
+    "terms": [
+      "Prostatitis"
+    ],
+    "matches": [
+      {
+        "medline_id": "2111",
+        "title": "Enfermedades de la próstata",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/prostatediseases.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "HEMA-002",
+    "name": "Anemia megaloblastica",
+    "terms": [
+      "Anemia megaloblastica"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "HEMA-003",
+    "name": "Leucemia linfoblastica aguda",
+    "terms": [
+      "Leucemia linfoblastica aguda"
+    ],
+    "matches": [
+      {
+        "medline_id": "2004",
+        "title": "Leucemia linfocítica aguda",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/acutelymphocyticleukemia.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "HEMA-004",
+    "name": "Linfoma de Hodgkin",
+    "terms": [
+      "Linfoma de Hodgkin"
+    ],
+    "matches": [
+      {
+        "medline_id": "1960",
+        "title": "Linfoma de Hodgkin",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/hodgkinlymphoma.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "NEU-002",
+    "name": "Accidente cerebrovascular isquemico",
+    "terms": [
+      "Accidente cerebrovascular isquemico"
+    ],
+    "matches": [
+      {
+        "medline_id": "6249",
+        "title": "Accidente cerebrovascular isquémico",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/ischemicstroke.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "NEU-003",
+    "name": "Enfermedad de Alzheimer",
+    "terms": [
+      "Enfermedad de Alzheimer"
+    ],
+    "matches": [
+      {
+        "medline_id": "1736",
+        "title": "Enfermedad de Alzheimer",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/alzheimersdisease.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "NEU-004",
+    "name": "Enfermedad de Parkinson",
+    "terms": [
+      "Enfermedad de Parkinson"
+    ],
+    "matches": [
+      {
+        "medline_id": "2081",
+        "title": "Enfermedad de Parkinson",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/parkinsonsdisease.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "NEU-005",
+    "name": "Migrana",
+    "terms": [
+      "Migrana"
+    ],
+    "matches": [
+      {
+        "medline_id": "3158",
+        "title": "Migraña",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/migraine.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "NEU-006",
+    "name": "Esclerosis multiple",
+    "terms": [
+      "Esclerosis multiple"
+    ],
+    "matches": [
+      {
+        "medline_id": "2041",
+        "title": "Esclerosis múltiple",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/multiplesclerosis.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "ONC-003",
+    "name": "Cancer colorrectal",
+    "terms": [
+      "Cancer colorrectal"
+    ],
+    "matches": [
+      {
+        "medline_id": "1831",
+        "title": "Cáncer del colon y del recto",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/colorectalcancer.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "ONC-004",
+    "name": "Cancer gastrico",
+    "terms": [
+      "Cancer gastrico"
+    ],
+    "matches": [
+      {
+        "medline_id": "2172",
+        "title": "Cáncer de estómago",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/stomachcancer.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "ONC-005",
+    "name": "Cancer de prostata",
+    "terms": [
+      "Cancer de prostata"
+    ],
+    "matches": [
+      {
+        "medline_id": "2110",
+        "title": "Cáncer de próstata",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/prostatecancer.html",
+        "score": 103
+      },
+      {
+        "medline_id": "6209",
+        "title": "Pruebas y exámenes para el cáncer de próstata",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/prostatecancerscreening.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "ONC-006",
+    "name": "Cancer cervicouterino",
+    "terms": [
+      "Cancer cervicouterino"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "DERM-002",
+    "name": "Psoriasis",
+    "terms": [
+      "Psoriasis"
+    ],
+    "matches": [
+      {
+        "medline_id": "2112",
+        "title": "Psoriasis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/psoriasis.html",
+        "score": 103
+      },
+      {
+        "medline_id": "373",
+        "title": "Psoriasis",
+        "language": "English",
+        "url": "https://medlineplus.gov/psoriasis.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "DERM-003",
+    "name": "Acne vulgar",
+    "terms": [
+      "Acne vulgar"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "DERM-004",
+    "name": "Celulitis bacteriana",
+    "terms": [
+      "Celulitis bacteriana"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "DERM-005",
+    "name": "Herpes zoster",
+    "terms": [
+      "Herpes zoster"
+    ],
+    "matches": [
+      {
+        "medline_id": "2243",
+        "title": "Culebrilla (herpes zóster)",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/shingles.html",
+        "score": 43
+      },
+      {
+        "medline_id": "4399",
+        "title": "Infecciones de los ojos",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/eyeinfections.html",
+        "score": 43
+      },
+      {
+        "medline_id": "90",
+        "title": "Shingles",
+        "language": "English",
+        "url": "https://medlineplus.gov/shingles.html",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "disease_code": "MUS-002",
+    "name": "Osteoartritis",
+    "terms": [
+      "Osteoartritis"
+    ],
+    "matches": [
+      {
+        "medline_id": "2065",
+        "title": "Osteoartritis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/osteoarthritis.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "MUS-003",
+    "name": "Osteoporosis",
+    "terms": [
+      "Osteoporosis"
+    ],
+    "matches": [
+      {
+        "medline_id": "2067",
+        "title": "Osteoporosis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/osteoporosis.html",
+        "score": 103
+      },
+      {
+        "medline_id": "37",
+        "title": "Osteoporosis",
+        "language": "English",
+        "url": "https://medlineplus.gov/osteoporosis.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "MUS-004",
+    "name": "Gota",
+    "terms": [
+      "Gota"
+    ],
+    "matches": [
+      {
+        "medline_id": "1925",
+        "title": "Gota",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/gout.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "MUS-005",
+    "name": "Lupus eritematoso sistemico",
+    "terms": [
+      "Lupus eritematoso sistemico"
+    ],
+    "matches": [
+      {
+        "medline_id": "2014",
+        "title": "Lupus",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/lupus.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "MUS-006",
+    "name": "Espondilitis anquilosante",
+    "terms": [
+      "Espondilitis anquilosante"
+    ],
+    "matches": [
+      {
+        "medline_id": "1748",
+        "title": "Espondilitis anquilosante",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/ankylosingspondylitis.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "INF-004",
+    "name": "Dengue",
+    "terms": [
+      "Dengue"
+    ],
+    "matches": [
+      {
+        "medline_id": "3105",
+        "title": "Dengue",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/dengue.html",
+        "score": 103
+      },
+      {
+        "medline_id": "3104",
+        "title": "Dengue",
+        "language": "English",
+        "url": "https://medlineplus.gov/dengue.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "INF-005",
+    "name": "Malaria",
+    "terms": [
+      "Malaria"
+    ],
+    "matches": [
+      {
+        "medline_id": "2019",
+        "title": "Malaria",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/malaria.html",
+        "score": 103
+      },
+      {
+        "medline_id": "315",
+        "title": "Malaria",
+        "language": "English",
+        "url": "https://medlineplus.gov/malaria.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "INF-006",
+    "name": "VIH/SIDA",
+    "terms": [
+      "VIH/SIDA"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "INF-007",
+    "name": "Sifilis",
+    "terms": [
+      "Sifilis"
+    ],
+    "matches": [
+      {
+        "medline_id": "3018",
+        "title": "Sífilis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/syphilis.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "INF-008",
+    "name": "Hepatitis B cronica",
+    "terms": [
+      "Hepatitis B cronica"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "INF-009",
+    "name": "Hepatitis C cronica",
+    "terms": [
+      "Hepatitis C cronica"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "INF-010",
+    "name": "Meningitis bacteriana",
+    "terms": [
+      "Meningitis bacteriana"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "INF-011",
+    "name": "Sepsis",
+    "terms": [
+      "Sepsis"
+    ],
+    "matches": [
+      {
+        "medline_id": "3211",
+        "title": "Sepsis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/sepsis.html",
+        "score": 103
+      },
+      {
+        "medline_id": "3210",
+        "title": "Sepsis",
+        "language": "English",
+        "url": "https://medlineplus.gov/sepsis.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "OFT-001",
+    "name": "Conjuntivitis",
+    "terms": [
+      "Conjuntivitis"
+    ],
+    "matches": [
+      {
+        "medline_id": "4947",
+        "title": "Conjuntivitis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/pinkeye.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "OFT-002",
+    "name": "Glaucoma",
+    "terms": [
+      "Glaucoma"
+    ],
+    "matches": [
+      {
+        "medline_id": "1924",
+        "title": "Glaucoma",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/glaucoma.html",
+        "score": 103
+      },
+      {
+        "medline_id": "42",
+        "title": "Glaucoma",
+        "language": "English",
+        "url": "https://medlineplus.gov/glaucoma.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "OFT-003",
+    "name": "Catarata",
+    "terms": [
+      "Catarata"
+    ],
+    "matches": [
+      {
+        "medline_id": "1801",
+        "title": "Cataratas",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/cataract.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "OFT-004",
+    "name": "Retinopatia diabetica",
+    "terms": [
+      "Retinopatia diabetica"
+    ],
+    "matches": [
+      {
+        "medline_id": "1853",
+        "title": "Problemas de los ojos asociados con la diabetes",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/diabeticeyeproblems.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "PSY-002",
+    "name": "Trastorno de ansiedad generalizada",
+    "terms": [
+      "Trastorno de ansiedad generalizada"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "PSY-003",
+    "name": "Trastorno bipolar",
+    "terms": [
+      "Trastorno bipolar"
+    ],
+    "matches": [
+      {
+        "medline_id": "1772",
+        "title": "Trastorno bipolar",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/bipolardisorder.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "PSY-004",
+    "name": "Esquizofrenia",
+    "terms": [
+      "Esquizofrenia"
+    ],
+    "matches": [
+      {
+        "medline_id": "2136",
+        "title": "Esquizofrenia",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/schizophrenia.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "GINE-001",
+    "name": "Endometriosis",
+    "terms": [
+      "Endometriosis"
+    ],
+    "matches": [
+      {
+        "medline_id": "1886",
+        "title": "Endometriosis",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/endometriosis.html",
+        "score": 103
+      },
+      {
+        "medline_id": "243",
+        "title": "Endometriosis",
+        "language": "English",
+        "url": "https://medlineplus.gov/endometriosis.html",
+        "score": 100
+      }
+    ]
+  },
+  {
+    "disease_code": "GINE-002",
+    "name": "Miomas uterinos",
+    "terms": [
+      "Miomas uterinos"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "GINE-003",
+    "name": "Enfermedad inflamatoria pelvica",
+    "terms": [
+      "Enfermedad inflamatoria pelvica"
+    ],
+    "matches": [
+      {
+        "medline_id": "3045",
+        "title": "Enfermedad inflamatoria pélvica",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/pelvicinflammatorydisease.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "OBS-001",
+    "name": "Preeclampsia",
+    "terms": [
+      "Preeclampsia"
+    ],
+    "matches": [
+      {
+        "medline_id": "2102",
+        "title": "Presión arterial alta en el embarazo",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/highbloodpressureinpregnancy.html",
+        "score": 43
+      },
+      {
+        "medline_id": "1508",
+        "title": "High Blood Pressure in Pregnancy",
+        "language": "English",
+        "url": "https://medlineplus.gov/highbloodpressureinpregnancy.html",
+        "score": 40
+      }
+    ]
+  },
+  {
+    "disease_code": "PED-001",
+    "name": "Bronquiolitis",
+    "terms": [
+      "Bronquiolitis"
+    ],
+    "matches": [
+      {
+        "medline_id": "5756",
+        "title": "Bronquitis aguda",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/acutebronchitis.html",
+        "score": 43
+      },
+      {
+        "medline_id": "3102",
+        "title": "Virus respiratorio sincitial",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/respiratorysyncytialvirusinfections.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "PED-002",
+    "name": "Varicela",
+    "terms": [
+      "Varicela"
+    ],
+    "matches": [
+      {
+        "medline_id": "1807",
+        "title": "Varicela",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/chickenpox.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "PED-003",
+    "name": "Sarampion",
+    "terms": [
+      "Sarampion"
+    ],
+    "matches": [
+      {
+        "medline_id": "2025",
+        "title": "Sarampión",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/measles.html",
+        "score": 103
+      },
+      {
+        "medline_id": "2130",
+        "title": "Rubéola",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/rubella.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "MET-001",
+    "name": "Dislipidemia",
+    "terms": [
+      "Dislipidemia"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "MET-002",
+    "name": "Sindrome metabolico",
+    "terms": [
+      "Sindrome metabolico"
+    ],
+    "matches": [
+      {
+        "medline_id": "3529",
+        "title": "Síndrome metabólico",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/metabolicsyndrome.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "MET-003",
+    "name": "Desnutricion proteico-calorica",
+    "terms": [
+      "Desnutricion proteico-calorica"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "MET-004",
+    "name": "Deficiencia de vitamina D",
+    "terms": [
+      "Deficiencia de vitamina D"
+    ],
+    "matches": [
+      {
+        "medline_id": "6449",
+        "title": "Deficiencia de vitamina D",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/vitaminddeficiency.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "AUD-002",
+    "name": "Hipoacusia neurosensorial",
+    "terms": [
+      "Hipoacusia neurosensorial"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "AUD-003",
+    "name": "Vertigo periferico benigno",
+    "terms": [
+      "Vertigo periferico benigno"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "RARE-001",
+    "name": "Fibrosis quistica",
+    "terms": [
+      "Fibrosis quistica"
+    ],
+    "matches": [
+      {
+        "medline_id": "1843",
+        "title": "Fibrosis quística",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/cysticfibrosis.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "RARE-002",
+    "name": "Enfermedad celiaca",
+    "terms": [
+      "Enfermedad celiaca"
+    ],
+    "matches": [
+      {
+        "medline_id": "1802",
+        "title": "Enfermedad celíaca",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/celiacdisease.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "RARE-003",
+    "name": "Enfermedad de Crohn",
+    "terms": [
+      "Enfermedad de Crohn"
+    ],
+    "matches": [
+      {
+        "medline_id": "1842",
+        "title": "Enfermedad de Crohn",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/crohnsdisease.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "RARE-004",
+    "name": "Colitis ulcerosa",
+    "terms": [
+      "Colitis ulcerosa"
+    ],
+    "matches": [
+      {
+        "medline_id": "2210",
+        "title": "Colitis ulcerativa",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/ulcerativecolitis.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "RARE-005",
+    "name": "Miastenia gravis",
+    "terms": [
+      "Miastenia gravis"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "RARE-006",
+    "name": "Sindrome de Guillain-Barre",
+    "terms": [
+      "Sindrome de Guillain-Barre"
+    ],
+    "matches": [
+      {
+        "medline_id": "1927",
+        "title": "Síndrome de Guillain-Barré",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/guillainbarresyndrome.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "RARE-007",
+    "name": "Esclerosis lateral amiotrofica",
+    "terms": [
+      "Esclerosis lateral amiotrofica"
+    ],
+    "matches": [
+      {
+        "medline_id": "1739",
+        "title": "Esclerosis lateral amiotrófica",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/amyotrophiclateralsclerosis.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "PED-004",
+    "name": "Diabetes mellitus tipo 1",
+    "terms": [
+      "Diabetes mellitus tipo 1"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "PED-005",
+    "name": "Dermatitis del panal",
+    "terms": [
+      "Dermatitis del panal"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "PED-006",
+    "name": "Otitis externa",
+    "terms": [
+      "Otitis externa"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "GEN-001",
+    "name": "Alergia alimentaria",
+    "terms": [
+      "Alergia alimentaria"
+    ],
+    "matches": [
+      {
+        "medline_id": "1908",
+        "title": "Alergia a los alimentos",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/foodallergy.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "GEN-002",
+    "name": "Anafilaxia",
+    "terms": [
+      "Anafilaxia"
+    ],
+    "matches": [
+      {
+        "medline_id": "6258",
+        "title": "Anafilaxia",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/anaphylaxis.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "GEN-003",
+    "name": "Enfermedad por calor",
+    "terms": [
+      "Enfermedad por calor"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "GEN-004",
+    "name": "Hipotermia",
+    "terms": [
+      "Hipotermia"
+    ],
+    "matches": [
+      {
+        "medline_id": "1967",
+        "title": "Hipotermia",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/hypothermia.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "GEN-005",
+    "name": "Deshidratacion",
+    "terms": [
+      "Deshidratacion"
+    ],
+    "matches": [
+      {
+        "medline_id": "6052",
+        "title": "Deshidratación",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/dehydration.html",
+        "score": 103
+      }
+    ]
+  },
+  {
+    "disease_code": "GEN-006",
+    "name": "Fiebre de origen desconocido",
+    "terms": [
+      "Fiebre de origen desconocido"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "GEN-007",
+    "name": "Shock hipovolemico",
+    "terms": [
+      "Shock hipovolemico"
+    ],
+    "matches": []
+  },
+  {
+    "disease_code": "GEN-008",
+    "name": "Quemaduras",
+    "terms": [
+      "Quemaduras"
+    ],
+    "matches": [
+      {
+        "medline_id": "1791",
+        "title": "Quemaduras",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/burns.html",
+        "score": 103
+      },
+      {
+        "medline_id": "6281",
+        "title": "Lesiones por electricidad",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/electricalinjuries.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "GEN-009",
+    "name": "Intoxicacion por monoxido de carbono",
+    "terms": [
+      "Intoxicacion por monoxido de carbono"
+    ],
+    "matches": [
+      {
+        "medline_id": "1797",
+        "title": "Envenenamiento con monóxido de carbono",
+        "language": "Spanish",
+        "url": "https://medlineplus.gov/spanish/carbonmonoxidepoisoning.html",
+        "score": 43
+      }
+    ]
+  },
+  {
+    "disease_code": "GEN-010",
+    "name": "Anafilactoide por farmacos",
+    "terms": [
+      "Anafilactoide por farmacos"
+    ],
+    "matches": []
+  }
+]

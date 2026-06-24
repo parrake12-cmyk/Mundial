@@ -1,0 +1,2941 @@
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --border: #d7dbe3;
+  --text: #20242c;
+  --accent: #2563eb;
+  --accent-strong: #1e40af;
+  --accent-soft: #e8f0ff;
+  --soft: #667085;
+  --success: #15803d;
+  --danger: #dc2626;
+  --surface: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.hero {
+  background: linear-gradient(135deg, #1d4ed8 0%, #0891b2 100%);
+  color: white;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+}
+
+.hero p {
+  margin: 0 auto;
+  max-width: 720px;
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.module-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(246, 247, 249, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.module-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  color: var(--text);
+}
+
+.module-button span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent-strong);
+  font-weight: 900;
+}
+
+.module-button strong {
+  font-size: 0.92rem;
+}
+
+.module-button.active,
+.module-button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  filter: none;
+}
+
+.module-panel[hidden] {
+  display: none;
+}
+
+.container {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1rem;
+}
+
+@media (min-width: 1020px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+}
+
+.disease-detail-panel {
+  grid-column: 1 / -1;
+}
+
+.left {
+  position: static;
+  max-height: none;
+  overflow: visible;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.section-header,
+.coverage-row,
+.modal-heading,
+.detail-hero {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-header {
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.section-header h2,
+.panel h2 {
+  margin-top: 0;
+}
+
+.muted-pill,
+.badge {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.muted-pill {
+  padding: 0.25rem 0.65rem;
+  background: #edf1f7;
+  color: #475467;
+}
+
+.badge {
+  padding: 0.18rem 0.6rem;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--accent-strong);
+}
+
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.stats-strip div,
+.coverage-grid div {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 0.55rem;
+}
+
+.stats-strip strong,
+.coverage-grid strong {
+  display: block;
+  font-size: 1.08rem;
+}
+
+.stats-strip span,
+.coverage-grid span,
+.card-meta {
+  color: var(--soft);
+  font-size: 0.88rem;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 220px 220px;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.system-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 0.85rem;
+}
+
+.system-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: auto;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: white;
+  color: #344054;
+  font-size: 0.82rem;
+}
+
+.system-chip span {
+  color: var(--soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.system-chip.active {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.case-repo-controls {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 240px;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.68rem 0.75rem;
+  font: inherit;
+  background: white;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.65rem;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
+}
+
+.card-button {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 116px;
+  padding: 0.75rem;
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.card-button img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+}
+
+.card-button:hover,
+.card-button.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.card-button:hover {
+  transform: translateY(-1px);
+}
+
+.card-copy {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 0;
+}
+
+.card-title {
+  font-weight: 800;
+  font-size: 0.92rem;
+  line-height: 1.18;
+}
+
+.coverage-row {
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.coverage-row span {
+  border: 1px solid rgba(102, 112, 133, 0.22);
+  border-radius: 999px;
+  color: #475467;
+  font-size: 0.68rem;
+  padding: 0.08rem 0.38rem;
+  background: white;
+}
+
+.coverage-row .quality-pill {
+  font-weight: 800;
+  border-color: rgba(15, 118, 110, 0.28);
+}
+
+.quality-pill.reviewed {
+  color: #0f766e;
+  background: #ecfdf5;
+}
+
+.quality-pill.draft {
+  color: #92400e;
+  background: #fffbeb;
+}
+
+.quality-pill.pending {
+  color: #667085;
+  background: #f8fafc;
+}
+
+.card-button > .badge {
+  grid-column: 1 / -1;
+  width: fit-content;
+  font-size: 0.68rem;
+}
+
+@media (max-width: 760px) {
+  .toolbar,
+  .case-repo-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.viewer-shell {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(300px, 1.1fr);
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.anatomy-stage {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #eaf8ff, #ffffff 46%, #eef6ff);
+  color: var(--text);
+}
+
+.anatomy-toolbar,
+.anatomy-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.85rem;
+  color: #31536a;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.anatomy-image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  margin: 0 0.85rem;
+  border: 1px solid rgba(49, 83, 106, 0.16);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.95), rgba(232, 244, 255, 0.68) 54%, rgba(207, 232, 244, 0.6)),
+    linear-gradient(135deg, #dff5ff, #ffffff);
+}
+
+.anatomy-image img {
+  width: min(84%, 320px);
+  height: min(84%, 320px);
+  object-fit: contain;
+  filter: drop-shadow(0 18px 28px rgba(31, 68, 92, 0.18));
+}
+
+.anatomy-label {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  max-width: 70%;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.anatomy-caption {
+  align-items: center;
+  text-transform: none;
+}
+
+.anatomy-caption span {
+  color: var(--soft);
+  text-align: right;
+}
+
+.viewer-info {
+  display: grid;
+  align-content: start;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  background: var(--surface);
+}
+
+.viewer-info h2 {
+  margin: 0.45rem 0 0.25rem;
+}
+
+.detail-hero,
+.modal-heading {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detail-hero img,
+.modal-heading img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.detail-hero h2,
+.modal-heading h2 {
+  margin: 0.45rem 0 0.25rem;
+}
+
+.coverage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.coverage-grid.compact {
+  margin: 1rem 0 0;
+}
+
+.topic-tabs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.topic-tab {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.48rem 0.45rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.topic-tab.active,
+.topic-tab:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  filter: none;
+}
+
+.topic-panel {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 0.95rem;
+  margin-bottom: 1rem;
+  min-height: 185px;
+  max-height: 340px;
+  overflow: auto;
+}
+
+.topic-panel h3 {
+  margin-top: 0;
+}
+
+.organ-focus {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.organ-focus img {
+  width: 160px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.source-list {
+  margin-bottom: 0;
+  padding-left: 1.2rem;
+}
+
+.detail p,
+.detail dt,
+.detail dd,
+.modal p,
+.case-card p,
+.resource-card p {
+  line-height: 1.7;
+}
+
+.detail dl {
+  margin: 0 0 1rem;
+}
+
+.disease-article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: start;
+}
+
+.disease-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.9rem 0 0;
+  padding: 0.55rem;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 8px;
+  background: #f8fbff;
+}
+
+.disease-section-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  border-radius: 8px;
+  background: white;
+  color: var(--accent-strong);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.disease-section-nav a:hover,
+.disease-section-nav a:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.article-main {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.disease-flow {
+  gap: 1.15rem;
+}
+
+.disease-focus-section {
+  display: grid;
+  gap: 0.7rem;
+  scroll-margin-top: 1rem;
+}
+
+.disease-section-heading {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.1rem 0 0.15rem 0.75rem;
+  border-left: 4px solid var(--accent);
+}
+
+.disease-section-heading h3,
+.disease-section-heading p {
+  margin: 0;
+}
+
+.disease-section-heading h3 {
+  font-size: 1.12rem;
+  letter-spacing: 0;
+}
+
+.disease-section-heading p {
+  max-width: 82ch;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.article-aside {
+  display: grid;
+  gap: 0.75rem;
+  position: sticky;
+  top: 0.75rem;
+}
+
+.info-section {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 1rem;
+  max-width: 100%;
+}
+
+.info-section h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1rem;
+}
+
+.info-section p {
+  margin: 0;
+  max-width: 88ch;
+}
+
+.source-links {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.source-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 8px;
+  background: white;
+  color: var(--accent-strong);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.source-links a:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.internal-article {
+  display: grid;
+  gap: 0.9rem;
+  background: white;
+  overflow: visible;
+  z-index: 4;
+}
+
+.article-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.internal-article h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.definition-primer {
+  border-left: 4px solid var(--accent);
+  background: #f8fbff;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+}
+
+.definition-primer h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.92rem;
+}
+
+.definition-primer p {
+  margin: 0;
+  max-width: 92ch;
+  color: #344054;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.term-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  position: relative;
+  z-index: 30;
+}
+
+.term-strip > span,
+.term-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.25rem 0.6rem;
+}
+
+.term-chip {
+  width: auto;
+  cursor: help;
+}
+
+.term-popover {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  z-index: 120;
+  display: none;
+  width: min(320px, 78vw);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  color: var(--text);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  padding: 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+}
+
+.term-popover strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--accent-strong);
+  font-size: 0.84rem;
+}
+
+.term-chip:hover .term-popover,
+.term-chip:focus-visible .term-popover {
+  display: block;
+}
+
+.article-block,
+.article-subsection {
+  position: relative;
+  z-index: 1;
+}
+
+.article-body-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.article-block,
+.article-subsection {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 0.85rem;
+}
+
+.article-block h4,
+.article-subsection h4 {
+  margin: 0 0 0.45rem;
+  font-size: 0.92rem;
+}
+
+.article-block p,
+.article-subsection p {
+  margin: 0;
+  line-height: 1.62;
+}
+
+.article-disclosure {
+  display: block;
+}
+
+.article-disclosure summary,
+.visual-support-panel summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.article-disclosure summary::-webkit-details-marker,
+.visual-support-panel summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-disclosure summary h4 {
+  margin: 0;
+}
+
+.article-disclosure[open] summary,
+.visual-support-panel[open] summary {
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.article-disclosure-body,
+.visual-support-body {
+  display: grid;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+.disclosure-state {
+  flex: 0 0 auto;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.25rem 0.5rem;
+}
+
+.disclosure-state::after {
+  content: "Abrir";
+}
+
+details[open] > summary .disclosure-state::after {
+  content: "Cerrar";
+}
+
+.article-emphasis {
+  margin-top: 0.55rem !important;
+  border-left: 3px solid var(--accent);
+  padding-left: 0.7rem;
+  color: var(--muted);
+}
+
+.pathway-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.pathway-step {
+  min-width: 0;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 8px;
+  background: white;
+  padding: 0.75rem;
+}
+
+.pathway-step > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.pathway-step h5 {
+  margin: 0.55rem 0 0.35rem;
+  font-size: 0.9rem;
+}
+
+.pathway-step p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.pathway-step small {
+  display: block;
+  margin-top: 0.55rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.article-table,
+.differential-table {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.article-table-row,
+.differential-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.8fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+  border-top: 1px solid var(--border);
+  padding-top: 0.55rem;
+}
+
+.article-table-row:first-child,
+.differential-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.article-table-row small,
+.article-table-row em,
+.differential-row span {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.article-table-row em {
+  grid-column: 2 / -1;
+  font-style: normal;
+  color: #92400e;
+}
+
+.differential-row strong {
+  color: var(--text);
+}
+
+.differential-row span b {
+  color: var(--text);
+}
+
+.article-subsection {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.learning-object:empty,
+.diagnostic-test-panel:empty {
+  display: none;
+}
+
+.clinical-bridge:empty {
+  display: none;
+}
+
+.learning-object,
+.diagnostic-test-panel {
+  display: grid;
+  gap: 0.9rem;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 1rem;
+}
+
+.diagnostic-test-panel {
+  background: #fbfcff;
+}
+
+.renal-atlas-shortcut {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 1rem;
+}
+
+.renal-atlas-shortcut h3,
+.renal-atlas-shortcut p {
+  margin: 0.35rem 0 0;
+}
+
+.renal-atlas-shortcut p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.anatomy-visualizer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: start;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 8px;
+  background: white;
+  padding: 0.9rem;
+}
+
+.visual-stage {
+  width: 100%;
+  height: clamp(430px, 52vw, 690px);
+  max-height: 690px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, #eef6ff);
+  overflow: hidden;
+}
+
+.learning-object .visual-stage {
+  height: clamp(280px, 38vw, 440px);
+  max-height: 54vh;
+}
+
+.learning-object .renal-disease-atlas {
+  padding: 0.25rem;
+}
+
+.learning-object .renal-disease-atlas img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.organ-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.kidney-svg .svg-labels text {
+  font-size: 12px;
+  paint-order: stroke;
+  stroke: rgba(248, 251, 255, 0.9);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.renal-leader-labels path {
+  fill: none;
+  stroke: #facc15;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 1px 1px rgba(146, 64, 14, 0.22));
+}
+
+.renal-leader-labels text {
+  fill: #1f2937;
+  font-size: 12px;
+  font-weight: 900;
+  paint-order: stroke;
+  stroke: rgba(248, 251, 255, 0.94);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.renal-leader-labels .renal-title {
+  fill: #111827;
+  font-size: 16px;
+}
+
+.renal-atlas-svg .renal-main-vessels path {
+  filter: drop-shadow(0 4px 4px rgba(15, 23, 42, 0.16));
+}
+
+.renal-atlas-svg .renal-cut path {
+  vector-effect: non-scaling-stroke;
+}
+
+.renal-cortical-loss {
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.3));
+}
+
+.renal-image-atlas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  background: #f8fbff;
+  overflow: hidden;
+  padding: 0.35rem;
+}
+
+.atlas-image-core {
+  position: relative;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.renal-image-atlas img {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  display: block;
+}
+
+.atlas-disease-overlay {
+  position: absolute;
+  inset: 10%;
+  border-radius: 999px;
+  border: 2px dashed rgba(245, 158, 11, 0.48);
+  box-shadow: 0 0 34px rgba(245, 158, 11, 0.28);
+  pointer-events: none;
+}
+
+.atlas-annotation {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  display: inline-grid;
+  place-items: center;
+  max-width: 150px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.14);
+  color: #0f172a;
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1.1;
+  padding: 0.34rem 0.48rem;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.atlas-annotation::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, 6px);
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.76);
+}
+
+.atlas-annotation.artery-main,
+.atlas-annotation.artery-branch,
+.atlas-annotation.artery-arc {
+  color: #991b1b;
+}
+
+.atlas-annotation.vein-main {
+  color: #1d4ed8;
+}
+
+.atlas-annotation.calyces,
+.atlas-annotation.pelvis,
+.atlas-annotation.ureter-label {
+  color: #92400e;
+}
+
+.atlas-annotation.disease-label,
+.atlas-annotation.advanced-label {
+  color: #b45309;
+}
+
+.atlas-annotation.obstruction-label {
+  color: #78350f;
+  background: rgba(254, 243, 199, 0.94);
+}
+
+.renal-disease-atlas .atlas-image-core {
+  overflow: hidden;
+}
+
+.renal-disease-layer,
+.renal-disease-caption {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.renal-disease-layer {
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(180, 83, 9, 0.55);
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.14);
+  box-shadow: 0 0 0 7px rgba(245, 158, 11, 0.1), 0 0 32px rgba(180, 83, 9, 0.22);
+}
+
+.renal-disease-layer.advanced {
+  border-style: dashed;
+  box-shadow: 0 0 0 9px rgba(180, 83, 9, 0.12), 0 0 40px rgba(127, 29, 29, 0.28);
+}
+
+.renal-disease-layer-inflammation,
+.renal-disease-layer-infection {
+  border-color: rgba(220, 38, 38, 0.58);
+  background: rgba(248, 113, 113, 0.15);
+  box-shadow: 0 0 0 7px rgba(248, 113, 113, 0.1), 0 0 32px rgba(220, 38, 38, 0.22);
+}
+
+.renal-disease-layer-obstruction {
+  border-color: rgba(120, 53, 15, 0.65);
+  background: rgba(251, 191, 36, 0.18);
+}
+
+.renal-disease-layer-protein,
+.renal-disease-layer-injury {
+  border-color: rgba(15, 118, 110, 0.6);
+  background: rgba(45, 212, 191, 0.13);
+  box-shadow: 0 0 0 7px rgba(45, 212, 191, 0.09), 0 0 32px rgba(15, 118, 110, 0.2);
+}
+
+.renal-disease-caption {
+  transform: translate(-50%, -50%);
+  max-width: min(210px, 44%);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.13);
+  color: #78350f;
+  font-size: 0.72rem;
+  font-weight: 950;
+  line-height: 1.15;
+  padding: 0.38rem 0.58rem;
+  text-align: center;
+}
+
+.renal-disease-caption-inflammation,
+.renal-disease-caption-infection {
+  color: #991b1b;
+}
+
+.renal-disease-caption-protein,
+.renal-disease-caption-injury {
+  color: #0f766e;
+}
+
+.renal-disease-targets {
+  position: absolute;
+  left: 0.7rem;
+  right: 0.7rem;
+  bottom: 0.7rem;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.renal-disease-targets span {
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: #1e3a8a;
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1.1;
+  padding: 0.28rem 0.45rem;
+}
+
+.renal-damage-zone {
+  position: absolute;
+  z-index: 2;
+  width: 22%;
+  height: 38%;
+  border-radius: 48%;
+  border: 2px dashed rgba(245, 158, 11, 0.62);
+  background:
+    radial-gradient(circle at 30% 24%, rgba(254, 243, 199, 0.58), transparent 12%),
+    radial-gradient(circle at 68% 45%, rgba(254, 243, 199, 0.55), transparent 10%),
+    radial-gradient(circle at 45% 72%, rgba(254, 243, 199, 0.5), transparent 11%),
+    rgba(245, 158, 11, 0.08);
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.24);
+  pointer-events: none;
+}
+
+.renal-damage-zone.left {
+  left: 18%;
+  top: 22%;
+}
+
+.renal-damage-zone.right {
+  right: 18%;
+  top: 22%;
+}
+
+.appendix-image-atlas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: grid;
+  place-items: center;
+  background: #f8fbff;
+  overflow: hidden;
+  padding: 0.35rem;
+}
+
+.appendix-image-core {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.appendix-image-atlas img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.appendix-annotation {
+  position: absolute;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  max-width: 180px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.14);
+  color: #0f172a;
+  font-size: clamp(0.66rem, 0.74vw, 0.82rem);
+  font-weight: 900;
+  line-height: 1.1;
+  padding: 0.38rem 0.55rem;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.appendix-annotation::after {
+  content: none;
+}
+
+.appendix-annotation.appendix,
+.appendix-annotation.inflammation,
+.appendix-annotation.obstruction,
+.appendix-annotation.complication {
+  color: #b91c1c;
+}
+
+.appendix-annotation.cecum {
+  color: #9a3412;
+}
+
+.appendix-annotation.ileum,
+.appendix-annotation.meso {
+  color: #a16207;
+}
+
+.appendix-inflammation-zone,
+.appendix-complication-zone {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.appendix-inflammation-zone {
+  left: 54%;
+  top: 56%;
+  width: 22%;
+  height: 24%;
+  border-radius: 999px;
+  border: 2px dashed rgba(220, 38, 38, 0.58);
+  background: rgba(239, 68, 68, 0.14);
+  box-shadow: 0 0 28px rgba(239, 68, 68, 0.28);
+}
+
+.appendix-obstruction-dot {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 62%;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #78350f;
+  border: 3px solid #fef3c7;
+  box-shadow: 0 0 0 5px rgba(120, 53, 15, 0.18);
+}
+
+.appendix-complication-zone {
+  left: 63%;
+  top: 68%;
+  width: 20%;
+  height: 20%;
+  border-radius: 999px;
+  border: 2px dashed rgba(127, 29, 29, 0.66);
+  background: rgba(127, 29, 29, 0.14);
+  box-shadow: 0 0 30px rgba(127, 29, 29, 0.32);
+}
+
+.appendix-leaders {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.appendix-leaders path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.9));
+}
+
+.appendix-leaders .cecum {
+  color: #9a3412;
+}
+
+.appendix-leaders .ileum,
+.appendix-leaders .meso {
+  color: #ca8a04;
+}
+
+.appendix-leaders .appendix,
+.appendix-leaders .inflammation {
+  color: #b91c1c;
+}
+
+.appendix-leaders .obstruction,
+.appendix-leaders .complication {
+  color: #78350f;
+}
+
+.organ-main,
+.organ-alert,
+.organ-alert-line,
+.highlight-vessel,
+.ischemia-zone {
+  transition: opacity 180ms ease, stroke-width 180ms ease, filter 180ms ease;
+}
+
+.organ-alert,
+.highlight-vessel,
+.ischemia-zone {
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.45));
+}
+
+.penumbra-zone {
+  filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.3));
+}
+
+.brain-territories path {
+  mix-blend-mode: multiply;
+}
+
+.brain-vessels path {
+  filter: drop-shadow(0 2px 3px rgba(37, 99, 235, 0.2));
+}
+
+.brain-gyri path {
+  vector-effect: non-scaling-stroke;
+}
+
+.mass-effect {
+  filter: drop-shadow(0 0 9px rgba(239, 68, 68, 0.38));
+}
+
+.organ-alert-line {
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.35));
+}
+
+.svg-labels text,
+.svg-callouts text {
+  fill: #334155;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.svg-callouts text {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.visual-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.visual-controls > :first-child,
+.visual-controls .stage-buttons,
+.visual-controls .view-buttons {
+  grid-column: 1 / -1;
+}
+
+.visual-findings,
+.visual-view-map,
+.visual-reading-guide,
+.visual-legend {
+  min-height: 100%;
+}
+
+.visual-controls h4 {
+  margin: 0.35rem 0;
+}
+
+.visual-controls p,
+.visual-findings ul {
+  margin: 0;
+}
+
+.stage-buttons {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.view-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.45rem;
+}
+
+.stage-toggle,
+.view-toggle {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.stage-toggle.active,
+.stage-toggle:hover,
+.view-toggle.active,
+.view-toggle:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  filter: none;
+}
+
+.view-toggle {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.visual-findings {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 0.8rem;
+}
+
+.visual-findings ul {
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.visual-view-map {
+  display: grid;
+  gap: 0.55rem;
+  border: 1px solid rgba(14, 165, 233, 0.22);
+  border-radius: 8px;
+  background: #f7fcff;
+  padding: 0.8rem;
+}
+
+.visual-view-map div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.visual-view-map span {
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: 999px;
+  background: white;
+  color: #075985;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.28rem 0.55rem;
+}
+
+.visual-blueprint {
+  display: grid;
+  gap: 0.8rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  padding: 0.9rem;
+}
+
+.visual-blueprint > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.visual-blueprint-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.visual-blueprint-grid article {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 0.75rem;
+}
+
+.visual-blueprint-grid h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.86rem;
+}
+
+.visual-blueprint-grid p {
+  margin: 0;
+  color: #475467;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.visual-support-panel {
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 8px;
+  background: white;
+  padding: 0.85rem;
+}
+
+.visual-support-panel summary strong {
+  color: var(--text);
+}
+
+.visual-reading-guide {
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 0.8rem;
+}
+
+.visual-reading-guide ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.visual-reading-guide li {
+  margin: 0.35rem 0;
+  color: #475467;
+  line-height: 1.45;
+  font-size: 0.86rem;
+}
+
+.visual-legend {
+  display: grid;
+  gap: 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 0.8rem;
+}
+
+.visual-legend span {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #475467;
+  font-size: 0.82rem;
+}
+
+.visual-legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.06);
+}
+
+.clinical-bridge {
+  display: grid;
+  gap: 0.9rem;
+  border: 1px solid rgba(21, 128, 61, 0.2);
+  border-radius: 8px;
+  background: #f7fdf9;
+  padding: 1rem;
+}
+
+.bridge-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.bridge-heading h3,
+.bridge-empty h3 {
+  margin: 0.35rem 0;
+}
+
+.bridge-heading p,
+.bridge-empty p,
+.case-snapshot p,
+.comparison-block p,
+.case-reasoning p {
+  margin: 0;
+}
+
+.bridge-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.75fr) minmax(280px, 1.25fr);
+  gap: 0.85rem;
+}
+
+.case-snapshot {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 0.85rem;
+}
+
+.case-snapshot img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.case-snapshot button {
+  margin-top: 0.75rem;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.comparison-block {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 0.8rem;
+}
+
+.comparison-block span {
+  display: block;
+  color: var(--success);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.comparison-block h4,
+.case-reasoning h4 {
+  margin: 0.35rem 0;
+}
+
+.case-reasoning {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.case-reasoning div {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 0.8rem;
+}
+
+.learning-header h3 {
+  margin: 0.35rem 0;
+  font-size: 1.15rem;
+}
+
+.learning-header p,
+.organ-map p,
+.stage-card p,
+.mini-block p {
+  margin: 0;
+}
+
+.organ-map {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 0.85rem;
+}
+
+.marker-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+}
+
+.marker-row span {
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.25rem 0.55rem;
+}
+
+.stage-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.stage-card,
+.mini-block {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 0.85rem;
+}
+
+.stage-number {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-weight: 900;
+  font-size: 0.78rem;
+}
+
+.stage-card h4,
+.learning-grid h4 {
+  margin: 0.55rem 0;
+}
+
+.stage-card dl {
+  margin: 0.75rem 0 0;
+}
+
+.stage-card dt {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+.stage-card dd {
+  margin: 0.2rem 0 0;
+}
+
+.learning-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+.learning-grid section {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.mini-block small {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--soft);
+}
+
+.test-bank-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.test-bank-grid.compact {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.diagnostic-bank-section {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.diagnostic-bank-section h4 {
+  margin: 0;
+  font-size: 0.96rem;
+}
+
+.test-card {
+  display: grid;
+  gap: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 1rem;
+}
+
+.test-card-collapsible {
+  gap: 0;
+}
+
+.test-card-collapsible summary {
+  display: grid;
+  gap: 0.55rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.test-card-collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+.test-card-collapsible[open] summary {
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.test-card-body {
+  display: grid;
+  gap: 0.85rem;
+  padding-top: 0.85rem;
+}
+
+.test-card-toggle {
+  margin-left: auto;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.25rem 0.5rem;
+}
+
+.test-card-toggle::after {
+  content: "Abrir";
+}
+
+.test-card-collapsible[open] .test-card-toggle::after {
+  content: "Cerrar";
+}
+
+.test-card.compact {
+  align-content: start;
+}
+
+.test-card-heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.test-card-heading h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.test-question {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.sample-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.sample-meta strong {
+  color: var(--text);
+}
+
+.test-card-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.test-card-columns section,
+.test-note {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 0.75rem;
+}
+
+.test-card h5 {
+  margin: 0 0 0.45rem;
+  font-size: 0.86rem;
+}
+
+.test-card ul,
+.test-card ol {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.test-card li {
+  margin: 0.25rem 0;
+  line-height: 1.45;
+}
+
+.test-note p {
+  margin: 0.35rem 0 0;
+  line-height: 1.52;
+}
+
+.sample-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.55rem;
+}
+
+.sample-comparison-grid div {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 8px;
+  background: white;
+  padding: 0.65rem;
+}
+
+.sample-comparison-grid strong,
+.sample-case-note strong {
+  color: var(--accent-strong);
+}
+
+.sample-comparison-grid span {
+  color: var(--muted);
+  font-weight: 850;
+}
+
+.sample-case-note em {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-style: normal;
+}
+
+.test-dataset-note {
+  background: #fffaf0;
+}
+
+.secondary-button {
+  width: fit-content;
+  margin-bottom: 1rem;
+  background: white;
+  color: var(--accent-strong);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 980px) {
+  .disease-article {
+    grid-template-columns: 1fr;
+  }
+
+  .article-aside {
+    position: static;
+  }
+
+  .disease-section-nav {
+    position: static;
+  }
+
+  .pathway-grid,
+  .article-table-row,
+  .differential-row,
+  .test-card-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .article-table-row em {
+    grid-column: auto;
+  }
+
+  .renal-atlas-header,
+  .renal-atlas-shortcut,
+  .renal-focus-panel .renal-view-card,
+  .renal-view-grid .renal-view-card,
+  .renal-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .renal-atlas-principles {
+    justify-content: flex-start;
+    max-width: none;
+  }
+
+  .renal-view-card:first-child {
+    grid-column: auto;
+  }
+
+  .renal-view-figure {
+    height: clamp(300px, 82vw, 460px);
+  }
+
+  .renal-focus-panel .renal-view-figure {
+    height: clamp(340px, 86vw, 560px);
+  }
+
+  .renal-hotspot {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+  }
+
+  .renal-focus-target {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.detail dt {
+  font-weight: 800;
+  margin-top: 1rem;
+}
+
+.detail dd {
+  margin: 0.25rem 0 0;
+}
+
+.hint {
+  color: var(--soft);
+  font-style: italic;
+}
+
+.case-simulator {
+  display: grid;
+  gap: 0.75rem;
+}
+
+button {
+  width: fit-content;
+  padding: 0.85rem 1.15rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+.analysis {
+  background: #eef4ff;
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 120px;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+}
+
+.analysis h3 {
+  margin-top: 0;
+}
+
+.atlas-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.renal-atlas-overview {
+  display: grid;
+  gap: 1rem;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 1rem;
+}
+
+.renal-atlas-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.renal-atlas-header h3,
+.atlas-section-title h3 {
+  margin: 0.35rem 0 0;
+}
+
+.renal-atlas-header p {
+  margin: 0.45rem 0 0;
+  max-width: 820px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.renal-atlas-principles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  max-width: 330px;
+}
+
+.renal-atlas-principles span,
+.marker-row.compact span {
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+  background: white;
+  color: var(--accent-strong);
+  padding: 0.38rem 0.58rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.renal-atlas-focus {
+  display: grid;
+  gap: 0.85rem;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 8px;
+  background: white;
+  padding: 0.85rem;
+}
+
+.renal-focus-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.renal-focus-tab {
+  width: auto;
+  padding: 0.62rem 0.78rem;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  background: #f8fbff;
+  color: var(--accent-strong);
+  font-size: 0.88rem;
+  font-weight: 900;
+}
+
+.renal-focus-tab.active,
+.renal-focus-tab:hover {
+  filter: none;
+  background: var(--accent);
+  color: white;
+}
+
+.renal-focus-panels {
+  min-width: 0;
+}
+
+.renal-focus-panel[hidden] {
+  display: none;
+}
+
+.renal-focus-panel .renal-view-card {
+  grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.45fr);
+  align-items: start;
+  border-color: rgba(37, 99, 235, 0.2);
+  background: #fbfdff;
+}
+
+.renal-focus-panel .renal-view-card:first-child {
+  grid-column: auto;
+}
+
+.renal-focus-panel .renal-view-figure {
+  height: clamp(460px, 54vw, 720px);
+}
+
+.renal-atlas-subhead {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.renal-atlas-subhead h4,
+.renal-atlas-subhead p {
+  margin: 0;
+}
+
+.renal-atlas-subhead p {
+  color: var(--muted);
+}
+
+.renal-view-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+
+.renal-view-grid .renal-view-card {
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  align-items: start;
+}
+
+.renal-view-card {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  padding: 0.85rem;
+}
+
+.renal-view-card:first-child {
+  grid-column: 1 / -1;
+}
+
+.renal-view-figure {
+  position: relative;
+  height: clamp(310px, 42vw, 520px);
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #f8fbff;
+  overflow: hidden;
+}
+
+.renal-view-figure .organ-svg,
+.renal-view-figure .renal-image-atlas,
+.renal-view-figure img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.renal-interactive-figure img,
+.renal-interactive-figure .renal-hotspot-layer {
+  transform-origin: var(--zoom-origin, 50% 50%);
+  transition: transform 220ms ease;
+}
+
+.renal-interactive-figure.zoomed img,
+.renal-interactive-figure.zoomed .renal-hotspot-layer {
+  transform: scale(1.65);
+}
+
+.renal-hotspot-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.renal-focus-target {
+  position: absolute;
+  left: var(--active-x, 50%);
+  top: var(--active-y, 50%);
+  width: clamp(42px, 6.5vw, 72px);
+  height: clamp(42px, 6.5vw, 72px);
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--renal-active-dot, #2563eb);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--renal-active-dot, #2563eb) 9%, transparent);
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--renal-active-dot, #2563eb) 10%, transparent);
+  pointer-events: none;
+  transition: left 160ms ease, top 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.renal-interactive-figure[data-active-tone="arterial"] {
+  --renal-active-dot: #dc2626;
+}
+
+.renal-interactive-figure[data-active-tone="venous"] {
+  --renal-active-dot: #2563eb;
+}
+
+.renal-interactive-figure[data-active-tone="urinary"] {
+  --renal-active-dot: #d97706;
+}
+
+.renal-interactive-figure[data-active-tone="tissue"] {
+  --renal-active-dot: #be185d;
+}
+
+.renal-interactive-figure[data-active-tone="nephron"] {
+  --renal-active-dot: #0f766e;
+}
+
+.renal-interactive-figure[data-active-tone="relation"] {
+  --renal-active-dot: #7c3aed;
+}
+
+.renal-hotspot {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  min-width: 9px;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--renal-dot, #2563eb);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 3px 7px rgba(15, 23, 42, 0.16);
+  opacity: 0.68;
+  pointer-events: auto;
+  transition: transform 160ms ease, opacity 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.renal-hotspot::after {
+  display: none;
+}
+
+.renal-hotspot-arterial,
+.renal-structure-arterial {
+  --renal-dot: #dc2626;
+}
+
+.renal-hotspot-venous,
+.renal-structure-venous {
+  --renal-dot: #2563eb;
+}
+
+.renal-hotspot-urinary,
+.renal-structure-urinary {
+  --renal-dot: #d97706;
+}
+
+.renal-hotspot-tissue,
+.renal-structure-tissue {
+  --renal-dot: #be185d;
+}
+
+.renal-hotspot-nephron,
+.renal-structure-nephron {
+  --renal-dot: #0f766e;
+}
+
+.renal-hotspot-relation,
+.renal-structure-relation {
+  --renal-dot: #7c3aed;
+}
+
+.renal-hotspot:hover,
+.renal-hotspot.active {
+  filter: none;
+  opacity: 1;
+  background: color-mix(in srgb, var(--renal-dot, #2563eb) 16%, white);
+  transform: translate(-50%, -50%) scale(1.25);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--renal-dot, #2563eb) 20%, transparent), 0 5px 12px rgba(15, 23, 42, 0.22);
+}
+
+.renal-interactive-figure.markers-hidden .renal-hotspot {
+  opacity: 0 !important;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.renal-interactive-figure.markers-hidden .renal-focus-target {
+  opacity: 0.92;
+}
+
+.renal-zone-readout {
+  display: grid;
+  gap: 0.22rem;
+  min-height: 74px;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 0.7rem;
+}
+
+.renal-zone-readout strong {
+  color: var(--accent-strong);
+}
+
+.renal-zone-readout span {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.renal-view-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.renal-structure-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.renal-structure-group {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.renal-structure-group > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+
+.renal-structure-group-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.renal-structure-group-title i {
+  width: 0.58rem;
+  height: 0.58rem;
+  border-radius: 999px;
+  background: var(--renal-dot, #2563eb);
+}
+
+.renal-structure-button {
+  width: auto;
+  min-height: 30px;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(15, 23, 42, 0.13);
+  border-radius: 999px;
+  background: #fff;
+  color: #172033;
+  font-size: 0.78rem;
+  font-weight: 850;
+  line-height: 1.1;
+  box-shadow: none;
+}
+
+.renal-structure-button span {
+  display: none;
+}
+
+.renal-structure-button em {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.28rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--renal-dot, #2563eb) 14%, white);
+  color: color-mix(in srgb, var(--renal-dot, #2563eb) 72%, #0f172a);
+  font-style: normal;
+  font-size: 0.68rem;
+  font-weight: 950;
+}
+
+.renal-structure-button:hover,
+.renal-structure-button.active {
+  filter: none;
+  border-color: color-mix(in srgb, var(--renal-dot, #2563eb) 46%, white);
+  background: color-mix(in srgb, var(--renal-dot, #2563eb) 10%, white);
+  color: #0f172a;
+}
+
+.renal-view-actions .secondary-button {
+  margin-bottom: 0;
+  padding: 0.62rem 0.8rem;
+  font-size: 0.88rem;
+}
+
+.renal-view-figure .atlas-image-core {
+  max-width: 100%;
+  height: 100%;
+}
+
+.renal-view-copy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.renal-view-copy h4,
+.renal-view-copy p {
+  margin: 0;
+}
+
+.renal-view-copy p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.atlas-section-title {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+}
+
+.atlas-card {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 1rem;
+}
+
+.atlas-card h3 {
+  margin: 0.35rem 0 0;
+}
+
+.atlas-card .anatomy-visualizer {
+  background: white;
+}
+
+ol {
+  padding-left: 1.25rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 20;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal {
+  width: min(960px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 34px 80px rgba(15, 23, 42, 0.22);
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: none;
+  background: rgba(15, 23, 42, 0.08);
+  border-radius: 999px;
+  font-size: 1.5rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.resource-card,
+.case-card,
+.question-card,
+.diagnostic-strip {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  background: var(--surface);
+}
+
+.resource-card h3,
+.case-card h3,
+.question-card h3,
+.diagnostic-strip h3 {
+  margin-top: 0;
+}
+
+.case-list {
+  display: grid;
+  gap: 0.65rem;
+  max-height: calc(100vh - 250px);
+  overflow: auto;
+  padding-right: 0.15rem;
+}
+
+.case-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(260px, 1.2fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+}
+
+.case-row small {
+  display: block;
+  color: var(--soft);
+  line-height: 1.4;
+  margin-top: 0.2rem;
+}
+
+.resource-item {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 0.85rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.resource-item img {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.diagnostic-image {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.diagnostic-image img,
+.image-pending {
+  width: 180px;
+  height: 130px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.image-pending {
+  display: grid;
+  place-items: center;
+  color: var(--soft);
+  font-weight: 700;
+}
+
+.diagnostic-image a {
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.option-button {
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.option-button:hover {
+  background: #eff6ff;
+}
+
+.option-button.correct {
+  border-color: var(--success);
+  background: rgba(21, 128, 61, 0.12);
+}
+
+.option-button.incorrect {
+  border-color: var(--danger);
+  background: rgba(220, 38, 38, 0.12);
+}
+
+.feedback {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.feedback.correct {
+  background: rgba(21, 128, 61, 0.12);
+  border: 1px solid rgba(21, 128, 61, 0.25);
+}
+
+.feedback.incorrect {
+  background: rgba(220, 38, 38, 0.12);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+@media (max-width: 680px) {
+  .module-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    position: static;
+  }
+
+  .module-button {
+    min-height: 44px;
+  }
+
+  .stats-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card-button {
+    grid-template-columns: 48px 1fr;
+  }
+
+  .card-button .badge {
+    grid-column: 2;
+    width: fit-content;
+  }
+
+  .detail-hero,
+  .modal-heading,
+  .resource-item {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .detail-hero img,
+  .modal-heading img,
+  .resource-item img {
+    width: 100%;
+    max-height: 160px;
+  }
+
+  .disease-section-nav {
+    padding: 0.45rem;
+  }
+
+  .disease-section-nav a {
+    flex: 1 1 140px;
+    justify-content: center;
+  }
+
+  .disease-section-heading {
+    padding-left: 0.6rem;
+  }
+
+  .coverage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-repo-controls,
+  .case-row,
+  .diagnostic-image,
+  .organ-focus,
+  .article-body-grid,
+  .viewer-shell,
+  .anatomy-visualizer,
+  .bridge-layout,
+  .comparison-grid,
+  .case-reasoning {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-blueprint-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .term-popover {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .bridge-heading {
+    display: grid;
+  }
+
+  .left {
+    position: static;
+    max-height: none;
+  }
+
+  .list,
+  .case-list {
+    max-height: 440px;
+  }
+
+  .anatomy-stage {
+    min-height: 300px;
+  }
+
+  .topic-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .diagnostic-image img,
+  .image-pending,
+  .organ-focus img {
+    width: 100%;
+  }
+}

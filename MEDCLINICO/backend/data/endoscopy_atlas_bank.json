@@ -1,0 +1,222 @@
+[
+  {
+    "atlas_id": "ENDO-UPPER-GENERAL-001",
+    "name": "Endoscopia digestiva alta",
+    "procedure_type": "Esofagogastroduodenoscopia",
+    "system": "Digestivo",
+    "anatomic_route": ["Esofago", "Union gastroesofagica", "Estomago", "Piloroduodeno", "Duodeno"],
+    "disease_codes": ["DIG-003", "DIG-004", "DIG-005", "RARE-002", "ONC-004"],
+    "core_indications": [
+      "Disfagia, sangrado, anemia, perdida de peso o vomito persistente",
+      "Reflujo o dispepsia con signos de alarma o mala respuesta",
+      "Sospecha de ulcera, cancer gastrico, esofagitis complicada o enfermedad celiaca",
+      "Necesidad de biopsia o terapia endoscopica"
+    ],
+    "normal_landmarks": [
+      "Mucosa esofagica lisa y sin erosiones",
+      "Linea Z reconocible en union gastroesofagica",
+      "Mucosa gastrica sin ulceras, masa ni sangrado",
+      "Bulbo y segunda porcion duodenal sin atrofia ni ulceracion"
+    ],
+    "visual_findings": [
+      {
+        "label": "Esofagitis erosiva",
+        "pattern": "Erosiones o rupturas mucosas en esofago distal",
+        "linked_diseases": ["DIG-003"],
+        "teaching_point": "No toda pirosis requiere endoscopia; alarma o mala respuesta cambian la ruta."
+      },
+      {
+        "label": "Gastritis erosiva",
+        "pattern": "Eritema, friabilidad o erosiones superficiales",
+        "linked_diseases": ["DIG-004"],
+        "teaching_point": "Eritema no equivale automaticamente a causa del dolor."
+      },
+      {
+        "label": "Ulcera peptica",
+        "pattern": "Crater con base fibrinosa, bordes definidos o estigmas de sangrado",
+        "linked_diseases": ["DIG-005"],
+        "teaching_point": "La ulcera gastrica sospechosa pide biopsia; el vaso visible cambia la urgencia."
+      },
+      {
+        "label": "Atrofia vellosa duodenal",
+        "pattern": "Pliegues disminuidos, mosaico o nodularidad; puede ser sutil",
+        "linked_diseases": ["RARE-002"],
+        "teaching_point": "La serologia orienta, pero la biopsia duodenal puede confirmar cuando esta indicada."
+      },
+      {
+        "label": "Lesion infiltrativa o masa",
+        "pattern": "Ulcera irregular, masa, rigidez o sangrado facil",
+        "linked_diseases": ["ONC-004"],
+        "teaching_point": "La imagen sugiere; el diagnostico oncologico lo define histologia."
+      }
+    ],
+    "biopsy_strategy": [
+      "Biopsiar lesiones focales sospechosas con descripcion de localizacion",
+      "Tomar muestras para H. pylori si el contexto lo requiere",
+      "En sospecha celiaca, biopsias duodenales segun protocolo local",
+      "Documentar si una lesion sangra, es irregular o no se pudo muestrear"
+    ],
+    "quality_checks": [
+      "Fotografiar puntos anatomicos clave",
+      "Describir limpieza, visibilidad y alcance hasta duodeno",
+      "No cerrar informe sin explicar lesiones no biopsiadas",
+      "Separar hallazgo visual, impresion diagnostica y muestra enviada"
+    ],
+    "common_mistakes": [
+      "Llamar gastritis a cualquier dolor epigastrico",
+      "Omitir biopsia en ulcera gastrica o lesion irregular",
+      "No conectar sangrado con necesidad de estratificacion endoscopica",
+      "Ignorar que una endoscopia normal no descarta todos los trastornos funcionales o motores"
+    ],
+    "dataset_candidates": [
+      {
+        "name": "Kvasir",
+        "url": "https://datasets.simula.no/kvasir/",
+        "status": "candidato principal",
+        "use_case": "Imagenes clasificadas de tracto gastrointestinal para ejemplos educativos iniciales."
+      },
+      {
+        "name": "HyperKvasir",
+        "url": "https://datasets.simula.no/hyper-kvasir/",
+        "status": "candidato principal",
+        "use_case": "Imagenes y videos GI con clases de hallazgos para atlas mas amplio."
+      }
+    ],
+    "source_notes": "Dataset candidates verified against Simula pages/search results and HyperKvasir publication metadata; still review license and attribution before local import."
+  },
+  {
+    "atlas_id": "ENDO-COLON-IBD-001",
+    "name": "Colonoscopia con biopsias",
+    "procedure_type": "Colonoscopia e ileoscopia si es posible",
+    "system": "Digestivo",
+    "anatomic_route": ["Recto", "Colon sigmoide", "Colon descendente", "Colon transverso", "Colon ascendente", "Ciego", "Ileon terminal"],
+    "disease_codes": ["DIG-007", "RARE-003", "RARE-004", "ONC-003", "HEMA-001"],
+    "core_indications": [
+      "Diarrea cronica con sangre, perdida de peso o marcadores inflamatorios",
+      "Sospecha de enfermedad inflamatoria intestinal",
+      "Tamizaje o sospecha de cancer colorrectal",
+      "Anemia ferropenica o sangre oculta positiva segun contexto"
+    ],
+    "normal_landmarks": [
+      "Mucosa lisa con patron vascular conservado",
+      "Sin friabilidad, ulceras, estenosis, masa ni polipos relevantes",
+      "Ileon terminal sin ulceras si se logra intubar",
+      "Preparacion suficiente para evaluar lesiones"
+    ],
+    "visual_findings": [
+      {
+        "label": "Colitis continua",
+        "pattern": "Inflamacion que inicia en recto y se extiende proximalmente",
+        "linked_diseases": ["RARE-004", "DIG-007"],
+        "teaching_point": "Continuidad y compromiso rectal orientan a colitis ulcerosa."
+      },
+      {
+        "label": "Lesiones salteadas o ileitis",
+        "pattern": "Segmentos sanos alternan con ulceras, aftas, estenosis o ileitis",
+        "linked_diseases": ["RARE-003", "DIG-007"],
+        "teaching_point": "Patron salteado, ileon y estenosis/fistulas orientan a Crohn."
+      },
+      {
+        "label": "Polipo colorrectal",
+        "pattern": "Lesion elevada, sesil o pediculada",
+        "linked_diseases": ["ONC-003"],
+        "teaching_point": "Detectar, caracterizar y resecar cuando corresponde previene progresion."
+      },
+      {
+        "label": "Masa o lesion estenosante",
+        "pattern": "Lesion irregular, friable, sangrante o que estrecha la luz",
+        "linked_diseases": ["ONC-003", "HEMA-001"],
+        "teaching_point": "Anemia ferropenica puede ser la pista que lleva a colonoscopia."
+      }
+    ],
+    "biopsy_strategy": [
+      "Tomar biopsias de zonas inflamadas y, si corresponde, de mucosa aparentemente normal",
+      "Separar frascos por segmento cuando el patron importa",
+      "Biopsiar masa o lesion sospechosa antes de cerrar impresion diagnostica",
+      "En EII cronica, documentar vigilancia de displasia segun riesgo"
+    ],
+    "quality_checks": [
+      "Registrar calidad de preparacion intestinal",
+      "Documentar alcance cecal e intubacion ileal si se logra",
+      "Describir tamano, morfologia y localizacion de polipos",
+      "No interpretar una colonoscopia limitada como examen completo"
+    ],
+    "common_mistakes": [
+      "Confundir SII con EII sin buscar alarmas",
+      "No biopsiar diarrea cronica cuando la mucosa parece normal",
+      "Olvidar que mala preparacion reduce sensibilidad",
+      "No conectar hallazgos con calprotectina, hemograma e histologia"
+    ],
+    "dataset_candidates": [
+      {
+        "name": "HyperKvasir",
+        "url": "https://datasets.simula.no/hyper-kvasir/",
+        "status": "candidato principal",
+        "use_case": "Clases endoscopicas de colon, polipos y hallazgos GI para atlas."
+      },
+      {
+        "name": "Kvasir-SEG",
+        "url": "https://datasets.simula.no/kvasir-seg/",
+        "status": "pendiente de revision",
+        "use_case": "Segmentacion de polipos si se quiere entrenar o mostrar contornos."
+      }
+    ],
+    "source_notes": "Priorizar licencias claras, etiquetas utiles y atribucion antes de importar imagenes al repositorio."
+  },
+  {
+    "atlas_id": "ENDO-CAPSULE-SMALL-BOWEL-001",
+    "name": "Capsula endoscopica",
+    "procedure_type": "Video capsula endoscopica",
+    "system": "Digestivo",
+    "anatomic_route": ["Estomago", "Duodeno", "Yeyuno", "Ileon", "Colon si transita"],
+    "disease_codes": ["RARE-003", "DIG-007", "HEMA-001"],
+    "core_indications": [
+      "Sangrado digestivo oculto o anemia ferropenica tras estudios iniciales",
+      "Sospecha de Crohn de intestino delgado cuando otras pruebas no bastan",
+      "Lesiones de intestino delgado no alcanzables por endoscopia convencional"
+    ],
+    "normal_landmarks": [
+      "Vellosidades y pliegues sin sangrado, ulcera ni masa",
+      "Transito adecuado y visualizacion suficiente",
+      "Sin retencion de capsula"
+    ],
+    "visual_findings": [
+      {
+        "label": "Ulceras o aftas de intestino delgado",
+        "pattern": "Erosiones, ulceras pequenas o areas inflamadas",
+        "linked_diseases": ["RARE-003", "DIG-007"],
+        "teaching_point": "Crohn puede esconderse en intestino delgado aunque colonoscopia sea limitada."
+      },
+      {
+        "label": "Sangrado o angioectasias",
+        "pattern": "Sangre fresca, restos hematicos o vasos ectasicos",
+        "linked_diseases": ["HEMA-001"],
+        "teaching_point": "Anemia ferropenica no siempre viene de colon o estomago."
+      }
+    ],
+    "biopsy_strategy": [
+      "La capsula no toma biopsia; sirve para localizar y orientar enteroscopia u otra prueba",
+      "Reportar tiempo aproximado y segmento probable del hallazgo",
+      "Correlacionar con hemograma, ferritina, calprotectina e imagen"
+    ],
+    "quality_checks": [
+      "Evaluar riesgo de estenosis o retencion antes de indicar",
+      "Confirmar que el estudio visualizo el intestino delgado de forma util",
+      "No usarla como sustituto de biopsia cuando se requiere histologia"
+    ],
+    "common_mistakes": [
+      "Pedir capsula sin valorar riesgo de obstruccion",
+      "Asumir que localiza con precision quirurgica exacta",
+      "Olvidar que no permite terapia ni biopsia"
+    ],
+    "dataset_candidates": [
+      {
+        "name": "Kvasir-Capsule",
+        "url": "https://datasets.simula.no/kvasir-capsule/",
+        "status": "candidato para fase posterior",
+        "use_case": "Atlas de intestino delgado, sangrado y hallazgos de capsula."
+      }
+    ],
+    "source_notes": "Dejar como fase posterior; primero consolidar endoscopia alta y colonoscopia."
+  }
+]

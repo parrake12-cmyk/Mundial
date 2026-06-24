@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240">
+  <rect width="320" height="240" rx="24" fill="#eef2ff" />
+  <path d="M96 46c28-18 76-12 92 8 24 30 22 92 8 118-18 34-44 44-74 42-36-2-70-24-70-70 0-50 14-72 44-98Z" fill="#2563eb" opacity="0.15"/>
+  <path d="M128 42c26-18 70-4 94 26 20 24 20 72 12 96-14 38-40 52-76 52-34 0-70-24-74-68-4-52 16-88 44-106Z" fill="#1d4ed8"/>
+  <circle cx="182" cy="126" r="14" fill="#f8fafc" opacity="0.9"/>
+  <path d="M126 118c12-18 36-18 50 0" stroke="#f8fafc" stroke-width="10" stroke-linecap="round"/>
+  <text x="160" y="210" font-size="18" font-family="Inter, sans-serif" fill="#1e40af" text-anchor="middle">Riñón</text>
+</svg>

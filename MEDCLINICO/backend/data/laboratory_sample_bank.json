@@ -1,0 +1,694 @@
+[
+  {
+    "sample_id": "LAB-BLOOD-CBC-001",
+    "name": "Hemograma completo",
+    "sample_type": "Sangre total",
+    "container": "Tubo con EDTA",
+    "system": "Hematologico",
+    "disease_codes": ["HEMA-001", "RESP-001", "INF-002", "DIG-001"],
+    "clinical_question": "Identificar anemia, leucocitosis, leucopenia, plaquetas alteradas o respuesta inflamatoria que apoye la lectura clinica.",
+    "patient_preparation": [
+      "No requiere ayuno de rutina",
+      "Evitar muestra coagulada o con volumen insuficiente",
+      "Registrar transfusiones recientes si aplican"
+    ],
+    "collection_steps": [
+      "Mezclar suavemente el tubo despues de la toma",
+      "Verificar identificacion del paciente y hora de toma",
+      "Enviar pronto al laboratorio para evitar artefactos celulares"
+    ],
+    "preanalytic_alerts": [
+      "Coagulos invalidan o distorsionan el conteo",
+      "Hemodilucion por toma desde via con fluidos altera resultados",
+      "Plaquetas agregadas pueden simular trombocitopenia"
+    ],
+    "interpretation_clues": [
+      "Microcitosis con ferritina baja orienta a ferropenia",
+      "Leucocitosis no confirma infeccion por si sola",
+      "Plaquetas y hemoglobina deben leerse junto con sangrado, inflamacion y medicamentos"
+    ],
+    "turnaround": "Mismo dia en la mayoria de laboratorios clinicos",
+    "educational_note": "Es una muestra basica para reconocer patrones, no un diagnostico aislado."
+  },
+  {
+    "sample_id": "LAB-BLOOD-CHEM-RENAL-001",
+    "name": "Creatinina, eGFR y electrolitos",
+    "sample_type": "Suero o plasma",
+    "container": "Tubo seco o heparina segun laboratorio",
+    "system": "Renal",
+    "disease_codes": ["REN-001", "REN-005", "REN-006", "REN-007", "REN-008", "CARD-002", "CARD-001", "NEU-001"],
+    "clinical_question": "Estimar funcion renal, alteraciones hidroelectroliticas y seguridad de medicamentos o contrastes.",
+    "patient_preparation": [
+      "Ayuno no indispensable salvo que se combine con otros perfiles",
+      "Registrar diureticos, IECA/ARA-II, AINE, contraste reciente o deshidratacion",
+      "Interpretar eGFR con edad, masa muscular y contexto clinico"
+    ],
+    "collection_steps": [
+      "Evitar hemolisis durante la venopuncion",
+      "Separar suero segun protocolo local",
+      "Enviar con datos clinicos si hay sospecha de urgencia metabolica"
+    ],
+    "preanalytic_alerts": [
+      "Hemolisis puede alterar potasio",
+      "Muestra vieja o mal centrifugada afecta algunos analitos",
+      "Creatinina puede subestimar dano renal en baja masa muscular"
+    ],
+    "interpretation_clues": [
+      "eGFR bajo persistente apoya enfermedad renal cronica",
+      "Potasio alto requiere correlacionar con ECG, hemolisis y funcion renal",
+      "Sodio alterado se interpreta con volumen, osmolaridad y sintomas neurologicos"
+    ],
+    "turnaround": "Mismo dia; urgente si hay potasio critico o falla renal aguda",
+    "educational_note": "Conecta organo, laboratorio y seguridad terapeutica.",
+    "comparison_patterns": [
+      {
+        "label": "Funcion renal base",
+        "baseline": "Creatinina dentro del rango esperado para edad/masa muscular, eGFR >= 60 ml/min/1.73 m2 y potasio estable.",
+        "disease_pattern": "Creatinina ascendente, eGFR bajo o caida rapida respecto al basal; potasio, bicarbonato y urea pueden alterarse.",
+        "teaching_point": "Una creatinina aislada no cuenta toda la historia: tendencia, diuresis y contexto separan ERC de lesion aguda."
+      },
+      {
+        "label": "Obstruccion",
+        "baseline": "Creatinina estable con diuresis conservada.",
+        "disease_pattern": "Creatinina sube si la obstruccion es bilateral, afecta rinon unico o se prolonga; puede acompanarse de hiperpotasemia.",
+        "teaching_point": "Litiasis unilateral pequena puede tener creatinina normal; hidronefrosis bilateral cambia la urgencia."
+      }
+    ],
+    "case_examples": [
+      {
+        "disease_code": "REN-006",
+        "scenario": "lesion renal aguda prerrenal",
+        "results": "Creatinina 2.1 mg/dL desde basal 0.9, BUN elevado, potasio 5.2 mmol/L, bicarbonato 18 mmol/L.",
+        "interpretation": "Patron compatible con caida aguda de filtracion; buscar volumen, sepsis, nefrotoxicos u obstruccion."
+      },
+      {
+        "disease_code": "REN-001",
+        "scenario": "ERC avanzada",
+        "results": "eGFR 24 ml/min/1.73 m2 persistente, potasio 5.4 mmol/L, bicarbonato 19 mmol/L, fosforo alto.",
+        "interpretation": "Sugiere enfermedad cronica con complicaciones metabolicas que requieren seguimiento."
+      },
+      {
+        "disease_code": "REN-008",
+        "scenario": "uropatia obstructiva bilateral",
+        "results": "Creatinina 3.4 mg/dL, potasio 5.8 mmol/L, oliguria y ecografia con hidronefrosis bilateral.",
+        "interpretation": "El laboratorio y la imagen apuntan a obstruccion con riesgo metabolico."
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "UCI Chronic Kidney Disease Dataset",
+        "status": "tabular descargable para practica de clasificacion",
+        "note": "Incluye creatinina, urea, sodio, potasio, hemoglobina, albumina/proteina urinaria y clase CKD/no CKD."
+      },
+      {
+        "name": "NHANES Laboratory Data",
+        "status": "publico y util para comparaciones poblacionales",
+        "note": "Permite cruzar creatinina/eGFR, albuminuria, hemoglobina y comorbilidades; requiere curacion por ciclos."
+      },
+      {
+        "name": "MIMIC-IV / PhysioNet",
+        "status": "requiere credencial",
+        "note": "Adecuado para trayectorias hospitalarias de creatinina, diuresis y AKI, con proteccion de datos."
+      }
+    ]
+  },
+  {
+    "sample_id": "LAB-URINE-ACR-001",
+    "name": "Relacion albumina/creatinina en orina",
+    "sample_type": "Orina espontanea",
+    "container": "Frasco limpio para orina",
+    "system": "Renal",
+    "disease_codes": ["REN-001", "REN-002", "REN-003", "REN-007", "ENDO-001", "CARD-002"],
+    "clinical_question": "Detectar albuminuria como marcador temprano de dano renal y riesgo cardiovascular.",
+    "patient_preparation": [
+      "Preferir primera orina de la manana si es posible",
+      "Evitar toma durante fiebre, ejercicio intenso o infeccion urinaria activa",
+      "No requiere recoleccion de 24 horas para tamizaje habitual"
+    ],
+    "collection_steps": [
+      "Indicar muestra de chorro medio",
+      "Rotular fecha y hora",
+      "Enviar pronto o refrigerar segun protocolo local"
+    ],
+    "preanalytic_alerts": [
+      "Menstruacion, infeccion o ejercicio pueden elevar albumina transitoriamente",
+      "Muestra contaminada dificulta interpretacion",
+      "Un resultado aislado debe confirmarse si cambia conducta clinica"
+    ],
+    "interpretation_clues": [
+      "Albuminuria persistente reclasifica riesgo renal y cardiovascular",
+      "En diabetes e hipertension ayuda a decidir intensidad de seguimiento",
+      "Debe leerse junto con eGFR y presion arterial"
+    ],
+    "turnaround": "Mismo dia o siguiente dia segun laboratorio",
+    "educational_note": "Muy util para explicar dano renal temprano aun con creatinina normal.",
+    "comparison_patterns": [
+      {
+        "label": "Albuminuria",
+        "baseline": "ACR normal o discretamente bajo, sin proteinuria persistente.",
+        "disease_pattern": "ACR persistentemente elevado; puede ser moderado en diabetes/hipertension o muy alto en sindrome nefrotico.",
+        "teaching_point": "Albuminuria y eGFR se interpretan juntas para riesgo renal y cardiovascular."
+      },
+      {
+        "label": "Proteinuria glomerular",
+        "baseline": "Orina sin espuma persistente ni proteinuria significativa.",
+        "disease_pattern": "Proteinuria marcada con hipoalbuminemia y edema en sindrome nefrotico; hematuria/proteinuria combinadas en glomerulonefritis.",
+        "teaching_point": "ACR detecta albumina; si la proteinuria es marcada se puede complementar con relacion proteina/creatinina."
+      }
+    ],
+    "case_examples": [
+      {
+        "disease_code": "REN-007",
+        "scenario": "enfermedad renal diabetica temprana",
+        "results": "ACR 120 mg/g repetido, eGFR 78 ml/min/1.73 m2, presion arterial elevada.",
+        "interpretation": "Albuminuria persistente con eGFR conservado: dano renal temprano y mayor riesgo cardiovascular."
+      },
+      {
+        "disease_code": "REN-003",
+        "scenario": "sindrome nefrotico",
+        "results": "Proteinuria en rango nefrotico, albumina serica 2.1 g/dL, colesterol elevado y edema.",
+        "interpretation": "La fuga proteica explica hipoalbuminemia, edema y dislipidemia."
+      },
+      {
+        "disease_code": "REN-002",
+        "scenario": "glomerulonefritis activa",
+        "results": "Proteinuria subnefrotica, hematuria y cilindros eritrocitarios en sedimento.",
+        "interpretation": "La mezcla de sangre y proteina orienta a dano inflamatorio glomerular."
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "NHANES albuminuria/eGFR",
+        "status": "publico para normal vs albuminuria",
+        "note": "Util para construir tablas educativas por categoria ACR/eGFR y diabetes."
+      },
+      {
+        "name": "UCI Chronic Kidney Disease Dataset",
+        "status": "tabular con albumina/proteina urinaria",
+        "note": "No reemplaza caso clinico, pero sirve para patrones comparativos supervisados."
+      }
+    ]
+  },
+  {
+    "sample_id": "LAB-BLOOD-LIVER-001",
+    "name": "Perfil hepatico e INR",
+    "sample_type": "Suero/plasma y plasma citratado para INR",
+    "container": "Tubo seco o heparina; tubo citrato para coagulacion",
+    "system": "Digestivo",
+    "disease_codes": ["HEP-001", "HEP-003", "DIG-002"],
+    "clinical_question": "Diferenciar patron hepatocelular, colestasico y compromiso funcional del higado.",
+    "patient_preparation": [
+      "Ayuno no siempre obligatorio, pero puede ayudar si se combina con perfil metabolico",
+      "Registrar alcohol, farmacos hepatotoxicos y anticoagulantes",
+      "Para INR, llenar el tubo citrato hasta la marca"
+    ],
+    "collection_steps": [
+      "Evitar hemolisis",
+      "Separar muestra segun protocolo",
+      "Procesar coagulacion con tiempos del laboratorio"
+    ],
+    "preanalytic_alerts": [
+      "Tubo de citrato mal llenado altera INR",
+      "Hemolisis puede interferir con algunos resultados",
+      "Bilirrubina y enzimas deben interpretarse con sintomas y tiempo de evolucion"
+    ],
+    "interpretation_clues": [
+      "ALT/AST altas sugieren dano hepatocelular",
+      "FA/GGT y bilirrubina directa orientan a colestasis",
+      "INR elevado en hepatitis aguda puede indicar perdida de funcion hepatica"
+    ],
+    "turnaround": "Mismo dia; urgente si hay falla hepatica sospechada",
+    "educational_note": "Ayuda a separar lesion hepatica de funcion hepatica."
+  },
+  {
+    "sample_id": "LAB-BLOOD-TROPONIN-001",
+    "name": "Troponina cardiaca seriada",
+    "sample_type": "Suero o plasma",
+    "container": "Tubo segun plataforma del laboratorio",
+    "system": "Cardiovascular",
+    "disease_codes": ["CARD-001"],
+    "clinical_question": "Detectar lesion miocardica y su dinamica temporal en dolor toracico o sospecha de infarto.",
+    "patient_preparation": [
+      "No requiere ayuno",
+      "Registrar hora de inicio de sintomas",
+      "Tomar muestras seriadas segun protocolo local"
+    ],
+    "collection_steps": [
+      "Rotular hora exacta de cada toma",
+      "Evitar hemolisis",
+      "Enviar como prioridad si hay dolor toracico activo"
+    ],
+    "preanalytic_alerts": [
+      "Sin hora de sintomas se pierde valor interpretativo",
+      "Una troponina aislada temprana puede ser no concluyente",
+      "La elevacion no siempre significa infarto tipo 1"
+    ],
+    "interpretation_clues": [
+      "Cambio ascendente o descendente apoya lesion aguda",
+      "ECG y clinica definen urgencia aunque la primera troponina sea normal",
+      "Se eleva tambien en falla cardiaca, sepsis, TEP o enfermedad renal"
+    ],
+    "turnaround": "Urgente, habitualmente en menos de una hora si el sistema lo permite",
+    "educational_note": "La clave didactica es la curva, no solo el numero."
+  },
+  {
+    "sample_id": "LAB-BLOOD-GLUCOSE-HBA1C-001",
+    "name": "Glucemia y HbA1c",
+    "sample_type": "Plasma/suero para glucosa; sangre total para HbA1c",
+    "container": "Tubo fluoruro u otro validado para glucosa; EDTA para HbA1c",
+    "system": "Endocrino",
+    "disease_codes": ["ENDO-001"],
+    "clinical_question": "Diagnosticar diabetes, estimar control cronico y orientar seguimiento metabolico.",
+    "patient_preparation": [
+      "Glucemia en ayunas requiere ayuno segun protocolo",
+      "HbA1c no requiere ayuno",
+      "Registrar anemia, transfusion, embarazo o hemoglobinopatias si existen"
+    ],
+    "collection_steps": [
+      "Procesar glucosa pronto para evitar consumo celular",
+      "Separar plasma segun protocolo",
+      "Verificar que HbA1c use metodo estandarizado"
+    ],
+    "preanalytic_alerts": [
+      "Demora en procesar glucosa puede bajarla artificialmente",
+      "Anemia o transfusion puede alterar HbA1c",
+      "Corticoides o enfermedad aguda modifican glucemia"
+    ],
+    "interpretation_clues": [
+      "HbA1c refleja exposicion promedio, no variabilidad diaria",
+      "Glucemia al azar con sintomas puede ser diagnostica si cumple criterios",
+      "En discordancia, revisar condiciones que alteran eritrocitos"
+    ],
+    "turnaround": "Mismo dia o siguiente dia",
+    "educational_note": "Permite conectar diagnostico, seguimiento y complicaciones."
+  },
+  {
+    "sample_id": "LAB-BLOOD-TSH-FT4-001",
+    "name": "TSH y T4 libre",
+    "sample_type": "Suero",
+    "container": "Tubo seco o gel separador",
+    "system": "Endocrino",
+    "disease_codes": ["ENDO-002", "CARD-003"],
+    "clinical_question": "Evaluar hipotiroidismo, hipertiroidismo y causas endocrinas de arritmia o sintomas inespecificos.",
+    "patient_preparation": [
+      "No requiere ayuno",
+      "Registrar biotina, levotiroxina, amiodarona y embarazo",
+      "Idealmente tomar antes de la dosis diaria de levotiroxina cuando se monitoriza"
+    ],
+    "collection_steps": [
+      "Tomar muestra venosa estandar",
+      "Separar suero segun laboratorio",
+      "Documentar medicamentos que interfieren"
+    ],
+    "preanalytic_alerts": [
+      "Biotina puede interferir inmunoensayos",
+      "En enfermedad aguda grave, las pruebas tiroideas pueden ser transitoriamente anormales",
+      "TSH sola puede fallar en hipotiroidismo central"
+    ],
+    "interpretation_clues": [
+      "TSH alta con T4 libre baja sugiere hipotiroidismo primario",
+      "TSH inapropiadamente normal o baja con T4 baja sugiere origen central",
+      "En fibrilacion auricular, TSH baja puede revelar tirotoxicosis"
+    ],
+    "turnaround": "Mismo dia o siguiente dia",
+    "educational_note": "Buen ejemplo de eje hormonal y retroalimentacion."
+  },
+  {
+    "sample_id": "LAB-RESP-PCR-001",
+    "name": "PCR o antigeno respiratorio",
+    "sample_type": "Hisopado nasofaringeo, nasal o muestra respiratoria validada",
+    "container": "Medio de transporte viral o dispositivo especifico",
+    "system": "Infeccioso",
+    "disease_codes": ["INF-001", "INF-002", "RESP-001"],
+    "clinical_question": "Confirmar infeccion respiratoria viral cuando el resultado cambia aislamiento, tratamiento o decisiones clinicas.",
+    "patient_preparation": [
+      "Tomar preferiblemente temprano en el curso de sintomas",
+      "Explicar molestia breve del hisopado",
+      "Usar equipo de proteccion segun riesgo"
+    ],
+    "collection_steps": [
+      "Elegir el sitio indicado por la prueba",
+      "Girar el hisopo el tiempo recomendado",
+      "Enviar en el medio correcto y con cadena de transporte apropiada"
+    ],
+    "preanalytic_alerts": [
+      "Hisopado superficial puede producir falso negativo",
+      "Muestra tardia reduce rendimiento en algunas infecciones",
+      "Antigeno negativo no siempre descarta enfermedad si la sospecha es alta"
+    ],
+    "interpretation_clues": [
+      "PCR detecta material genetico y puede seguir positiva tras fase contagiosa",
+      "Antigeno suele ser mas util con carga viral alta",
+      "El resultado debe integrarse con sintomas, exposicion y gravedad"
+    ],
+    "turnaround": "Antigeno: minutos; PCR: horas a siguiente dia segun flujo",
+    "educational_note": "Muestra claramente la diferencia entre sensibilidad, tiempo de enfermedad y utilidad clinica."
+  },
+  {
+    "sample_id": "LAB-URINE-UA-001",
+    "name": "Uroanalisis y urocultivo",
+    "sample_type": "Orina",
+    "container": "Frasco esteril para cultivo; frasco limpio para uroanalisis",
+    "system": "Renal",
+    "disease_codes": ["INF-003", "REN-001", "REN-002", "REN-003", "REN-004", "REN-005", "REN-008", "DIG-001"],
+    "clinical_question": "Buscar infeccion urinaria, hematuria, proteinuria o pistas de enfermedad renal y diferenciales abdominales.",
+    "patient_preparation": [
+      "Explicar aseo y chorro medio",
+      "Tomar antes de antibiotico si se busca cultivo",
+      "Evitar contaminacion vaginal o cutanea"
+    ],
+    "collection_steps": [
+      "Recolectar chorro medio en recipiente adecuado",
+      "Cerrar y rotular inmediatamente",
+      "Procesar pronto o refrigerar si hay demora"
+    ],
+    "preanalytic_alerts": [
+      "Demora a temperatura ambiente favorece crecimiento bacteriano",
+      "Contaminacion aumenta celulas epiteliales y cultivos mixtos",
+      "Nitritos negativos no descartan infeccion"
+    ],
+    "interpretation_clues": [
+      "Leucocituria con sintomas apoya infeccion",
+      "Hematuria obliga a correlacionar con litiasis, glomerulo o trauma",
+      "Proteinuria persistente pide cuantificacion y evaluacion renal"
+    ],
+    "turnaround": "Uroanalisis el mismo dia; cultivo 24 a 72 horas",
+    "educational_note": "Sirve para ensenar diferencia entre tamizaje rapido y confirmacion microbiologica.",
+    "comparison_patterns": [
+      {
+        "label": "Orina sin enfermedad activa",
+        "baseline": "Sin leucocituria significativa, nitritos negativos, sin hematuria persistente ni proteinuria relevante.",
+        "disease_pattern": "Leucocitos/nitritos sugieren infeccion; hematuria apunta a litiasis, glomerulo o tumor; proteinuria persistente obliga a cuantificar.",
+        "teaching_point": "El uroanalisis es un mapa inicial: no diagnostica solo, pero dirige a cultivo, ACR, imagen o sedimento."
+      },
+      {
+        "label": "Sedimento urinario",
+        "baseline": "Sin cilindros patologicos y pocas celulas.",
+        "disease_pattern": "Cilindros eritrocitarios sugieren glomerulonefritis; cilindros leucocitarios pueden aparecer en pielonefritis o nefritis intersticial.",
+        "teaching_point": "El sedimento ayuda a separar origen glomerular, infeccioso y tubular."
+      }
+    ],
+    "case_examples": [
+      {
+        "disease_code": "REN-004",
+        "scenario": "pielonefritis aguda",
+        "results": "Esterasa leucocitaria positiva, nitritos positivos, >50 leucocitos/campo, bacteriuria y urocultivo con crecimiento significativo.",
+        "interpretation": "Sintomas sistemicos mas piuria/bacteriuria apoyan infeccion urinaria alta."
+      },
+      {
+        "disease_code": "REN-005",
+        "scenario": "colico renal por litiasis",
+        "results": "Hematuria microscopica, leucocitos escasos, nitritos negativos y cristales segun composicion.",
+        "interpretation": "Hematuria con dolor colico orienta a calculo; fiebre cambiaria la prioridad por obstruccion infectada."
+      },
+      {
+        "disease_code": "REN-002",
+        "scenario": "sindrome nefritico",
+        "results": "Hematuria, proteinuria, cilindros eritrocitarios y creatinina ascendente.",
+        "interpretation": "Patron de inflamacion glomerular que requiere estudio dirigido."
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "UCI Chronic Kidney Disease Dataset",
+        "status": "incluye densidad urinaria, albumina, azucar y sedimento simplificado",
+        "note": "Sirve para ejemplos de clasificacion renal, no para microbiologia fina."
+      },
+      {
+        "name": "MIMIC-IV / PhysioNet",
+        "status": "requiere credencial",
+        "note": "Puede aportar uroanalisis/cultivos en pacientes hospitalarios si se construye consulta SQL."
+      }
+    ]
+  },
+  {
+    "sample_id": "LAB-CSF-MENINGITIS-001",
+    "name": "Liquido cefalorraquideo",
+    "sample_type": "LCR",
+    "container": "Tubos esteriles numerados",
+    "system": "Neurologico",
+    "disease_codes": ["NEU-006", "INF-004"],
+    "clinical_question": "Evaluar meningitis, encefalitis, hemorragia subaracnoidea u otros procesos neurologicos segun contexto.",
+    "patient_preparation": [
+      "Verificar contraindicaciones de puncion lumbar",
+      "Considerar neuroimagen previa si hay signos de hipertension intracraneal o deficit focal",
+      "Registrar antibioticos previos"
+    ],
+    "collection_steps": [
+      "Recolectar en tubos numerados",
+      "Enviar microbiologia de inmediato",
+      "Solicitar glucosa en sangre cercana para comparar"
+    ],
+    "preanalytic_alerts": [
+      "Demora reduce rendimiento microbiologico",
+      "Puncion traumatica puede confundir recuento celular",
+      "Falta de glucosa serum dificulta interpretar glucorraquia"
+    ],
+    "interpretation_clues": [
+      "Neutrofilia, proteinas altas y glucosa baja sugieren meningitis bacteriana",
+      "Linfocitosis orienta a causas virales, TB, hongos o inflamatorias segun contexto",
+      "La clinica manda si hay sepsis o compromiso neurologico"
+    ],
+    "turnaround": "Recuento y quimica el mismo dia; cultivos tardan mas",
+    "educational_note": "Es muestra critica: ensena urgencia, seguridad y correlacion clinica."
+  },
+  {
+    "sample_id": "LAB-BLOOD-CBC-RENAL-001",
+    "name": "Hemograma en enfermedad renal",
+    "sample_type": "Sangre total",
+    "container": "Tubo con EDTA",
+    "system": "Renal",
+    "disease_codes": ["REN-001", "REN-003", "REN-004", "REN-006", "REN-007"],
+    "clinical_question": "Comparar anemia de enfermedad renal cronica, leucocitosis infecciosa y cambios sistemicos segun contexto.",
+    "patient_preparation": [
+      "No requiere ayuno",
+      "Registrar transfusiones, sangrado, embarazo, inflamacion o terapia con hierro/eritropoyetina",
+      "Interpretar hemoglobina con edad, sexo, volumen y comorbilidades"
+    ],
+    "collection_steps": [
+      "Tomar muestra en EDTA",
+      "Mezclar suavemente para evitar coagulos",
+      "Enviar con prioridad si hay sepsis, sangrado o anemia severa"
+    ],
+    "preanalytic_alerts": [
+      "Muestra coagulada invalida conteos",
+      "Hemodilucion por toma desde via puede bajar artificialmente hemoglobina",
+      "Plaquetas agregadas alteran recuento plaquetario"
+    ],
+    "interpretation_clues": [
+      "ERC avanzada suele asociarse a anemia normocitica por menor eritropoyetina",
+      "Leucocitosis con fiebre y dolor en flanco apoya infeccion, pero no reemplaza cultivo",
+      "Sindrome nefrotico puede coexistir con inflamacion, hemodilucion o riesgo trombotico"
+    ],
+    "turnaround": "Mismo dia",
+    "educational_note": "Ayuda a conectar el rinon con eritropoyetina, infeccion y gravedad sistemica.",
+    "comparison_patterns": [
+      {
+        "label": "Hemoglobina",
+        "baseline": "Hemoglobina dentro del rango esperado, VCM estable y sin sintomas de anemia.",
+        "disease_pattern": "Hemoglobina baja, a menudo normocitica en ERC; puede bajar por inflamacion, sangrado o deficit de hierro asociado.",
+        "teaching_point": "En renal no basta decir anemia: hay que cruzarla con eGFR, hierro, inflamacion y perdidas."
+      },
+      {
+        "label": "Leucocitos",
+        "baseline": "Leucocitos en rango y sin desviacion clinicamente relevante.",
+        "disease_pattern": "Leucocitosis/neutrofilia en pielonefritis o infeccion obstructiva; puede ser normal en inmunosupresion.",
+        "teaching_point": "El hemograma mide respuesta sistemica, no localiza el foco por si solo."
+      }
+    ],
+    "case_examples": [
+      {
+        "disease_code": "REN-001",
+        "scenario": "ERC con anemia",
+        "results": "Hemoglobina 9.8 g/dL, VCM normal, eGFR 22 ml/min/1.73 m2, ferritina y saturacion de transferrina pendientes.",
+        "interpretation": "Compatible con anemia de ERC, pero requiere descartar deficit de hierro u otras causas."
+      },
+      {
+        "disease_code": "REN-004",
+        "scenario": "pielonefritis febril",
+        "results": "Leucocitos 16.500/uL con neutrofilia, PCR elevada, uroanalisis con piuria.",
+        "interpretation": "Patron inflamatorio sistemico que aumenta sospecha de infeccion urinaria alta."
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "UCI Chronic Kidney Disease Dataset",
+        "status": "incluye hemoglobina y recuentos celulares",
+        "note": "Apto para comparar CKD/no CKD y construir ejemplos didacticos."
+      },
+      {
+        "name": "NHANES CBC Laboratory Files",
+        "status": "publico por ciclos",
+        "note": "Permite comparar hemoglobina con eGFR/albuminuria en poblacion."
+      }
+    ]
+  },
+  {
+    "sample_id": "LAB-BLOOD-CKD-MBD-001",
+    "name": "Calcio, fosforo, bicarbonato, PTH y vitamina D",
+    "sample_type": "Suero o plasma",
+    "container": "Tubo seco o heparina; segun analito y laboratorio",
+    "system": "Renal",
+    "disease_codes": ["REN-001", "REN-007"],
+    "clinical_question": "Reconocer complicaciones metabolicas de enfermedad renal cronica: acidosis, hiperfosfatemia y trastorno mineral-oseo.",
+    "patient_preparation": [
+      "No siempre requiere ayuno",
+      "Registrar quelantes de fosforo, calcio, vitamina D, bicarbonato y dialisis si aplica",
+      "Interpretar calcio corregido por albumina cuando corresponda"
+    ],
+    "collection_steps": [
+      "Evitar hemolisis",
+      "Separar muestra segun protocolo",
+      "Procesar PTH segun estabilidad del laboratorio"
+    ],
+    "preanalytic_alerts": [
+      "Albumina baja altera lectura de calcio total",
+      "Demora o tubo incorrecto puede afectar PTH",
+      "Hemolisis interfiere con algunos analitos"
+    ],
+    "interpretation_clues": [
+      "Fosforo alto y PTH elevada sugieren adaptacion a menor filtracion",
+      "Bicarbonato bajo apoya acidosis metabolica de ERC o lesion renal",
+      "Calcio, fosforo, PTH y vitamina D deben leerse como sistema, no aislados"
+    ],
+    "turnaround": "Quimica el mismo dia; PTH/vitamina D puede tardar mas",
+    "educational_note": "Es la muestra que explica por que la ERC afecta hueso, musculo, acido-base y riesgo cardiovascular.",
+    "comparison_patterns": [
+      {
+        "label": "ERC temprana vs avanzada",
+        "baseline": "Calcio, fosforo y bicarbonato en rango; PTH no elevada de forma persistente.",
+        "disease_pattern": "Bicarbonato bajo, fosforo alto y PTH elevada conforme cae el eGFR.",
+        "teaching_point": "Estas alteraciones suelen aparecer cuando la reserva renal cae, no en toda albuminuria temprana."
+      }
+    ],
+    "case_examples": [
+      {
+        "disease_code": "REN-001",
+        "scenario": "ERC G4 con complicaciones",
+        "results": "Fosforo 5.6 mg/dL, bicarbonato 18 mmol/L, PTH elevada, calcio corregido bajo-normal.",
+        "interpretation": "Patron de trastorno mineral-oseo y acidosis metabolica asociados a ERC avanzada."
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "NHANES Laboratory Data",
+        "status": "publico",
+        "note": "Incluye multiples analitos nutricionales/metabolicos por ciclos; requiere mapear variables por ano."
+      }
+    ]
+  },
+  {
+    "sample_id": "LAB-URINE-CULTURE-RENAL-001",
+    "name": "Urocultivo y antibiograma",
+    "sample_type": "Orina para microbiologia",
+    "container": "Frasco esteril",
+    "system": "Renal",
+    "disease_codes": ["REN-004", "REN-005", "REN-008"],
+    "clinical_question": "Confirmar infeccion urinaria alta o infeccion asociada a obstruccion y guiar antibiotico.",
+    "patient_preparation": [
+      "Tomar antes de antibiotico si es posible",
+      "Explicar chorro medio y aseo",
+      "Si hay sonda, tomar del puerto indicado, no de la bolsa"
+    ],
+    "collection_steps": [
+      "Recolectar en frasco esteril",
+      "Rotular hora de toma y metodo",
+      "Transportar rapido o refrigerar segun protocolo"
+    ],
+    "preanalytic_alerts": [
+      "Contaminacion genera flora mixta y dificulta interpretacion",
+      "Antibiotico previo puede negativizar cultivo",
+      "Demora a temperatura ambiente aumenta crecimiento bacteriano no representativo"
+    ],
+    "interpretation_clues": [
+      "Crecimiento significativo con sintomas apoya infeccion",
+      "Obstruccion mas fiebre es urgencia aunque el cultivo tarde",
+      "Antibiograma guia ajuste, no debe retrasar manejo si hay sepsis"
+    ],
+    "turnaround": "24 a 72 horas para identificacion y sensibilidad",
+    "educational_note": "Permite ensenar diferencia entre prueba rapida de orina y confirmacion microbiologica.",
+    "comparison_patterns": [
+      {
+        "label": "Cultivo",
+        "baseline": "Sin crecimiento significativo o flora contaminante sin sintomas.",
+        "disease_pattern": "Crecimiento significativo de uropatogeno, especialmente con piuria, fiebre o dolor en flanco.",
+        "teaching_point": "El cultivo se interpreta con sintomas y calidad de muestra."
+      }
+    ],
+    "case_examples": [
+      {
+        "disease_code": "REN-004",
+        "scenario": "pielonefritis no complicada",
+        "results": "Urocultivo con E. coli sensible a antibiotico seleccionado, piuria y fiebre.",
+        "interpretation": "Confirma etiologia probable y permite ajustar tratamiento."
+      },
+      {
+        "disease_code": "REN-008",
+        "scenario": "obstruccion infectada",
+        "results": "Fiebre, creatinina elevada, hidronefrosis y cultivo positivo.",
+        "interpretation": "No es solo infeccion: requiere pensar en drenaje de la obstruccion."
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "MIMIC-IV microbiology/labevents",
+        "status": "requiere credencial",
+        "note": "Permite construir cohortes de urocultivo, sensibilidad y sepsis urinaria con SQL."
+      }
+    ]
+  },
+  {
+    "sample_id": "LAB-URINE-STONE-METABOLIC-001",
+    "name": "Estudio metabolico de litiasis y analisis del calculo",
+    "sample_type": "Orina de 24 horas y calculo expulsado",
+    "container": "Recipiente de recoleccion 24 h; frasco seco para calculo",
+    "system": "Renal",
+    "disease_codes": ["REN-005"],
+    "clinical_question": "Identificar factores de recurrencia y tipo de calculo para orientar prevencion.",
+    "patient_preparation": [
+      "Indicar recoleccion completa de 24 horas cuando se solicite",
+      "Mantener dieta habitual salvo indicacion distinta",
+      "Guardar calculo expulsado seco y limpio para analisis"
+    ],
+    "collection_steps": [
+      "Descartar primera orina y registrar hora de inicio",
+      "Recolectar toda la orina hasta la misma hora del dia siguiente",
+      "Entregar volumen total y muestra segun protocolo"
+    ],
+    "preanalytic_alerts": [
+      "Recoleccion incompleta invalida volumen y excreciones",
+      "No mezclar calculo con papel, agua o sustancias",
+      "Interpretar con dieta, medicamentos y funcion renal"
+    ],
+    "interpretation_clues": [
+      "Volumen urinario bajo aumenta sobresaturacion",
+      "Hipercalciuria, hiperoxaluria, hipocitraturia o hiperuricosuria orientan prevencion",
+      "Calculos de estruvita sugieren relacion con infeccion por bacterias ureasa positivas"
+    ],
+    "turnaround": "Variable; analisis metabolico y del calculo puede tardar varios dias",
+    "educational_note": "Traduce el episodio doloroso en causa prevenible: volumen, cristales, pH y composicion.",
+    "comparison_patterns": [
+      {
+        "label": "Riesgo de cristalizacion",
+        "baseline": "Volumen urinario adecuado y sin sobresaturacion marcada.",
+        "disease_pattern": "Volumen bajo, calcio/oxalato/acido urico elevados, citrato bajo o pH favorable a ciertos calculos.",
+        "teaching_point": "La prevencion depende del tipo de calculo; no todos se manejan igual."
+      }
+    ],
+    "case_examples": [
+      {
+        "disease_code": "REN-005",
+        "scenario": "litiasis calcica recurrente",
+        "results": "Orina 24 h con volumen bajo, sodio alto e hipercalciuria; calculo de oxalato de calcio.",
+        "interpretation": "Patron compatible con recurrencia prevenible mediante hidratacion, sodio y medidas dirigidas."
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "NIDDK kidney stone clinical variables",
+        "status": "fuente guia, no dataset de pacientes listo",
+        "note": "Util para definir variables educativas: volumen, calcio, oxalato, citrato, acido urico y pH."
+      }
+    ]
+  }
+]

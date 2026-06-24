@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedLearn Clínico</title>
+    <link rel="stylesheet" href="styles.css?v=renal-layout-23" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <h1>MedLearn Clínico</h1>
+        <p>
+          Plataforma educativa para estudiar enfermedades por sistemas, anatomía, progresión visual, laboratorios y rutas didácticas.
+        </p>
+      </div>
+    </header>
+
+    <nav class="module-nav" aria-label="Módulos principales">
+      <button class="module-button active" type="button" data-module-target="diseases">
+        <span aria-hidden="true">●</span>
+        <strong>Enfermedades</strong>
+      </button>
+      <button class="module-button deferred-module" type="button" data-module-target="cases" hidden>
+        <span aria-hidden="true">▦</span>
+        <strong>Casos clínicos</strong>
+      </button>
+      <button class="module-button" type="button" data-module-target="analysis">
+        <span aria-hidden="true">✦</span>
+        <strong>Análisis IA</strong>
+      </button>
+      <button class="module-button" type="button" data-module-target="atlas">
+        <span aria-hidden="true">◈</span>
+        <strong>Atlas visual</strong>
+      </button>
+      <button class="module-button" type="button" data-module-target="route">
+        <span aria-hidden="true">☰</span>
+        <strong>Ruta</strong>
+      </button>
+    </nav>
+
+    <main class="container">
+      <section id="diseaseRepositoryPanel" class="panel left module-panel" data-module="diseases">
+        <div class="section-header">
+          <h2>Repositorio</h2>
+          <span id="resultCount" class="muted-pill">0</span>
+        </div>
+        <div id="statsStrip" class="stats-strip"></div>
+        <div class="toolbar">
+          <input id="searchInput" type="search" placeholder="Buscar enfermedad, órgano o síntoma" />
+          <select id="systemFilter" aria-label="Filtrar por sistema">
+            <option value="">Todos los sistemas</option>
+          </select>
+          <select id="coverageFilter" aria-label="Filtrar por cobertura">
+            <option value="">Toda la cobertura</option>
+            <option value="reviewed">Fichas revisadas</option>
+            <option value="needs-review">Pendientes de revisar</option>
+            <option value="complete">Con recurso e imagen</option>
+            <option value="needs-image">Sin imagen dedicada</option>
+          </select>
+        </div>
+        <div id="systemChips" class="system-chips" aria-label="Departamentos clínicos"></div>
+        <div id="diseaseList" class="list"></div>
+      </section>
+
+      <section id="diseaseDetailPanel" class="panel right disease-detail-panel module-panel" data-module="diseases" hidden>
+        <div id="diseaseDetail" class="detail">
+          <p class="hint">Selecciona una enfermedad para abrir el visor anatómico.</p>
+        </div>
+      </section>
+
+      <section class="panel full module-panel" data-module="cases" hidden>
+        <div class="section-header">
+          <h2>Casos clínicos</h2>
+          <span id="caseCount" class="muted-pill">0</span>
+        </div>
+        <div class="case-repo-controls">
+          <input id="caseSearchInput" type="search" placeholder="Buscar caso, enfermedad, motivo o hallazgo" />
+          <select id="caseSystemFilter" aria-label="Filtrar casos por sistema">
+            <option value="">Todos los sistemas</option>
+          </select>
+        </div>
+        <div id="caseList" class="case-list"></div>
+      </section>
+
+      <section class="panel full module-panel" data-module="analysis" hidden>
+        <h2>Simulador de historia clínica e IA</h2>
+        <div class="case-simulator">
+          <textarea
+            id="clinicalInput"
+            rows="6"
+            placeholder="Describe un caso médico o pregunta cómo se relaciona con la enfermedad..."
+          ></textarea>
+          <button id="analyzeButton">Analizar con IA</button>
+          <div id="analysisResult" class="analysis"></div>
+        </div>
+      </section>
+
+      <section class="panel full module-panel" data-module="atlas" hidden>
+        <div class="section-header">
+          <h2>Atlas visual</h2>
+          <span class="muted-pill">modelos educativos</span>
+        </div>
+        <div id="atlasGrid" class="atlas-grid"></div>
+      </section>
+
+      <section class="panel full module-panel" data-module="route" hidden>
+        <h2>Ruta de aprendizaje</h2>
+        <ol>
+          <li>Explora las enfermedades disponibles.</li>
+          <li>Estudia el órgano afectado y la teoría base.</li>
+          <li>Abre un caso clínico cuando quieras practicar.</li>
+          <li>Responde preguntas interactivas y revisa la explicación.</li>
+          <li>Aprende con enfoque didáctico, no diagnóstico.</li>
+        </ol>
+      </section>
+    </main>
+
+    <div id="modalOverlay" class="modal-overlay hidden">
+      <div class="modal">
+        <button id="modalClose" class="close-button" aria-label="Cerrar modal">×</button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="diseases.js?v=renal-layout-23"></script>
+    <script src="cases.js"></script>
+    <script src="quiz.js"></script>
+    <script src="ai.js"></script>
+    <script src="app.js?v=renal-layout-23"></script>
+  </body>
+</html>

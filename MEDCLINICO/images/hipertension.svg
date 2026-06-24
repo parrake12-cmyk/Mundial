@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240">
+  <rect width="320" height="240" rx="24" fill="#fee2e2" />
+  <path d="M120 80c0-20 16-36 36-36h8c20 0 36 16 36 36v80c0 20-16 36-36 36h-8c-20 0-36-16-36-36V80Z" fill="#dc2626"/>
+  <path d="M140 60c0-12 10-22 22-22h16c12 0 22 10 22 22v100c0 12-10 22-22 22h-16c-12 0-22-10-22-22V60Z" fill="#ef4444"/>
+  <circle cx="160" cy="140" r="8" fill="#fecaca" />
+  <path d="M150 160c10 6 20 4 24-4" stroke="#fecaca" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <text x="160" y="210" font-size="18" font-family="Inter, sans-serif" fill="#991b1b" text-anchor="middle">Hipertensión</text>
+</svg>
