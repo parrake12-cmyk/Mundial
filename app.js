@@ -1,5 +1,41 @@
 const STORAGE_KEY = "world-cup-couple-pool-v1";
 const PLAYER_KEY = "world-cup-active-player-v1";
+
+function sanitizeResults(results = {}) {
+  return Object.fromEntries(Object.entries(results || {}).filter(([, result]) => {
+    return result?.verified === true
+      && Number.isFinite(result.home)
+      && Number.isFinite(result.away);
+  }));
+}
+
+function mergePicks(currentPicks = {}, incomingPicks = {}) {
+  const merged = { ...(currentPicks || {}) };
+  for (const [matchNumber, players] of Object.entries(incomingPicks || {})) {
+    merged[matchNumber] = { ...(merged[matchNumber] || {}) };
+    for (const [player, pick] of Object.entries(players || {})) {
+      const existing = merged[matchNumber][player];
+      if (existing?.locked && !pick?.locked) {
+        merged[matchNumber][player] = existing;
+        continue;
+      }
+      merged[matchNumber][player] = { ...(existing || {}), ...(pick || {}) };
+    }
+  }
+  return merged;
+}
+
+function mergeResults(currentResults = {}, incomingResults = {}) {
+  const merged = { ...(currentResults || {}) };
+  for (const [matchNumber, result] of Object.entries(incomingResults || {})) {
+    if (!result || typeof result !== "object") continue;
+    if (Number.isFinite(Number(result.home)) && Number.isFinite(Number(result.away))) {
+      merged[matchNumber] = { ...(merged[matchNumber] || {}), ...result };
+    }
+  }
+  return sanitizeResults(merged);
+}
+
 const STAGES = {
   "group-stage": "Fase de grupos",
   "round-of-32": "Dieciseisavos",
@@ -196,9 +232,9 @@ async function loadSharedState() {
 }
 
 function applySavedState(saved) {
-  state.names = saved.names || state.names;
-  state.picks = saved.picks || state.picks;
-  state.results = sanitizeResults(saved.results || state.results);
+  state.names = { ...(state.names || {}), ...(saved.names || {}) };
+  state.picks = mergePicks(state.picks, saved.picks);
+  state.results = mergeResults(state.results, saved.results);
 }
 
 function applyVerifiedResults(data = {}) {
@@ -399,8 +435,10 @@ function renderMatchCard(fixture) {
   const display = confirmedResult(fixture.matchNumber);
   const done = hasResult(fixture.matchNumber);
   const isLive = live && !live.finished && live.minute !== "notstarted";
+  const pendingStage = fixture.stage !== "group-stage" && !done;
   if (done) card.classList.add("done");
   if (isLive) card.classList.add("is-live");
+  if (pendingStage) card.classList.add("pending-stage");
 
   template.querySelector(".match-meta").innerHTML = `
     <div class="match-number">Partido ${fixture.matchNumber}</div>
@@ -408,6 +446,7 @@ function renderMatchCard(fixture) {
     <div>${formatDate(fixture.kickoffUtc)}</div>
     <div>${titleCase(fixture.hostCity.replaceAll("-", " "))}</div>
     <div class="${isLive ? "live-pill live-now" : "live-pill"}">${liveLabel(live)}</div>
+    ${pendingStage ? '<div class="mini">Sin resultado aún</div>' : ""}
   `;
 
   template.querySelector(".teams").innerHTML = `
@@ -675,6 +714,7 @@ function renderBracket() {
         <div class="${done && result.home > result.away ? "winner" : ""}">${flagFor(fixture.homeTeam)} ${displayTeamName(fixture.homeTeam)} ${done ? result.home : ""}</div>
         <div class="${done && result.away > result.home ? "winner" : ""}">${flagFor(fixture.awayTeam)} ${displayTeamName(fixture.awayTeam)} ${done ? result.away : ""}</div>
         <div class="mini">${titleCase(fixture.hostCity.replaceAll("-", " "))}</div>
+        ${!done ? '<div class="mini">Sin resultado aún</div>' : ""}
       `;
       column.append(item);
     });

@@ -2,6 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
+const { mergePicks, mergeResults, sanitizeResults } = require("./state-utils");
 
 const PORT = Number(process.env.PORT || 4173);
 const ROOT = __dirname;
@@ -110,16 +111,9 @@ async function writeState(input) {
 function sanitizeState(input = {}) {
   return {
     ...input,
-    results: sanitizeResults(input.results),
+    picks: mergePicks(input.picks, {}),
+    results: mergeResults(input.results, {}),
   };
-}
-
-function sanitizeResults(results = {}) {
-  return Object.fromEntries(Object.entries(results).filter(([, result]) => {
-    return result?.verified === true
-      && Number.isFinite(result.home)
-      && Number.isFinite(result.away);
-  }));
 }
 
 function loadVerifiedResults() {
