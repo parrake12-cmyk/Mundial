@@ -281,6 +281,13 @@ function render() {
   renderSummary();
 }
 
+function renderKeepingScroll() {
+  const x = window.scrollX;
+  const y = window.scrollY;
+  render();
+  requestAnimationFrame(() => window.scrollTo(x, y));
+}
+
 function setActivePlayer(player) {
   activePlayer = player === "b" ? "b" : "a";
   localStorage.setItem(PLAYER_KEY, activePlayer);
@@ -351,14 +358,14 @@ function renderMatchCard(fixture) {
 
   template.querySelector(".teams").innerHTML = `
     <div class="team-line">
-      <span class="flag">${flagFor(fixture.homeTeam)}</span>
-      <span class="team-name">${getDisplayTeamName(fixture.homeTeam)}</span>
+      <span class="flag">${flagFor(displayFixtureTeam(fixture, "home"))}</span>
+      <span class="team-name">${getDisplayTeamName(displayFixtureTeam(fixture, "home"))}</span>
       <span class="score-badge">${displayScore(display, "home")}</span>
     </div>
     <div class="versus">vs</div>
     <div class="team-line away">
-      <span class="flag">${flagFor(fixture.awayTeam)}</span>
-      <span class="team-name">${getDisplayTeamName(fixture.awayTeam)}</span>
+      <span class="flag">${flagFor(displayFixtureTeam(fixture, "away"))}</span>
+      <span class="team-name">${getDisplayTeamName(displayFixtureTeam(fixture, "away"))}</span>
       <span class="score-badge">${displayScore(display, "away")}</span>
     </div>
     <div class="stadium-line">${fixture.stadium}</div>
@@ -402,9 +409,9 @@ function renderPickBox(fixture, player) {
   const outcome = document.createElement("select");
   outcome.innerHTML = `
     <option value="">Sin pick</option>
-    <option value="home">${flagFor(fixture.homeTeam)} ${getDisplayTeamName(fixture.homeTeam)}</option>
+    <option value="home">${getDisplayTeamName(displayFixtureTeam(fixture, "home"))}</option>
     <option value="draw">Empate</option>
-    <option value="away">${flagFor(fixture.awayTeam)} ${getDisplayTeamName(fixture.awayTeam)}</option>
+    <option value="away">${getDisplayTeamName(displayFixtureTeam(fixture, "away"))}</option>
   `;
   outcome.value = pick.outcome || "";
   outcome.disabled = !canEdit;
@@ -466,7 +473,7 @@ function savePick(matchNumber, player, patch) {
   state.picks[matchNumber][player] = { ...(state.picks[matchNumber][player] || {}), ...patch };
   hasLocalDraft = true;
   persistLocal();
-  render();
+  renderKeepingScroll();
 }
 
 async function lockPick(matchNumber, player, button) {
@@ -488,11 +495,11 @@ async function lockPick(matchNumber, player, button) {
   state.picks[matchNumber][player] = lockedPick;
   hasLocalDraft = false;
   persistLocal();
-  render();
+  renderKeepingScroll();
 
   try {
     await apiAction({ action: "savePick", matchNumber, pick: lockedPick, lock: true });
-    render();
+    renderKeepingScroll();
     toast("Pick guardado y bloqueado.");
   } catch (error) {
     if (error.message === "El pick ya está bloqueado") {
@@ -502,7 +509,7 @@ async function lockPick(matchNumber, player, button) {
     state.picks[matchNumber][player] = pick;
     hasLocalDraft = true;
     persistLocal();
-    render();
+    renderKeepingScroll();
     toast(error.message);
   }
 }
@@ -560,6 +567,47 @@ function groupStandings() {
   return buildGroupStandings(state.fixtures, state.results, state.liveScores);
 }
 
+function displayFixtureTeam(fixture, side) {
+  const key = side === "home" ? "homeTeam" : "awayTeam";
+  return resolveQualifiedTeam(fixture[key]) || fixture[key];
+}
+
+function resolveQualifiedTeam(slot) {
+  const value = String(slot || "");
+  let match = value.match(/^Group ([A-L]) winners$/i);
+  if (match) return groupStandings()[match[1]]?.[0]?.team || value;
+
+  match = value.match(/^Group ([A-L]) runners-up$/i);
+  if (match) return groupStandings()[match[1]]?.[1]?.team || value;
+
+  match = value.match(/^Group ([A-L/]+) third place$/i);
+  if (match) {
+    const groups = match[1].split("/");
+    return bestThirdPlace(groups)?.team || value;
+  }
+
+  match = value.match(/^Winner Match (\d+)$/i);
+  if (match) return winnerOfMatch(Number(match[1])) || value;
+
+  return value;
+}
+
+function bestThirdPlace(groups) {
+  return groups
+    .map((group) => groupStandings()[group]?.[2])
+    .filter(Boolean)
+    .sort((a, b) => b.pts - a.pts || (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf || a.team.localeCompare(b.team))[0];
+}
+
+function winnerOfMatch(matchNumber) {
+  const fixture = state.fixtures.find((item) => item.matchNumber === matchNumber);
+  const result = resolveMatchResult({ matchNumber, stateResults: state.results, liveScores: state.liveScores });
+  if (!fixture || !result || result.home === result.away) return "";
+  return result.home > result.away
+    ? displayFixtureTeam(fixture, "home")
+    : displayFixtureTeam(fixture, "away");
+}
+
 function renderBracket() {
   const rounds = ["round-of-32", "round-of-16", "quarter-finals", "semi-finals", "third-place", "final"];
   const columns = rounds.map((round) => {
@@ -573,8 +621,8 @@ function renderBracket() {
       item.className = "bracket-match";
       item.innerHTML = `
         <div class="mini">#${fixture.matchNumber} · ${formatDate(fixture.kickoffUtc)}</div>
-        <div class="${done && result.home > result.away ? "winner" : ""}">${flagFor(fixture.homeTeam)} ${getDisplayTeamName(fixture.homeTeam)} ${done ? result.home : ""}</div>
-        <div class="${done && result.away > result.home ? "winner" : ""}">${flagFor(fixture.awayTeam)} ${getDisplayTeamName(fixture.awayTeam)} ${done ? result.away : ""}</div>
+        <div class="${done && result.home > result.away ? "winner" : ""}">${flagFor(displayFixtureTeam(fixture, "home"))} ${getDisplayTeamName(displayFixtureTeam(fixture, "home"))} ${done ? result.home : ""}</div>
+        <div class="${done && result.away > result.home ? "winner" : ""}">${flagFor(displayFixtureTeam(fixture, "away"))} ${getDisplayTeamName(displayFixtureTeam(fixture, "away"))} ${done ? result.away : ""}</div>
         <div class="mini">${titleCase(fixture.hostCity.replaceAll("-", " "))}</div>
       `;
       column.append(item);
@@ -601,12 +649,16 @@ function renderSummary() {
 }
 
 function summaryItem(fixture) {
-  const result = state.results[fixture.matchNumber];
+  const result = resolveMatchResult({
+    matchNumber: fixture.matchNumber,
+    stateResults: state.results,
+    liveScores: state.liveScores,
+  });
   const item = document.createElement("div");
   item.className = "summary-item";
   item.innerHTML = `
     <div class="mini">#${fixture.matchNumber} · ${formatDate(fixture.kickoffUtc)}</div>
-    <strong>${flagFor(fixture.homeTeam)} ${getDisplayTeamName(fixture.homeTeam)} ${result ? result.home : ""} - ${result ? result.away : ""} ${flagFor(fixture.awayTeam)} ${getDisplayTeamName(fixture.awayTeam)}</strong>
+    <strong>${flagFor(displayFixtureTeam(fixture, "home"))} ${getDisplayTeamName(displayFixtureTeam(fixture, "home"))} ${result ? result.home : ""} - ${result ? result.away : ""} ${flagFor(displayFixtureTeam(fixture, "away"))} ${getDisplayTeamName(displayFixtureTeam(fixture, "away"))}</strong>
   `;
   return item;
 }
@@ -628,7 +680,7 @@ function renderPointsBreakdown() {
     item.className = "summary-item";
     item.innerHTML = `
       <div class="mini">#${fixture.matchNumber}</div>
-      <strong>${flagFor(fixture.homeTeam)} ${getDisplayTeamName(fixture.homeTeam)} vs ${flagFor(fixture.awayTeam)} ${getDisplayTeamName(fixture.awayTeam)}</strong>
+      <strong>${flagFor(displayFixtureTeam(fixture, "home"))} ${getDisplayTeamName(displayFixtureTeam(fixture, "home"))} vs ${flagFor(displayFixtureTeam(fixture, "away"))} ${getDisplayTeamName(displayFixtureTeam(fixture, "away"))}</strong>
       <div>${state.names.a}: ${a} · ${state.names.b}: ${b}</div>
     `;
     return item;
@@ -827,7 +879,7 @@ async function refreshLiveScores() {
         })
         .filter(Boolean)
     );
-    render();
+    renderKeepingScroll();
   } catch (error) {
     console.error(error);
   }
