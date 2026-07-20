@@ -1,0 +1,86 @@
+[
+  {
+    "disease_code": "REN-001",
+    "diagnostic_summary": "La ERC se confirma por alteracion persistente (>3 meses) de la estructura o funcion renal: eGFR reducido, albuminuria u otros marcadores de dano renal. La cronicidad se establece por hallazgos persistentes en analitica, imagen o histologia.",
+    "initial_evaluation": ["Creatinina con eGFR", "Relacion albumina/creatinina en orina", "Uroanalisis y sedimento", "Electrolitos", "Hemograma", "Ecografia renal si se sospecha dano estructural"],
+    "laboratory_tests": ["Creatinina serica con eGFR", "Relacion albumina/creatinina en orina", "Uroanalisis", "Electrolitos (potasio, sodio, bicarbonato)", "Calcio, fosforo, PTH segun estadio", "Hemograma para anemia", "Glucosa/HbA1c"],
+    "urine_or_stool_tests": ["Relacion albumina/creatinina en orina", "Uroanalisis con sedimento"],
+    "imaging_tests": ["Ecografia renal para descartar obstruccion y evaluar tamano/corteza"],
+    "endoscopy_or_procedures": [],
+    "pathology_or_biopsy": ["Biopsia renal si causa no clara o para filiar glomerulopatia"],
+    "diagnostic_criteria": ["eGFR < 60 mL/min/1.73m2 por >3 meses", "Albuminuria persistente (A2 o A3)", "Marcadores de dano renal en imagen o histologia", "Categorizacion KDIGO por causa, eGFR (G1-G5) y albuminuria (A1-A3)"],
+    "severity_or_staging": ["G1-G5 por eGFR", "A1-A3 por albuminuria", "Riesgo combinado en heatmap KDIGO"],
+    "monitoring_tests": ["eGFR", "Albuminuria", "Presion arterial", "Potasio, bicarbonato", "Hemoglobina", "Calcio, fosforo, PTH segun estadio"],
+    "complication_tests": ["Ecocardiograma si sintomas cardiacos", "Densitometria osea segun riesgo", "Hierro, vitamina B12, folato si anemia"],
+    "result_patterns": [
+      {"result": "eGFR < 60 persistente + albuminuria", "interpretation": "ERC establecida", "next_step": "Clasificar y planear seguimiento"},
+      {"result": "eGFR normal + albuminuria A2", "interpretation": "ERC G1 A2 (dano renal sin caida de filtracion)", "next_step": "Buscar causa y controlar factores"},
+      {"result": "Caida rapida del eGFR", "interpretation": "Progresion o agudizacion", "next_step": "Revaluar causa y urgencia"}
+    ],
+    "limitations": ["La creatinina puede variar por masa muscular, dieta y medicamentos", "El eGFR es estimacion, no medicion directa", "La albuminuria puede variar por ejercicio, fiebre o infeccion urinaria"],
+    "source_ids": ["kdigo_ckd", "niddk_ckd", "medlineplus_xml"]
+  },
+  {
+    "disease_code": "REN-006",
+    "diagnostic_summary": "La LRA es una caida rapida de la funcion renal (horas a dias). Se clasifica por KDIGO en Stage 1-3 segun creatinina y diuresis. La causa puede ser prerrenal, intrinseca o posrenal.",
+    "initial_evaluation": ["Creatinina con eGFR", "Uroanalisis y sedimento", "Electrolitos y gasometria", "Ecografia renal para descartar obstruccion"],
+    "laboratory_tests": ["Creatinina serica", "Urea/BUN", "Potasio", "Bicarbonato", "Sodio", "Hemograma", "Uroanalisis con sedimento"],
+    "urine_or_stool_tests": ["Uroanalisis", "Sodio y potasio urinario si diferencia prerrenal/intrinseca", "Relacion BUN/creatinina"],
+    "imaging_tests": ["Ecografia renal para descartar obstruccion y evaluar tamano"],
+    "endoscopy_or_procedures": [],
+    "pathology_or_biopsy": ["Biopsia renal si sospecha de glomerulonefritis o nefritis intersticial sin causa clara"],
+    "diagnostic_criteria": ["KDIGO Stage 1: creatinina >=1.5-1.9x baseline o >=0.3 mg/dL", "KDIGO Stage 2: creatinina >=2.0-2.9x baseline", "KDIGO Stage 3: creatinina >=3x baseline o >=4 mg/dL o inicio de dialisis", "Oliguria: <0.5 mL/kg/h por >=6h"],
+    "severity_or_staging": ["KDIGO Stage 1-3", "Gravedad por electrolitos, volumen y uremia"],
+    "monitoring_tests": ["Creatinina", "Potasio", "Bicarbonato", "Diuresis", "Funcion renal", "Glucosa"],
+    "complication_tests": ["ECG si hiperpotasemia", "Gasometria si acidosis", "Ecografia si sospecha de obstruccion"],
+    "result_patterns": [
+      {"result": "Creatinina elevada + oliguria", "interpretation": "LRA establecida", "next_step": "Clasificar causa y gravedad"},
+      {"result": "Hiperpotasemia", "interpretation": "Complicacion metabolica", "next_step": "Tratamiento urgente y buscar causa"},
+      {"result": "Sedimento con cilindros", "interpretation": "Orientacion a causa intrinseca", "next_step": "Filiar y considerar biopsia"}
+    ],
+    "limitations": ["La creatinina tarda en subir tras la lesion aguda", "El eGFR no es preciso en LRA", "La diuresis puede no correlacionar con la funcion renal en LRA no oligurica"],
+    "source_ids": ["kdigo_aki", "statpearls_aki", "medlineplus_xml"]
+  },
+  {
+    "disease_code": "DIG-001",
+    "diagnostic_summary": "La apendicitis aguda es principalmente un diagnostico clinico. La imagen (ecografia o TAC) se usa cuando hay duda diagnostica, en ninos, embarazo o para evaluar complicaciones.",
+    "initial_evaluation": ["Historia clinica y examen fisico", "Hemograma con leucocitos", "PCR", "Examen de orina para descartar ITU"],
+    "laboratory_tests": ["Hemograma (leucocitosis)", "PCR", "Perfil hepatico y amilasa/lipasa para diferenciales"],
+    "urine_or_stool_tests": ["Examen de orina para descartar ITU o calculo"],
+    "imaging_tests": ["Ecografia de apendice (preferida en ninos y embarazo)", "TAC abdominal si duda o complicacion"],
+    "endoscopy_or_procedures": [],
+    "pathology_or_biopsy": ["Biopsia de apendice post-colecistectomia (histologia)"],
+    "diagnostic_criteria": ["Clinica: dolor migratorio a fosa iliaca derecha + signos peritoneales", "Leucocitosis con neutrofilia", "Imagen compatible si se realiza"],
+    "severity_or_staging": ["No complicada vs perforada/absceso", "Score de Alvarado (clinico)"],
+    "monitoring_tests": ["Hemograma y PCR si evolucion", "Signos vitales y abdomen"],
+    "complication_tests": ["TAC si sospecha de absceso o perforacion"],
+    "result_patterns": [
+      {"result": "Dolor tipico + leucocitosis", "interpretation": "Alta probabilidad clinica", "next_step": "Valoracion quirurgica"},
+      {"result": "Ecografia no concluyente", "interpretation": "No descarta apendicitis", "next_step": "TAC o seguimiento clinico"},
+      {"result": "TAC con apendice aumentado y grasa inflamada", "interpretation": "Confirmacion radiologica", "next_step": "Tratamiento quirurgico"}
+    ],
+    "limitations": ["La ecografia depende del operador y del paciente", "No visualizar el apendice no descarta apendicitis", "La leucocitosis no es especifica"],
+    "source_ids": ["statpearls_appendicitis", "medlineplus_xml"]
+  },
+  {
+    "disease_code": "HEP-002",
+    "diagnostic_summary": "La cirrosis se diagnostica por la combinacion de clinica, laboratorio, imagen y, cuando es necesario, biopsia. La elastografia mide la fibrosis. La descompensacion se define por ascitis, encefalopatia, sangrado variceal o ictericia.",
+    "initial_evaluation": ["Funcion hepatica (transaminasas, bilirrubina, albmina)", "Coagulacion (INR)", "Hemograma (plaquetas)", "Ecografia abdominal"],
+    "laboratory_tests": ["Transaminasas (AST, ALT)", "Bilirrubina", "Albmina", "INR", "Plaquetas", "Creatinina", "Sodio", "Alfafetoproteina"],
+    "urine_or_stool_tests": [],
+    "imaging_tests": ["Ecografia abdominal para hepatocarcinoma y ascitis", "Elastografia (FibroScan) para fibrosis", "Endoscopia alta para varices esofagicas"],
+    "endoscopy_or_procedures": ["Endoscopia alta para cribado de varices", "Paracentesis si ascitis"],
+    "pathology_or_biopsy": ["Biopsia hepatica si diagnostico no claro o para filiar causa"],
+    "diagnostic_criteria": ["Clinica de hepatopatia cronica + imagen o histologia", "Elastografia con rigidez hepatica elevada", "Plaquetas bajas + signos de hipertension portal"],
+    "severity_or_staging": ["Child-Pugh A, B, C", "MELD (Model for End-stage Liver Disease)", "Compensada vs descompensada"],
+    "monitoring_tests": ["Funcion hepatica", "INR", "Plaquetas", "Alfafetoproteina", "Ecografia abdominal cada 6 meses", "Endoscopia para varices"],
+    "complication_tests": ["Paracentesis si ascitis (citologico, cultivo)", "Endoscopia si sangrado", "ECG y ecocardiograma si sospecha cardiaca"],
+    "result_patterns": [
+      {"result": "Plaquetas bajas + elastografia elevada", "interpretation": "Cirrosis probable", "next_step": "Buscar causa y cribar complicaciones"},
+      {"result": "Alfafetoproteina elevada", "interpretation": "Sospecha de hepatocarcinoma", "next_step": "TAC/RM y valoracion"},
+      {"result": "Ascitis con neutrofilos > 250", "interpretation": "Peritonitis bacteriana espontanea", "next_step": "Tratamiento antibiotico"}
+    ],
+    "limitations": ["La elastografia puede fallar en obesidad o ascitis", "La biopsia tiene riesgo de sangrado", "El MELD no incluye todos los factores pronostico"],
+    "source_ids": ["statpearls_cirrhosis", "aasld_guidelines", "medlineplus_xml"]
+  }
+]

@@ -13,6 +13,7 @@ const diseaseLearningObjectsPath = path.join(__dirname, 'data', 'disease_learnin
 const diagnosticTestBankPath = path.join(__dirname, 'data', 'diagnostic_test_bank.json');
 const laboratorySampleBankPath = path.join(__dirname, 'data', 'laboratory_sample_bank.json');
 const endoscopyAtlasBankPath = path.join(__dirname, 'data', 'endoscopy_atlas_bank.json');
+const diagnosticProfilesPath = path.join(__dirname, 'data', 'disease_diagnostic_profiles.json');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -35,6 +36,10 @@ function readLaboratorySampleBank() {
 
 function readEndoscopyAtlasBank() {
   return JSON.parse(fs.readFileSync(endoscopyAtlasBankPath, 'utf8'));
+}
+
+function readDiagnosticProfiles() {
+  return JSON.parse(fs.readFileSync(diagnosticProfilesPath, 'utf8'));
 }
 
 app.get('/enfermedades', (req, res) => {
@@ -156,22 +161,15 @@ app.get('/fuentes/enfermedades', (req, res) => {
 });
 
 app.get('/fuentes/enfermedades/:diseaseCode', (req, res) => {
-  const record = diseaseSources.find((item) => item.disease_code === req.params.diseaseCode);
-  if (!record) {
+  const diseaseCode = req.params.diseaseCode;
+  const records = diseaseSources.filter((item) => item.disease_code === diseaseCode);
+  if (records.length === 0) {
     return res.status(404).json({ error: 'No hay fuentes registradas para esta enfermedad.' });
   }
 
-  const sourceIds = [
-    ...record.summary_sources,
-    ...record.theory_sources,
-    ...record.classification_sources,
-    ...record.specialty_sources,
-    ...record.anatomy_sources,
-    ...record.literature_sources
-  ];
-
+  const sourceIds = records.map((r) => r.source_id).filter(Boolean);
   const sources = sourceCatalog.filter((source) => sourceIds.includes(source.id));
-  res.json({ ...record, sources });
+  res.json({ disease_code: diseaseCode, total: records.length, links: records, sources });
 });
 
 app.get('/fuentes/medlineplus', (req, res) => {
@@ -369,6 +367,47 @@ app.get('/endoscopia', (req, res) => {
   res.json({
     total: atlasBank.length,
     procedures: atlasBank
+  });
+});
+
+app.get('/diagnostico/enfermedad/:diseaseCode', (req, res) => {
+  const diseaseCode = req.params.diseaseCode;
+  let profiles = [];
+  try {
+    profiles = readDiagnosticProfiles();
+  } catch (error) {
+    return res.status(500).json({ error: 'No se pudo leer el banco de perfiles diagnosticos.' });
+  }
+
+  const profile = profiles.find((p) => p.disease_code === diseaseCode);
+  if (!profile) {
+    return res.status(404).json({ error: 'No hay perfil diagnostico para esta enfermedad.' });
+  }
+
+  const sourceIds = profile.source_ids || [];
+  const sources = sourceCatalog.filter((source) => sourceIds.includes(source.id));
+
+  let testBank = [];
+  try {
+    testBank = readDiagnosticTestBank();
+  } catch (error) {
+    // continuar sin pruebas
+  }
+  const tests = testBank.filter((test) => (test.disease_codes || []).includes(diseaseCode));
+
+  let sampleBank = [];
+  try {
+    sampleBank = readLaboratorySampleBank();
+  } catch (error) {
+    // continuar sin muestras
+  }
+  const samples = sampleBank.filter((sample) => (sample.disease_codes || []).includes(diseaseCode));
+
+  res.json({
+    ...profile,
+    sources,
+    diagnostic_tests: tests,
+    laboratory_samples: samples
   });
 });
 

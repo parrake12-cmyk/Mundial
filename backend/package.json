@@ -14,7 +14,8 @@
     "import:assets": "node importAssets.js",
     "import:learning": "node importLearningQuestions.js",
     "sync:images": "node syncImages.js",
-    "import:all": "node importDiseases.js && node importCases.js && node importAssets.js && node importLearningQuestions.js && node syncImages.js"
+    "import:all": "node importDiseases.js && node importCases.js && node importAssets.js && node importLearningQuestions.js && node syncImages.js",
+    "audit:renal-digestive": "node scripts/auditRenalDigestiveCoverage.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

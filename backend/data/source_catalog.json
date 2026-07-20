@@ -5,7 +5,12 @@
     "category": "summary",
     "provider": "National Library of Medicine",
     "homepage": "https://medlineplus.gov/xml.html",
-    "best_for": ["definitions", "synonyms", "patient_friendly_summaries", "spanish_topics"],
+    "best_for": [
+      "definitions",
+      "synonyms",
+      "patient_friendly_summaries",
+      "spanish_topics"
+    ],
     "ingestion_mode": "downloadable_xml",
     "priority": "high",
     "review_status": "ready_to_test",
@@ -17,7 +22,10 @@
     "category": "summary",
     "provider": "National Library of Medicine",
     "homepage": "https://medlineplus.gov/about/developers/webservices/",
-    "best_for": ["topic_lookup", "official_links"],
+    "best_for": [
+      "topic_lookup",
+      "official_links"
+    ],
     "ingestion_mode": "web_service",
     "priority": "high",
     "review_status": "ready_to_test",
@@ -29,7 +37,11 @@
     "category": "public_health",
     "provider": "World Health Organization",
     "homepage": "https://www.who.int/news-room/fact-sheets",
-    "best_for": ["key_facts", "prevention", "global_context"],
+    "best_for": [
+      "key_facts",
+      "prevention",
+      "global_context"
+    ],
     "ingestion_mode": "manual_review",
     "priority": "high",
     "review_status": "catalogued",
@@ -41,7 +53,11 @@
     "category": "public_health",
     "provider": "Centers for Disease Control and Prevention",
     "homepage": "https://www.cdc.gov/spanish/az/temas-salud.html",
-    "best_for": ["spanish_reference", "infectious_diseases", "patient_education"],
+    "best_for": [
+      "spanish_reference",
+      "infectious_diseases",
+      "patient_education"
+    ],
     "ingestion_mode": "manual_review",
     "priority": "medium",
     "review_status": "catalogued",
@@ -53,7 +69,12 @@
     "category": "books",
     "provider": "National Library of Medicine",
     "homepage": "https://www.ncbi.nlm.nih.gov/books",
-    "best_for": ["pathophysiology", "diagnosis", "guidelines", "textbooks"],
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "guidelines",
+      "textbooks"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "high",
     "review_status": "ready_to_use",
@@ -65,7 +86,12 @@
     "category": "books",
     "provider": "University of Washington via NCBI Bookshelf",
     "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK1116/",
-    "best_for": ["genetic_diseases", "diagnosis", "management", "genetic_counseling"],
+    "best_for": [
+      "genetic_diseases",
+      "diagnosis",
+      "management",
+      "genetic_counseling"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "medium",
     "review_status": "ready_to_use",
@@ -77,7 +103,12 @@
     "category": "books",
     "provider": "NCBI Bookshelf",
     "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK201/",
-    "best_for": ["symptoms", "signs", "physical_exam", "clinical_reasoning"],
+    "best_for": [
+      "symptoms",
+      "signs",
+      "physical_exam",
+      "clinical_reasoning"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "high",
     "review_status": "ready_to_use",
@@ -89,7 +120,11 @@
     "category": "books",
     "provider": "NCBI Bookshelf",
     "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK613074/",
-    "best_for": ["system_overviews", "common_conditions", "student_level_theory"],
+    "best_for": [
+      "system_overviews",
+      "common_conditions",
+      "student_level_theory"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "medium",
     "review_status": "ready_to_use",
@@ -101,7 +136,13 @@
     "category": "books",
     "provider": "StatPearls / NCBI Bookshelf",
     "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK430685/",
-    "best_for": ["clinical_overviews", "etiology", "evaluation", "management", "differential_diagnosis"],
+    "best_for": [
+      "clinical_overviews",
+      "etiology",
+      "evaluation",
+      "management",
+      "differential_diagnosis"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "high",
     "review_status": "ready_to_use",
@@ -113,7 +154,12 @@
     "category": "clinical_reference",
     "provider": "MSD Manuals",
     "homepage": "https://www.msdmanuals.com/professional",
-    "best_for": ["clinical_reference", "differential_diagnosis", "symptoms", "treatment_orientation"],
+    "best_for": [
+      "clinical_reference",
+      "differential_diagnosis",
+      "symptoms",
+      "treatment_orientation"
+    ],
     "ingestion_mode": "reference_only",
     "priority": "high",
     "review_status": "catalogued",
@@ -125,7 +171,12 @@
     "category": "patient_education",
     "provider": "MSD Manuals",
     "homepage": "https://www.msdmanuals.com/home",
-    "best_for": ["plain_language", "patient_education", "symptoms", "basic_explanations"],
+    "best_for": [
+      "plain_language",
+      "patient_education",
+      "symptoms",
+      "basic_explanations"
+    ],
     "ingestion_mode": "reference_only",
     "priority": "medium",
     "review_status": "catalogued",
@@ -137,7 +188,12 @@
     "category": "classification",
     "provider": "Disease Ontology",
     "homepage": "https://github.com/DiseaseOntology/HumanDiseaseOntology",
-    "best_for": ["taxonomy", "synonyms", "families", "semantic_links"],
+    "best_for": [
+      "taxonomy",
+      "synonyms",
+      "families",
+      "semantic_links"
+    ],
     "ingestion_mode": "downloadable_ontology",
     "priority": "high",
     "review_status": "ready_to_test",
@@ -149,7 +205,11 @@
     "category": "classification",
     "provider": "World Health Organization",
     "homepage": "https://icd.who.int/",
-    "best_for": ["official_classification", "chapter_grouping", "coding"],
+    "best_for": [
+      "official_classification",
+      "chapter_grouping",
+      "coding"
+    ],
     "ingestion_mode": "manual_review",
     "priority": "medium",
     "review_status": "catalogued",
@@ -161,7 +221,11 @@
     "category": "classification",
     "provider": "Orphanet",
     "homepage": "https://www.orpha.net/",
-    "best_for": ["rare_diseases", "orphacodes", "rare_disease_synonyms"],
+    "best_for": [
+      "rare_diseases",
+      "orphacodes",
+      "rare_disease_synonyms"
+    ],
     "ingestion_mode": "manual_review",
     "priority": "medium",
     "review_status": "catalogued",
@@ -173,7 +237,11 @@
     "category": "literature",
     "provider": "National Library of Medicine",
     "homepage": "https://pubmed.ncbi.nlm.nih.gov/",
-    "best_for": ["literature_search", "recent_reviews", "citation_discovery"],
+    "best_for": [
+      "literature_search",
+      "recent_reviews",
+      "citation_discovery"
+    ],
     "ingestion_mode": "search_only",
     "priority": "high",
     "review_status": "ready_to_use",
@@ -185,7 +253,12 @@
     "category": "literature",
     "provider": "EMBL-EBI",
     "homepage": "https://europepmc.org/",
-    "best_for": ["open_access_literature", "full_text_discovery", "preprints", "apis"],
+    "best_for": [
+      "open_access_literature",
+      "full_text_discovery",
+      "preprints",
+      "apis"
+    ],
     "ingestion_mode": "api_or_search",
     "priority": "medium",
     "review_status": "catalogued",
@@ -197,7 +270,12 @@
     "category": "specialty_repository",
     "provider": "National Cancer Institute",
     "homepage": "https://www.cancer.gov/publications/pdq/information-summaries",
-    "best_for": ["oncology", "cancer_treatment", "cancer_screening", "patient_and_professional_versions"],
+    "best_for": [
+      "oncology",
+      "cancer_treatment",
+      "cancer_screening",
+      "patient_and_professional_versions"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "high",
     "review_status": "ready_to_use",
@@ -209,7 +287,14 @@
     "category": "specialty_repository",
     "provider": "National Institute of Diabetes and Digestive and Kidney Diseases",
     "homepage": "https://www.niddk.nih.gov/health-information",
-    "best_for": ["diabetes", "kidney", "digestive", "endocrine", "urologic", "obesity"],
+    "best_for": [
+      "diabetes",
+      "kidney",
+      "digestive",
+      "endocrine",
+      "urologic",
+      "obesity"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "high",
     "review_status": "ready_to_use",
@@ -221,7 +306,12 @@
     "category": "specialty_repository",
     "provider": "National Heart, Lung, and Blood Institute",
     "homepage": "https://www.nhlbi.nih.gov/health-topics",
-    "best_for": ["cardiovascular", "respiratory", "blood", "sleep"],
+    "best_for": [
+      "cardiovascular",
+      "respiratory",
+      "blood",
+      "sleep"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "high",
     "review_status": "ready_to_use",
@@ -233,7 +323,13 @@
     "category": "specialty_repository",
     "provider": "National Institute of Arthritis and Musculoskeletal and Skin Diseases",
     "homepage": "https://www.niams.nih.gov/health-topics",
-    "best_for": ["arthritis", "musculoskeletal", "skin", "bones", "autoimmune_rheumatic_diseases"],
+    "best_for": [
+      "arthritis",
+      "musculoskeletal",
+      "skin",
+      "bones",
+      "autoimmune_rheumatic_diseases"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "medium",
     "review_status": "ready_to_use",
@@ -245,7 +341,13 @@
     "category": "specialty_repository",
     "provider": "National Institute of Neurological Disorders and Stroke",
     "homepage": "https://www.ninds.nih.gov/health-information/disorders",
-    "best_for": ["neurology", "brain", "spinal_cord", "stroke", "seizures"],
+    "best_for": [
+      "neurology",
+      "brain",
+      "spinal_cord",
+      "stroke",
+      "seizures"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "medium",
     "review_status": "ready_to_use",
@@ -257,7 +359,12 @@
     "category": "specialty_repository",
     "provider": "National Eye Institute",
     "homepage": "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases",
-    "best_for": ["ophthalmology", "eye_diseases", "vision", "patient_education"],
+    "best_for": [
+      "ophthalmology",
+      "eye_diseases",
+      "vision",
+      "patient_education"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "medium",
     "review_status": "ready_to_use",
@@ -269,7 +376,12 @@
     "category": "specialty_repository",
     "provider": "NIH / NCATS",
     "homepage": "https://rarediseases.info.nih.gov/",
-    "best_for": ["rare_diseases", "genetic_diseases", "patient_resources", "specialist_resources"],
+    "best_for": [
+      "rare_diseases",
+      "genetic_diseases",
+      "patient_resources",
+      "specialist_resources"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "medium",
     "review_status": "ready_to_use",
@@ -281,7 +393,11 @@
     "category": "anatomy",
     "provider": "OpenStax",
     "homepage": "https://openstax.org/details/books/anatomy-and-physiology-2e",
-    "best_for": ["anatomy", "physiology", "system_background"],
+    "best_for": [
+      "anatomy",
+      "physiology",
+      "system_background"
+    ],
     "ingestion_mode": "manual_selection",
     "priority": "high",
     "review_status": "ready_to_use",
@@ -293,7 +409,12 @@
     "category": "visual",
     "provider": "Servier",
     "homepage": "https://smart.servier.com/",
-    "best_for": ["medical_illustrations", "organs", "cells", "processes"],
+    "best_for": [
+      "medical_illustrations",
+      "organs",
+      "cells",
+      "processes"
+    ],
     "ingestion_mode": "manual_download",
     "priority": "medium",
     "review_status": "catalogued",
@@ -305,10 +426,496 @@
     "category": "visual",
     "provider": "BioIcons",
     "homepage": "https://bioicons.com/",
-    "best_for": ["svg_assets", "cells", "molecules", "microorganisms"],
+    "best_for": [
+      "svg_assets",
+      "cells",
+      "molecules",
+      "microorganisms"
+    ],
     "ingestion_mode": "manual_download",
     "priority": "medium",
     "review_status": "catalogued",
     "license_note": "Usually CC BY 4.0; verify item-level license."
+  },
+  {
+    "id": "kdigo_ckd",
+    "name": "KDIGO CKD Work Group",
+    "category": "guideline",
+    "provider": "KDIGO",
+    "homepage": "https://kdigo.org/guidelines/chronic-kidney-disease-evaluation-and-management/",
+    "best_for": [
+      "ckd_staging",
+      "egfr",
+      "albuminuria",
+      "risk_stratification"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "KDIGO guidelines are open access."
+  },
+  {
+    "id": "niddk_ckd",
+    "name": "NIDDK CKD",
+    "category": "patient_education",
+    "provider": "NIDDK",
+    "homepage": "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd",
+    "best_for": [
+      "definitions",
+      "patient_education",
+      "prevention"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "Public domain US Government."
+  },
+  {
+    "id": "statpearls_gn",
+    "name": "StatPearls Glomerulonephritis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK537184/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "differential"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_ns",
+    "name": "StatPearls Nephrotic Syndrome",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK470444/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "complications"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_pyelonephritis",
+    "name": "StatPearls Pyelonephritis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK549849/",
+    "best_for": [
+      "diagnosis",
+      "treatment",
+      "complications"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_nephrolithiasis",
+    "name": "StatPearls Nephrolithiasis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK537313/",
+    "best_for": [
+      "diagnosis",
+      "imaging",
+      "prevention"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "kdigo_aki",
+    "name": "KDIGO AKI Guideline",
+    "category": "guideline",
+    "provider": "KDIGO",
+    "homepage": "https://kdigo.org/guidelines/acute-kidney-injury/",
+    "best_for": [
+      "aki_staging",
+      "diagnosis",
+      "management"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "KDIGO guidelines are open access."
+  },
+  {
+    "id": "statpearls_aki",
+    "name": "StatPearls Acute Kidney Injury",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK547842/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "differential"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_dkd",
+    "name": "StatPearls Diabetic Kidney Disease",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK525865/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "monitoring"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_hydronephrosis",
+    "name": "StatPearls Hydronephrosis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK572093/",
+    "best_for": [
+      "diagnosis",
+      "imaging",
+      "complications"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_appendicitis",
+    "name": "StatPearls Appendicitis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK493243/",
+    "best_for": [
+      "diagnosis",
+      "imaging",
+      "treatment"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_gallstones",
+    "name": "StatPearls Gallstones",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK470428/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "complications"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_gerd",
+    "name": "StatPearls GERD",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK441975/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_gastritis",
+    "name": "StatPearls Gastritis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK534234/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "differential"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_pud",
+    "name": "StatPearls Peptic Ulcer Disease",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK470267/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "complications"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_pancreatitis",
+    "name": "StatPearls Acute Pancreatitis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK482458/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "staging"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_ibd",
+    "name": "StatPearls Inflammatory Bowel Disease",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK470318/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "differential"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_ibs",
+    "name": "StatPearls Irritable Bowel Syndrome",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK534196/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "red_flags"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_diverticulitis",
+    "name": "StatPearls Diverticulitis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK507028/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "staging"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_celiac",
+    "name": "StatPearls Celiac Disease",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK537156/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "monitoring"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_crohn",
+    "name": "StatPearls Crohn Disease",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK436021/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "staging"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_uc",
+    "name": "StatPearls Ulcerative Colitis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK470318/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "staging"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_hepatitis",
+    "name": "StatPearls Viral Hepatitis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK534773/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "differential"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_alf",
+    "name": "StatPearls Acute Liver Failure",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK482479/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "red_flags"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_cirrhosis",
+    "name": "StatPearls Cirrhosis",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK482238/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "staging"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "statpearls_nafld",
+    "name": "StatPearls Nonalcoholic Fatty Liver Disease",
+    "category": "textbook",
+    "provider": "NCBI Bookshelf",
+    "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK459183/",
+    "best_for": [
+      "pathophysiology",
+      "diagnosis",
+      "staging"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "StatPearls, NCBI Bookshelf."
+  },
+  {
+    "id": "aasld_guidelines",
+    "name": "AASLD Practice Guidelines",
+    "category": "guideline",
+    "provider": "American Association for the Study of Liver Diseases",
+    "homepage": "https://www.aasld.org/practice-guidelines",
+    "best_for": [
+      "hepatology",
+      "cirrhosis",
+      "fatty_liver"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "AASLD guidelines."
+  },
+  {
+    "id": "aga_guidelines",
+    "name": "AGA Clinical Guidelines",
+    "category": "guideline",
+    "provider": "American Gastroenterological Association",
+    "homepage": "https://gastro.org/practice-guidelines/",
+    "best_for": [
+      "gastroenterology",
+      "ibd",
+      "pancreatitis"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "AGA guidelines."
+  },
+  {
+    "id": "acg_guidelines",
+    "name": "ACG Clinical Guidelines",
+    "category": "guideline",
+    "provider": "American College of Gastroenterology",
+    "homepage": "https://gi.org/clinical-guidelines/",
+    "best_for": [
+      "gastroenterology",
+      "gerd",
+      "pud",
+      "ibs"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "high",
+    "review_status": "verified",
+    "license_note": "ACG guidelines."
+  },
+  {
+    "id": "espgan_guidelines",
+    "name": "ESPGHAN Guidelines",
+    "category": "guideline",
+    "provider": "European Society for Paediatric Gastroenterology Hepatology and Nutrition",
+    "homepage": "https://espghan.org/guidelines/",
+    "best_for": [
+      "pediatric",
+      "celiac_disease"
+    ],
+    "ingestion_mode": "manual_review",
+    "priority": "medium",
+    "review_status": "verified",
+    "license_note": "ESPGHAN guidelines."
   }
 ]

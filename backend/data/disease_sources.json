@@ -2,12 +2,28 @@
   {
     "disease_code": "REN-001",
     "name": "Insuficiencia renal cronica",
-    "summary_sources": ["medlineplus_xml", "niddk_health"],
-    "theory_sources": ["statpearls_bookshelf", "ncbi_bookshelf"],
-    "classification_sources": ["disease_ontology", "icd11"],
-    "specialty_sources": ["niddk_health"],
-    "anatomy_sources": ["openstax_ap"],
-    "literature_sources": ["pubmed", "europe_pmc"],
+    "summary_sources": [
+      "medlineplus_xml",
+      "niddk_health"
+    ],
+    "theory_sources": [
+      "statpearls_bookshelf",
+      "ncbi_bookshelf"
+    ],
+    "classification_sources": [
+      "disease_ontology",
+      "icd11"
+    ],
+    "specialty_sources": [
+      "niddk_health"
+    ],
+    "anatomy_sources": [
+      "openstax_ap"
+    ],
+    "literature_sources": [
+      "pubmed",
+      "europe_pmc"
+    ],
     "quality_level": 4,
     "review_status": "sourced",
     "editorial_notes": "NIDDK debe ser la fuente de especialidad principal para enfermedad renal cronica; Bookshelf/StatPearls sirven para fisiopatologia y evaluacion."
@@ -15,12 +31,28 @@
   {
     "disease_code": "RESP-001",
     "name": "Neumonia",
-    "summary_sources": ["medlineplus_xml", "cdc_spanish_az"],
-    "theory_sources": ["statpearls_bookshelf", "ncbi_bookshelf"],
-    "classification_sources": ["disease_ontology", "icd11"],
-    "specialty_sources": ["nhlbi_health_topics"],
-    "anatomy_sources": ["openstax_ap"],
-    "literature_sources": ["pubmed", "europe_pmc"],
+    "summary_sources": [
+      "medlineplus_xml",
+      "cdc_spanish_az"
+    ],
+    "theory_sources": [
+      "statpearls_bookshelf",
+      "ncbi_bookshelf"
+    ],
+    "classification_sources": [
+      "disease_ontology",
+      "icd11"
+    ],
+    "specialty_sources": [
+      "nhlbi_health_topics"
+    ],
+    "anatomy_sources": [
+      "openstax_ap"
+    ],
+    "literature_sources": [
+      "pubmed",
+      "europe_pmc"
+    ],
     "quality_level": 4,
     "review_status": "sourced",
     "editorial_notes": "Cruzar resumen de MedlinePlus/CDC con fuentes respiratorias y teoria clinica para distinguir neumonia comunitaria, viral y bacteriana."
@@ -28,12 +60,28 @@
   {
     "disease_code": "HEP-001",
     "name": "Hepatitis aguda",
-    "summary_sources": ["medlineplus_xml", "who_fact_sheets"],
-    "theory_sources": ["statpearls_bookshelf", "ncbi_bookshelf"],
-    "classification_sources": ["disease_ontology", "icd11"],
-    "specialty_sources": ["niddk_health"],
-    "anatomy_sources": ["openstax_ap"],
-    "literature_sources": ["pubmed", "europe_pmc"],
+    "summary_sources": [
+      "medlineplus_xml",
+      "who_fact_sheets"
+    ],
+    "theory_sources": [
+      "statpearls_bookshelf",
+      "ncbi_bookshelf"
+    ],
+    "classification_sources": [
+      "disease_ontology",
+      "icd11"
+    ],
+    "specialty_sources": [
+      "niddk_health"
+    ],
+    "anatomy_sources": [
+      "openstax_ap"
+    ],
+    "literature_sources": [
+      "pubmed",
+      "europe_pmc"
+    ],
     "quality_level": 4,
     "review_status": "sourced",
     "editorial_notes": "Separar hepatitis viral, toxica y autoinmune. OMS sirve para contexto global cuando se trate hepatitis viral."
@@ -41,12 +89,29 @@
   {
     "disease_code": "CARD-001",
     "name": "Infarto agudo de miocardio",
-    "summary_sources": ["medlineplus_xml", "msd_manual_consumer"],
-    "theory_sources": ["statpearls_bookshelf", "msd_manual_professional", "ncbi_bookshelf"],
-    "classification_sources": ["disease_ontology", "icd11"],
-    "specialty_sources": ["nhlbi_health_topics"],
-    "anatomy_sources": ["openstax_ap"],
-    "literature_sources": ["pubmed", "europe_pmc"],
+    "summary_sources": [
+      "medlineplus_xml",
+      "msd_manual_consumer"
+    ],
+    "theory_sources": [
+      "statpearls_bookshelf",
+      "msd_manual_professional",
+      "ncbi_bookshelf"
+    ],
+    "classification_sources": [
+      "disease_ontology",
+      "icd11"
+    ],
+    "specialty_sources": [
+      "nhlbi_health_topics"
+    ],
+    "anatomy_sources": [
+      "openstax_ap"
+    ],
+    "literature_sources": [
+      "pubmed",
+      "europe_pmc"
+    ],
     "quality_level": 4,
     "review_status": "sourced",
     "editorial_notes": "NHLBI y MSD Professional ayudan a reforzar signos de alarma, ECG, biomarcadores y enfoque clinico."
@@ -54,12 +119,28 @@
   {
     "disease_code": "ENDO-001",
     "name": "Diabetes mellitus tipo 2",
-    "summary_sources": ["medlineplus_xml", "niddk_health"],
-    "theory_sources": ["statpearls_bookshelf", "ncbi_bookshelf"],
-    "classification_sources": ["disease_ontology", "icd11"],
-    "specialty_sources": ["niddk_health"],
-    "anatomy_sources": ["openstax_ap"],
-    "literature_sources": ["pubmed", "europe_pmc"],
+    "summary_sources": [
+      "medlineplus_xml",
+      "niddk_health"
+    ],
+    "theory_sources": [
+      "statpearls_bookshelf",
+      "ncbi_bookshelf"
+    ],
+    "classification_sources": [
+      "disease_ontology",
+      "icd11"
+    ],
+    "specialty_sources": [
+      "niddk_health"
+    ],
+    "anatomy_sources": [
+      "openstax_ap"
+    ],
+    "literature_sources": [
+      "pubmed",
+      "europe_pmc"
+    ],
     "quality_level": 4,
     "review_status": "sourced",
     "editorial_notes": "NIDDK debe guiar definicion, pruebas y educacion; teoria clinica para fisiopatologia de resistencia a insulina."
@@ -67,12 +148,28 @@
   {
     "disease_code": "CARD-002",
     "name": "Hipertension arterial",
-    "summary_sources": ["medlineplus_xml", "msd_manual_consumer"],
-    "theory_sources": ["statpearls_bookshelf", "msd_manual_professional"],
-    "classification_sources": ["disease_ontology", "icd11"],
-    "specialty_sources": ["nhlbi_health_topics"],
-    "anatomy_sources": ["openstax_ap"],
-    "literature_sources": ["pubmed", "europe_pmc"],
+    "summary_sources": [
+      "medlineplus_xml",
+      "msd_manual_consumer"
+    ],
+    "theory_sources": [
+      "statpearls_bookshelf",
+      "msd_manual_professional"
+    ],
+    "classification_sources": [
+      "disease_ontology",
+      "icd11"
+    ],
+    "specialty_sources": [
+      "nhlbi_health_topics"
+    ],
+    "anatomy_sources": [
+      "openstax_ap"
+    ],
+    "literature_sources": [
+      "pubmed",
+      "europe_pmc"
+    ],
     "quality_level": 4,
     "review_status": "sourced",
     "editorial_notes": "NHLBI y MSD ayudan a reforzar riesgo cardiovascular, medicion, complicaciones y educacion preventiva."
@@ -80,12 +177,28 @@
   {
     "disease_code": "RESP-002",
     "name": "Asma bronquial",
-    "summary_sources": ["medlineplus_xml", "cdc_spanish_az"],
-    "theory_sources": ["statpearls_bookshelf", "msd_manual_professional"],
-    "classification_sources": ["disease_ontology", "icd11"],
-    "specialty_sources": ["nhlbi_health_topics"],
-    "anatomy_sources": ["openstax_ap"],
-    "literature_sources": ["pubmed", "europe_pmc"],
+    "summary_sources": [
+      "medlineplus_xml",
+      "cdc_spanish_az"
+    ],
+    "theory_sources": [
+      "statpearls_bookshelf",
+      "msd_manual_professional"
+    ],
+    "classification_sources": [
+      "disease_ontology",
+      "icd11"
+    ],
+    "specialty_sources": [
+      "nhlbi_health_topics"
+    ],
+    "anatomy_sources": [
+      "openstax_ap"
+    ],
+    "literature_sources": [
+      "pubmed",
+      "europe_pmc"
+    ],
     "quality_level": 4,
     "review_status": "sourced",
     "editorial_notes": "NHLBI es fuente clave para enfermedad respiratoria cronica; reforzar fisiopatologia de vias aereas e interpretacion de espirometria."
@@ -93,14 +206,850 @@
   {
     "disease_code": "HEMA-001",
     "name": "Anemia ferropenica",
-    "summary_sources": ["medlineplus_xml", "msd_manual_consumer"],
-    "theory_sources": ["statpearls_bookshelf", "clinical_methods", "msd_manual_professional"],
-    "classification_sources": ["disease_ontology", "icd11"],
-    "specialty_sources": ["nhlbi_health_topics"],
-    "anatomy_sources": ["openstax_ap"],
-    "literature_sources": ["pubmed", "europe_pmc"],
+    "summary_sources": [
+      "medlineplus_xml",
+      "msd_manual_consumer"
+    ],
+    "theory_sources": [
+      "statpearls_bookshelf",
+      "clinical_methods",
+      "msd_manual_professional"
+    ],
+    "classification_sources": [
+      "disease_ontology",
+      "icd11"
+    ],
+    "specialty_sources": [
+      "nhlbi_health_topics"
+    ],
+    "anatomy_sources": [
+      "openstax_ap"
+    ],
+    "literature_sources": [
+      "pubmed",
+      "europe_pmc"
+    ],
     "quality_level": 4,
     "review_status": "sourced",
     "editorial_notes": "Clinical Methods y MSD deben ayudar a reforzar signos, laboratorio y razonamiento entre anemia ferropenica y otras anemias."
+  },
+  {
+    "disease_code": "REN-001",
+    "source_id": "kdigo_ckd",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-001",
+    "source_id": "niddk_ckd",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-001",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-002",
+    "source_id": "statpearls_gn",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-002",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-003",
+    "source_id": "statpearls_ns",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-003",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-004",
+    "source_id": "statpearls_pyelonephritis",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-004",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-005",
+    "source_id": "statpearls_nephrolithiasis",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-005",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-006",
+    "source_id": "kdigo_aki",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-006",
+    "source_id": "statpearls_aki",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-006",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-007",
+    "source_id": "statpearls_dkd",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-007",
+    "source_id": "niddk_ckd",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-007",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-008",
+    "source_id": "statpearls_hydronephrosis",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "REN-008",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-001",
+    "source_id": "statpearls_appendicitis",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-001",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-002",
+    "source_id": "statpearls_gallstones",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-002",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-003",
+    "source_id": "statpearls_gerd",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-003",
+    "source_id": "acg_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-003",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-004",
+    "source_id": "statpearls_gastritis",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-004",
+    "source_id": "acg_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-004",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-005",
+    "source_id": "statpearls_pud",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-005",
+    "source_id": "acg_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-005",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-006",
+    "source_id": "statpearls_pancreatitis",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-006",
+    "source_id": "aga_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-006",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-007",
+    "source_id": "statpearls_ibd",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-007",
+    "source_id": "aga_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-007",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-008",
+    "source_id": "statpearls_ibs",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-008",
+    "source_id": "acg_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-008",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-009",
+    "source_id": "statpearls_diverticulitis",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-009",
+    "source_id": "aga_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "DIG-009",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "RARE-002",
+    "source_id": "statpearls_celiac",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "RARE-002",
+    "source_id": "espgan_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "RARE-002",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "RARE-003",
+    "source_id": "statpearls_crohn",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "RARE-003",
+    "source_id": "aga_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "RARE-003",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "RARE-004",
+    "source_id": "statpearls_uc",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "RARE-004",
+    "source_id": "aga_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "RARE-004",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-001",
+    "source_id": "statpearls_hepatitis",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-001",
+    "source_id": "statpearls_alf",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-001",
+    "source_id": "aasld_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-001",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-002",
+    "source_id": "statpearls_cirrhosis",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-002",
+    "source_id": "aasld_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-002",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-003",
+    "source_id": "statpearls_nafld",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-003",
+    "source_id": "aasld_guidelines",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
+  },
+  {
+    "disease_code": "HEP-003",
+    "source_id": "medlineplus_xml",
+    "fields_supported": [
+      "definition",
+      "pathophysiology",
+      "diagnosis",
+      "treatment"
+    ],
+    "review_status": "verified",
+    "consulted_at": "2026-07-20",
+    "editorial_note": "Fuente verificada para enriquecimiento educativo."
   }
 ]

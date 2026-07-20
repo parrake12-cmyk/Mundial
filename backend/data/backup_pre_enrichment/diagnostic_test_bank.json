@@ -1,0 +1,1101 @@
+[
+  {
+    "test_id": "DIG-US-APPENDIX-001",
+    "name": "Ecografia de apendice",
+    "modality": "Ecografia",
+    "system": "Digestivo",
+    "disease_codes": [
+      "DIG-001"
+    ],
+    "clinical_question": "Confirmar apendicitis en paciente con dolor compatible y reducir radiacion cuando es posible.",
+    "when_to_use": [
+      "Dolor en fosa iliaca derecha con duda diagnostica",
+      "Ninos, adolescentes o embarazo cuando se prefiere evitar TAC",
+      "Seguimiento inicial si el examen fisico no es concluyente"
+    ],
+    "normal_pattern": "No se identifica apendice inflamado; asas compresibles, sin grasa periapendicular inflamada, absceso ni liquido libre significativo.",
+    "abnormal_findings": [
+      "Apendice no compresible",
+      "Diametro apendicular aumentado",
+      "Dolor focal al presionar con el transductor",
+      "Grasa periapendicular inflamada",
+      "Apendicolito, liquido libre o absceso si complicada"
+    ],
+    "limits": [
+      "No visualizar el apendice no descarta apendicitis",
+      "Gas intestinal, obesidad o dolor intenso pueden limitar la ventana",
+      "Depende mucho de operador y contexto clinico"
+    ],
+    "common_mistakes": [
+      "Usar un estudio no concluyente como descarte definitivo",
+      "No buscar diagnosticos ginecologicos o urinarios cuando aplica",
+      "Ignorar signos de peritonitis aunque la imagen sea dudosa"
+    ],
+    "learning_steps": [
+      "Ubica ciego y fosa iliaca derecha.",
+      "Busca una estructura tubular ciega que no comprime.",
+      "Relaciona diametro, dolor focal y grasa inflamada con probabilidad clinica.",
+      "Busca datos de complicacion: liquido, absceso o perforacion."
+    ],
+    "reference_ranges": [
+      {
+        "label": "Diametro apendicular",
+        "normal": "habitualmente menor de 6 mm",
+        "abnormal": "aumentado si supera el umbral y se acompana de no compresibilidad/signos inflamatorios"
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "Colecciones abiertas de ultrasonido abdominal",
+        "status": "pendiente de curacion",
+        "note": "Revisar licencia, calidad, etiquetas y permiso antes de importar imagenes."
+      }
+    ],
+    "internal_asset_status": "Sin imagen real importada todavia; ficha lista para asociar ejemplos propios o dataset abierto curado.",
+    "result_patterns": [
+      {
+        "result": "Apendice visible, compresible y menor de 6 mm",
+        "interpretation": "Resultado tranquilizador si la clinica tambien es baja probabilidad.",
+        "next_step": "Observacion o buscar otro diagnostico segun evolucion."
+      },
+      {
+        "result": "Apendice no compresible, aumentado, dolor focal",
+        "interpretation": "Compatible con apendicitis en el contexto correcto.",
+        "next_step": "Valoracion quirurgica y clasificar si hay complicacion."
+      },
+      {
+        "result": "Apendice no visualizado",
+        "interpretation": "No descarta apendicitis.",
+        "next_step": "Reevaluar clinica; TAC/RM o seguimiento si persiste sospecha."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-CT-APPENDIX-001",
+    "name": "TAC de abdomen para apendicitis",
+    "modality": "TAC",
+    "system": "Digestivo",
+    "disease_codes": [
+      "DIG-001"
+    ],
+    "clinical_question": "Confirmar apendicitis, localizar complicaciones y evaluar diferenciales cuando la ecografia o clinica no bastan.",
+    "when_to_use": [
+      "Adulto con diagnostico incierto",
+      "Sospecha de perforacion, absceso o masa apendicular",
+      "Dolor abdominal con diferenciales amplios"
+    ],
+    "normal_pattern": "Apendice sin engrosamiento, sin dilatacion, sin estriacion de grasa ni colecciones pericecales.",
+    "abnormal_findings": [
+      "Apendice dilatado y pared engrosada",
+      "Grasa periapendicular inflamada",
+      "Apendicolito",
+      "Coleccion, gas extraluminal o absceso",
+      "Engrosamiento del ciego cercano"
+    ],
+    "limits": [
+      "Implica radiacion",
+      "El contraste puede estar limitado por alergia, funcion renal o disponibilidad",
+      "Hallazgos tempranos pueden ser sutiles"
+    ],
+    "common_mistakes": [
+      "Olvidar correlacionar con embarazo o patologia ginecologica",
+      "Confundir ileitis terminal o diverticulitis derecha con apendicitis",
+      "No buscar absceso cuando hay sintomas prolongados"
+    ],
+    "learning_steps": [
+      "Ubica ciego y trayecto del apendice.",
+      "Compara calibre, pared y grasa vecina.",
+      "Busca apendicolito o coleccion.",
+      "Define si es no complicada o complicada."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [
+      {
+        "name": "Bancos publicos de TAC abdominal por enfermedad",
+        "status": "pendiente de busqueda dirigida",
+        "note": "Priorizar series con anotacion, licencia clara y metadatos anonimizados."
+      }
+    ],
+    "internal_asset_status": "Ficha preparada para enlazar cortes TAC anonimizados o imagenes propias.",
+    "result_patterns": [
+      {
+        "result": "Apendice normal y sin grasa inflamada",
+        "interpretation": "Apendicitis menos probable.",
+        "next_step": "Buscar diferenciales abdominales, urinarios o ginecologicos."
+      },
+      {
+        "result": "Apendice dilatado con estriacion grasa",
+        "interpretation": "Apendicitis aguda probable.",
+        "next_step": "Definir manejo quirurgico/antibiotico segun protocolo y riesgo."
+      },
+      {
+        "result": "Absceso, aire libre o coleccion",
+        "interpretation": "Apendicitis complicada.",
+        "next_step": "Manejo urgente; considerar drenaje, antibiotico y cirugia segun caso."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-US-BILIARY-001",
+    "name": "Ecografia hepatobiliar",
+    "modality": "Ecografia",
+    "system": "Digestivo",
+    "disease_codes": [
+      "DIG-002",
+      "HEP-001",
+      "HEP-003"
+    ],
+    "clinical_question": "Evaluar vesicula, calculos, via biliar e higado ante dolor en hipocondrio derecho, ictericia o alteracion hepatica.",
+    "when_to_use": [
+      "Colico biliar o sospecha de colecistitis",
+      "Ictericia o colestasis",
+      "Esteatosis hepatica o dolor hepatobiliar"
+    ],
+    "normal_pattern": "Vesicula sin calculos, pared fina, via biliar no dilatada y parenquima hepatico sin cambios focales llamativos.",
+    "abnormal_findings": [
+      "Calculos con sombra acustica",
+      "Pared vesicular engrosada",
+      "Liquido perivesicular",
+      "Murphy ecografico",
+      "Dilatacion de via biliar",
+      "Higado hiperecogenico en esteatosis"
+    ],
+    "limits": [
+      "Gas intestinal o ayuno inadecuado reducen calidad",
+      "Coledocolitiasis distal puede no verse",
+      "Esteatosis no mide por si sola inflamacion o fibrosis"
+    ],
+    "common_mistakes": [
+      "Confundir colelitiasis asintomatica con colecistitis",
+      "No revisar via biliar si hay ictericia",
+      "Llamar hepatitis solo por ecografia sin interpretar laboratorios"
+    ],
+    "learning_steps": [
+      "Identifica higado, vesicula y via biliar.",
+      "Busca calculo, sombra y movilidad.",
+      "Evalua pared, liquido y dolor focal.",
+      "Integra bilirrubina, FA/GGT y transaminasas."
+    ],
+    "reference_ranges": [
+      {
+        "label": "Pared vesicular",
+        "normal": "fina en ayuno adecuado",
+        "abnormal": "engrosada si se acompana de dolor, liquido o inflamacion"
+      },
+      {
+        "label": "Via biliar",
+        "normal": "no dilatada para edad/contexto",
+        "abnormal": "dilatada si sugiere obstruccion distal"
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "Colecciones de ecografia abdominal/hepatobiliar",
+        "status": "pendiente de curacion",
+        "note": "Importar solo imagenes con licencia reutilizable y datos anonimizados."
+      }
+    ],
+    "internal_asset_status": "Sin imagen real importada todavia; usar como plantilla de lectura.",
+    "result_patterns": [
+      {
+        "result": "Calculos sin pared engrosada ni Murphy ecografico",
+        "interpretation": "Colelitiasis no complicada si coincide con la clinica.",
+        "next_step": "Manejo electivo si hay colicos; no confundir con colecistitis."
+      },
+      {
+        "result": "Calculos + pared engrosada + Murphy/liquido",
+        "interpretation": "Sugiere colecistitis aguda.",
+        "next_step": "Cirugia/urgencias y laboratorios hepaticos segun contexto."
+      },
+      {
+        "result": "Via biliar dilatada o bilirrubina colestasica",
+        "interpretation": "Sospecha obstruccion/coledocolitiasis.",
+        "next_step": "Considerar colangioRM, ecoendoscopia o CPRE segun gravedad."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-LAB-LIPASE-001",
+    "name": "Lipasa serica",
+    "modality": "Laboratorio",
+    "system": "Digestivo",
+    "disease_codes": [
+      "DIG-006"
+    ],
+    "clinical_question": "Apoyar diagnostico de pancreatitis aguda en paciente con dolor epigastrico compatible.",
+    "when_to_use": [
+      "Dolor epigastrico intenso irradiado a espalda",
+      "Vomito persistente con sospecha pancreatica",
+      "Contexto de litiasis biliar, alcohol o trigliceridos elevados"
+    ],
+    "normal_pattern": "Lipasa dentro del rango del laboratorio y sin cuadro clinico compatible.",
+    "abnormal_findings": [
+      "Elevacion marcada de lipasa en contexto clinico compatible",
+      "Dolor epigastrico caracteristico",
+      "Imagen compatible si el diagnostico es incierto o hay severidad"
+    ],
+    "limits": [
+      "El valor exacto no mide por si solo gravedad",
+      "Puede elevarse en otras condiciones abdominales o renales",
+      "Un resultado debe interpretarse con clinica y tiempo de evolucion"
+    ],
+    "common_mistakes": [
+      "Seguir lipasa diaria como marcador de mejoria",
+      "Diagnosticar pancreatitis solo por dolor sin criterio bioquimico o imagen",
+      "Olvidar buscar causa biliar o metabolica"
+    ],
+    "learning_steps": [
+      "Verifica dolor tipico.",
+      "Confirma elevacion significativa segun rango local.",
+      "Busca etiologia: bilis, alcohol, trigliceridos, farmacos.",
+      "Evalua severidad por organos, no por numero de lipasa."
+    ],
+    "reference_ranges": [
+      {
+        "label": "Interpretacion",
+        "normal": "dentro del rango local",
+        "abnormal": "elevacion significativa con clinica compatible"
+      }
+    ],
+    "dataset_candidates": [],
+    "internal_asset_status": "Prueba de laboratorio; no requiere imagen, pero puede conectarse a tendencias graficas.",
+    "result_patterns": [
+      {
+        "result": "Lipasa dentro del rango local",
+        "interpretation": "No apoya pancreatitis, aunque depende del tiempo de sintomas.",
+        "next_step": "Buscar diferenciales si el dolor no encaja."
+      },
+      {
+        "result": "Lipasa elevada significativamente con dolor tipico",
+        "interpretation": "Cumple criterio bioquimico para pancreatitis aguda.",
+        "next_step": "Buscar etiologia biliar, alcohol, trigliceridos y evaluar severidad clinica."
+      },
+      {
+        "result": "Lipasa elevada sin dolor tipico",
+        "interpretation": "Puede ser elevacion no pancreatica.",
+        "next_step": "Interpretar con riñon, abdomen, medicamentos e imagen si hay duda."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-ENDO-UPPER-001",
+    "name": "Endoscopia digestiva alta",
+    "modality": "Endoscopia",
+    "system": "Digestivo",
+    "disease_codes": [
+      "DIG-003",
+      "DIG-004",
+      "DIG-005",
+      "ONC-004"
+    ],
+    "clinical_question": "Ver mucosa de esofago, estomago y duodeno para confirmar inflamacion, ulcera, sangrado, estenosis o lesion sospechosa.",
+    "when_to_use": [
+      "Dispepsia o reflujo con signos de alarma",
+      "Sangrado digestivo alto",
+      "Sospecha de ulcera complicada o cancer gastrico",
+      "Sintomas persistentes segun edad/riesgo"
+    ],
+    "normal_pattern": "Mucosa esofagica, gastrica y duodenal sin erosiones, ulceras, sangrado activo, estenosis ni masas.",
+    "abnormal_findings": [
+      "Esofagitis erosiva",
+      "Erosiones o gastritis",
+      "Ulcera gastrica o duodenal",
+      "Sangrado activo o vaso visible",
+      "Estenosis o masa",
+      "Lesion que requiere biopsia"
+    ],
+    "limits": [
+      "No todo dolor epigastrico se explica por endoscopia",
+      "Puede requerir biopsias para H. pylori, celiaquia o cancer",
+      "Riesgos bajos pero reales de sedacion, sangrado o perforacion"
+    ],
+    "common_mistakes": [
+      "Llamar gastritis a cualquier dolor sin ver mucosa",
+      "No biopsiar ulceras gastricas sospechosas",
+      "No estratificar sangrado activo o signos de alarma"
+    ],
+    "learning_steps": [
+      "Sigue el trayecto: esofago, union gastroesofagica, estomago, duodeno.",
+      "Diferencia eritema superficial de erosion y ulcera profunda.",
+      "Busca estigmas de sangrado y necesidad de terapia endoscopica.",
+      "Decide donde tomar biopsia."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [
+      {
+        "name": "Kvasir u otros datasets endoscopicos abiertos",
+        "status": "candidato para revisar",
+        "note": "Validar licencia, clases disponibles y pertinencia educativa antes de importar."
+      }
+    ],
+    "internal_asset_status": "Ficha lista para asociar imagenes endoscopicas curadas.",
+    "result_patterns": [
+      {
+        "result": "Mucosa sin erosiones, ulcera, masa ni sangrado",
+        "interpretation": "No hay lesion estructural visible en el tramo examinado.",
+        "next_step": "Revisar si el cuadro puede ser funcional, motor o requiere pHmetria/manometria."
+      },
+      {
+        "result": "Esofagitis erosiva, estenosis o Barrett sospechoso",
+        "interpretation": "Complicacion o manifestacion de ERGE.",
+        "next_step": "Tratamiento antisecretor, biopsia si corresponde y seguimiento segun hallazgo."
+      },
+      {
+        "result": "Ulcera gastrica/duodenal o lesion irregular",
+        "interpretation": "Lesion que puede sangrar, perforar o requerir histologia.",
+        "next_step": "Biopsia si gastrica/sospechosa, H. pylori, estratificar sangrado si aplica."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-COLONOSCOPY-IBD-001",
+    "name": "Colonoscopia con biopsias",
+    "modality": "Endoscopia",
+    "system": "Digestivo",
+    "disease_codes": [
+      "DIG-007",
+      "RARE-003",
+      "RARE-004",
+      "ONC-003"
+    ],
+    "clinical_question": "Evaluar mucosa colonica e ileal para diferenciar EII, cancer colorrectal y otras causas de sangrado o diarrea cronica.",
+    "when_to_use": [
+      "Diarrea cronica con sangre o marcadores inflamatorios",
+      "Sospecha de Crohn o colitis ulcerosa",
+      "Tamizaje o sospecha de cancer colorrectal",
+      "Anemia ferropenica o sangre oculta positiva"
+    ],
+    "normal_pattern": "Mucosa colonica lisa, vascularizacion conservada, sin ulceras, masas, friabilidad ni estenosis.",
+    "abnormal_findings": [
+      "Inflamacion continua desde recto en colitis ulcerosa",
+      "Lesiones salteadas, ileitis o ulceras profundas en Crohn",
+      "Polipos o masa",
+      "Friabilidad, sangrado, pseudopolipos o estenosis",
+      "Biopsias con inflamacion cronica o displasia"
+    ],
+    "limits": [
+      "Requiere preparacion intestinal adecuada",
+      "La actividad endoscopica debe integrarse con sintomas, laboratorio e histologia",
+      "No todas las diarreas cronicas son inflamatorias"
+    ],
+    "common_mistakes": [
+      "Confundir SII con EII sin revisar alarmas",
+      "No tomar biopsias aunque la mucosa parezca casi normal",
+      "Olvidar vigilancia de displasia en colitis extensa cronica"
+    ],
+    "learning_steps": [
+      "Revisa recto, colon e ileon terminal si es posible.",
+      "Distingue patron continuo de patron salteado.",
+      "Busca ulceras, friabilidad, estenosis, polipos o masa.",
+      "Conecta endoscopia con biopsia y calprotectina."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [
+      {
+        "name": "Datasets endoscopicos abiertos para polipos/EII",
+        "status": "candidato para revisar",
+        "note": "Importar solo imagenes con etiquetas utiles y licencia compatible."
+      }
+    ],
+    "internal_asset_status": "Ficha preparada para imagenes colonoscopicas.",
+    "result_patterns": [
+      {
+        "result": "Mucosa normal y biopsias sin inflamacion",
+        "interpretation": "EII activa menos probable; pensar en SII u otras causas.",
+        "next_step": "Correlacionar con calprotectina, alarmas y biopsias si se tomaron."
+      },
+      {
+        "result": "Inflamacion continua desde recto",
+        "interpretation": "Patron compatible con colitis ulcerosa.",
+        "next_step": "Definir extension, actividad, biopsias y plan de tratamiento."
+      },
+      {
+        "result": "Lesiones salteadas, ileitis, estenosis o ulceras profundas",
+        "interpretation": "Patron compatible con Crohn.",
+        "next_step": "Complementar con enterografia y evaluar complicaciones transmulares."
+      },
+      {
+        "result": "Polipo, masa o displasia",
+        "interpretation": "Hallazgo neoplasico o premaligno posible.",
+        "next_step": "Reseccion/biopsia, histologia y estadificacion si cancer."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-LAB-HPYLORI-001",
+    "name": "Pruebas para Helicobacter pylori",
+    "modality": "Laboratorio / Endoscopia",
+    "system": "Digestivo",
+    "disease_codes": [
+      "DIG-004",
+      "DIG-005"
+    ],
+    "clinical_question": "Confirmar H. pylori como causa tratable de gastritis o ulcera peptica.",
+    "when_to_use": [
+      "Dispepsia o gastritis cuando se busca causa tratable",
+      "Ulcera gastrica o duodenal",
+      "Control de erradicacion despues de tratamiento segun protocolo"
+    ],
+    "normal_pattern": "Prueba negativa y baja probabilidad clinica de infeccion activa.",
+    "abnormal_findings": [
+      "Prueba de aliento positiva",
+      "Antigeno fecal positivo",
+      "Biopsia con H. pylori si se hizo endoscopia"
+    ],
+    "limits": [
+      "IBP, antibioticos o bismuto recientes pueden reducir rendimiento",
+      "Serologia no diferencia bien infeccion activa de pasada",
+      "Debe interpretarse con sintomas, alarma y contexto local"
+    ],
+    "common_mistakes": [
+      "Controlar erradicacion demasiado pronto",
+      "Usar serologia para confirmar curacion",
+      "Olvidar suspender interferentes cuando el protocolo lo pide"
+    ],
+    "learning_steps": [
+      "Decide si el paciente necesita prueba no invasiva o endoscopia.",
+      "Elige aliento o antigeno fecal para infeccion activa.",
+      "Revisa interferentes antes de interpretar negativo.",
+      "Confirma erradicacion si corresponde."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [],
+    "internal_asset_status": "Pendiente de dataset real especifico; no se usa ilustracion generada.",
+    "result_patterns": [
+      {
+        "result": "Aliento o antigeno fecal negativo sin interferentes",
+        "interpretation": "Infeccion activa por H. pylori menos probable.",
+        "next_step": "Buscar otras causas de dispepsia o confirmar si la sospecha sigue alta."
+      },
+      {
+        "result": "Aliento o antigeno fecal positivo",
+        "interpretation": "Infeccion activa probable.",
+        "next_step": "Tratamiento erradicador y confirmacion posterior segun protocolo."
+      },
+      {
+        "result": "Negativo con IBP/antibiotico/bismuto reciente",
+        "interpretation": "Riesgo de falso negativo.",
+        "next_step": "Repetir tras suspender interferentes si clinicamente seguro."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-LAB-CALPROTECTIN-001",
+    "name": "Calprotectina fecal",
+    "modality": "Laboratorio",
+    "system": "Digestivo",
+    "disease_codes": [
+      "DIG-007",
+      "DIG-008",
+      "RARE-003",
+      "RARE-004"
+    ],
+    "clinical_question": "Distinguir inflamacion intestinal organica de sindromes funcionales cuando la clinica no basta.",
+    "when_to_use": [
+      "Diarrea cronica o dolor abdominal con duda entre EII y SII",
+      "Seguimiento de actividad inflamatoria en EII",
+      "Decidir prioridad de colonoscopia cuando hay sintomas persistentes"
+    ],
+    "normal_pattern": "Resultado bajo en contexto sin alarmas apoya menor probabilidad de inflamacion intestinal activa.",
+    "abnormal_findings": [
+      "Elevacion compatible con inflamacion intestinal",
+      "Persistencia elevada pese a tratamiento",
+      "Elevacion que se integra con sangre, perdida de peso o anemia"
+    ],
+    "limits": [
+      "Puede elevarse por infeccion, AINEs u otras inflamaciones",
+      "No reemplaza colonoscopia ni biopsia cuando hay alarmas",
+      "El punto de corte depende del laboratorio"
+    ],
+    "common_mistakes": [
+      "Diagnosticar Crohn solo por calprotectina elevada",
+      "Ignorar alarmas si el resultado es bajo",
+      "No repetir o contextualizar valores intermedios"
+    ],
+    "learning_steps": [
+      "Busca alarmas primero.",
+      "Usa el resultado para estimar inflamacion, no para nombrar enfermedad.",
+      "Conecta calprotectina con colonoscopia, biopsia e imagen enterica.",
+      "Compara EII frente a SII."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [],
+    "internal_asset_status": "Cubierto parcialmente por imagenes reales de Kvasir para colonoscopia/EII; prueba fecal sin imagen propia.",
+    "result_patterns": [
+      {
+        "result": "Baja",
+        "interpretation": "Inflamacion intestinal activa menos probable si no hay alarmas.",
+        "next_step": "Pensar en SII u origen funcional; vigilar alarmas."
+      },
+      {
+        "result": "Intermedia",
+        "interpretation": "Zona gris; puede variar por infeccion, AINEs o inflamacion leve.",
+        "next_step": "Repetir, retirar interferentes o escalar segun clinica."
+      },
+      {
+        "result": "Alta o persistente",
+        "interpretation": "Sugiere inflamacion intestinal organica.",
+        "next_step": "Colonoscopia con biopsias y/o imagen enterica segun sospecha."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-LAB-CELIAC-001",
+    "name": "Serologia celiaca y biopsia duodenal",
+    "modality": "Laboratorio / Endoscopia",
+    "system": "Digestivo",
+    "disease_codes": [
+      "RARE-002"
+    ],
+    "clinical_question": "Detectar respuesta autoinmune al gluten y confirmar dano duodenal cuando esta indicado.",
+    "when_to_use": [
+      "Diarrea cronica, malabsorcion, anemia ferropenica o perdida de peso",
+      "Sospecha por antecedentes familiares o enfermedades autoinmunes",
+      "Confirmacion con biopsia duodenal cuando la ruta clinica lo requiere"
+    ],
+    "normal_pattern": "Serologia negativa con IgA total adecuada y baja sospecha clinica.",
+    "abnormal_findings": [
+      "Anti-transglutaminasa IgA positivo",
+      "IgA total baja que obliga a ajustar la estrategia",
+      "Biopsia con atrofia vellosa, hiperplasia criptica o linfocitosis intraepitelial"
+    ],
+    "limits": [
+      "Dieta sin gluten antes de la prueba puede falsear resultados",
+      "Deficiencia de IgA cambia la interpretacion",
+      "La biopsia debe tomarse y rotularse de forma adecuada"
+    ],
+    "common_mistakes": [
+      "Retirar gluten antes de completar diagnostico",
+      "Olvidar pedir IgA total",
+      "Tomar pocas biopsias o no incluir duodeno adecuado"
+    ],
+    "learning_steps": [
+      "Confirma que el paciente consume gluten.",
+      "Pide anti-tTG IgA e IgA total.",
+      "Decide si requiere endoscopia con biopsias.",
+      "Relaciona vellosidades atroficas con malabsorcion."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [],
+    "internal_asset_status": "Pendiente de dataset real de biopsia duodenal/celiaquia; no se usa ilustracion generada.",
+    "result_patterns": [
+      {
+        "result": "Anti-tTG IgA negativo con IgA total normal",
+        "interpretation": "Celiaquia menos probable si consume gluten.",
+        "next_step": "Buscar otras causas; reconsiderar si alta sospecha."
+      },
+      {
+        "result": "Anti-tTG IgA positivo",
+        "interpretation": "Sospecha serologica de celiaquia.",
+        "next_step": "Confirmar ruta diagnostica; valorar biopsia duodenal segun edad/protocolo."
+      },
+      {
+        "result": "IgA total baja",
+        "interpretation": "La serologia IgA puede ser falsamente negativa.",
+        "next_step": "Usar pruebas basadas en IgG y/o biopsia segun contexto."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-CT-DIVERTICULITIS-001",
+    "name": "TAC abdomen/pelvis para diverticulitis",
+    "modality": "TAC",
+    "system": "Digestivo",
+    "disease_codes": [
+      "DIG-009"
+    ],
+    "clinical_question": "Confirmar diverticulitis, clasificar complicaciones y separar diferenciales de dolor en fosa iliaca izquierda.",
+    "when_to_use": [
+      "Primer episodio con duda diagnostica",
+      "Dolor intenso, fiebre, sepsis o mala evolucion",
+      "Sospecha de absceso, perforacion, fistula u obstruccion"
+    ],
+    "normal_pattern": "Colon sin engrosamiento focal, sin grasa inflamada, absceso ni aire libre.",
+    "abnormal_findings": [
+      "Engrosamiento segmentario del colon",
+      "Diverticulos con grasa pericolica inflamada",
+      "Absceso, aire libre, fistula u obstruccion si complicada"
+    ],
+    "limits": [
+      "Implica radiacion",
+      "Contraste puede estar limitado por funcion renal o alergia",
+      "Hallazgos deben diferenciarse de cancer u otras colitis"
+    ],
+    "common_mistakes": [
+      "Tratar todo dolor izquierdo como diverticulitis sin confirmar cuando hay duda",
+      "No buscar absceso si hay fiebre persistente",
+      "Olvidar seguimiento si hay sospecha de lesion subyacente"
+    ],
+    "learning_steps": [
+      "Ubica el segmento colonico afectado.",
+      "Busca diverticulos y grasa inflamada.",
+      "Clasifica no complicada frente a complicada.",
+      "Piensa en diferenciales si el patron no encaja."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [],
+    "internal_asset_status": "Pendiente de dataset real de TAC abdominal; no se usa ilustracion generada.",
+    "result_patterns": [
+      {
+        "result": "Sin engrosamiento ni grasa inflamada",
+        "interpretation": "Diverticulitis menos probable.",
+        "next_step": "Buscar colitis, litiasis, patologia ginecologica/urinaria u otros diferenciales."
+      },
+      {
+        "result": "Engrosamiento segmentario + diverticulos + grasa inflamada",
+        "interpretation": "Diverticulitis no complicada probable.",
+        "next_step": "Manejo ambulatorio u hospitalario segun gravedad y comorbilidad."
+      },
+      {
+        "result": "Absceso, perforacion, fistula u obstruccion",
+        "interpretation": "Diverticulitis complicada.",
+        "next_step": "Urgencias, antibiotico IV, drenaje/cirugia segun hallazgo."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-MR-ENTEROGRAPHY-001",
+    "name": "Enterografia por RM o TAC",
+    "modality": "RM / TAC",
+    "system": "Digestivo",
+    "disease_codes": [
+      "RARE-003",
+      "DIG-007"
+    ],
+    "clinical_question": "Evaluar intestino delgado y complicaciones transmulares en Crohn o EII.",
+    "when_to_use": [
+      "Sospecha de Crohn con compromiso de intestino delgado",
+      "Dolor, obstruccion, fistula o absceso sospechado",
+      "Seguimiento de extension y actividad fuera del alcance colonoscopico"
+    ],
+    "normal_pattern": "Asas sin engrosamiento, hiperrealce, estenosis, fistula ni absceso.",
+    "abnormal_findings": [
+      "Engrosamiento e hiperrealce de pared",
+      "Estenosis o dilatacion preestenotica",
+      "Fistula, absceso o inflamacion mesenterica"
+    ],
+    "limits": [
+      "No reemplaza biopsia mucosa cuando se requiere histologia",
+      "Calidad depende de preparacion y distension intestinal",
+      "Disponibilidad y tolerancia del paciente pueden limitar RM"
+    ],
+    "common_mistakes": [
+      "Evaluar solo colon y olvidar intestino delgado",
+      "Confundir inflamacion activa con fibrosis sin integrar contexto",
+      "No buscar absceso antes de intensificar inmunosupresion"
+    ],
+    "learning_steps": [
+      "Sigue asas de intestino delgado.",
+      "Busca engrosamiento, realce y edema.",
+      "Marca estenosis, fistula o absceso.",
+      "Integra con colonoscopia, calprotectina y sintomas."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [],
+    "internal_asset_status": "Pendiente de dataset real de enterografia; no se usa ilustracion generada.",
+    "result_patterns": [
+      {
+        "result": "Asas sin engrosamiento, edema ni realce",
+        "interpretation": "Crohn activo de intestino delgado menos probable.",
+        "next_step": "Correlacionar con colonoscopia, calprotectina y sintomas."
+      },
+      {
+        "result": "Engrosamiento, edema o hiperrealce",
+        "interpretation": "Inflamacion activa probable.",
+        "next_step": "Ajustar tratamiento y medir extension/actividad."
+      },
+      {
+        "result": "Estenosis, fistula o absceso",
+        "interpretation": "Complicacion transmural de Crohn.",
+        "next_step": "Evaluar cirugia, drenaje, antibiotico o cambio terapeutico."
+      }
+    ]
+  },
+  {
+    "test_id": "DIG-CT-STAGING-ONC-001",
+    "name": "TAC de estadificacion digestiva",
+    "modality": "TAC",
+    "system": "Digestivo",
+    "disease_codes": [
+      "ONC-003",
+      "ONC-004"
+    ],
+    "clinical_question": "Evaluar extension local, ganglios, metastasis y plan terapeutico en cancer digestivo.",
+    "when_to_use": [
+      "Cancer colorrectal o gastrico confirmado o altamente sospechado",
+      "Busqueda de metastasis hepaticas, ganglionares o peritoneales",
+      "Planificacion de cirugia, oncologia o manejo paliativo"
+    ],
+    "normal_pattern": "Sin masa visible, adenopatias sospechosas, metastasis ni ascitis/peritoneo sugestivo.",
+    "abnormal_findings": [
+      "Masa o engrosamiento tumoral",
+      "Adenopatias regionales",
+      "Lesiones hepaticas o peritoneales sospechosas",
+      "Obstruccion o invasion local"
+    ],
+    "limits": [
+      "La histologia define diagnostico",
+      "Lesiones pequenas pueden requerir RM, ecoendoscopia o PET segun contexto",
+      "No reemplaza colonoscopia/endoscopia para biopsia inicial"
+    ],
+    "common_mistakes": [
+      "Estadificar antes de tener tejido cuando se necesita confirmacion",
+      "Ignorar sintomas de obstruccion",
+      "No diferenciar prueba diagnostica de prueba de extension"
+    ],
+    "learning_steps": [
+      "Ubica tumor primario.",
+      "Busca ganglios regionales.",
+      "Revisa higado, peritoneo y pulmon bases si aplica.",
+      "Conecta hallazgos con estadio y plan."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [],
+    "internal_asset_status": "Cubierto parcialmente por imagenes reales de Kvasir/Kvasir-SEG para colonoscopia; TAC de estadificacion pendiente.",
+    "result_patterns": [
+      {
+        "result": "Sin metastasis ni adenopatias sospechosas",
+        "interpretation": "No hay extension evidente en TAC.",
+        "next_step": "Completar estadificacion local e histologia; plan quirurgico/onco segun caso."
+      },
+      {
+        "result": "Adenopatias regionales o invasion local",
+        "interpretation": "Enfermedad localmente avanzada posible.",
+        "next_step": "Discusion multidisciplinaria y completar estudios de estadio."
+      },
+      {
+        "result": "Lesiones hepaticas/peritoneales/pulmonares sospechosas",
+        "interpretation": "Sospecha enfermedad metastasica.",
+        "next_step": "Confirmar si cambia manejo y definir plan oncologico."
+      }
+    ]
+  },
+  {
+    "test_id": "REN-US-KIDNEY-001",
+    "name": "Ecografia renal y de vias urinarias",
+    "modality": "Ecografia",
+    "system": "Renal",
+    "disease_codes": ["REN-001", "REN-004", "REN-005", "REN-006", "REN-008"],
+    "clinical_question": "Evaluar tamano renal, ecogenicidad, hidronefrosis, vejiga y datos estructurales que expliquen deterioro renal u obstruccion.",
+    "when_to_use": [
+      "Creatinina elevada sin causa clara",
+      "Sospecha de hidronefrosis u obstruccion",
+      "ERC para valorar tamano renal y cambios cronicos",
+      "Dolor en flanco cuando se busca dilatacion o complicacion"
+    ],
+    "normal_pattern": "Rinones de tamano conservado, sin dilatacion pielocalicial, sin masas evidentes, vejiga sin retencion significativa segun contexto.",
+    "abnormal_findings": [
+      "Hidronefrosis o dilatacion ureteral",
+      "Rinones pequenos y ecogenicos en enfermedad cronica",
+      "Retencion urinaria o residuo postmiccional elevado",
+      "Calculo visible con sombra acustica en algunos casos"
+    ],
+    "limits": [
+      "Puede no ver calculos ureterales pequenos",
+      "Depende de ventana acustica y operador",
+      "No cuantifica por si sola la funcion renal"
+    ],
+    "common_mistakes": [
+      "Descartar litiasis ureteral solo porque no se ve el calculo",
+      "No revisar vejiga y residuo si se sospecha obstruccion baja",
+      "Confundir ausencia de hidronefrosis temprana con ausencia de obstruccion"
+    ],
+    "learning_steps": [
+      "Compara tamano y ecogenicidad renal.",
+      "Busca dilatacion de pelvis y calices.",
+      "Revisa vejiga y residuo postmiccional si aplica.",
+      "Integra con creatinina, diuresis y sintomas."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [
+      {
+        "name": "Colecciones abiertas de ecografia renal",
+        "status": "pendiente de curacion",
+        "note": "Priorizar licencia clara, metadatos anonimizados y etiquetas de hidronefrosis/litiasis."
+      }
+    ],
+    "internal_asset_status": "Pendiente de imagen real; puede vincularse al atlas renal normal y a imagenes creadas mientras se cura dataset.",
+    "result_patterns": [
+      {
+        "result": "Rinones pequenos, cortical adelgazada, mayor ecogenicidad",
+        "interpretation": "Sugiere cambios cronicos si se correlaciona con eGFR bajo persistente.",
+        "next_step": "Clasificar ERC por eGFR/albuminuria y buscar causa."
+      },
+      {
+        "result": "Hidronefrosis bilateral o en rinon unico",
+        "interpretation": "Sugiere obstruccion clinicamente relevante.",
+        "next_step": "Valorar drenaje urgente si hay AKI, infeccion, anuria o dolor severo."
+      },
+      {
+        "result": "Sin hidronefrosis",
+        "interpretation": "Reduce probabilidad de obstruccion importante, pero no la elimina en fases tempranas.",
+        "next_step": "Seguir con laboratorio, diuresis y otra imagen si la sospecha persiste."
+      }
+    ]
+  },
+  {
+    "test_id": "REN-LAB-CKD-CGA-001",
+    "name": "Clasificacion CGA: causa, eGFR y albuminuria",
+    "modality": "Laboratorio / estratificacion",
+    "system": "Renal",
+    "disease_codes": ["REN-001", "REN-007"],
+    "clinical_question": "Confirmar y clasificar enfermedad renal cronica usando causa probable, categoria de filtracion glomerular y categoria de albuminuria.",
+    "when_to_use": [
+      "Sospecha o seguimiento de enfermedad renal cronica",
+      "Diabetes, hipertension o riesgo cardiovascular con necesidad de tamizaje renal",
+      "Creatinina alterada o albuminuria persistente",
+      "Antes de ajustar medicamentos o estimar riesgo de progresion"
+    ],
+    "normal_pattern": "eGFR conservado y albuminuria ausente o dentro de rango esperado, sin marcadores persistentes de dano renal.",
+    "abnormal_findings": [
+      "eGFR bajo persistente por al menos 3 meses",
+      "Albuminuria persistente",
+      "Sedimento urinario, imagen o historia compatibles con dano renal",
+      "Combinacion de G y A que aumenta riesgo renal/cardiovascular"
+    ],
+    "limits": [
+      "Creatinina depende de masa muscular, edad, dieta y medicamentos",
+      "Albuminuria puede subir transitoriamente por fiebre, ejercicio o infeccion",
+      "Un solo resultado no confirma cronicidad"
+    ],
+    "common_mistakes": [
+      "Diagnosticar ERC con una creatinina aislada sin tendencia",
+      "Ignorar albuminuria si eGFR aun parece conservado",
+      "No separar lesion renal aguda de enfermedad cronica"
+    ],
+    "learning_steps": [
+      "Define causa probable: diabetes, hipertension, glomerular, obstructiva u otra.",
+      "Ubica categoria G por eGFR.",
+      "Ubica categoria A por albuminuria.",
+      "Combina G + A para estimar riesgo y seguimiento."
+    ],
+    "reference_ranges": [
+      {
+        "label": "eGFR",
+        "normal": "habitualmente >= 60 ml/min/1.73 m2 si no hay otros marcadores de dano",
+        "abnormal": "bajo si persiste o cae rapidamente respecto al basal"
+      },
+      {
+        "label": "Albuminuria",
+        "normal": "sin elevacion persistente",
+        "abnormal": "elevada de forma persistente, especialmente si se repite y cambia riesgo"
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "NHANES eGFR/albuminuria",
+        "status": "publico para comparaciones poblacionales",
+        "note": "Cruzar creatinina, ACR, diabetes, hipertension y variables demograficas."
+      },
+      {
+        "name": "UCI Chronic Kidney Disease Dataset",
+        "status": "tabular para practica",
+        "note": "Util para patrones de CKD/no CKD, aunque pequeno y con faltantes."
+      }
+    ],
+    "internal_asset_status": "Listo para conectar con las muestras de creatinina/eGFR y ACR ya cargadas.",
+    "result_patterns": [
+      {
+        "result": "eGFR conservado con ACR elevada persistente",
+        "interpretation": "Dano renal temprano posible, especialmente en diabetes o hipertension.",
+        "next_step": "Confirmar persistencia, controlar presion/riesgo y seguimiento."
+      },
+      {
+        "result": "eGFR bajo persistente con albuminuria elevada",
+        "interpretation": "ERC con mayor riesgo de progresion y eventos cardiovasculares.",
+        "next_step": "Clasificar G/A, revisar causa, complicaciones y remision segun riesgo."
+      },
+      {
+        "result": "Creatinina sube bruscamente sin cronicidad conocida",
+        "interpretation": "No asumir ERC: considerar lesion renal aguda o componente agudo sobre cronico.",
+        "next_step": "Repetir, revisar diuresis, medicamentos, volumen y obstruccion."
+      }
+    ]
+  },
+  {
+    "test_id": "REN-LAB-CKD-COMPLICATIONS-001",
+    "name": "Panel de complicaciones de enfermedad renal cronica",
+    "modality": "Laboratorio",
+    "system": "Renal",
+    "disease_codes": ["REN-001"],
+    "clinical_question": "Detectar anemia, acidosis, hiperpotasemia, trastorno mineral-oseo y sobrecarga metabolica asociados a ERC.",
+    "when_to_use": [
+      "ERC moderada o avanzada",
+      "eGFR descendente o sintomas sistemicos",
+      "Seguimiento de anemia, acidosis o alteraciones minerales",
+      "Antes de decisiones terapeuticas o remision a nefrologia"
+    ],
+    "normal_pattern": "Hemoglobina, potasio, bicarbonato, calcio, fosforo y PTH sin alteraciones persistentes relevantes para el estadio.",
+    "abnormal_findings": [
+      "Hemoglobina baja compatible con anemia de ERC",
+      "Potasio elevado",
+      "Bicarbonato bajo por acidosis metabolica",
+      "Fosforo alto, calcio alterado o PTH elevada",
+      "Albumina baja o cambios nutricionales segun contexto"
+    ],
+    "limits": [
+      "Cada analito requiere contexto clinico y medicamentos",
+      "Hemolisis puede falsear potasio",
+      "Calcio total requiere considerar albumina"
+    ],
+    "common_mistakes": [
+      "Mirar solo creatinina y olvidar complicaciones sistemicas",
+      "Atribuir toda anemia a ERC sin evaluar hierro o sangrado",
+      "Interpretar potasio alto sin revisar hemolisis, ECG o medicamentos"
+    ],
+    "learning_steps": [
+      "Empieza por eGFR y tendencia.",
+      "Busca complicaciones: potasio, bicarbonato, hemoglobina.",
+      "Revisa eje mineral: calcio, fosforo, PTH y vitamina D si aplica.",
+      "Relaciona cada alteracion con sintomas y tratamiento."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [
+      {
+        "name": "NHANES Laboratory Data",
+        "status": "publico",
+        "note": "Permite construir comparaciones de hemoglobina, metabolismo mineral y funcion renal por grupos."
+      }
+    ],
+    "internal_asset_status": "Conectado con hemograma renal y panel calcio/fosforo/bicarbonato/PTH del banco de muestras.",
+    "result_patterns": [
+      {
+        "result": "Hemoglobina baja con eGFR bajo persistente",
+        "interpretation": "Anemia de ERC posible, pero exige revisar hierro, inflamacion y sangrado.",
+        "next_step": "Solicitar perfil de hierro y valorar manejo segun contexto."
+      },
+      {
+        "result": "Bicarbonato bajo y potasio elevado",
+        "interpretation": "Complicacion metabolica de menor excrecion renal o medicamentos.",
+        "next_step": "Revisar urgencia, ECG si potasio critico, dieta/medicamentos y nefrologia segun severidad."
+      },
+      {
+        "result": "Fosforo/PTH elevados",
+        "interpretation": "Trastorno mineral-oseo de ERC probable si se confirma persistencia.",
+        "next_step": "Ajustar seguimiento y educacion nutricional/terapeutica."
+      }
+    ]
+  },
+  {
+    "test_id": "REN-CT-STONE-001",
+    "name": "TAC sin contraste para litiasis y obstruccion",
+    "modality": "TAC",
+    "system": "Renal",
+    "disease_codes": ["REN-005", "REN-008"],
+    "clinical_question": "Detectar calculos, ubicar el nivel de obstruccion y estimar complicaciones cuando el colico renal o la hidronefrosis lo requieren.",
+    "when_to_use": [
+      "Colico renal con diagnostico incierto",
+      "Dolor severo, recurrencia o mala evolucion",
+      "Sospecha de obstruccion complicada",
+      "Planeacion de intervencion urologica"
+    ],
+    "normal_pattern": "Sin calculos visibles, sin hidronefrosis ni estriacion inflamatoria significativa.",
+    "abnormal_findings": [
+      "Calculo renal o ureteral hiperdenso",
+      "Hidronefrosis o hidroureter proximal",
+      "Estranding periureteral o perirrenal",
+      "Signos indirectos de obstruccion"
+    ],
+    "limits": [
+      "Implica radiacion",
+      "No siempre define composicion del calculo",
+      "Embarazo y poblaciones sensibles requieren estrategias alternativas"
+    ],
+    "common_mistakes": [
+      "Ignorar fiebre o sepsis mientras se espera imagen",
+      "No correlacionar tamano/ubicacion con probabilidad de expulsion",
+      "No buscar diagnosticos alternos si no hay calculo"
+    ],
+    "learning_steps": [
+      "Sigue rinon, pelvis, ureter y union ureterovesical.",
+      "Ubica el calculo y mide tamano aproximado.",
+      "Busca dilatacion proximal.",
+      "Cruza con fiebre, creatinina y diuresis."
+    ],
+    "reference_ranges": [
+      {
+        "label": "Tamano del calculo",
+        "normal": "sin calculo",
+        "abnormal": "calculo visible; mayor tamano reduce probabilidad de paso espontaneo"
+      }
+    ],
+    "dataset_candidates": [
+      {
+        "name": "CT KUB / stone datasets abiertos",
+        "status": "pendiente de busqueda dirigida",
+        "note": "Revisar licencia, cortes DICOM/JPEG y etiquetas por ubicacion."
+      }
+    ],
+    "internal_asset_status": "Pendiente de dataset real curado; iniciar con patrones de texto y atlas urinario.",
+    "result_patterns": [
+      {
+        "result": "Calculo distal pequeno sin hidronefrosis significativa",
+        "interpretation": "Puede ser candidato a manejo conservador segun dolor, infeccion y funcion renal.",
+        "next_step": "Analgesia, seguimiento y educacion de alarmas."
+      },
+      {
+        "result": "Calculo obstructivo con hidronefrosis y fiebre",
+        "interpretation": "Obstruccion infectada hasta demostrar lo contrario.",
+        "next_step": "Urologia urgente, antibiotico y drenaje segun contexto."
+      }
+    ]
+  },
+  {
+    "test_id": "REN-BIOPSY-GLOMERULAR-001",
+    "name": "Biopsia renal",
+    "modality": "Procedimiento / anatomia patologica",
+    "system": "Renal",
+    "disease_codes": ["REN-002", "REN-003", "REN-007"],
+    "clinical_question": "Definir patron histologico cuando proteinuria, hematuria, deterioro renal o sospecha glomerular cambian tratamiento.",
+    "when_to_use": [
+      "Sindrome nefrotico en adulto o presentacion atipica",
+      "Glomerulonefritis rapidamente progresiva sospechada",
+      "Proteinuria/hematuria con deterioro renal no explicado",
+      "Diabetes con datos atipicos que sugieren otra nefropatia"
+    ],
+    "normal_pattern": "No aplica como tamizaje; se espera tejido renal adecuado para microscopia de luz, inmunofluorescencia y, si esta disponible, electronica.",
+    "abnormal_findings": [
+      "Depositos inmunes",
+      "Proliferacion glomerular o crescents",
+      "Lesion de podocitos",
+      "Esclerosis, fibrosis intersticial o atrofia tubular"
+    ],
+    "limits": [
+      "Procedimiento invasivo con riesgo de sangrado",
+      "Requiere indicacion clara y control de coagulacion/presion",
+      "Muestra insuficiente puede limitar interpretacion"
+    ],
+    "common_mistakes": [
+      "Retrasar biopsia cuando hay deterioro rapido y sospecha glomerular grave",
+      "Pedirla sin pregunta clinica clara",
+      "No integrar histologia con serologias, orina y curso clinico"
+    ],
+    "learning_steps": [
+      "Define la pregunta clinica antes de biopsiar.",
+      "Revisa contraindicaciones y seguridad.",
+      "Relaciona patron histologico con proteinuria, hematuria y eGFR.",
+      "Usa el resultado para clasificar tratamiento y pronostico."
+    ],
+    "reference_ranges": [],
+    "dataset_candidates": [
+      {
+        "name": "Repositorios de patologia renal",
+        "status": "pendiente de curacion",
+        "note": "Suelen requerir permisos/licencia; priorizar imagenes anonimizadas y etiquetas diagnosticas."
+      }
+    ],
+    "internal_asset_status": "Sin laminas histologicas propias por ahora; usar como ficha teorica y asociar imagenes curadas despues.",
+    "result_patterns": [
+      {
+        "result": "Cambios minimos, FSGS o membranosa",
+        "interpretation": "Patrones asociados a sindrome nefrotico primario en distintos contextos.",
+        "next_step": "Tratamiento dirigido por subtipo, riesgo y comorbilidades."
+      },
+      {
+        "result": "Crescents o proliferacion activa",
+        "interpretation": "Sugiere glomerulonefritis agresiva si concuerda con clinica.",
+        "next_step": "Nefrologia urgente y correlacion con ANCA, anti-GBM, complemento u otras pruebas."
+      }
+    ]
+  }
+]
