@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240">
-  <rect width="320" height="240" rx="24" fill="#fffbeb" />
-  <path d="M224 80c0 34-18 70-46 90-22 16-42 18-60 10-24-10-38-34-42-64-4-28 4-56 24-74 18-18 54-28 90-10 18 8 34 26 34 48Z" fill="#d97706" opacity="0.18"/>
-  <path d="M212 90c0 26-12 48-30 60-18 14-36 14-54 6-20-10-34-32-38-58-4-24 4-46 22-62 16-14 42-20 68-10 16 6 32 20 32 44Z" fill="#f59e0b"/>
-  <circle cx="180" cy="136" r="10" fill="#fef3c7" />
-  <circle cx="142" cy="116" r="8" fill="#fef3c7" />
-  <path d="M152 146c24 10 44 8 54-6" stroke="#fef3c7" stroke-width="10" stroke-linecap="round" fill="none"/>
-  <text x="160" y="210" font-size="18" font-family="Inter, sans-serif" fill="#92400e" text-anchor="middle">Diabetes</text>
-</svg>

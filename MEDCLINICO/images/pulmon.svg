@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240">
-  <rect width="320" height="240" rx="24" fill="#f0f9ff" />
-  <path d="M192 42c34 0 54 28 54 58 0 46-20 70-46 96-14 14-24 18-36 18-14 0-22-6-32-16-18-18-42-34-52-80-8-36 6-74 46-76 16-1 32 4 48 10Z" fill="#0c4a6e" opacity="0.18"/>
-  <path d="M120 50c-22 20-18 60 0 92 18 34 36 44 62 46 28 2 50-12 62-42 8-18 8-42 0-62-10-22-34-42-74-44-18-1-30 0-50 10Z" fill="#0284c7"/>
-  <path d="M166 146c0 18 10 24 18 24s18-8 18-24" stroke="#bae6fd" stroke-width="12" stroke-linecap="round" fill="none"/>
-  <path d="M140 146c0 18-10 24-18 24s-18-8-18-24" stroke="#bae6fd" stroke-width="12" stroke-linecap="round" fill="none"/>
-  <text x="160" y="210" font-size="18" font-family="Inter, sans-serif" fill="#075985" text-anchor="middle">Pulmón</text>
-</svg>

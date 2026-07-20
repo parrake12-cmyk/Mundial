@@ -1,6 +1,24 @@
+# Dependencias
 node_modules/
 backend/node_modules/
+
+# Base de datos
 backend/medlearn.db
+
+# Logs
 *.log
+
+# Python
+__pycache__/
+*.pyc
+
+# Sistema operativo
 .DS_Store
 Thumbs.db
+
+# Backups y comprimidos
+*.rar
+*.zip
+
+# Datos externos descargados (se sincronizan con scripts)
+backend/data/external/
