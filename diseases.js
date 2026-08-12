@@ -768,7 +768,7 @@ function renderRenalCompactWorkspace(disease) {
             </div>
           `)}
           ${renderCompactModulePanel('diagnostico', 'Diagnóstico y laboratorio', initialModule, `
-            <div class="compact-reading-lead"><span>Ruta inicial</span><p>${escapeHTML(disease.diagnostic_tests)}</p></div>
+            <div id="diagnosticProfilePanel" class="diagnostic-profile-panel"><p class="hint">Consolidando perfil diagnóstico...</p></div>
             <div id="diagnosticTestPanel" class="diagnostic-test-panel"><p class="hint">Organizando pruebas y muestras...</p></div>
             <div id="analyteBankPanel" class="analyte-bank-panel"><p class="hint">Cargando banco de analitos...</p></div>
           `)}
@@ -816,6 +816,7 @@ function renderRenalCompactWorkspace(disease) {
   });
   bindCompactDiseaseWorkspace(disease, initialModule);
   loadLearningObjectPanel(disease);
+  loadDiagnosticProfilePanel(disease, generation);
   loadDiagnosticTestPanel(disease, generation);
   loadAnalyteBankPanel(disease, generation);
   // La aplicación clínica se habilitará cuando la validación de resultados esté consolidada.
@@ -2161,6 +2162,103 @@ function renderLearningSupportPanel(title, content, open = false) {
         ${content}
       </div>
     </details>
+  `;
+}
+
+async function loadDiagnosticProfilePanel(disease, generation) {
+  const panel = document.getElementById('diagnosticProfilePanel');
+  if (!panel) return;
+
+  try {
+    const response = await fetch(`/diagnostico/enfermedad/${encodeURIComponent(disease.disease_code)}`);
+    if (!response.ok) throw new Error('Perfil diagnóstico no disponible');
+    const profile = await response.json();
+    if (generation !== renalWorkspaceGeneration || !panel.isConnected) return;
+
+    panel.innerHTML = renderDiagnosticProfile(profile);
+  } catch (error) {
+    if (generation === renalWorkspaceGeneration && panel.isConnected) {
+      panel.innerHTML = '<p class="hint">El perfil diagnóstico no pudo cargarse.</p>';
+    }
+  }
+}
+
+function renderDiagnosticProfile(profile) {
+  const sources = profile.sources || [];
+  const patterns = profile.result_patterns || [];
+
+  return `
+    <section class="diagnostic-profile" aria-labelledby="diagnosticProfileTitle">
+      <header class="learning-header">
+        <div>
+          <span class="badge">Perfil diagnóstico consolidado</span>
+          <h3 id="diagnosticProfileTitle">Cómo se estudia esta enfermedad</h3>
+          <p>Resumen, criterios y patrones interpretativos para leer los resultados en contexto.</p>
+        </div>
+      </header>
+
+      ${profile.diagnostic_summary ? `
+        <section class="compact-text-card">
+          <h4>Resumen diagnóstico</h4>
+          <p>${escapeHTML(profile.diagnostic_summary)}</p>
+        </section>
+      ` : ''}
+
+      <div class="compact-content-grid">
+        ${profile.initial_evaluation?.length ? `
+          <section class="compact-text-card">
+            <h4>Evaluación inicial</h4>
+            <ul>${profile.initial_evaluation.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+          </section>
+        ` : ''}
+        ${profile.diagnostic_criteria?.length ? `
+          <section class="compact-text-card">
+            <h4>Criterios diagnósticos</h4>
+            <ul>${profile.diagnostic_criteria.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+          </section>
+        ` : ''}
+      </div>
+
+      ${patterns.length ? `
+        <section class="diagnostic-bank-section">
+          <h4>Patrones de resultados</h4>
+          <div class="test-bank-grid">
+            ${patterns.map((pattern) => `
+              <article class="test-card test-card-static">
+                <h5>${escapeHTML(pattern.result)}</h5>
+                <dl class="pattern-read">
+                  <div><dt>Interpretación</dt><dd>${escapeHTML(pattern.interpretation)}</dd></div>
+                  <div><dt>Siguiente paso</dt><dd>${escapeHTML(pattern.next_step)}</dd></div>
+                </dl>
+              </article>
+            `).join('')}
+          </div>
+        </section>
+      ` : ''}
+
+      ${profile.limitations?.length ? `
+        <section class="diagnostic-bank-section">
+          <h4>Limitaciones al interpretar</h4>
+          <ul class="limitation-list">
+            ${profile.limitations.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}
+          </ul>
+        </section>
+      ` : ''}
+
+      ${sources.length ? `
+        <section class="diagnostic-bank-section">
+          <h4>Fuentes</h4>
+          <ul class="source-list">
+            ${sources.map((source) => `
+              <li>
+                <strong>${escapeHTML(source.title || source.name || 'Fuente')}</strong>
+                ${source.url ? ` <a href="${escapeHTML(source.url)}" target="_blank" rel="noopener noreferrer">Ver fuente</a>` : ''}
+              </li>
+            `).join('')}
+          </ul>
+        </section>
+      ` : ''}
+    </section>
   `;
 }
 
