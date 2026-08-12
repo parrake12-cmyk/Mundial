@@ -1,0 +1,305 @@
+[
+  {
+    "analyte_id": "serum_creatinine",
+    "preferred_name": "Creatinina serica",
+    "dataset": "BIOPRO_L",
+    "variable": "LBXSCR",
+    "specimen_type": "Suero refrigerado",
+    "canonical_unit": "mg/dL",
+    "systems": [
+      "Renal",
+      "Cardiovascular",
+      "Hepatobiliar"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "urine_creatinine",
+    "preferred_name": "Creatinina urinaria",
+    "dataset": "ALB_CR_L",
+    "variable": "URXUCR",
+    "specimen_type": "Orina",
+    "canonical_unit": "mg/dL",
+    "systems": [
+      "Renal",
+      "Endocrino"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "urine_albumin",
+    "preferred_name": "Albumina urinaria",
+    "dataset": "ALB_CR_L",
+    "variable": "URXUMS",
+    "specimen_type": "Orina",
+    "canonical_unit": "mg/L",
+    "systems": [
+      "Renal",
+      "Endocrino",
+      "Cardiovascular"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "urine_acr",
+    "preferred_name": "Relacion albumina/creatinina urinaria",
+    "dataset": "ALB_CR_L",
+    "variable": "URDACT",
+    "specimen_type": "Orina",
+    "canonical_unit": "mg/g",
+    "systems": [
+      "Renal",
+      "Endocrino",
+      "Cardiovascular"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "bun",
+    "preferred_name": "Nitrogeno ureico en sangre",
+    "dataset": "BIOPRO_L",
+    "variable": "LBXSBU",
+    "specimen_type": "Suero refrigerado",
+    "canonical_unit": "mg/dL",
+    "systems": [
+      "Renal",
+      "Metabolico"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "potassium",
+    "preferred_name": "Potasio",
+    "dataset": "BIOPRO_L",
+    "variable": "LBXSKSI",
+    "specimen_type": "Suero refrigerado",
+    "canonical_unit": "mmol/L",
+    "systems": [
+      "Renal",
+      "Cardiovascular",
+      "Endocrino"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "sodium",
+    "preferred_name": "Sodio",
+    "dataset": "BIOPRO_L",
+    "variable": "LBXSNASI",
+    "specimen_type": "Suero refrigerado",
+    "canonical_unit": "mmol/L",
+    "systems": [
+      "Renal",
+      "Cardiovascular",
+      "Endocrino"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "bicarbonate",
+    "preferred_name": "Bicarbonato",
+    "dataset": "BIOPRO_L",
+    "variable": "LBXSC3SI",
+    "specimen_type": "Suero refrigerado",
+    "canonical_unit": "mmol/L",
+    "systems": [
+      "Renal",
+      "Respiratorio",
+      "Metabolico"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "hemoglobin",
+    "preferred_name": "Hemoglobina",
+    "dataset": "CBC_L",
+    "variable": "LBXHGB",
+    "specimen_type": "Sangre total",
+    "canonical_unit": "g/dL",
+    "systems": [
+      "Hematologico",
+      "Renal",
+      "Cardiovascular"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "calcium",
+    "preferred_name": "Calcio total",
+    "dataset": "BIOPRO_L",
+    "variable": "LBXSCA",
+    "specimen_type": "Suero refrigerado",
+    "canonical_unit": "mg/dL",
+    "systems": [
+      "Renal",
+      "Endocrino",
+      "Metabolico"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "phosphorus",
+    "preferred_name": "Fosforo",
+    "dataset": "BIOPRO_L",
+    "variable": "LBXSPH",
+    "specimen_type": "Suero refrigerado",
+    "canonical_unit": "mg/dL",
+    "systems": [
+      "Renal",
+      "Endocrino",
+      "Metabolico"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "serum_albumin",
+    "preferred_name": "Albumina serica",
+    "dataset": "BIOPRO_L",
+    "variable": "LBXSAL",
+    "specimen_type": "Suero refrigerado",
+    "canonical_unit": "g/dL",
+    "systems": [
+      "Hepatobiliar",
+      "Renal",
+      "Nutricional"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": "nhanes_2021_2023",
+    "source_status": "imported",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "normalized_not_clinically_reviewed",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "egfr",
+    "preferred_name": "Filtracion glomerular estimada",
+    "dataset": null,
+    "variable": null,
+    "specimen_type": "Calculo derivado",
+    "canonical_unit": "mL/min/1.73 m2",
+    "systems": [
+      "Renal"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": null,
+    "source_status": "pending_compatible_source",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "pending",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  },
+  {
+    "analyte_id": "pth",
+    "preferred_name": "Hormona paratiroidea",
+    "dataset": null,
+    "variable": null,
+    "specimen_type": "Suero o plasma segun metodo",
+    "canonical_unit": null,
+    "systems": [
+      "Renal",
+      "Endocrino"
+    ],
+    "disease_codes": [
+      "REN-001"
+    ],
+    "loinc_code": null,
+    "source_id": null,
+    "source_status": "pending_compatible_source",
+    "loinc_status": "pending_official_mapping",
+    "review_status": "pending",
+    "interpretation_policy": "Requires disease-specific sourced interpretation; population percentiles are not reference ranges."
+  }
+]

@@ -1,6 +1,7 @@
 // diseases.js - Manejo de enfermedades y controles del repositorio
 let diseaseData = [];
 let selectedDiseaseCode = null;
+let hepaticAtlasCatalog = null;
 
 const glossaryDefinitions = {
   'acido': 'Contenido gastrico con pH bajo que ayuda a digerir alimentos, pero puede irritar esofago o mucosa si supera las barreras protectoras.',
@@ -230,7 +231,43 @@ const glossaryDefinitions = {
   'sintomas negativos': 'Perdida de funciones como iniciativa, expresion emocional o motivacion, frecuente en esquizofrenia.',
   'vasos': 'Conductos sanguineos arteriales, venosos o capilares que transportan sangre y sostienen perfusion de tejidos.',
   'vph': 'Virus del papiloma humano; algunos tipos causan lesiones precancerosas y cancer cervicouterino.',
-  'vrs': 'Virus respiratorio sincitial; causa frecuente de bronquiolitis en lactantes.'
+  'vrs': 'Virus respiratorio sincitial; causa frecuente de bronquiolitis en lactantes.',
+  'ascitis': 'Acumulacion de liquido en la cavidad peritoneal. En cirrosis se produce por hipertension portal y retencion de sodio y agua.',
+  'cavidad peritoneal': 'Espacio entre las membranas que recubren el abdomen y los organos abdominales. Puede llenarse de liquido (ascitis) en enfermedades hepaticas avanzadas.',
+  'cirrosis': 'Enfermedad cronica del higado donde el tejido sano es reemplazado por fibrosis y nodulos de regeneracion, lo que altera la estructura y funcion del organo.',
+  'encefalopatia hepatica': 'Alteracion del nivel de conciencia, razonamiento o comportamiento por acumulacion de toxinas (como amonio) que el higado no puede eliminar. Va desde confusion leve hasta coma.',
+  'fibrosis hepatica': 'Acumulacion de tejido cicatricial en el higado como respuesta a dano cronico. Si progresa puede convertirse en cirrosis.',
+  'hepatocarcinoma': 'Tambien llamado carcinoma hepatocelular. Es el cancer primario del higado mas frecuente; en cirrosis se vigila con ecografia y alfa-fetoproteina cada seis meses.',
+  'hepatocitos': 'Celulas principales del higado; realizan funciones metabolicas, de sintesis de proteinas y produccion de bilis.',
+  'hipertension portal': 'Aumento de la presion en la vena porta y sus ramas, producido por la resistencia al flujo sanguineo a traves de un higado cirrotico. Causa varices, esplenomegalia y ascitis.',
+  'varices esofagicas': 'Dilataciones de las venas del esofago producidas por hipertension portal. Pueden sangrar de forma grave y requerir tratamiento endoscopico.',
+  'vena porta': 'Vena grande que lleva sangre desde intestino, bazo y pancreas hacia el higado. Su presion aumenta en cirrosis (hipertension portal).',
+  'peritonitis bacteriana espontanea': 'Infeccion del liquido ascitico sin causa quirurgica evidente. Se sospecha con fiebre o dolor abdominal en un cirrotico con ascitis y se confirma por paracentesis.',
+  'sindrome hepatorenal': 'Deterioro de la funcion renal en cirrosis avanzada por alteracion del flujo sanguineo renal; indica mal pronostico.',
+  'elastografia': 'Prueba (a menudo FibroScan) que mide la rigidez del higado para estimar el grado de fibrosis sin necesidad de biopsia.',
+  'child-pugh': 'Escala que clasifica la gravedad de la cirrosis segun bilirrubina, albumina, INR, ascitis y encefalopatia. Clasifica en A (leve), B (moderada) y C (severa).',
+  'meld': 'Model for End-stage Liver Disease. Escala pronostica que usa bilirrubina, INR y creatinina (a veces sodio) para priorizar trasplante hepatico.',
+  'metavir': 'Sistema histologico que mide fibrosis hepatica de F0 (sin fibrosis) a F4 (cirrosis) en biopsia.',
+  'alfafetoproteina': 'Marcador sanguineo que puede elevarse en carcinoma hepatocelular. Se usa junto con ecografia para vigilancia en cirrosis.',
+  'paracentesis': 'Procedimiento que consiste en extraer liquido ascitico con una aguja para analizarlo (celulas, cultivo) o aliviar la distension abdominal.',
+  'esplenomegalia': 'Aumento de tamano del bazo. En cirrosis es un signo indirecto de hipertension portal.',
+  'trombocitopenia': 'Disminucion de plaquetas en sangre. En cirrosis se produce por secuestro en un bazo aumentado de tamano.',
+  'nodulo de regeneracion': 'Crecimiento de tejido hepatico que intenta reparar el dano. En cirrosis se forma junto con fibrosis y distorsiona la arquitectura del higado.',
+  'celulas estrelladas hepaticas': 'Celulas del higado que, al activarse por dano cronico, producen colageno y fibrosis. Son clave en la formacion de cirrosis.',
+  'circulacion colateral': 'Vasos sanguineos dilatados que se forman para desviar sangre cuando hay hipertension portal. Incluyen varices esofagicas y gastricas.',
+  'trasplante hepatico': 'Cirugia que reemplaza un higado enfermo por uno sano de un donante. Se considera en cirrosis descompensada o insuficiencia hepatica terminal.',
+  'nodulos': 'Zonas redondeadas de tejido. En la cirrosis suelen ser grupos de hepatocitos que intentan regenerarse, pero quedan rodeados por fibrosis y deforman el higado.',
+  'filtracion glomerular': 'Proceso por el que los glomerulos filtran la sangre para iniciar la formacion de orina. Su estimacion indica cuanta funcion renal queda.',
+  'egfr': 'Estimacion de la tasa de filtracion glomerular calculada principalmente con creatinina. Un valor persistentemente bajo sugiere perdida de funcion renal.',
+  'albuminuria': 'Presencia de albumina en la orina. Indica que la barrera de filtracion del rinon permite escapar una proteina que normalmente permanece en la sangre.',
+  'glomerulos': 'Pequenos ovillos de capilares dentro de cada nefrona que filtran la sangre. Su dano puede producir sangre o proteinas en la orina.',
+  'nefronas': 'Unidades microscopicas funcionales del rinon. Cada una filtra sangre y ajusta agua, sales y desechos para formar orina.',
+  'uremia': 'Conjunto de sintomas causado por acumulacion de desechos cuando la funcion renal es muy baja; puede producir nauseas, picazon, somnolencia o confusion.',
+  'hidronefrosis': 'Dilatacion de la pelvis y los calices del rinon porque la orina no puede salir con normalidad y aumenta la presion dentro del sistema urinario.',
+  'helicobacter pylori': 'Bacteria que vive en la mucosa del estomago. Puede causar gastritis y ulceras y aumentar a largo plazo el riesgo de cancer gastrico.',
+  'erosion': 'Perdida superficial del revestimiento interno. Es menos profunda que una ulcera y no atraviesa la capa muscular de la mucosa.',
+  'ulcera': 'Herida mas profunda de una superficie interna, como la mucosa del estomago o duodeno. Puede sangrar o perforar la pared.',
+  'perforacion': 'Abertura de todo el espesor de la pared de un organo hueco. Permite que su contenido salga al abdomen y constituye una urgencia.'
 };
 
 const diseaseSourceLinks = {
@@ -537,6 +574,22 @@ function renderList() {
   resultCount.textContent = `${filteredDiseases.length}`;
   renderSystemChips();
 
+  const hasActiveSelection = Boolean(searchInput.value.trim() || systemFilter.value || coverageFilter.value);
+  if (!hasActiveSelection) {
+    resultCount.textContent = '0';
+    diseaseList.innerHTML = `
+      <div class="library-selection-state">
+        <div class="selection-state-icon" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <span class="library-kicker">Biblioteca preparada</span>
+          <h3>Elige un sistema o inicia una búsqueda</h3>
+          <p>Las fichas aparecerán aquí cuando selecciones una especialidad, un órgano, una enfermedad o una manifestación clínica.</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
   if (filteredDiseases.length === 0) {
     diseaseList.innerHTML = '<p class="hint">No hay resultados con los filtros actuales.</p>';
     return;
@@ -551,13 +604,22 @@ function renderDetail(disease) {
   diseaseRepositoryPanel.hidden = true;
   diseaseDetailPanel.hidden = false;
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (disease.disease_code === 'REN-001') {
+    renderRenalCompactWorkspace(disease);
+    return;
+  }
+  if (usesHepatobiliaryMedicalLayout(disease)) {
+    renderHepatobiliaryMedicalPage(disease);
+    return;
+  }
+  const guidedLayout = usesGuidedDiseaseLayout(disease);
   const renalAtlasShortcut = renderRenalAtlasShortcut(disease);
   const atlasStepNumber = renalAtlasShortcut ? 3 : null;
   const progressionStepNumber = renalAtlasShortcut ? 4 : 3;
 
   diseaseDetail.innerHTML = `
     <button id="backToDiseasesButton" class="secondary-button" type="button">Volver al repositorio</button>
-    <div class="detail-hero">
+    <div class="detail-hero ${guidedLayout ? 'guided-detail-hero' : ''}">
       <img src="${escapeHTML(getImageForDisease(disease))}" alt="Imagen de ${escapeHTML(disease.name)}" onerror="handleImageError(this)" />
       <div>
         <span class="badge">${escapeHTML(disease.disease_code)}</span>
@@ -565,14 +627,14 @@ function renderDetail(disease) {
         <p>${escapeHTML(disease.system)} - ${escapeHTML(disease.organ)}</p>
       </div>
     </div>
-    ${renderDiseaseSectionNav(Boolean(renalAtlasShortcut))}
+    ${renderDiseaseSectionNav(Boolean(renalAtlasShortcut), guidedLayout)}
     <div class="disease-article">
       <div class="article-main disease-flow">
         <section id="enfermedad-resumen" class="disease-focus-section">
           <header class="disease-section-heading">
             <span class="badge">1. Enfermedad</span>
-            <h3>Resumen clinico y mecanismo</h3>
-            <p>Definicion, fisiopatologia, manifestaciones y senales clave antes de entrar a pruebas o imagenes.</p>
+            <h3>${guidedLayout ? 'Comprender el cuadro completo' : 'Resumen clinico y mecanismo'}</h3>
+            <p>${guidedLayout ? 'Empieza por la idea central y avanza desde la causa hasta los cambios del organo, los sintomas y las complicaciones.' : 'Definicion, fisiopatologia, manifestaciones y senales clave antes de entrar a pruebas o imagenes.'}</p>
           </header>
           <div id="internalArticlePanel" class="info-section internal-article">
             ${renderInternalArticle(disease)}
@@ -588,6 +650,11 @@ function renderDetail(disease) {
           <div id="diagnosticTestPanel" class="diagnostic-test-panel">
             <p class="hint">Buscando pruebas diagnosticas internas...</p>
           </div>
+          ${disease.disease_code === 'REN-001' ? `
+            <div id="analyteBankPanel" class="analyte-bank-panel">
+              <p class="hint">Cargando banco normalizado de analitos...</p>
+            </div>
+          ` : ''}
         </section>
 
         ${renalAtlasShortcut ? `
@@ -627,14 +694,661 @@ function renderDetail(disease) {
   });
   loadLearningObjectPanel(disease);
   loadDiagnosticTestPanel(disease);
+  loadAnalyteBankPanel(disease);
+  const stagingExplorer = document.querySelector('.staging-explorer');
+  if (stagingExplorer) bindStagingExplorer(stagingExplorer.parentElement);
 }
 
-function renderDiseaseSectionNav(hasAtlasShortcut) {
+let renalWorkspaceGeneration = 0;
+
+function renderRenalCompactWorkspace(disease) {
+  const generation = ++renalWorkspaceGeneration;
+  const modules = [
+    ['panorama', 'Panorama'],
+    ['mecanismo', 'Mecanismo'],
+    ['manifestaciones', 'Manifestaciones'],
+    ['diagnostico', 'Diagnóstico y laboratorio'],
+    ['evolucion', 'Evolución'],
+    ['aplicacion', 'Aplicación clínica'],
+    ['atlas', 'Atlas visual']
+  ];
+  const storedModule = sessionStorage.getItem(`medlearn:${disease.disease_code}:module`);
+  const initialModule = modules.some(([id]) => id === storedModule) ? storedModule : 'panorama';
+  const renalAtlasShortcut = renderRenalAtlasShortcut(disease);
+
+  diseaseDetail.innerHTML = `
+    <div class="compact-disease-shell">
+      <header class="compact-disease-header">
+        <button id="backToDiseasesButton" class="secondary-button" type="button">Volver</button>
+        <div>
+          <span class="badge">${escapeHTML(disease.disease_code)}</span>
+          <h2>${escapeHTML(disease.name)}</h2>
+          <p>${escapeHTML(disease.system)} · ${escapeHTML(disease.organ)}</p>
+        </div>
+        <button type="button" class="compact-alert-button" data-open-context="alarms" aria-controls="compactContextPanel" aria-expanded="false">Alarmas</button>
+      </header>
+
+      <div class="compact-workspace">
+        <nav class="compact-module-nav" role="tablist" aria-label="Módulos de la ficha" aria-orientation="vertical">
+          ${modules.map(([id, label], index) => `
+            <button
+              type="button"
+              role="tab"
+              id="module-tab-${id}"
+              aria-controls="module-panel-${id}"
+              aria-selected="${id === initialModule}"
+              tabindex="${id === initialModule ? '0' : '-1'}"
+              class="${id === initialModule ? 'active' : ''}"
+              data-compact-module="${id}"
+            ><span>${index + 1}</span>${escapeHTML(label)}</button>
+          `).join('')}
+        </nav>
+
+        <main class="compact-module-stage">
+          ${renderCompactModulePanel('panorama', 'Panorama', initialModule, `
+            <div class="compact-reading-lead">
+              <span>Idea central</span>
+              <p>${escapeHTML(disease.definition)}</p>
+            </div>
+            <div id="internalArticlePanel" class="compact-content-block">${renderInternalArticle(disease)}</div>
+          `)}
+          ${renderCompactModulePanel('mecanismo', 'Mecanismo de la enfermedad', initialModule, `
+            <div class="compact-content-grid">
+              ${renderCompactTextCard('Qué la origina', disease.causes)}
+              ${renderCompactTextCard('Secuencia fisiopatológica', disease.pathophysiology)}
+              ${renderCompactTextCard('Factores de riesgo', disease.risk_factors)}
+              ${renderCompactTextCard('Complicaciones', disease.complications)}
+            </div>
+          `)}
+          ${renderCompactModulePanel('manifestaciones', 'Manifestaciones y exploración', initialModule, `
+            <div class="compact-content-grid">
+              ${renderCompactTextCard('Síntomas y manifestaciones', disease.symptoms)}
+              ${renderCompactTextCard('Signos de alarma', disease.red_flags, 'alert')}
+              ${renderCompactTextCard('Diagnósticos que se parecen', disease.differential_diagnosis)}
+            </div>
+          `)}
+          ${renderCompactModulePanel('diagnostico', 'Diagnóstico y laboratorio', initialModule, `
+            <div class="compact-reading-lead"><span>Ruta inicial</span><p>${escapeHTML(disease.diagnostic_tests)}</p></div>
+            <div id="diagnosticTestPanel" class="diagnostic-test-panel"><p class="hint">Organizando pruebas y muestras...</p></div>
+            <div id="analyteBankPanel" class="analyte-bank-panel"><p class="hint">Cargando banco de analitos...</p></div>
+          `)}
+          ${renderCompactModulePanel('evolucion', 'Evolución y seguimiento', initialModule, `
+            ${disease.staging ? renderStagingExplorer(disease) : ''}
+            <div class="compact-content-grid">
+              ${renderCompactTextCard('Seguimiento', disease.monitoring)}
+              ${renderCompactTextCard('Prevención y reducción de riesgo', disease.prevention)}
+              ${renderCompactTextCard('Orientación para el paciente', disease.patient_education)}
+              ${renderCompactTextCard('Tratamiento: panorama educativo', disease.treatment_overview)}
+            </div>
+          `)}
+          ${renderCompactModulePanel('aplicacion', 'Aplicación clínica', initialModule, `
+            <div id="clinicalBridgePanel" class="clinical-bridge"><p class="hint">Cargando caso asociado...</p></div>
+          `)}
+          ${renderCompactModulePanel('atlas', 'Atlas visual', initialModule, `
+            <div id="ownerRenalAtlasPanel" class="owner-renal-atlas-panel"><p class="hint">Revisando láminas asignadas por el propietario...</p></div>
+            ${renalAtlasShortcut || '<p class="compact-pending">Pendiente de asignación por el propietario.</p>'}
+            <div id="learningObjectPanel" class="learning-object"><p class="hint">Cargando recorrido visual...</p></div>
+          `)}
+        </main>
+
+        <aside id="compactContextPanel" class="compact-context-panel" role="region" aria-label="Información contextual" aria-hidden="false">
+          <button type="button" class="compact-context-close" data-close-context aria-label="Cerrar información contextual">×</button>
+          <div class="compact-context-default">
+            <span class="badge">Contexto</span>
+            <h3>Información bajo demanda</h3>
+            <p>Las alarmas, conceptos y fuentes se consultan aquí sin alargar el módulo activo.</p>
+          </div>
+          <div class="compact-context-section" data-context-section="alarms">
+            <h3>Signos de alarma</h3>
+            <p>${escapeHTML(disease.red_flags || 'Pendiente de revisión.')}</p>
+          </div>
+          <div class="compact-context-sources">
+            ${renderReferenceSection(disease)}
+          </div>
+        </aside>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('backToDiseasesButton').addEventListener('click', closeDiseasePage);
+  document.getElementById('openRenalAtlasButton')?.addEventListener('click', () => {
+    window.location.hash = 'atlas/renal';
+  });
+  bindCompactDiseaseWorkspace(disease, initialModule);
+  loadLearningObjectPanel(disease);
+  loadDiagnosticTestPanel(disease, generation);
+  loadAnalyteBankPanel(disease, generation);
+  // La aplicación clínica se habilitará cuando la validación de resultados esté consolidada.
+  loadInteractiveDiseaseModules(disease, generation);
+  loadOwnerRenalAtlasPanel(generation);
+  bindStagingExplorer(diseaseDetail);
+}
+
+async function loadOwnerRenalAtlasPanel(generation) {
+  const panel = document.getElementById('ownerRenalAtlasPanel');
+  if (!panel) return;
+  try {
+    const response = await fetch('/imagenes/atlas/renal');
+    if (!response.ok) throw new Error('Catálogo no disponible');
+    const data = await response.json();
+    if (generation !== renalWorkspaceGeneration || !panel.isConnected) return;
+    if (!data.images?.length) {
+      panel.innerHTML = '<p class="compact-pending">No hay láminas aprobadas para previsualización.</p>';
+      return;
+    }
+    panel.innerHTML = `
+      <section class="owner-atlas-preview">
+        <header><span>Lámina del propietario</span><h4>Anatomía normal asignada</h4></header>
+        ${data.images.map((item) => `
+          <figure>
+            <img src="${escapeHTML(item.file)}" alt="${escapeHTML(item.title)}" loading="lazy" />
+            <figcaption><strong>${escapeHTML(item.title)}</strong><span>Estado: ${item.status === 'approved' ? 'aprobada' : 'vista previa'}</span></figcaption>
+          </figure>
+        `).join('')}
+      </section>
+    `;
+  } catch (error) {
+    if (generation === renalWorkspaceGeneration && panel.isConnected) {
+      panel.innerHTML = '<p class="compact-pending">No fue posible cargar las láminas asignadas.</p>';
+    }
+  }
+}
+
+async function loadInteractiveDiseaseModules(disease, generation) {
+  try {
+    const response = await fetch(`/interactivo/enfermedad/${encodeURIComponent(disease.disease_code)}`);
+    if (!response.ok) return;
+    const record = await response.json();
+    if (generation !== renalWorkspaceGeneration || !diseaseDetail.querySelector('.compact-disease-shell')) return;
+    const modules = new Map((record.modules || []).map((module) => [module.module_id, module]));
+
+    replaceCompactModuleContent('panorama', renderInteractivePanorama(modules.get('panorama')));
+    replaceCompactModuleContent('mecanismo', renderInteractiveMechanism(modules.get('mecanismo')));
+    replaceCompactModuleContent('manifestaciones', renderInteractiveManifestations(modules.get('manifestaciones')));
+    prependCompactModuleContent('diagnostico', renderInteractiveDiagnosticRoute(modules.get('diagnostico')));
+    replaceCompactModuleContent('evolucion', renderInteractiveEvolution(modules.get('evolucion')));
+    replaceCompactModuleContent('aplicacion', renderApplicationReserved());
+    prependCompactModuleContent('atlas', renderInteractiveAtlasTasks(modules.get('atlas')));
+    bindInteractiveLearning(diseaseDetail);
+  } catch (error) {
+    // La ficha estatica existente permanece como respaldo.
+  }
+}
+
+function replaceCompactModuleContent(moduleId, html) {
+  if (!html) return;
+  const container = diseaseDetail.querySelector(`[data-compact-panel="${moduleId}"] .compact-module-scroll`);
+  if (container) {
+    container.innerHTML = html;
+    container.scrollTop = 0;
+  }
+}
+
+function prependCompactModuleContent(moduleId, html) {
+  if (!html) return;
+  const container = diseaseDetail.querySelector(`[data-compact-panel="${moduleId}"] .compact-module-scroll`);
+  if (container) container.insertAdjacentHTML('afterbegin', html);
+}
+
+function renderInteractiveIntro(module) {
+  if (!module) return '';
+  return `
+    <section class="interactive-guide">
+      <span>Pregunta guía</span>
+      <h4>${escapeHTML(module.guiding_question)}</h4>
+      <p>${escapeHTML(module.learning_objective)}</p>
+    </section>
+  `;
+}
+
+function renderInteractivePanorama(module) {
+  if (!module) return '';
+  return `
+    ${renderInteractiveIntro(module)}
+    <section class="essential-idea-grid">
+      ${(module.essential_ideas || []).map((idea, index) => `
+        <article><span>${index + 1}</span><p>${escapeHTML(idea)}</p></article>
+      `).join('')}
+    </section>
+    ${renderCommonErrorCard(module.common_error)}
+    <section class="free-exploration-note">
+      <span>Exploración libre</span>
+      <p>Abre los demás módulos en el orden que necesites. No tienes que responder nada para continuar.</p>
+    </section>
+  `;
+}
+
+function renderInteractiveMechanism(module) {
+  if (!module) return '';
+  return `
+    <section class="mechanism-study-header">
+      <span>Mecanismo en una mirada</span>
+      <h4>${escapeHTML(module.guiding_question || '')}</h4>
+      <p>Recorre la adaptación inicial y su consecuencia. Abre un tramo solo cuando quieras profundizar.</p>
+    </section>
+    <section class="causal-learning-path" aria-label="Secuencia causal de la enfermedad">
+      ${(module.causal_chain || []).map((step, index) => `
+        <article class="causal-step ${index === 0 ? 'revealed' : ''}" data-causal-step>
+          <button type="button" aria-expanded="${index === 0}" data-causal-toggle>
+            <span>${index + 1}</span><div><small>${index === 1 ? 'Respuesta compensatoria' : index > 1 ? 'Consecuencia acumulada' : 'Punto de partida'}</small><strong>${escapeHTML(step.title)}</strong></div><i aria-hidden="true">+</i>
+          </button>
+          <div class="causal-step-detail" ${index === 0 ? '' : 'hidden'}>
+            <p>${escapeHTML(step.explanation)}</p>
+            ${(step.concept_ids || []).length ? `<div class="causal-concepts">${step.concept_ids.map((concept) => `<span>${escapeHTML(concept)}</span>`).join('')}</div>` : ''}
+          </div>
+        </article>
+        ${index < (module.causal_chain || []).length - 1 ? '<span class="causal-connector" aria-hidden="true">↓</span>' : ''}
+      `).join('')}
+    </section>
+    <section class="free-exploration-note">
+      <span>Cómo explorarlo</span>
+      <p>Selecciona cualquier paso para abrir o cerrar su explicación y sigue las conexiones en el orden que prefieras.</p>
+    </section>
+  `;
+}
+
+function renderCommonErrorCard(error) {
+  if (!error) return '';
+  return `
+    <section class="common-error-card">
+      <span>Error frecuente</span>
+      <h4>${escapeHTML(error.claim)}</h4>
+      <p>${escapeHTML(error.correction)}</p>
+    </section>
+  `;
+}
+
+function renderInteractiveManifestations(module) {
+  if (!module) return '';
+  return `
+    <section class="clinical-reading-header">
+      <span>Lectura clínica</span>
+      <h4>${escapeHTML(module.guiding_question || '')}</h4>
+      <p>No todos los hallazgos aparecen a la vez. Lee la progresión y después conecta cada señal con su posible mecanismo.</p>
+    </section>
+    <section class="interactive-comparison-list clinical-progression" aria-label="Lectura de manifestaciones por progresión">
+      ${(module.comparisons || []).map((item) => `
+        <article>
+          <h4>${escapeHTML(item.dimension)}</h4>
+          <div class="interactive-comparison-grid">
+            <div><span>${escapeHTML(item.left_label)}</span><p>${escapeHTML(item.left_value)}</p></div>
+            <div><span>${escapeHTML(item.right_label)}</span><p>${escapeHTML(item.right_value)}</p></div>
+          </div>
+        </article>
+      `).join('')}
+    </section>
+    <section class="mechanism-link-grid finding-explainer">
+      ${(module.mechanism_links || []).map((item) => `<article><strong>${escapeHTML(item.finding)}</strong><p>${escapeHTML(item.mechanism)}</p></article>`).join('')}
+    </section>
+  `;
+}
+
+function renderInteractiveDiagnosticRoute(module) {
+  if (!module) return '';
+  return `
+    ${renderInteractiveIntro(module)}
+    <section class="reasoning-route">
+      ${(module.reasoning_sequence || []).map((step) => `
+        <article><span>${step.order}</span><div><strong>${escapeHTML(step.title)}</strong><p>${escapeHTML(step.prompt)}</p></div></article>
+      `).join('')}
+    </section>
+    ${renderCommonErrorCard(module.common_error)}
+  `;
+}
+
+function renderInteractiveEvolution(module) {
+  if (!module) return '';
+  return `
+    ${renderInteractiveIntro(module)}
+    <section class="stage-comparison-track">
+      ${(module.stage_comparisons || []).map((stage, index) => `
+        <article>
+          <span>${index + 1}</span>
+          <h4>${escapeHTML(stage.label)}</h4>
+          <ul>${(stage.signals || []).map((signal) => `<li>${escapeHTML(signal)}</li>`).join('')}</ul>
+          <p><strong>Enfoque:</strong> ${escapeHTML(stage.focus)}</p>
+        </article>
+      `).join('')}
+    </section>
+    <section class="reflection-card"><span>Detente y explica</span><h4>${escapeHTML(module.reflection_prompt || '')}</h4></section>
+  `;
+}
+
+function renderApplicationReserved() {
+  return `
+    <section class="application-reserved" aria-label="Aplicación clínica pendiente">
+      <span>Próximamente</span>
+      <h4>Aplicación clínica</h4>
+      <p>Este módulo se activará después de consolidar la lectura de pruebas y resultados de laboratorio. Por ahora, continúa en Diagnóstico y laboratorio.</p>
+    </section>
+  `;
+}
+
+function renderInteractiveCase(module) {
+  if (!module) return '';
+  return `
+    ${renderInteractiveIntro(module)}
+    <section class="progressive-case" data-progressive-case>
+      <header><span>Caso ${escapeHTML(module.case_code || '')}</span><strong>Información revelada por rondas</strong></header>
+      <div class="case-round-progress" aria-label="Progreso del caso">
+        ${(module.rounds || []).map((round, index) => `<span class="${index === 0 ? 'active' : ''}" data-round-dot="${index}">${index + 1}</span>`).join('')}
+      </div>
+      ${(module.rounds || []).map((round, index) => `
+        <article class="case-round" data-case-round="${index}" ${index === 0 ? '' : 'hidden'}>
+          <span>Ronda ${index + 1}</span>
+          <h4>${escapeHTML(round.title)}</h4>
+          ${(round.reveals || []).length ? `<ul>${round.reveals.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>` : '<p>Esta ronda exige integrar la información ya revelada.</p>'}
+          <div class="case-round-question"><strong>Tu razonamiento</strong><p>${escapeHTML(round.prompt)}</p></div>
+          <button type="button" data-next-case-round ${index === (module.rounds || []).length - 1 ? 'hidden' : ''}>Revelar siguiente ronda</button>
+        </article>
+      `).join('')}
+    </section>
+    <details class="case-limitations">
+      <summary>¿Qué limita este caso?</summary>
+      <ul>${(module.case_limitations || []).map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+    </details>
+  `;
+}
+
+function renderInteractiveAtlasTasks(module) {
+  if (!module) return '';
+  return `
+    ${renderInteractiveIntro(module)}
+    <section class="visual-task-grid">
+      ${(module.visual_tasks || []).map((task) => `
+        <article><span>Actividad visual</span><p>${escapeHTML(task.prompt)}</p><small>Pendiente de asignación por el propietario</small></article>
+      `).join('')}
+    </section>
+  `;
+}
+
+function bindInteractiveLearning(root) {
+  root.querySelectorAll('[data-causal-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const step = button.closest('[data-causal-step]');
+      const detail = step?.querySelector('.causal-step-detail');
+      if (!detail) return;
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
+      detail.hidden = expanded;
+      step.classList.toggle('revealed', !expanded);
+    });
+  });
+
+  root.querySelectorAll('[data-progressive-case]').forEach((casePanel) => {
+    let currentRound = 0;
+    casePanel.querySelectorAll('[data-next-case-round]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const rounds = Array.from(casePanel.querySelectorAll('[data-case-round]'));
+        if (currentRound >= rounds.length - 1) return;
+        rounds[currentRound].hidden = true;
+        currentRound += 1;
+        rounds[currentRound].hidden = false;
+        casePanel.querySelectorAll('[data-round-dot]').forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentRound);
+          dot.classList.toggle('complete', index < currentRound);
+        });
+      });
+    });
+  });
+}
+
+function renderCompactModulePanel(id, title, activeModule, content) {
+  const active = id === activeModule;
+  return `
+    <section
+      id="module-panel-${id}"
+      class="compact-module-panel ${active ? 'active' : ''}"
+      role="tabpanel"
+      aria-labelledby="module-tab-${id}"
+      ${active ? '' : 'hidden'}
+      data-compact-panel="${id}"
+    >
+      <header class="compact-module-heading"><h3>${escapeHTML(title)}</h3></header>
+      <div class="compact-module-scroll">${content}</div>
+    </section>
+  `;
+}
+
+function renderCompactTextCard(title, content, tone = '') {
+  if (!content) return '';
+  return `<section class="compact-text-card ${tone}"><h4>${escapeHTML(title)}</h4><p>${escapeHTML(content)}</p></section>`;
+}
+
+let renalOrientationBound = false;
+function syncRenalNavOrientation() {
+  const horizontal = window.matchMedia('(max-width: 760px)').matches;
+  document.querySelectorAll('.compact-module-nav').forEach((nav) => {
+    nav.setAttribute('aria-orientation', horizontal ? 'horizontal' : 'vertical');
+  });
+}
+
+function bindCompactDiseaseWorkspace(disease, initialModule) {
+  const tabs = Array.from(diseaseDetail.querySelectorAll('[data-compact-module]'));
+  const panels = Array.from(diseaseDetail.querySelectorAll('[data-compact-panel]'));
+  let activeModule = initialModule;
+  syncRenalNavOrientation();
+  if (!renalOrientationBound) {
+    renalOrientationBound = true;
+    window.matchMedia('(max-width: 760px)').addEventListener('change', syncRenalNavOrientation);
+  }
+
+  const activate = (moduleId, focusTab = false) => {
+    if (!tabs.some((tab) => tab.dataset.compactModule === moduleId)) return;
+    activeModule = moduleId;
+    sessionStorage.setItem(`medlearn:${disease.disease_code}:module`, moduleId);
+    tabs.forEach((tab) => {
+      const active = tab.dataset.compactModule === moduleId;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+      if (active && focusTab) tab.focus();
+    });
+    panels.forEach((panel) => {
+      const active = panel.dataset.compactPanel === moduleId;
+      panel.hidden = !active;
+      panel.classList.toggle('active', active);
+      if (active) panel.querySelector('.compact-module-scroll')?.scrollTo({ top: 0 });
+    });
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activate(tab.dataset.compactModule));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const horizontal = window.matchMedia('(max-width: 760px)').matches;
+      let nextIndex = index;
+      if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = tabs.length - 1;
+      else if (horizontal) {
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else return;
+      } else {
+        if (event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else return;
+      }
+      activate(tabs[nextIndex].dataset.compactModule, true);
+    });
+  });
+
+  const contextButton = diseaseDetail.querySelector('[data-open-context="alarms"]');
+  const contextPanel = diseaseDetail.querySelector('.compact-context-panel');
+  if (contextPanel && window.matchMedia('(max-width: 1100px)').matches) {
+    contextPanel.setAttribute('aria-hidden', 'true');
+  }
+  const closeContext = (restoreFocus = true) => {
+    if (!contextPanel || !contextButton) return;
+    const overlayMode = window.matchMedia('(max-width: 1100px)').matches;
+    contextPanel.classList.remove('show-alarms');
+    contextPanel.setAttribute('role', 'region');
+    contextPanel.setAttribute('aria-hidden', String(overlayMode));
+    contextButton.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) contextButton.focus();
+  };
+  contextButton?.addEventListener('click', () => {
+    const opening = !contextPanel?.classList.contains('show-alarms');
+    contextPanel?.classList.toggle('show-alarms', opening);
+    contextPanel?.setAttribute('aria-hidden', String(!opening));
+    contextPanel?.setAttribute('role', opening && window.matchMedia('(max-width: 1100px)').matches ? 'dialog' : 'region');
+    contextButton.setAttribute('aria-expanded', String(opening));
+    if (opening) contextPanel?.querySelector('[data-close-context]')?.focus();
+  });
+  contextPanel?.querySelector('[data-close-context]')?.addEventListener('click', () => closeContext());
+  diseaseDetail.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && contextPanel?.classList.contains('show-alarms')) {
+      event.preventDefault();
+      closeContext();
+    }
+  });
+}
+
+function usesHepatobiliaryMedicalLayout(disease) {
+  return String(disease.disease_code || '').startsWith('HEP-') || ['INF-008', 'INF-009'].includes(disease.disease_code);
+}
+
+function renderHepatobiliaryMedicalPage(disease) {
+  const causes = textToLearningItems(disease.causes, 8);
+  const risks = textToLearningItems(disease.risk_factors, 8);
+  const symptoms = textToLearningItems(disease.symptoms, 10);
+  const complications = textToLearningItems(disease.complications, 10);
+  const alarms = textToLearningItems(disease.red_flags, 8);
+  const terms = getContextualGlossaryItems(disease);
+  const mechanism = buildMechanismSteps(disease);
+
+  diseaseDetail.innerHTML = `
+    <button id="backToDiseasesButton" class="medical-back-button" type="button">← Volver a enfermedades</button>
+    <article class="medical-disease-page">
+      <header class="medical-hero">
+        <div class="medical-hero-copy">
+          <div class="medical-breadcrumb"><span>Enfermedades</span><i>›</i><span>Hepatobiliar</span><i>›</i><span>${escapeHTML(disease.organ)}</span></div>
+          <span class="medical-code">${escapeHTML(disease.disease_code)}</span>
+          <h2>${escapeHTML(disease.name)}</h2>
+          <p>${escapeHTML(disease.definition)}</p>
+          <div class="medical-hero-meta">
+            <span><small>Sistema</small><strong>${escapeHTML(disease.system)}</strong></span>
+            <span><small>Órgano</small><strong>${escapeHTML(disease.organ)}</strong></span>
+            <span><small>Lectura</small><strong>Clínica y visual</strong></span>
+          </div>
+        </div>
+        <figure class="medical-svg-slot" data-svg-slot="${escapeHTML(disease.disease_code)}-hero">
+          <img src="${escapeHTML(getImageForDisease(disease))}" alt="Representación del ${escapeHTML(disease.organ)}" onerror="handleImageError(this)" />
+          <figcaption>Vista anatómica principal</figcaption>
+        </figure>
+      </header>
+
+      <nav class="medical-section-nav" aria-label="Contenido médico de la ficha">
+        ${renderMedicalNavLink('01', 'Panorama', 'med-panorama')}
+        ${renderMedicalNavLink('02', 'Etiología', 'med-etiologia')}
+        ${renderMedicalNavLink('03', 'Fisiopatología', 'med-fisiopatologia')}
+        ${renderMedicalNavLink('04', 'Semiología', 'med-semiologia')}
+        ${renderMedicalNavLink('05', 'Diagnóstico', 'med-diagnostico')}
+        ${renderMedicalNavLink('06', 'Gravedad', 'med-gravedad')}
+        ${renderMedicalNavLink('07', 'Manejo', 'med-manejo')}
+        ${renderMedicalNavLink('08', 'Atlas visual', 'med-atlas')}
+      </nav>
+
+      <div class="medical-content">
+        ${renderMedicalSection('med-panorama', '01', 'Panorama de la enfermedad', 'La idea central antes de estudiar sus partes', `
+          <div class="medical-panorama-grid">
+            <div class="medical-reading-card primary"><span>Qué está pasando</span><p>${escapeHTML(disease.definition)}</p></div>
+            <div class="medical-reading-card"><span>Por qué importa</span><p>${escapeHTML(disease.educational_explanation || 'Relaciona el daño del hígado con sus cambios estructurales, funcionales y clínicos.')}</p></div>
+          </div>
+          ${terms.length ? renderMedicalVocabulary(terms) : ''}
+        `)}
+
+        ${renderMedicalSection('med-etiologia', '02', 'Etiología y factores de riesgo', 'Qué puede originarla y qué aumenta la probabilidad de desarrollarla', `
+          <div class="medical-two-columns">
+            ${renderMedicalListPanel('Causas y mecanismos desencadenantes', causes, 'cause')}
+            ${renderMedicalListPanel('Factores que aumentan el riesgo', risks, 'risk')}
+          </div>
+        `)}
+
+        ${renderMedicalSection('med-fisiopatologia', '03', 'Patogenia y fisiopatología', 'Cómo el daño inicial se convierte en cambios del tejido y de la función', `
+          <p class="medical-section-lead">${escapeHTML(disease.pathophysiology || 'La ruta fisiopatológica está en proceso de ampliación editorial.')}</p>
+          <div class="medical-mechanism-flow">
+            ${mechanism.map((step, index) => `<article><span>${index + 1}</span><div><strong>${escapeHTML(step.title)}</strong><p>${escapeHTML(step.detail)}</p></div></article>`).join('')}
+          </div>
+        `)}
+
+        ${renderMedicalSection('med-semiologia', '04', 'Semiología y expresión clínica', 'Qué puede contar el paciente, qué puede encontrarse y cuándo el cuadro se vuelve urgente', `
+          <div class="medical-clinical-grid">
+            ${renderMedicalListPanel('Síntomas y manifestaciones', symptoms, 'symptom')}
+            ${renderMedicalListPanel('Complicaciones clínicas', complications, 'complication')}
+          </div>
+          ${alarms.length ? `<div class="medical-alert-strip"><div><strong>Signos de alarma</strong><p>Estos hallazgos cambian la prioridad y requieren valoración oportuna.</p></div><ul>${alarms.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul></div>` : ''}
+        `)}
+
+        ${renderMedicalSection('med-diagnostico', '05', 'Estudio diagnóstico', 'De la sospecha clínica a la confirmación y valoración del daño', `
+          <div class="medical-diagnostic-intro"><span>Ruta inicial</span><p>${escapeHTML(disease.diagnostic_tests)}</p></div>
+          <div id="diagnosticTestPanel" class="diagnostic-test-panel"><p class="hint">Organizando pruebas, muestras y criterios...</p></div>
+        `)}
+
+        ${renderMedicalSection('med-gravedad', '06', 'Clasificación, actividad y gravedad', 'Las escalas no sustituyen la lectura clínica: ordenan pronóstico y decisiones', `
+          ${disease.staging ? renderStagingExplorer(disease) : '<p class="medical-empty-note">Esta enfermedad se valora por actividad, función hepática y presencia de complicaciones.</p>'}
+        `)}
+
+        ${renderMedicalSection('med-manejo', '07', 'Tratamiento, prevención y seguimiento', 'Qué se intenta corregir hoy y qué debe vigilarse después', `
+          <div class="medical-management-grid">
+            ${renderMedicalTextPanel('Objetivos del tratamiento', disease.treatment_overview, 'treatment')}
+            ${renderMedicalTextPanel('Prevención y reducción de riesgo', disease.prevention, 'prevention')}
+            ${renderMedicalTextPanel('Seguimiento clínico', disease.monitoring, 'monitoring')}
+            ${renderMedicalTextPanel('Orientación para el paciente', disease.patient_education, 'education')}
+          </div>
+        `)}
+
+        ${renderMedicalSection('med-atlas', '08', 'Atlas anatómico y progresión visual', 'Primero estudia la anatomía normal; después compárala con los cambios propios de la enfermedad', `
+          <div id="hepaticAtlasPanel" class="hepatic-atlas-host"><p class="hint">Organizando la colección anatómica hepática...</p></div>
+          <div id="learningObjectPanel" class="learning-object"><p class="hint">Cargando recorrido anatómico y visual...</p></div>
+        `)}
+
+        <footer class="medical-sources">${renderReferenceSection(disease)}</footer>
+      </div>
+    </article>
+  `;
+
+  document.getElementById('backToDiseasesButton').addEventListener('click', closeDiseasePage);
+  diseaseDetail.querySelectorAll('[data-medical-target]').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.getElementById(button.dataset.medicalTarget)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  loadDiagnosticTestPanel(disease);
+  loadLearningObjectPanel(disease);
+  loadHepaticAtlasPanel(diseaseDetail, true);
+  bindStagingExplorer(diseaseDetail);
+}
+
+function renderMedicalNavLink(number, label, target) {
+  return `<button type="button" data-medical-target="${target}"><span>${number}</span><strong>${escapeHTML(label)}</strong></button>`;
+}
+
+function renderMedicalSection(id, number, title, subtitle, content) {
+  return `<section id="${id}" class="medical-section"><header><span>${number}</span><div><h3>${escapeHTML(title)}</h3><p>${escapeHTML(subtitle)}</p></div></header><div class="medical-section-body">${content}</div></section>`;
+}
+
+function renderMedicalListPanel(title, items, tone) {
+  if (!items.length) return '';
+  return `<section class="medical-list-panel ${tone}"><h4>${escapeHTML(title)}</h4><ul>${items.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul></section>`;
+}
+
+function renderMedicalTextPanel(title, content, tone) {
+  if (!content) return '';
+  return `<section class="medical-text-panel ${tone}"><h4>${escapeHTML(title)}</h4><p>${escapeHTML(content)}</p></section>`;
+}
+
+function renderMedicalVocabulary(terms) {
+  return `<details class="medical-vocabulary" open><summary><div><strong>Vocabulario necesario</strong><span>Conceptos que aparecen en esta ficha</span></div></summary><div>${terms.map(({ term, definition }) => `<article><strong>${escapeHTML(term)}</strong><p>${escapeHTML(definition)}</p></article>`).join('')}</div></details>`;
+}
+
+function renderDiseaseSectionNav(hasAtlasShortcut, guidedLayout = false) {
   const links = [
-    ['#enfermedad-resumen', 'Enfermedad'],
-    ['#enfermedad-diagnostico', 'Diagnostico'],
-    hasAtlasShortcut ? ['#enfermedad-atlas-normal', 'Atlas normal'] : null,
-    ['#enfermedad-progresion', 'Progresion visual']
+    ['#enfermedad-resumen', guidedLayout ? 'Entenderla' : 'Enfermedad'],
+    ['#enfermedad-diagnostico', guidedLayout ? 'Cómo se investiga' : 'Diagnostico'],
+    hasAtlasShortcut ? ['#enfermedad-atlas-normal', 'Anatomía de referencia'] : null,
+    ['#enfermedad-progresion', guidedLayout ? 'Ver cómo cambia' : 'Progresion visual']
   ].filter(Boolean);
 
   return `
@@ -672,6 +1386,10 @@ function renderInfoSection(title, content) {
 }
 
 function renderInternalArticle(disease, learningData = null) {
+  if (usesGuidedDiseaseLayout(disease)) {
+    return renderGuidedDiseaseArticle(disease, learningData);
+  }
+
   const stages = learningData?.stages || [];
   const terminology = getTerminologyItems(disease, learningData);
   const visualTargets = stages
@@ -699,12 +1417,13 @@ function renderInternalArticle(disease, learningData = null) {
       <span class="badge">Articulo didactico interno</span>
       <span class="card-meta">Sintesis propia con fuentes citadas</span>
     </div>
-    <h3>${escapeHTML(disease.name)}: lectura clinica y visual</h3>
+    <h3>${escapeHTML(disease.name)}</h3>
     <div class="definition-primer">
       <h4>Definicion</h4>
       <p>${escapeHTML(disease.definition || learningData?.learning_goal || 'Ficha educativa interna en construccion.')}</p>
       ${learningData?.learning_goal ? `<p class="article-emphasis">${escapeHTML(learningData.learning_goal)}</p>` : ''}
     </div>
+    ${disease.staging ? renderStagingExplorer(disease) : ''}
     ${terminology.length ? `
       <div class="term-strip" aria-label="Terminologia clave">
         ${terminology.map(renderTermChip).join('')}
@@ -767,6 +1486,176 @@ function renderInternalArticle(disease, learningData = null) {
       `)}
     ` : ''}
   `;
+}
+
+function usesGuidedDiseaseLayout(disease) {
+  const guidedCodes = new Set([
+    'DIG-004', 'DIG-005', 'ONC-004',
+    'HEP-001', 'HEP-002', 'HEP-003', 'INF-008', 'INF-009'
+  ]);
+  return String(disease.disease_code || '').startsWith('REN-') || guidedCodes.has(disease.disease_code);
+}
+
+function renderGuidedDiseaseArticle(disease, learningData = null) {
+  const stages = learningData?.stages || [];
+  const causes = textToLearningItems(disease.causes, 6);
+  const symptoms = textToLearningItems(disease.symptoms, 7);
+  const complications = textToLearningItems(disease.complications, 7);
+  const mechanism = buildMechanismSteps(disease, learningData);
+  const terms = getContextualGlossaryItems(disease, learningData);
+  const profile = getGuidedDiseaseProfile(disease);
+
+  return `
+    <div class="guided-intro">
+      <div>
+        <span class="guided-eyebrow">Guia de aprendizaje clinico</span>
+        <h3>Primero entiende qué está ocurriendo</h3>
+        <p class="guided-lead">${escapeHTML(disease.definition || learningData?.learning_goal || 'Contenido educativo en revision.')}</p>
+        <p class="guided-purpose">${escapeHTML(disease.educational_explanation || learningData?.organ_focus?.why_it_matters || profile.purpose)}</p>
+      </div>
+      <div class="guided-organ-card">
+        <img src="${escapeHTML(getImageForDisease(disease))}" alt="Representacion de ${escapeHTML(disease.organ || disease.name)}" onerror="handleImageError(this)" />
+        <div><span>Organo o region principal</span><strong>${escapeHTML(disease.organ || 'Por precisar')}</strong></div>
+      </div>
+    </div>
+
+    <div class="guided-facts" aria-label="Datos rapidos de la enfermedad">
+      ${renderGuidedFact('Tipo de proceso', profile.type, 'process')}
+      ${renderGuidedFact('Como suele avanzar', profile.course, 'course')}
+      ${renderGuidedFact('La idea que conecta todo', profile.key, 'key')}
+    </div>
+
+    <div class="guided-card-grid">
+      ${renderGuidedListCard('Qué puede ponerla en marcha', 'No es una lista para memorizar: busca el patrón que comparten.', causes, 'cause')}
+      ${renderGuidedListCard('Cómo puede empezar a sentirse', 'Algunas personas no presentan todos estos cambios.', symptoms.slice(0, 4), 'early')}
+      ${renderGuidedListCard('Cuando el cuadro progresa', 'Estos datos sugieren mayor repercusión o una etapa avanzada.', symptoms.slice(4).concat(complications.slice(0, 3)), 'advanced')}
+      ${renderGuidedListCard('Qué no conviene pasar por alto', 'Relaciona cada complicación con el mecanismo de abajo.', complications, 'warning')}
+    </div>
+
+    ${terms.length ? `
+      <section class="guided-terms" aria-labelledby="guidedTermsTitle">
+        <div class="guided-section-title">
+          <span>Antes de seguir</span>
+          <h4 id="guidedTermsTitle">Palabras que necesitas para entender esta ficha</h4>
+          <p>Las aclaramos aquí para que ningún término médico corte el recorrido.</p>
+        </div>
+        <div class="guided-term-grid">
+          ${terms.map(({ term, definition }) => `
+            <article><strong>${escapeHTML(term)}</strong><p>${escapeHTML(definition)}</p></article>
+          `).join('')}
+        </div>
+      </section>
+    ` : ''}
+
+    <section class="guided-mechanism" aria-labelledby="mechanismTitle">
+      <div class="guided-section-title">
+        <span>De la causa a sus consecuencias</span>
+        <h4 id="mechanismTitle">Sigue la enfermedad paso a paso</h4>
+        <p>Cada etapa explica por qué aparece la siguiente; así no tienes que aprender datos aislados.</p>
+      </div>
+      <div class="mechanism-track">
+        ${mechanism.map((step, index) => `
+          <article class="mechanism-step">
+            <span>${index + 1}</span>
+            <div><strong>${escapeHTML(step.title)}</strong><p>${escapeHTML(step.detail)}</p></div>
+          </article>
+        `).join('')}
+      </div>
+    </section>
+
+    ${disease.staging ? renderStagingExplorer(disease) : ''}
+
+    <div class="guided-bottom-grid">
+      ${renderGuidedNarrative('Cómo se confirma', 'La historia y el examen orientan; las pruebas confirman el patrón y miden su repercusión.', disease.diagnostic_tests, 'diagnosis')}
+      ${renderGuidedNarrative('Qué se intenta conseguir con el manejo', 'El tratamiento cambia según la causa y la gravedad.', disease.treatment_overview, 'care')}
+      ${renderGuidedNarrative('Cómo reducir riesgos y vigilar la evolución', 'Prevenir también significa detectar pronto una descompensación.', [disease.prevention, disease.monitoring].filter(Boolean).join(' '), 'followup')}
+    </div>
+
+    ${disease.differential_diagnosis ? renderArticleDisclosure('Cuando se parece a otras enfermedades', `
+      <p class="guided-disclosure-copy">${escapeHTML(disease.differential_diagnosis)}</p>
+    `) : ''}
+  `;
+}
+
+function renderGuidedFact(label, value, tone) {
+  return `<div class="guided-fact ${tone}"><span>${escapeHTML(label)}</span><strong>${escapeHTML(value)}</strong></div>`;
+}
+
+function renderGuidedListCard(title, helper, items, tone) {
+  if (!items.length) return '';
+  return `
+    <article class="guided-summary-card ${tone}">
+      <h4>${escapeHTML(title)}</h4>
+      <p>${escapeHTML(helper)}</p>
+      <ul>${items.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+    </article>
+  `;
+}
+
+function renderGuidedNarrative(title, helper, content, tone) {
+  if (!content) return '';
+  const items = textToLearningItems(content, 8);
+  return `
+    <section class="guided-narrative ${tone}">
+      <h4>${escapeHTML(title)}</h4>
+      <p>${escapeHTML(helper)}</p>
+      <ul>${items.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+    </section>
+  `;
+}
+
+function textToLearningItems(text, limit = 6) {
+  if (!text) return [];
+  const bySentence = String(text).split(/[.;]\s+/).map((item) => item.trim()).filter(Boolean);
+  const source = bySentence.length > 1 ? bySentence : String(text).split(/,\s+/).map((item) => item.trim()).filter(Boolean);
+  return source.slice(0, limit).map((item) => item.replace(/[.;]+$/, ''));
+}
+
+function buildMechanismSteps(disease, learningData = null) {
+  const stageSteps = (learningData?.stages || []).slice(0, 6).map((stage) => ({
+    title: stage.title || 'Cambio en el organo',
+    detail: stage.clinical_state || stage.teaching_prompt || 'Esta etapa conecta el daño del tejido con los hallazgos clinicos.'
+  }));
+  if (stageSteps.length >= 3) return stageSteps;
+
+  const rawSteps = textToLearningItems(disease.pathophysiology || disease.causes, 6);
+  const labels = ['Punto de partida', 'Respuesta del tejido', 'Cambio estructural', 'Cambio en la funcion', 'Manifestacion clinica', 'Complicacion'];
+  return rawSteps.map((detail, index) => ({ title: labels[index] || `Paso ${index + 1}`, detail }));
+}
+
+function getContextualGlossaryItems(disease, learningData = null) {
+  const source = normalizeText([
+    disease.definition, disease.causes, disease.symptoms, disease.pathophysiology,
+    disease.complications, disease.diagnostic_tests, disease.staging,
+    ...(learningData?.organ_focus?.primary_regions || []),
+    ...((learningData?.stages || []).flatMap((stage) => [stage.title, stage.clinical_state, ...(stage.visual_targets || []), ...(stage.key_labs || [])]))
+  ].filter(Boolean).join(' '));
+  return Object.entries(glossaryDefinitions)
+    .filter(([term]) => source.includes(normalizeText(term)))
+    .slice(0, 10)
+    .map(([term, definition]) => ({ term, definition }));
+}
+
+function getGuidedDiseaseProfile(disease) {
+  const code = disease.disease_code || '';
+  if (code.startsWith('REN-')) return {
+    type: /aguda|pielonefritis/i.test(disease.name) ? 'Renal, de inicio agudo' : 'Renal, con evolución variable',
+    course: disease.staging ? 'Se interpreta por etapas y función renal' : 'Depende de la causa y del daño acumulado',
+    key: 'Conecta filtración, orina, estructura renal y síntomas',
+    purpose: 'El objetivo es relacionar el cambio del riñón con la orina, los laboratorios y el estado general.'
+  };
+  if (code === 'DIG-004' || code === 'DIG-005' || code === 'ONC-004') return {
+    type: 'Gástrico o gastroduodenal',
+    course: 'Puede ir de lesión superficial a complicación',
+    key: 'Conecta mucosa, ácido, dolor, sangrado y endoscopia',
+    purpose: 'El recorrido une lo que ocurre en la pared del estómago con los síntomas y los hallazgos endoscópicos.'
+  };
+  return {
+    type: 'Hepático o hepatobiliar',
+    course: 'Puede alterar estructura, circulación y función',
+    key: 'Conecta daño, fibrosis, flujo portal y función hepática',
+    purpose: 'La clave es seguir cómo un daño del tejido termina afectando la circulación y las funciones del hígado.'
+  };
 }
 
 function renderTeachingPathway(stages) {
@@ -853,10 +1742,283 @@ function renderArticleBlock(title, paragraphs) {
   `;
 }
 
+function renderStagingExplorer(disease) {
+  const stagingText = disease.staging || '';
+  if (!stagingText) return '';
+
+  const stagingBlocks = parseStagingBlocks(stagingText, disease.disease_code);
+
+  return `
+    <div class="staging-explorer" data-disease-code="${escapeHTML(disease.disease_code)}">
+      <div class="staging-explorer-header">
+        <span class="badge">Clasificacion interactiva</span>
+        <h4>Como se clasifica esta enfermedad</h4>
+        <p>Toca cada sistema de clasificacion para ver que mide y como se interpreta. No necesitas buscarlo fuera de la ficha.</p>
+      </div>
+      <div class="staging-tabs" role="tablist" aria-label="Sistemas de clasificacion">
+        ${stagingBlocks.map((block, index) => `
+          <button
+            class="staging-tab ${index === 0 ? 'active' : ''}"
+            type="button"
+            role="tab"
+            aria-selected="${index === 0 ? 'true' : 'false'}"
+            data-staging-index="${index}"
+          >
+            ${escapeHTML(block.title)}
+          </button>
+        `).join('')}
+      </div>
+      <div class="staging-panels">
+        ${stagingBlocks.map((block, index) => `
+          <div class="staging-panel ${index === 0 ? 'active' : ''}" data-staging-panel="${index}" ${index === 0 ? '' : 'hidden'}>
+            <div class="staging-panel-content">
+              <h5>${escapeHTML(block.title)}</h5>
+              <p class="staging-summary">${escapeHTML(block.summary)}</p>
+              ${block.categories.length ? `
+                <div class="staging-categories">
+                  ${block.categories.map((cat) => `
+                    <div class="staging-category ${cat.tone || ''}">
+                      <strong>${escapeHTML(cat.label)}</strong>
+                      <span>${escapeHTML(cat.detail)}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              ` : ''}
+              ${block.variables.length ? `
+                <div class="staging-variables">
+                  <h6>Que variables usa</h6>
+                  <ul>
+                    ${block.variables.map((variable) => `<li>${escapeHTML(variable)}</li>`).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+              ${block.useCase ? `<p class="staging-use-case"><strong>Para que sirve:</strong> ${escapeHTML(block.useCase)}</p>` : ''}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function parseStagingBlocks(stagingText, diseaseCode) {
+  const blocks = [];
+  const text = stagingText.toLowerCase();
+
+  if (text.includes('child-pugh') || text.includes('child pugh')) {
+    blocks.push({
+      title: 'Child-Pugh',
+      summary: 'Escala que mide la gravedad de la cirrosis hepatica combinando laboratorio y clinica.',
+      categories: [
+        { label: 'Clase A (5-6 puntos)', detail: 'Funcion hepatica conservada. Pronostico relativamente bueno.', tone: 'mild' },
+        { label: 'Clase B (7-9 puntos)', detail: 'Compromiso funcional moderado. Requiere manejo activo.', tone: 'moderate' },
+        { label: 'Clase C (10-15 puntos)', detail: 'Deterioro severo. Mal pronostico. Considerar trasplante.', tone: 'severe' }
+      ],
+      variables: ['Bilirrubina', 'Albumina', 'Tiempo de protrombina o INR', 'Ascitis', 'Encefalopatia hepatica'],
+      useCase: 'Estimar gravedad y pronostico de la cirrosis, y apoyar decisiones de manejo y trasplante.'
+    });
+  }
+
+  if (text.includes('meld')) {
+    blocks.push({
+      title: 'MELD',
+      summary: 'Model for End-stage Liver Disease. Escala pronostica que usa variables de laboratorio para estimar riesgo a corto plazo.',
+      categories: [
+        { label: 'MELD bajo (<15)', detail: 'Riesgo de mortalidad a 90 dias relativamente bajo.', tone: 'mild' },
+        { label: 'MELD intermedio (15-25)', detail: 'Riesgo moderado. Requiere valoracion por hepatologia.', tone: 'moderate' },
+        { label: 'MELD alto (>25)', detail: 'Riesgo alto. Prioridad para trasplante hepatico.', tone: 'severe' }
+      ],
+      variables: ['Bilirrubina', 'INR', 'Creatinina', 'Sodio (en algunas versiones como MELD-Na)'],
+      useCase: 'Priorizar pacientes candidatos a trasplante hepatico segun riesgo de mortalidad a corto plazo.'
+    });
+  }
+
+  if (text.includes('metavir')) {
+    blocks.push({
+      title: 'METAVIR',
+      summary: 'Sistema histologico que mide el grado de fibrosis hepatica en biopsia.',
+      categories: [
+        { label: 'F0', detail: 'Sin fibrosis.', tone: 'mild' },
+        { label: 'F1', detail: 'Fibrosis portal sin septos.', tone: 'mild' },
+        { label: 'F2', detail: 'Fibrosis con pocos septos.', tone: 'moderate' },
+        { label: 'F3', detail: 'Fibrosis con muchos septos sin cirrosis.', tone: 'moderate' },
+        { label: 'F4', detail: 'Cirrosis.', tone: 'severe' }
+      ],
+      variables: ['Biopsia hepatica', 'Estudio microscopico del tejido'],
+      useCase: 'Medir cuanta fibrosis hay en el higado y decidir si ya hay cirrosis (F4).'
+    });
+  }
+
+  if (text.includes('compensada') || text.includes('descompensada')) {
+    blocks.push({
+      title: 'Clinica (compensada vs descompensada)',
+      summary: 'Clasificacion practica basada en si han aparecido complicaciones mayores.',
+      categories: [
+        { label: 'Compensada', detail: 'Sin complicaciones mayores. El higado aun sostiene sus funciones basicas. Puede estar asintomatica.', tone: 'mild' },
+        { label: 'Descompensada', detail: 'Han aparecido ascitis, encefalopatia, hemorragia por varices o ictericia. Requiere manejo especializado.', tone: 'severe' }
+      ],
+      variables: ['Presencia de ascitis', 'Encefalopatia hepatica', 'Hemorragia digestiva por varices', 'Ictericia'],
+      useCase: 'Definir el pronostico, la urgencia del manejo y la necesidad de valoracion por trasplante.'
+    });
+  }
+
+  if (text.includes('kdigo') || text.includes('g1') || text.includes('g5') || text.includes('a1') || text.includes('a3')) {
+    blocks.push({
+      title: 'KDIGO (eGFR y albuminuria)',
+      summary: 'Sistema para clasificar la enfermedad renal cronica segun filtracion y albuminuria.',
+      categories: [
+        { label: 'G1-G2 (eGFR >=60)', detail: 'Filtracion conservada o leve. El dano se detecta por albuminuria u otros marcadores.', tone: 'mild' },
+        { label: 'G3 (eGFR 30-59)', detail: 'Disminucion moderada del filtrado. Aparecen complicaciones metabolicas.', tone: 'moderate' },
+        { label: 'G4 (eGFR 15-29)', detail: 'Disminucion severa. Requiere preparacion para terapia renal sustitutiva.', tone: 'severe' },
+        { label: 'G5 (eGFR <15)', detail: 'Fallo renal terminal. Requiere dialisis o trasplante.', tone: 'severe' }
+      ],
+      variables: ['eGFR (filtracion glomerular estimada)', 'Albuminuria (relacion albumina/creatinina)'],
+      useCase: 'Clasificar la gravedad de la enfermedad renal cronica y guiar el seguimiento y tratamiento.'
+    });
+  }
+
+  if (text.includes('hinchey')) {
+    blocks.push({
+      title: 'Hinchey',
+      summary: 'Clasificacion de la gravedad de la diverticulitis complicada.',
+      categories: [
+        { label: 'Estadio 0', detail: 'Sin signos peritoneales.', tone: 'mild' },
+        { label: 'Estadio I', detail: 'Absceso pericolico.', tone: 'moderate' },
+        { label: 'Estadio II', detail: 'Absceso a distancia.', tone: 'moderate' },
+        { label: 'Estadio III', detail: 'Peritonitis purulenta.', tone: 'severe' },
+        { label: 'Estadio IV', detail: 'Peritonitis fecal.', tone: 'severe' }
+      ],
+      variables: ['Hallazgos de imagen (TAC abdominal)', 'Presencia de absceso', 'Peritonitis'],
+      useCase: 'Definir si la diverticulitis es complicada y guiar tratamiento medico vs quirurgico.'
+    });
+  }
+
+  if (text.includes('forrest') || text.includes('rockall')) {
+    blocks.push({
+      title: 'Forrest / Rockall',
+      summary: 'Escalas para clasificar el riesgo de una ulcera peptica sangrante.',
+      categories: [
+        { label: 'Forrest I', detail: 'Sangrado activo. Alto riesgo de recurrencia.', tone: 'severe' },
+        { label: 'Forrest II', detail: 'Vaso visible o coagulo. Riesgo intermedio.', tone: 'moderate' },
+        { label: 'Forrest III', detail: 'Base limpia. Bajo riesgo de resangrado.', tone: 'mild' }
+      ],
+      variables: ['Hallazgo endoscopico', 'Estabilidad hemodinamica', 'Edad y comorbilidades (Rockall)'],
+      useCase: 'Decidir tratamiento endoscopico y pronostico tras un sangrado digestivo alto por ulcera.'
+    });
+  }
+
+  if (text.includes('alvarado')) {
+    blocks.push({
+      title: 'Alvarado',
+      summary: 'Score clinico para estimar la probabilidad de apendicitis aguda.',
+      categories: [
+        { label: '<4 puntos', detail: 'Baja probabilidad de apendicitis.', tone: 'mild' },
+        { label: '4-6 puntos', detail: 'Probabilidad intermedia. Requiere observacion o imagen.', tone: 'moderate' },
+        { label: '>6 puntos', detail: 'Alta probabilidad. Valoracion quirurgica.', tone: 'severe' }
+      ],
+      variables: ['Migracion del dolor', 'Anorexia', 'Nauseas/vomito', 'Dolor en fosa iliaca derecha', 'Fiebre', 'Leucocitosis'],
+      useCase: 'Aproximacion inicial a la probabilidad de apendicitis antes de confirmar con imagen o cirugia.'
+    });
+  }
+
+  if (text.includes('atlanta') || text.includes('bisap') || text.includes('ranson') || text.includes('apache')) {
+    blocks.push({
+      title: 'Atlanta / BISAP / Ranson',
+      summary: 'Sistemas para clasificar la gravedad de la pancreatitis aguda.',
+      categories: [
+        { label: 'Leve', detail: 'Sin falla organica ni complicaciones locales.', tone: 'mild' },
+        { label: 'Moderada', detail: 'Fallido organica transitoria o complicacion local sin persistencia.', tone: 'moderate' },
+        { label: 'Grave', detail: 'Fallido organica persistente o complicaciones locales graves.', tone: 'severe' }
+      ],
+      variables: ['Signos vitales', 'Laboratorio (amilasa, lipasa, calcio, glucosa)', 'Imagen (necrosis, colecciones)', 'Fallido organico'],
+      useCase: 'Definir la gravedad de la pancreatitis y guiar el nivel de cuidado y seguimiento.'
+    });
+  }
+
+  if (text.includes('mayo') && (text.includes('colitis') || diseaseCode === 'RARE-004' || diseaseCode === 'DIG-007')) {
+    blocks.push({
+      title: 'Mayo Score',
+      summary: 'Indice de actividad para colitis ulcerosa.',
+      categories: [
+        { label: 'Remision', detail: 'Poca o ninguna actividad inflamatoria.', tone: 'mild' },
+        { label: 'Brote leve', detail: 'Sintomas presentes pero tolerables.', tone: 'moderate' },
+        { label: 'Brote moderado', detail: 'Sintomas mas intensos, afecta actividades.', tone: 'moderate' },
+        { label: 'Brote grave', detail: 'Sintomas severos, posible megacolon toxico.', tone: 'severe' }
+      ],
+      variables: ['Frecuencia de deposiciones', 'Sangre en heces', 'Hallazgo endoscopico', 'Evaluacion global del medico'],
+      useCase: 'Medir la actividad de la colitis ulcerosa y la respuesta al tratamiento.'
+    });
+  }
+
+  if (text.includes('cdai')) {
+    blocks.push({
+      title: 'CDAI',
+      summary: 'Indice de actividad para enfermedad de Crohn.',
+      categories: [
+        { label: 'Remision (<150)', detail: 'Enfermedad inactiva.', tone: 'mild' },
+        { label: 'Brote leve (150-220)', detail: 'Actividad leve.', tone: 'moderate' },
+        { label: 'Brote moderado (220-450)', detail: 'Actividad moderada.', tone: 'moderate' },
+        { label: 'Brote grave (>450)', detail: 'Actividad severa.', tone: 'severe' }
+      ],
+      variables: ['Numero de deposiciones liquidas', 'Dolor abdominal', 'Masa abdominal', 'Peso', 'Complicaciones'],
+      useCase: 'Medir la actividad de la enfermedad de Crohn y la respuesta al tratamiento.'
+    });
+  }
+
+  if (text.includes('marsh')) {
+    blocks.push({
+      title: 'Marsh-Oberhuber',
+      summary: 'Clasificacion histologica de la enfermedad celiaca en biopsia intestinal.',
+      categories: [
+        { label: 'Marsh 0', detail: 'Mucosa normal.', tone: 'mild' },
+        { label: 'Marsh 1', detail: 'Aumento de linfocitos intraepiteliales sin atrofia.', tone: 'mild' },
+        { label: 'Marsh 2', detail: 'Hiperplasia de criptas sin atrofia vellositaria.', tone: 'moderate' },
+        { label: 'Marsh 3', detail: 'Atrofia vellositaria subtotal o total. Hallazgo clasico.', tone: 'severe' }
+      ],
+      variables: ['Biopsia de intestino delgado', 'Arquitectura vellositaria', 'Linfocitos intraepiteliales'],
+      useCase: 'Confirmar y graduar el dano intestinal en enfermedad celiaca.'
+    });
+  }
+
+  if (blocks.length === 0) {
+    blocks.push({
+      title: 'Clasificacion general',
+      summary: stagingText,
+      categories: [],
+      variables: [],
+      useCase: ''
+    });
+  }
+
+  return blocks;
+}
+
+function bindStagingExplorer(root) {
+  root.querySelectorAll('.staging-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const index = tab.dataset.stagingIndex;
+      const explorer = tab.closest('.staging-explorer');
+      if (!explorer) return;
+
+      explorer.querySelectorAll('.staging-tab').forEach((item) => {
+        const active = item === tab;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      explorer.querySelectorAll('.staging-panel').forEach((panel) => {
+        const active = panel.dataset.stagingPanel === index;
+        panel.classList.toggle('active', active);
+        panel.hidden = !active;
+      });
+    });
+  });
+}
 function updateInternalArticle(disease, learningData) {
   const panel = document.getElementById('internalArticlePanel');
   if (!panel) return;
   panel.innerHTML = renderInternalArticle(disease, learningData);
+  bindStagingExplorer(panel);
 }
 
 function renderReferenceSection(disease) {
@@ -1002,7 +2164,7 @@ function renderLearningSupportPanel(title, content, open = false) {
   `;
 }
 
-async function loadDiagnosticTestPanel(disease) {
+async function loadDiagnosticTestPanel(disease, generation) {
   const panel = document.getElementById('diagnosticTestPanel');
   if (!panel) return;
   const diseaseCode = encodeURIComponent(disease.disease_code);
@@ -1016,6 +2178,7 @@ async function loadDiagnosticTestPanel(disease) {
     const tests = testsData.tests || [];
     const samples = samplesData.samples || [];
     const procedures = endoscopyData.procedures || [];
+    if (generation !== renalWorkspaceGeneration || !panel.isConnected) return;
     if (!tests.length && !samples.length && !procedures.length) {
       panel.innerHTML = '';
       return;
@@ -1023,8 +2186,130 @@ async function loadDiagnosticTestPanel(disease) {
 
     panel.innerHTML = renderDiagnosticTestPanel(tests, samples, procedures);
   } catch (error) {
-    panel.innerHTML = '';
+    if (generation === renalWorkspaceGeneration && panel.isConnected) panel.innerHTML = '';
   }
+}
+
+async function loadAnalyteBankPanel(disease, generation) {
+  const panel = document.getElementById('analyteBankPanel');
+  if (!panel) return;
+
+  try {
+    const response = await fetch(`/analitos/enfermedad/${encodeURIComponent(disease.disease_code)}`);
+    if (!response.ok) throw new Error('Banco de analitos no disponible');
+    const data = await response.json();
+    const analytes = data.analytes || [];
+    if (generation !== renalWorkspaceGeneration || !panel.isConnected) return;
+    if (!analytes.length) {
+      panel.innerHTML = '<p class="hint">No hay analitos relacionados con esta enfermedad.</p>';
+      return;
+    }
+
+    panel.innerHTML = renderAnalyteBank(analytes);
+    bindAnalyteBankFilters(panel, analytes);
+  } catch (error) {
+    if (generation === renalWorkspaceGeneration && panel.isConnected) {
+      panel.innerHTML = '<p class="hint">El banco de analitos no pudo cargarse.</p>';
+    }
+  }
+}
+
+function renderAnalyteBank(analytes) {
+  return `
+    <section class="analyte-bank" aria-labelledby="analyteBankTitle">
+      <header class="analyte-bank-header">
+        <div>
+          <span class="badge">Datos poblacionales abiertos</span>
+          <h3 id="analyteBankTitle">Analitos relacionados</h3>
+          <p>Explora qué se mide y qué datos están disponibles. Las distribuciones de NHANES no son rangos normales ni reglas diagnósticas.</p>
+        </div>
+        <span class="analyte-bank-count" data-analyte-count>${analytes.length} analitos</span>
+      </header>
+      <div class="analyte-filter-bar" role="group" aria-label="Filtros del banco de analitos">
+        <button type="button" class="active" data-analyte-filter="all">Todos</button>
+        <button type="button" data-analyte-filter="blood">Sangre / suero</button>
+        <button type="button" data-analyte-filter="urine">Orina</button>
+        <button type="button" data-analyte-filter="available">Con datos</button>
+        <button type="button" data-analyte-filter="pending">Pendientes</button>
+      </div>
+      <div class="analyte-grid" data-analyte-grid>
+        ${analytes.map(renderAnalyteCard).join('')}
+      </div>
+    </section>
+  `;
+}
+
+function renderAnalyteCard(analyte) {
+  const profile = analyte.population_profile;
+  const specimen = getAnalyteSpecimenGroup(analyte.specimen_type);
+  const availability = profile ? 'available' : 'pending';
+  const statusLabel = profile ? 'Importado y normalizado' : 'Fuente compatible pendiente';
+  const distribution = profile?.distribution;
+
+  return `
+    <details class="analyte-card" data-analyte-card data-specimen="${specimen}" data-availability="${availability}">
+      <summary>
+        <div>
+          <span class="analyte-specimen">${escapeHTML(analyte.specimen_type || 'Muestra por definir')}</span>
+          <h4>${escapeHTML(analyte.preferred_name)}</h4>
+          <p>${escapeHTML(analyte.canonical_unit || 'Unidad pendiente de normalizacion')}</p>
+        </div>
+        <span class="analyte-status ${availability}">${escapeHTML(statusLabel)}</span>
+      </summary>
+      <div class="analyte-card-body">
+        ${profile ? `
+          <section class="analyte-distribution" aria-label="Distribucion poblacional NHANES">
+            <h5>Distribución observada en NHANES</h5>
+            <dl>
+              <div><dt>Observaciones</dt><dd>${Number(profile.observed_count || 0).toLocaleString('es-CO')}</dd></div>
+              <div><dt>Mediana</dt><dd>${formatAnalyteValue(distribution?.median)} ${escapeHTML(profile.unit || '')}</dd></div>
+              <div><dt>Percentil 5</dt><dd>${formatAnalyteValue(distribution?.p05)} ${escapeHTML(profile.unit || '')}</dd></div>
+              <div><dt>Percentil 95</dt><dd>${formatAnalyteValue(distribution?.p95)} ${escapeHTML(profile.unit || '')}</dd></div>
+            </dl>
+            <p class="analyte-warning">Distribución descriptiva sin ponderar. No representa un rango clínico de referencia.</p>
+          </section>
+        ` : `
+          <p class="analyte-warning">Este analito está relacionado con REN-001, pero aún no tiene una fuente poblacional compatible integrada.</p>
+        `}
+        <div class="analyte-metadata">
+          <span>LOINC: ${analyte.loinc_code ? escapeHTML(analyte.loinc_code) : 'pendiente de validación oficial'}</span>
+          <span>Revisión: ${escapeHTML(analyte.review_status || 'pendiente')}</span>
+        </div>
+      </div>
+    </details>
+  `;
+}
+
+function getAnalyteSpecimenGroup(specimenType = '') {
+  const specimen = String(specimenType).toLowerCase();
+  if (specimen.includes('orina')) return 'urine';
+  if (specimen.includes('sangre') || specimen.includes('suero') || specimen.includes('plasma')) return 'blood';
+  return 'other';
+}
+
+function formatAnalyteValue(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) return 'No disponible';
+  return new Intl.NumberFormat('es-CO', { maximumFractionDigits: 2 }).format(Number(value));
+}
+
+function bindAnalyteBankFilters(panel, analytes) {
+  const buttons = panel.querySelectorAll('[data-analyte-filter]');
+  const cards = panel.querySelectorAll('[data-analyte-card]');
+  const count = panel.querySelector('[data-analyte-count]');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.analyteFilter;
+      let visible = 0;
+      buttons.forEach((item) => item.classList.toggle('active', item === button));
+      cards.forEach((card) => {
+        const matches = filter === 'all' || card.dataset.specimen === filter || card.dataset.availability === filter;
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+      if (count) count.textContent = `${visible} de ${analytes.length} analitos`;
+    });
+  });
 }
 
 async function fetchJsonOrEmpty(url, collectionKey) {
@@ -2485,8 +3770,84 @@ function renderSvgCallouts(regions, targets) {
   `;
 }
 
-function renderVisualAtlas() {
-  if (!atlasGrid || atlasGrid.dataset.rendered === 'true') return;
+async function getHepaticAtlasCatalog() {
+  if (hepaticAtlasCatalog) return hepaticAtlasCatalog;
+  const response = await fetch('/backend/data/hepatic_image_catalog.json');
+  if (!response.ok) throw new Error('No se pudo cargar el catálogo hepático.');
+  hepaticAtlasCatalog = await response.json();
+  return hepaticAtlasCatalog;
+}
+
+async function loadHepaticAtlasPanel(root, compact = false) {
+  const host = root?.querySelector?.('#hepaticAtlasPanel');
+  if (!host) return;
+  try {
+    const catalog = await getHepaticAtlasCatalog();
+    host.innerHTML = renderHepaticAtlasCatalog(catalog, compact);
+    bindHepaticAtlas(host, catalog.hepatic_images || []);
+  } catch (error) {
+    host.innerHTML = `<p class="hint">${escapeHTML(error.message)}</p>`;
+  }
+}
+
+function renderHepaticAtlasCatalog(catalog, compact = false) {
+  const items = catalog.hepatic_images || [];
+  const sections = Array.from(new Set(items.map((item) => item.section)));
+  return `
+    <section class="hepatic-atlas ${compact ? 'compact' : ''}">
+      <header class="hepatic-atlas-header">
+        <div><span class="library-kicker">Colección anatómica revisada</span><h3>${escapeHTML(catalog.title)}</h3><p>${items.length} láminas ordenadas desde la anatomía macroscópica hasta la microanatomía funcional.</p></div>
+        <div class="hepatic-atlas-count"><strong>${items.length}</strong><span>láminas</span></div>
+      </header>
+      <nav class="hepatic-atlas-filters" aria-label="Filtrar atlas hepático">
+        <button type="button" class="active" data-hepatic-filter="all">Todo el recorrido</button>
+        ${sections.map((section) => `<button type="button" data-hepatic-filter="${escapeHTML(section)}">${escapeHTML(section)}</button>`).join('')}
+      </nav>
+      <div class="hepatic-atlas-grid">
+        ${items.map((item, index) => `
+          <button type="button" class="hepatic-atlas-card" data-hepatic-section="${escapeHTML(item.section)}" data-hepatic-index="${index}">
+            <span class="hepatic-image-frame"><img src="/${escapeHTML(item.file)}" alt="${escapeHTML(item.title)}" loading="lazy" /></span>
+            <span class="hepatic-card-copy"><small>${String(item.order).padStart(2, '0')} · ${escapeHTML(item.section)}</small><strong>${escapeHTML(item.title)}</strong><em>Ampliar lámina →</em></span>
+          </button>
+        `).join('')}
+      </div>
+    </section>
+  `;
+}
+
+function bindHepaticAtlas(root, items) {
+  root.querySelectorAll('[data-hepatic-filter]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.hepaticFilter;
+      root.querySelectorAll('[data-hepatic-filter]').forEach((item) => item.classList.toggle('active', item === button));
+      root.querySelectorAll('.hepatic-atlas-card').forEach((card) => {
+        card.hidden = filter !== 'all' && card.dataset.hepaticSection !== filter;
+      });
+    });
+  });
+  root.querySelectorAll('[data-hepatic-index]').forEach((card) => {
+    card.addEventListener('click', () => openHepaticAtlasImage(items, Number(card.dataset.hepaticIndex)));
+  });
+}
+
+function openHepaticAtlasImage(items, index) {
+  const item = items[index];
+  if (!item) return;
+  showModal();
+  modalContent.innerHTML = `
+    <article class="hepatic-image-viewer">
+      <header><div><span>${String(item.order).padStart(2, '0')} · ${escapeHTML(item.section)}</span><h2 id="modalTitle">${escapeHTML(item.title)}</h2></div><small>${escapeHTML(item.dimensions)}</small></header>
+      <div class="hepatic-viewer-canvas"><img src="/${escapeHTML(item.file)}" alt="${escapeHTML(item.title)}" /></div>
+      <footer><button type="button" class="secondary-button" data-hepatic-prev ${index === 0 ? 'disabled' : ''}>← Anterior</button><span>${index + 1} de ${items.length}</span><button type="button" data-hepatic-next ${index === items.length - 1 ? 'disabled' : ''}>Siguiente →</button></footer>
+    </article>
+  `;
+  modalContent.querySelector('[data-hepatic-prev]')?.addEventListener('click', () => openHepaticAtlasImage(items, index - 1));
+  modalContent.querySelector('[data-hepatic-next]')?.addEventListener('click', () => openHepaticAtlasImage(items, index + 1));
+}
+
+async function renderVisualAtlas() {
+  if (!atlasGrid || atlasGrid.dataset.rendered === 'true' || atlasGrid.dataset.loading === 'true') return;
+  atlasGrid.dataset.loading = 'true';
 
   const atlasItems = [
     {
@@ -2541,7 +3902,16 @@ function renderVisualAtlas() {
     }
   }));
 
+  let hepaticMarkup = '';
+  try {
+    const hepaticCatalog = await getHepaticAtlasCatalog();
+    hepaticMarkup = `<div id="hepaticAtlasPanel">${renderHepaticAtlasCatalog(hepaticCatalog)}</div>`;
+  } catch (error) {
+    hepaticMarkup = `<p class="hint">${escapeHTML(error.message)}</p>`;
+  }
+
   atlasGrid.innerHTML = `
+    ${hepaticMarkup}
     ${renderRenalAtlasOverview()}
     <div class="atlas-section-title">
       <span class="badge">Borradores por sistema</span>
@@ -2560,12 +3930,16 @@ function renderVisualAtlas() {
     }).join('')}
   `;
 
+  const hepaticPanel = atlasGrid.querySelector('#hepaticAtlasPanel');
+  if (hepaticAtlasCatalog && hepaticPanel) bindHepaticAtlas(hepaticPanel, hepaticAtlasCatalog.hepatic_images || []);
+
   atlasGrid.querySelectorAll('.atlas-card').forEach((card, index) => {
     bindAnatomyVisualizer(card, atlasData[index].data, `ATLAS-${atlasData[index].item.organ}`);
   });
   bindRenalAtlasInteraction(atlasGrid);
 
   atlasGrid.dataset.rendered = 'true';
+  atlasGrid.dataset.loading = 'false';
 }
 
 function bindRenalAtlasInteraction(root) {
@@ -2933,12 +4307,13 @@ function renderRenalAtlasViewCard(view, regions, baseStage) {
   `;
 }
 
-async function loadClinicalBridgePanel(disease) {
+async function loadClinicalBridgePanel(disease, generation) {
   const panel = document.getElementById('clinicalBridgePanel');
   if (!panel) return;
 
   try {
     const cases = await fetchCases(disease.disease_code);
+    if (generation !== renalWorkspaceGeneration || !panel.isConnected) return;
     if (!cases.length) {
       panel.innerHTML = `
         <div class="bridge-empty">
@@ -2957,12 +4332,13 @@ async function loadClinicalBridgePanel(disease) {
       organ: disease.organ
     };
     const diagnosticImages = await fetchCaseDiagnosticImages(caseData.case_code);
+    if (generation !== renalWorkspaceGeneration || !panel.isConnected) return;
 
     panel.innerHTML = renderClinicalBridge(disease, caseData, diagnosticImages);
     panel.querySelector('[data-open-case]')?.addEventListener('click', () => openCaseModal(caseData));
     panel.querySelector('[data-solve-case]')?.addEventListener('click', () => loadQuiz(caseData.case_code));
   } catch (error) {
-    panel.innerHTML = '';
+    if (generation === renalWorkspaceGeneration && panel.isConnected) panel.innerHTML = '';
   }
 }
 

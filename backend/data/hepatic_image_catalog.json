@@ -1,0 +1,200 @@
+{
+  "collection_code": "ATLAS-HEPATICO",
+  "title": "Atlas anatomico del higado",
+  "source_directory": "imagenes",
+  "reviewed_at": "2026-08-03",
+  "summary": {
+    "total_files": 21,
+    "hepatic_images": 19,
+    "excluded_renal_images": 2,
+    "exact_duplicates": 0,
+    "missing_sequence_numbers": [19]
+  },
+  "hepatic_images": [
+    {
+      "order": 1,
+      "title": "Higado sano: vista anterior",
+      "topic": "anatomia_macroscopica",
+      "section": "Anatomia normal",
+      "file": "imagenes/9366be95-c17f-4dda-a061-6bf767db7225.png",
+      "dimensions": "1254x1254",
+      "orientation": "square"
+    },
+    {
+      "order": 2,
+      "title": "Ubicacion del higado",
+      "topic": "topografia",
+      "section": "Ubicacion y relaciones",
+      "file": "imagenes/ChatGPT Image 22 jul 2026, 08_41_50 a.m..png",
+      "dimensions": "1024x1536",
+      "orientation": "portrait"
+    },
+    {
+      "order": 3,
+      "title": "Higado sano: vista inferior o visceral",
+      "topic": "anatomia_macroscopica",
+      "section": "Anatomia normal",
+      "file": "imagenes/a23bca33-0032-4651-ac29-7cffe5b2f9b4.png",
+      "dimensions": "1122x1402",
+      "orientation": "portrait"
+    },
+    {
+      "order": 4,
+      "title": "Lobulos anatomicos del higado: introduccion",
+      "topic": "lobulos_anatomicos",
+      "section": "Organizacion anatomica",
+      "file": "imagenes/526716b2-4747-4e7c-9667-9b5579f48000.png",
+      "dimensions": "1402x1122",
+      "orientation": "landscape"
+    },
+    {
+      "order": 5,
+      "title": "Segmentos hepaticos de Couinaud: vista anterior",
+      "topic": "segmentacion_couinaud",
+      "section": "Organizacion funcional",
+      "file": "imagenes/23bafd9c-a836-4f4c-951d-0bbd37464bf2.png",
+      "dimensions": "1402x1122",
+      "orientation": "landscape"
+    },
+    {
+      "order": 6,
+      "title": "Sistema de la vena porta",
+      "topic": "circulacion_portal",
+      "section": "Vascularizacion",
+      "file": "imagenes/222c1449-296a-4412-be7d-5d8fb1d9aa2e.png",
+      "dimensions": "1402x1122",
+      "orientation": "landscape"
+    },
+    {
+      "order": 7,
+      "title": "Vias biliares intrahepaticas y extrahepaticas",
+      "topic": "vias_biliares",
+      "section": "Sistema biliar",
+      "file": "imagenes/13fda008-1939-44f1-9bdd-0c8a67bf272a.png",
+      "dimensions": "1402x1122",
+      "orientation": "landscape"
+    },
+    {
+      "order": 8,
+      "title": "Irrigacion del higado",
+      "topic": "irrigacion",
+      "section": "Vascularizacion",
+      "file": "imagenes/f996c23f-7e42-4c8e-9ae1-1f263fd60930.png",
+      "dimensions": "1402x1122",
+      "orientation": "landscape"
+    },
+    {
+      "order": 9,
+      "title": "Ligamentos del higado",
+      "topic": "ligamentos",
+      "section": "Fijacion y relaciones",
+      "file": "imagenes/f37662f5-456d-45f9-8ec4-4ada861f6369.png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 10,
+      "title": "Relaciones anatomicas del higado",
+      "topic": "relaciones_anatomicas",
+      "section": "Ubicacion y relaciones",
+      "file": "imagenes/3163419e-c8d0-482d-bd5f-23a9177ec5dc.png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 11,
+      "title": "Segmentacion hepatica de Couinaud: estudio completo",
+      "topic": "segmentacion_couinaud",
+      "section": "Organizacion funcional",
+      "file": "imagenes/ChatGPT Image 23 jul 2026, 10_56_58 a.m..png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 12,
+      "title": "Lobulos anatomicos del higado: estudio completo",
+      "topic": "lobulos_anatomicos",
+      "section": "Organizacion anatomica",
+      "file": "imagenes/d8932ee1-cb34-43e4-ac5c-861d1bd521cf.png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 13,
+      "title": "Irrigacion e inervacion del higado",
+      "topic": "irrigacion_inervacion",
+      "section": "Vascularizacion e inervacion",
+      "file": "imagenes/adc151eb-f509-4abd-920a-19ed5bba489f.png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 14,
+      "title": "Corte transversal o axial del higado",
+      "topic": "corte_axial",
+      "section": "Anatomia seccional",
+      "file": "imagenes/ChatGPT Image 31 jul 2026, 08_03_25 p.m..png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 15,
+      "title": "Corte sagital del higado",
+      "topic": "corte_sagital",
+      "section": "Anatomia seccional",
+      "file": "imagenes/f17bf42e-d232-4f55-bf61-af163bc71bfd.png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 16,
+      "title": "Lobulillo hepatico clasico",
+      "topic": "microanatomia_lobulillo",
+      "section": "Microanatomia",
+      "file": "imagenes/c42183e0-440d-44a1-86b1-48f95af39b5f.png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 17,
+      "title": "Sinusoide hepatico: microanatomia",
+      "topic": "microanatomia_sinusoide",
+      "section": "Microanatomia",
+      "file": "imagenes/5b6b27e6-a948-42e5-a5bc-0aa4c3319e9c.png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 18,
+      "title": "Acino hepatico: zonas 1, 2 y 3",
+      "topic": "microanatomia_acino",
+      "section": "Microanatomia funcional",
+      "file": "imagenes/5a9ac455-b688-4e2f-9af5-8bf5bbad0734.png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    },
+    {
+      "order": 20,
+      "title": "Drenaje linfatico del higado",
+      "topic": "drenaje_linfatico",
+      "section": "Sistema linfatico",
+      "file": "imagenes/2fa756a4-882f-4698-9706-4d14427c5d10.png",
+      "dimensions": "1536x1024",
+      "orientation": "landscape"
+    }
+  ],
+  "excluded_from_hepatic_atlas": [
+    {
+      "title": "R1. Ubicacion de los rinones en el cuerpo",
+      "reason": "La lamina corresponde al sistema renal, no al higado.",
+      "file": "imagenes/7a9fd281-3140-4a99-aaf6-18c28b7f37cc.png",
+      "dimensions": "1254x1254"
+    },
+    {
+      "title": "R2. Rinones sanos: vista externa",
+      "reason": "La lamina corresponde al sistema renal, no al higado.",
+      "file": "imagenes/20d56932-8bf3-4207-8b9c-757986f95a6f.png",
+      "dimensions": "1254x1254"
+    }
+  ]
+}

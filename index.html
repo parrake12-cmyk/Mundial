@@ -4,15 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MedLearn Clínico</title>
-    <link rel="stylesheet" href="styles.css?v=renal-layout-23" />
+    <link rel="stylesheet" href="styles.css?v=hepatic-atlas-29" />
   </head>
   <body>
     <header class="hero">
       <div>
-        <h1>MedLearn Clínico</h1>
-        <p>
-          Plataforma educativa para estudiar enfermedades por sistemas, anatomía, progresión visual, laboratorios y rutas didácticas.
-        </p>
+        <span class="home-eyebrow">Biblioteca médica educativa</span>
+        <h1>MedLearn <em>Clínico</em></h1>
+        <p>Comprende la enfermedad desde su causa hasta su expresión clínica, diagnóstico y evolución visual.</p>
+      </div>
+      <div class="hero-route" aria-label="Ruta de estudio">
+        <span>01 Comprender</span><i>→</i><span>02 Investigar</span><i>→</i><span>03 Integrar</span>
       </div>
     </header>
 
@@ -21,7 +23,7 @@
         <span aria-hidden="true">●</span>
         <strong>Enfermedades</strong>
       </button>
-      <button class="module-button deferred-module" type="button" data-module-target="cases" hidden>
+      <button class="module-button deferred-module" type="button" data-module-target="cases">
         <span aria-hidden="true">▦</span>
         <strong>Casos clínicos</strong>
       </button>
@@ -41,13 +43,48 @@
 
     <main class="container">
       <section id="diseaseRepositoryPanel" class="panel left module-panel" data-module="diseases">
-        <div class="section-header">
-          <h2>Repositorio</h2>
-          <span id="resultCount" class="muted-pill">0</span>
+        <section class="library-hero">
+          <div class="library-hero-copy">
+            <span class="library-kicker">Biblioteca médica educativa</span>
+            <h1>Estudia una enfermedad<br /><em>sin perder el hilo.</em></h1>
+            <p>Comprende su origen, los cambios del órgano, la expresión clínica y las pruebas que ayudan a investigarla.</p>
+            <div class="library-path" aria-label="Ruta sugerida de estudio">
+              <span><b>1</b> Comprende</span><i></i><span><b>2</b> Investiga</span><i></i><span><b>3</b> Integra</span>
+            </div>
+          </div>
+          <div class="future-visual-slot" aria-label="Espacio visual pendiente de definir">
+            <div class="visual-slot-symbol" aria-hidden="true"><span></span><span></span><span></span></div>
+            <strong>Espacio visual de portada</strong>
+            <p>Aquí podría ir una ilustración general o un recurso gráfico. La imagen se definirá contigo.</p>
+          </div>
+        </section>
+        <section class="home-entry-grid" aria-label="Formas de comenzar">
+          <button type="button" class="home-entry-card primary" data-home-module="diseases">
+            <span>01</span><div><small>Estudio principal</small><strong>Explorar enfermedades</strong><p>Busca por sistema, órgano o manifestación clínica.</p></div><i>→</i>
+          </button>
+          <button type="button" class="home-entry-card" data-home-module="cases">
+            <span>02</span><div><small>Razonamiento aplicado</small><strong>Resolver casos clínicos</strong><p>Integra síntomas, hallazgos y decisiones en contexto.</p></div><i>→</i>
+          </button>
+          <button type="button" class="home-entry-card" data-home-module="analysis">
+            <span>03</span><div><small>Apoyo interactivo</small><strong>Análisis con IA</strong><p>Explora relaciones dentro de una historia clínica.</p></div><i>→</i>
+          </button>
+          <button type="button" class="home-entry-card" data-home-module="atlas">
+            <span>04</span><div><small>Comprensión espacial</small><strong>Abrir atlas visual</strong><p>Relaciona estructuras normales con cambios patológicos.</p></div><i>→</i>
+          </button>
+          <button type="button" class="home-entry-card" data-home-module="route">
+            <span>05</span><div><small>Orientación didáctica</small><strong>Ruta de aprendizaje</strong><p>Sigue un orden médico sin memorizar datos aislados.</p></div><i>→</i>
+          </button>
+        </section>
+        <div class="repository-intro">
+          <div>
+            <span class="home-eyebrow">Exploración por sistemas</span>
+            <h2>¿Qué quieres estudiar?</h2>
+            <p>Busca una enfermedad, un órgano o un síntoma. Después sigue su recorrido médico en orden.</p>
+          </div>
+          <span id="resultCount" class="repository-count">0 <small>resultados</small></span>
         </div>
-        <div id="statsStrip" class="stats-strip"></div>
         <div class="toolbar">
-          <input id="searchInput" type="search" placeholder="Buscar enfermedad, órgano o síntoma" />
+          <label class="primary-search"><span>Buscar en la biblioteca</span><input id="searchInput" type="search" placeholder="Ej. cirrosis, riñón, dolor abdominal..." /></label>
           <select id="systemFilter" aria-label="Filtrar por sistema">
             <option value="">Todos los sistemas</option>
           </select>
@@ -59,7 +96,10 @@
             <option value="needs-image">Sin imagen dedicada</option>
           </select>
         </div>
+        <div id="statsStrip" class="stats-strip home-stats"></div>
+        <div class="repository-subhead"><div><h3>Sistemas y especialidades</h3><p>Selecciona un área para reducir la biblioteca.</p></div></div>
         <div id="systemChips" class="system-chips" aria-label="Departamentos clínicos"></div>
+        <div class="repository-subhead"><div><h3>Fichas disponibles</h3><p>Contenido educativo organizado para lectura clínica.</p></div></div>
         <div id="diseaseList" class="list"></div>
       </section>
 
@@ -105,29 +145,30 @@
       </section>
 
       <section class="panel full module-panel" data-module="route" hidden>
-        <h2>Ruta de aprendizaje</h2>
-        <ol>
-          <li>Explora las enfermedades disponibles.</li>
-          <li>Estudia el órgano afectado y la teoría base.</li>
-          <li>Abre un caso clínico cuando quieras practicar.</li>
-          <li>Responde preguntas interactivas y revisa la explicación.</li>
-          <li>Aprende con enfoque didáctico, no diagnóstico.</li>
-        </ol>
+        <div class="learning-route-hero"><span>Orientación didáctica</span><h2>Una ruta para estudiar con sentido clínico</h2><p>No necesitas leer todo a la vez. Avanza desde la estructura normal hasta la integración de un caso.</p></div>
+        <div class="learning-route-track">
+          <article><span>01</span><div><small>Ubicar</small><h3>Órgano y anatomía</h3><p>Reconoce la estructura normal y su función antes de estudiar el daño.</p></div></article>
+          <article><span>02</span><div><small>Comprender</small><h3>Enfermedad y mecanismo</h3><p>Relaciona la causa con los cambios del tejido y de la función.</p></div></article>
+          <article><span>03</span><div><small>Reconocer</small><h3>Expresión clínica</h3><p>Conecta fisiopatología, síntomas, signos y posibles complicaciones.</p></div></article>
+          <article><span>04</span><div><small>Investigar</small><h3>Pruebas y diagnóstico</h3><p>Entiende qué aporta cada examen y cómo cambia la sospecha clínica.</p></div></article>
+          <article><span>05</span><div><small>Integrar</small><h3>Caso clínico</h3><p>Aplica el recorrido completo y revisa la explicación de tus decisiones.</p></div></article>
+        </div>
+        <div class="route-callout"><strong>Principio de la plataforma</strong><p>Primero comprender, después reconocer y finalmente aplicar. El contenido es educativo y no reemplaza la valoración profesional.</p></div>
       </section>
     </main>
 
-    <div id="modalOverlay" class="modal-overlay hidden">
-      <div class="modal">
+    <div id="modalOverlay" class="modal-overlay hidden" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
         <button id="modalClose" class="close-button" aria-label="Cerrar modal">×</button>
         <div id="modalContent"></div>
       </div>
     </div>
 
     <script src="utils.js"></script>
-    <script src="diseases.js?v=renal-layout-23"></script>
+    <script src="diseases.js?v=hepatic-atlas-29"></script>
     <script src="cases.js"></script>
     <script src="quiz.js"></script>
     <script src="ai.js"></script>
-    <script src="app.js?v=renal-layout-23"></script>
+    <script src="app.js?v=module-home-28"></script>
   </body>
 </html>

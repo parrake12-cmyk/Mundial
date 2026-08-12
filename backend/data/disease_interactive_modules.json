@@ -1,0 +1,126 @@
+[
+  {
+    "disease_code": "REN-001",
+    "version": "1.0.0-draft",
+    "review_status": "educational_draft_sourced_not_clinically_validated",
+    "source_ids": ["kdigo_ckd", "niddk_ckd", "medlineplus_xml"],
+    "modules": [
+      {
+        "module_id": "panorama",
+        "guiding_question": "¿Cómo puede existir daño renal aunque una persona todavía no note síntomas?",
+        "learning_objective": "Distinguir daño renal, pérdida de filtración y manifestaciones clínicas como dimensiones relacionadas pero no idénticas.",
+        "essential_ideas": [
+          "La enfermedad renal crónica puede avanzar de forma silenciosa.",
+          "La filtración y la albuminuria aportan información complementaria.",
+          "La persistencia de la alteración diferencia un problema crónico de un cambio aislado."
+        ],
+        "common_error": {
+          "claim": "Si la creatinina no está muy elevada, no existe daño renal.",
+          "correction": "Una lectura aislada no resume toda la función renal; debe integrarse con eGFR, albuminuria, tendencia y contexto."
+        },
+        "checkpoint": {
+          "prompt": "¿Qué combinación ofrece una visión más completa del riesgo renal?",
+          "options": [
+            {"id": "a", "label": "Solo una creatinina aislada", "feedback": "Es insuficiente para establecer tendencia, cronicidad y daño renal temprano."},
+            {"id": "b", "label": "eGFR, albuminuria y persistencia", "feedback": "Integra filtración, marcador de daño y dimensión temporal."},
+            {"id": "c", "label": "Solo la presencia de síntomas", "feedback": "Las fases tempranas pueden ser asintomáticas."}
+          ],
+          "correct_option_id": "b"
+        }
+      },
+      {
+        "module_id": "mecanismo",
+        "guiding_question": "¿Por qué una compensación inicial puede acelerar el daño renal?",
+        "learning_objective": "Reconstruir la cadena causal desde la pérdida de nefronas hasta la fibrosis y las complicaciones sistémicas.",
+        "causal_chain": [
+          {"step_id": "m1", "title": "Pérdida de nefronas", "explanation": "Disminuye la reserva funcional disponible.", "concept_ids": ["nefrona"]},
+          {"step_id": "m2", "title": "Hiperfiltración compensatoria", "explanation": "Las nefronas restantes aumentan su carga de filtración.", "concept_ids": ["hiperfiltracion"]},
+          {"step_id": "m3", "title": "Mayor presión intraglomerular", "explanation": "La compensación sostenida favorece lesión y fuga de proteínas.", "concept_ids": ["glomerulo", "albuminuria"]},
+          {"step_id": "m4", "title": "Inflamación y fibrosis", "explanation": "El tejido funcional es reemplazado progresivamente por cicatriz.", "concept_ids": ["fibrosis"]},
+          {"step_id": "m5", "title": "Menor reserva y efectos sistémicos", "explanation": "Aparecen alteraciones de volumen, electrolitos, equilibrio ácido-base, hemoglobina y metabolismo mineral según la progresión.", "concept_ids": ["hiperpotasemia", "acidosis_metabolica", "eritropoyetina"]}
+        ],
+        "prediction": {
+          "after_step_id": "m1",
+          "prompt": "Antes de continuar: ¿qué respuesta compensatoria esperarías de las nefronas restantes?",
+          "options": [
+            {"id": "a", "label": "Aumentar su carga de filtración", "feedback": "Es la compensación inicial, aunque puede contribuir al daño sostenido."},
+            {"id": "b", "label": "Detener toda filtración inmediatamente", "feedback": "La pérdida funcional suele ser progresiva y existe compensación de las nefronas remanentes."},
+            {"id": "c", "label": "No producir ningún cambio", "feedback": "La reducción de reserva provoca adaptaciones funcionales."}
+          ],
+          "correct_option_id": "a"
+        }
+      },
+      {
+        "module_id": "manifestaciones",
+        "guiding_question": "¿Qué hallazgos reflejan daño temprano y cuáles sugieren menor reserva o complicaciones?",
+        "learning_objective": "Relacionar mecanismos con manifestaciones sin asumir que todos aparecen en todas las etapas.",
+        "comparisons": [
+          {"dimension": "Síntomas", "left_label": "Etapa temprana", "left_value": "Puede ser asintomática.", "right_label": "Enfermedad avanzada", "right_value": "Puede presentar fatiga, edema, náuseas, prurito, calambres o dificultad para concentrarse."},
+          {"dimension": "Dato orientador", "left_label": "Daño temprano", "left_value": "Albuminuria con filtración todavía conservada.", "right_label": "Menor reserva", "right_value": "eGFR descendente y aparición de alteraciones metabólicas."},
+          {"dimension": "Lectura", "left_label": "Hallazgo aislado", "left_value": "Necesita confirmación y contexto.", "right_label": "Patrón persistente", "right_value": "Permite valorar cronicidad y progresión."}
+        ],
+        "mechanism_links": [
+          {"finding": "Edema", "mechanism": "Retención de sodio y agua, junto con otros factores según el contexto."},
+          {"finding": "Fatiga", "mechanism": "Puede relacionarse con anemia, uremia u otras causas que deben diferenciarse."},
+          {"finding": "Prurito o náuseas", "mechanism": "Pueden aparecer en enfermedad avanzada y no son específicos por sí solos."}
+        ]
+      },
+      {
+        "module_id": "diagnostico",
+        "guiding_question": "¿Qué aporta cada prueba y qué no puede demostrar por sí sola?",
+        "learning_objective": "Separar detección, confirmación de cronicidad, clasificación y búsqueda de causa.",
+        "reasoning_sequence": [
+          {"order": 1, "title": "Detectar", "prompt": "¿Existe alteración de filtración, albuminuria u otro marcador de daño?"},
+          {"order": 2, "title": "Confirmar cronicidad", "prompt": "¿La alteración persiste durante más de tres meses o existe evidencia equivalente?"},
+          {"order": 3, "title": "Clasificar", "prompt": "¿Cuál es la causa probable y cómo se combinan eGFR y albuminuria?"},
+          {"order": 4, "title": "Buscar causa y complicaciones", "prompt": "¿Qué hallazgos requieren uroanálisis, imagen, hemograma, electrolitos u otros estudios?"}
+        ],
+        "data_display_rule": "Cada analito debe mostrar qué mide, utilidad, limitaciones, fuente y estado de revisión antes de cualquier interpretación.",
+        "common_error": {
+          "claim": "Un resultado alterado equivale automáticamente a enfermedad renal crónica.",
+          "correction": "La interpretación requiere temporalidad, repetición cuando corresponda, contexto y exclusión de cambios agudos o transitorios."
+        }
+      },
+      {
+        "module_id": "evolucion",
+        "guiding_question": "¿Qué cambia cuando disminuye la reserva renal y aumenta la albuminuria?",
+        "learning_objective": "Interpretar la evolución como combinación de filtración, albuminuria, complicaciones y velocidad de cambio.",
+        "stage_comparisons": [
+          {"stage_id": "early", "label": "Daño temprano", "signals": ["Puede no haber síntomas", "Albuminuria posible", "eGFR conservado o levemente reducido"], "focus": "Confirmar, buscar causa y reducir riesgo."},
+          {"stage_id": "progressive", "label": "Pérdida progresiva", "signals": ["eGFR descendente", "Creatinina en ascenso", "Cambios iniciales de potasio o bicarbonato"], "focus": "Valorar tendencia, causas reversibles y complicaciones."},
+          {"stage_id": "advanced", "label": "Enfermedad avanzada", "signals": ["Menor reserva", "Anemia o acidosis posibles", "Alteraciones minerales y sobrecarga de volumen posibles"], "focus": "Seguimiento estrecho y planificación según el contexto clínico."}
+        ],
+        "reflection_prompt": "¿Qué dato te permitiría diferenciar una cifra aislada de una trayectoria de progresión?"
+      },
+      {
+        "module_id": "aplicacion",
+        "guiding_question": "¿Cómo se construye una explicación clínica sin saltar directamente al diagnóstico?",
+        "learning_objective": "Integrar antecedentes, manifestaciones y pruebas mediante revelado progresivo.",
+        "case_code": "REN-001-C1",
+        "rounds": [
+          {"round_id": "r1", "title": "Motivo y antecedentes", "reveals": ["58 años", "Diabetes tipo 2", "Hipertensión mal controlada", "Cansancio progresivo y edema en piernas"], "prompt": "¿Qué problemas o mecanismos considerarías antes de conocer el laboratorio?"},
+          {"round_id": "r2", "title": "Manifestaciones", "reveals": ["Fatiga", "Edema en tobillos", "Orina espumosa", "TA 160/95 mmHg"], "prompt": "¿Qué hallazgo orienta a pérdida urinaria de proteínas y cuál indica riesgo cardiovascular?"},
+          {"round_id": "r3", "title": "Datos iniciales", "reveals": ["Creatinina 2.1 mg/dL", "Urea 68 mg/dL", "Proteinuria moderada"], "prompt": "¿Qué dato falta para establecer mejor cronicidad y clasificación?"},
+          {"round_id": "r4", "title": "Contrastar", "reveals": ["Enfermedad renal crónica", "Lesión renal aguda", "Obstrucción urinaria"], "prompt": "¿Qué evidencia separaría mejor estas posibilidades?"},
+          {"round_id": "r5", "title": "Integrar", "reveals": [], "prompt": "Construye una explicación que conecte riesgo, mecanismo, hallazgos y limitaciones del caso."}
+        ],
+        "case_limitations": [
+          "El caso actual no aporta eGFR.",
+          "No documenta albuminuria con una medida estructurada.",
+          "No muestra persistencia durante más de tres meses.",
+          "La clasificación por etapa no puede justificarse completamente con los datos visibles."
+        ]
+      },
+      {
+        "module_id": "atlas",
+        "guiding_question": "¿Qué estructura normal debes reconocer antes de interpretar el cambio patológico?",
+        "learning_objective": "Conectar región anatómica, función, mecanismo y dato clínico sin asignar imágenes automáticamente.",
+        "visual_tasks": [
+          {"task_id": "v1", "prompt": "Ubica la corteza y explica por qué su integridad importa para las nefronas.", "asset_status": "pending_owner_assignment"},
+          {"task_id": "v2", "prompt": "Sigue el recorrido desde el glomérulo hasta el sistema colector.", "asset_status": "pending_owner_assignment"},
+          {"task_id": "v3", "prompt": "Relaciona un cambio estructural con el laboratorio o manifestación que ayudaría a investigarlo.", "asset_status": "pending_owner_assignment"}
+        ]
+      }
+    ]
+  }
+]

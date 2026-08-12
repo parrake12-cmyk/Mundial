@@ -22,3 +22,5 @@ Thumbs.db
 
 # Datos externos descargados (se sincronizan con scripts)
 backend/data/external/
+# Datos crudos descargables; se reconstruyen con scripts de ingesta.
+backend/data/external/nhanes_2021_2023/raw/

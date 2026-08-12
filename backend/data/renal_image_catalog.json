@@ -1,0 +1,83 @@
+{
+  "atlas_id": "renal_normal_owner_series",
+  "title": "Atlas renal normal — láminas aportadas por el propietario",
+  "ownership": "owner_supplied",
+  "assignment_policy": "Solo se publica una lámina con estado ready_for_preview o approved.",
+  "images": [
+    {
+      "image_id": "REN-ATLAS-R1",
+      "order": 1,
+      "title": "R1. Ubicación de los riñones en el cuerpo",
+      "topic": "ubicacion_y_vias_urinarias",
+      "file": "images/7a9fd281-3140-4a99-aaf6-18c28b7f37cc.png",
+      "dimensions": "1254x1254",
+      "module_assignment": "atlas",
+      "disease_assignment": [],
+      "status": "needs_correction",
+      "review_notes": [
+        "La leyenda verde menciona vías biliares, elemento impropio para esta lámina renal.",
+        "Revisar coherencia entre colores de las etiquetas y la leyenda antes de publicar."
+      ]
+    },
+    {
+      "image_id": "REN-ATLAS-R2",
+      "order": 2,
+      "title": "R2. Riñones sanos: vista externa",
+      "topic": "anatomia_externa",
+      "file": "images/20d56932-8bf3-4207-8b9c-757986f95a6f.png",
+      "dimensions": "1254x1254",
+      "module_assignment": "atlas",
+      "disease_assignment": [],
+      "status": "ready_for_preview",
+      "review_notes": [
+        "Apta como referencia de anatomía externa normal.",
+        "Las medidas se presentan como aproximadas y requieren mantener ese contexto."
+      ]
+    },
+    {
+      "image_id": "REN-ATLAS-R3",
+      "order": 3,
+      "title": "R3. Riñón aislado y estructuras del hilio renal",
+      "topic": "hilio_renal",
+      "file": "images/1b6b8136-877e-4158-9d99-428d289d60f6.png",
+      "dimensions": "1254x1254",
+      "module_assignment": "atlas",
+      "disease_assignment": [],
+      "status": "needs_anatomical_review",
+      "review_notes": [
+        "Revisar el orden anteroposterior declarado para vena, arteria y pelvis/uréter.",
+        "No publicar hasta resolver la relación espacial descrita en textos y líneas."
+      ]
+    },
+    {
+      "image_id": "REN-ATLAS-R4",
+      "order": 4,
+      "title": "R4. Relaciones de los riñones con estructuras adyacentes",
+      "topic": "relaciones_anatomicas",
+      "file": "images/8a381d36-b87a-4585-98b8-746d83c164b6.png",
+      "dimensions": "1254x1254",
+      "module_assignment": "atlas",
+      "disease_assignment": [],
+      "status": "needs_correction",
+      "review_notes": [
+        "Existe texto deformado o superpuesto en el cuadro de relaciones por lados.",
+        "Revisar todas las relaciones laterales después de corregir el texto."
+      ]
+    },
+    {
+      "image_id": "REN-ATLAS-R5",
+      "order": 5,
+      "title": "R5. Corte coronal del riñón",
+      "topic": "corte_coronal",
+      "file": "images/b0950090-bd34-468e-b8e9-19020e3f7f9c.png",
+      "dimensions": "1254x1254",
+      "module_assignment": "atlas",
+      "disease_assignment": [],
+      "status": "needs_correction",
+      "review_notes": [
+        "Corregir el texto dañado de la leyenda de corteza renal.",
+        "Verificar que cada línea numerada termine exactamente en la estructura indicada."
+      ]
+    }
+  ]
+}

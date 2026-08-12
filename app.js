@@ -64,6 +64,13 @@ function initApp() {
   moduleButtons.forEach((button) => {
     button.addEventListener('click', () => showModule(button.dataset.moduleTarget));
   });
+  document.querySelectorAll('[data-home-module]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const moduleName = button.dataset.homeModule;
+      showModule(moduleName);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
   window.addEventListener('hashchange', handleAppRoute);
 
   fetchDiseases();

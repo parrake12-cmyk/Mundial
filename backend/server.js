@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
@@ -14,11 +14,21 @@ const diagnosticTestBankPath = path.join(__dirname, 'data', 'diagnostic_test_ban
 const laboratorySampleBankPath = path.join(__dirname, 'data', 'laboratory_sample_bank.json');
 const endoscopyAtlasBankPath = path.join(__dirname, 'data', 'endoscopy_atlas_bank.json');
 const diagnosticProfilesPath = path.join(__dirname, 'data', 'disease_diagnostic_profiles.json');
+const analyteCatalogPath = path.join(__dirname, 'data', 'analyte_catalog.json');
+const analytePopulationProfilesPath = path.join(__dirname, 'data', 'analyte_population_profiles.json');
+const interactiveModulesPath = path.join(__dirname, 'data', 'disease_interactive_modules.json');
+const renalImageCatalogPath = path.join(__dirname, 'data', 'renal_image_catalog.json');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+const allowedOrigins = ['http://localhost:3000', 'http://127.0.0.1:3000'];
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Origen no permitido por CORS'));
+  }
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..')));
 
@@ -40,6 +50,22 @@ function readEndoscopyAtlasBank() {
 
 function readDiagnosticProfiles() {
   return JSON.parse(fs.readFileSync(diagnosticProfilesPath, 'utf8'));
+}
+
+function readAnalyteCatalog() {
+  return JSON.parse(fs.readFileSync(analyteCatalogPath, 'utf8'));
+}
+
+function readAnalytePopulationProfiles() {
+  return JSON.parse(fs.readFileSync(analytePopulationProfilesPath, 'utf8'));
+}
+
+function readInteractiveModules() {
+  return JSON.parse(fs.readFileSync(interactiveModulesPath, 'utf8'));
+}
+
+function readRenalImageCatalog() {
+  return JSON.parse(fs.readFileSync(renalImageCatalogPath, 'utf8'));
 }
 
 app.get('/enfermedades', (req, res) => {
@@ -337,6 +363,72 @@ app.get('/muestras/sistema/:system', (req, res) => {
     total: samples.length,
     samples
   });
+});
+
+app.get('/analitos', (req, res) => {
+  try {
+    const analytes = readAnalyteCatalog();
+    const profiles = readAnalytePopulationProfiles();
+    const profileByAnalyte = new Map(profiles.map((profile) => [profile.analyte_id, profile]));
+    const system = String(req.query.system || '').toLowerCase();
+    const specimen = String(req.query.specimen || '').toLowerCase();
+    const filtered = analytes.filter((analyte) => {
+      const matchesSystem = !system || (analyte.systems || []).some((item) => String(item).toLowerCase() === system);
+      const matchesSpecimen = !specimen || String(analyte.specimen_type || '').toLowerCase().includes(specimen);
+      return matchesSystem && matchesSpecimen;
+    }).map((analyte) => ({
+      ...analyte,
+      population_profile: profileByAnalyte.get(analyte.analyte_id) || null
+    }));
+    res.json({ total: filtered.length, analytes: filtered });
+  } catch (error) {
+    res.status(500).json({ error: 'No se pudo leer el banco local de analitos.' });
+  }
+});
+
+app.get('/analitos/enfermedad/:diseaseCode', (req, res) => {
+  try {
+    const diseaseCode = req.params.diseaseCode;
+    const analytes = readAnalyteCatalog().filter((analyte) => (analyte.disease_codes || []).includes(diseaseCode));
+    const profiles = readAnalytePopulationProfiles();
+    const profileByAnalyte = new Map(profiles.map((profile) => [profile.analyte_id, profile]));
+    res.json({
+      disease_code: diseaseCode,
+      total: analytes.length,
+      analytes: analytes.map((analyte) => ({
+        ...analyte,
+        population_profile: profileByAnalyte.get(analyte.analyte_id) || null
+      }))
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'No se pudo leer el banco local de analitos.' });
+  }
+});
+
+app.get('/interactivo/enfermedad/:diseaseCode', (req, res) => {
+  try {
+    const diseaseCode = req.params.diseaseCode;
+    const record = readInteractiveModules().find((item) => item.disease_code === diseaseCode);
+    if (!record) return res.status(404).json({ error: 'No hay modulos interactivos para esta enfermedad.' });
+    res.json(record);
+  } catch (error) {
+    res.status(500).json({ error: 'No se pudieron leer los modulos interactivos.' });
+  }
+});
+
+app.get('/imagenes/atlas/renal', (req, res) => {
+  try {
+    const catalog = readRenalImageCatalog();
+    const images = catalog.images.filter((image) => ['ready_for_preview', 'approved'].includes(image.status));
+    res.json({
+      atlas_id: catalog.atlas_id,
+      title: catalog.title,
+      total: images.length,
+      images
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'No se pudo leer el catálogo renal.' });
+  }
 });
 
 app.get('/endoscopia/enfermedad/:diseaseCode', (req, res) => {

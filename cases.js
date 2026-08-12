@@ -1,6 +1,14 @@
 // cases.js - Manejo de casos clinicos
 let currentCaseCode = null;
 let caseRepository = [];
+let modalReturnFocus = null;
+
+function showModal() {
+  modalReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  modalOverlay.classList.remove('hidden');
+  modalOverlay.setAttribute('aria-hidden', 'false');
+  requestAnimationFrame(() => modalOverlay.querySelector('.modal')?.focus());
+}
 
 async function fetchCaseRepository() {
   try {
@@ -112,7 +120,7 @@ function renderDiagnosticImage(image) {
 }
 
 async function openCaseModal(caseData) {
-  modalOverlay.classList.remove('hidden');
+  showModal();
   modalContent.innerHTML = '<p>Cargando caso clínico...</p>';
 
   const images = await fetchCaseDiagnosticImages(caseData.case_code);
@@ -122,7 +130,7 @@ async function openCaseModal(caseData) {
     <div class="modal-heading">
       <div>
         <span class="badge">${escapeHTML(caseData.case_code)}</span>
-        <h2>${escapeHTML(caseData.disease_name)}</h2>
+        <h2 id="modalTitle">${escapeHTML(caseData.disease_name)}</h2>
         <p>${escapeHTML(caseData.system)} · ${escapeHTML(caseData.organ)}</p>
       </div>
     </div>
@@ -172,7 +180,7 @@ function renderResource(resource) {
 
 function openModal(disease) {
   renderDetail(disease);
-  modalOverlay.classList.remove('hidden');
+  showModal();
   modalContent.innerHTML = '<p>Cargando caso clínico...</p>';
 
   Promise.all([fetchResources(disease.disease_code), fetchCases(disease.disease_code)])
@@ -192,7 +200,7 @@ function openModal(disease) {
           <img src="${escapeHTML(getImageForDisease(disease))}" alt="Imagen de ${escapeHTML(disease.name)}" onerror="handleImageError(this)" />
           <div>
             <span class="badge">${escapeHTML(disease.disease_code)}</span>
-            <h2>${escapeHTML(disease.name)}</h2>
+            <h2 id="modalTitle">${escapeHTML(disease.name)}</h2>
             <p>${escapeHTML(disease.system)} · ${escapeHTML(disease.organ)}</p>
           </div>
         </div>
@@ -227,8 +235,37 @@ function openModal(disease) {
 
 function closeModal() {
   modalOverlay.classList.add('hidden');
+  modalOverlay.setAttribute('aria-hidden', 'true');
   modalContent.innerHTML = '';
+  if (modalReturnFocus?.isConnected) modalReturnFocus.focus();
+  modalReturnFocus = null;
 }
+
+modalOverlay.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    closeModal();
+    return;
+  }
+  if (event.key !== 'Tab') return;
+  const focusable = Array.from(modalOverlay.querySelectorAll(
+    'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter((element) => !element.closest('[hidden]'));
+  if (!focusable.length) {
+    event.preventDefault();
+    modalOverlay.querySelector('.modal')?.focus();
+    return;
+  }
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+});
 
 function getCurrentCaseCode() {
   return currentCaseCode;
