@@ -16,6 +16,10 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
+# Obsidian (local, no versionar)
+.obsidian/
+*.canvas
+
 # Backups y comprimidos
 *.rar
 *.zip
