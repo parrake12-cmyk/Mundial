@@ -10,8 +10,8 @@
     "vital_signs": "TA 160/95 mmHg, FC 88 lpm, FR 18 rpm.",
     "lab_results": "Creatinina 2.1 mg/dL, urea 68 mg/dL, proteinuria moderada.",
     "probable_diagnosis": "Enfermedad renal crónica sintomática.",
-    "final_diagnosis": "Insuficiencia renal crónica en etapa moderada.",
-    "teaching_note": "La combinación de hipertensión y diabetes aumenta el riesgo de lesión renal crónica. La proteinuria y el aumento de creatinina indican reducción de la función renal."
+    "final_diagnosis": "Enfermedad renal crónica probable; la clasificación por etapa requiere eGFR, albuminuria estructurada y persistencia de la alteración por más de tres meses.",
+    "teaching_note": "La combinación de hipertensión y diabetes aumenta el riesgo de lesión renal crónica. La proteinuria y el aumento de creatinina indican reducción de la función renal, pero para confirmar cronicidad y clasificar la etapa se requieren eGFR, albuminuria estructurada y persistencia de la alteración por más de tres meses."
   },
   {
     "case_code": "RESP-001-C1",

@@ -25,9 +25,23 @@ CREATE TABLE IF NOT EXISTS clinical_cases (
 
 db.serialize(() => {
   db.run(createTable);
-  const stmt = db.prepare(`INSERT OR IGNORE INTO clinical_cases (
-    case_code, disease_code, age, sex, reason, symptoms, history, vital_signs, lab_results, probable_diagnosis, final_diagnosis, teaching_note
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+  const stmt = db.prepare(`
+    INSERT INTO clinical_cases (
+      case_code, disease_code, age, sex, reason, symptoms, history, vital_signs, lab_results, probable_diagnosis, final_diagnosis, teaching_note
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ON CONFLICT(case_code) DO UPDATE SET
+      disease_code = excluded.disease_code,
+      age = excluded.age,
+      sex = excluded.sex,
+      reason = excluded.reason,
+      symptoms = excluded.symptoms,
+      history = excluded.history,
+      vital_signs = excluded.vital_signs,
+      lab_results = excluded.lab_results,
+      probable_diagnosis = excluded.probable_diagnosis,
+      final_diagnosis = excluded.final_diagnosis,
+      teaching_note = excluded.teaching_note
+  `);
 
   cases.forEach((clinicalCase) => {
     stmt.run(

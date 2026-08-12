@@ -34,9 +34,18 @@ db.serialize(() => {
     CREATE UNIQUE INDEX IF NOT EXISTS idx_learning_questions_unique
     ON learning_questions (case_code, disease_code, question)
   `);
-  const stmt = db.prepare(`INSERT OR IGNORE INTO learning_questions (
-    case_code, disease_code, question, option_a, option_b, option_c, option_d, correct_option, explanation
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+  const stmt = db.prepare(`
+    INSERT INTO learning_questions (
+      case_code, disease_code, question, option_a, option_b, option_c, option_d, correct_option, explanation
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ON CONFLICT(case_code, disease_code, question) DO UPDATE SET
+      option_a = excluded.option_a,
+      option_b = excluded.option_b,
+      option_c = excluded.option_c,
+      option_d = excluded.option_d,
+      correct_option = excluded.correct_option,
+      explanation = excluded.explanation
+  `);
 
   questions.forEach((item) => {
     stmt.run(
@@ -53,5 +62,16 @@ db.serialize(() => {
   });
 
   stmt.finalize();
+
+  const casesImported = [...new Set(questions.map((q) => q.case_code))];
+  casesImported.forEach((caseCode) => {
+    const texts = questions.filter((q) => q.case_code === caseCode).map((q) => q.question);
+    const placeholders = texts.map(() => '?').join(',');
+    db.run(
+      `DELETE FROM learning_questions WHERE case_code = ? AND question NOT IN (${placeholders})`,
+      [caseCode, ...texts]
+    );
+  });
+
   console.log(`Importadas ${questions.length} preguntas de aprendizaje desde ${dataPath}`);
 });

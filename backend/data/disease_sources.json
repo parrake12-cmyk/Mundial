@@ -1,7 +1,7 @@
 [
   {
     "disease_code": "REN-001",
-    "name": "Insuficiencia renal cronica",
+    "name": "Enfermedad renal cronica",
     "summary_sources": [
       "medlineplus_xml",
       "niddk_health"

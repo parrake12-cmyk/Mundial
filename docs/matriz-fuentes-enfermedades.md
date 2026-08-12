@@ -41,7 +41,7 @@
 
 ### Lote 1: ya tienen caso y preguntas
 
-- REN-001 Insuficiencia renal cronica
+- REN-001 Enfermedad renal cronica
 - RESP-001 Neumonia
 - HEP-001 Hepatitis aguda
 - CARD-001 Infarto agudo de miocardio

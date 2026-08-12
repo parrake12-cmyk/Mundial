@@ -2,13 +2,13 @@
   {
     "case_code": "REN-001-C1",
     "disease_code": "REN-001",
-    "question": "¿Cuál es el diagnóstico más probable para este paciente con edema en tobillos, diabetes e hipertensión?",
-    "option_a": "Neumonía",
-    "option_b": "Insuficiencia renal crónica",
-    "option_c": "Hepatitis aguda",
-    "option_d": "Infarto agudo de miocardio",
-    "correct_option": "B",
-    "explanation": "El edema, la diabetes y la hipertensión mal controlada junto con alteración de la creatinina indican enfermedad renal crónica, no una afección pulmonar o hepática."
+    "question": "Con creatinina 2.1 mg/dL, urea 68 mg/dL y proteinuria moderada, ¿qué elemento sería más útil para apoyar que el daño renal es crónico?",
+    "option_a": "Evidencia de que la alteración persiste por más de tres meses",
+    "option_b": "Una medición aislada de troponinas en rango normal",
+    "option_c": "Transaminasas y bilirrubina dentro de lo esperado",
+    "option_d": "Una radiografía de tórax sin hallazgos relevantes",
+    "correct_option": "A",
+    "explanation": "La cronicidad se sustenta en la persistencia de la alteración por más de tres meses; la etapa se clasifica combinando eGFR y albuminuria estructurada. La creatinina y la proteinuria orientan al daño renal, pero una sola medición no distingue enfermedad crónica de una alteración aguda o transitoria."
   },
   {
     "case_code": "RESP-001-C1",
